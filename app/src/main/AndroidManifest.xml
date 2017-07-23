@@ -22,6 +22,20 @@
         <activity android:name=".activity.SingInNextActivity"/>
         <activity android:name=".activity.SetPasswordActivity"/>
         <activity android:name=".activity.CreateUserIdActivity"/>
+        <activity android:name=".activity.RegisterByPhoneAndEmailActivity"/>
+        <activity android:name=".activity.ChooseCountryActivity"/>
+        <activity android:name=".activity.VertificationSendActivity"/>
+        <activity android:name=".activity.VertificationSendEnterActivity"/>
+        <activity android:name=".activity.WhatsYourEmailActivity"/>
+        <activity android:name=".activity.FindFacebookFriendsActivity"/>
+        <activity android:name=".activity.FindContactFacebookFriendsActivity"/>
+        <activity android:name=".activity.FindContactFriendsActivity"/>
+        <activity android:name=".activity.WhatsBirthDayActivity"/>
+        <activity android:name=".activity.SettingsAddPhotoActivity"/>
+        <activity android:name=".activity.WhatsYourEmailOrPhoneActivity"/>
+        <activity android:name=".activity.VertificationSendEnterEmailActivity"/>
+        <activity android:name=".activity.VertificationSendEnterEmailAgainActivity"/>
+        <activity android:name=".activity.FollowUserActivity"/>
     </application>
 
 </manifest>

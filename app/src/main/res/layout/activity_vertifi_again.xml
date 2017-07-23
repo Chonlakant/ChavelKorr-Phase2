@@ -20,38 +20,82 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Enter Verification Code"
+            android:textColor="#919191"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            android:text="We will send a verification code to"
-            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter the code we sent to"
+            android:textColor="#919191"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0974424245"
+            android:textColor="#919191"
+            android:textSize="15dp" />
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get code over phone call"
+            android:textColor="#10a9e3"
             android:textSize="15dp" />
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/ed_name"
-                android:layout_gravity="center"
+            <TextView
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Code"
+                android:textColor="#919191"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/ed_code"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="097-442-4245"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint=""
                 android:textColor="#242424"
                 android:textSize="13dp" />
 
         </LinearLayout>
 
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="To complate your phone number verification plase enter 6-digit verifiation code"
-            android:textColor="#919191"
-            android:textSize="15dp" />
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/ed_last"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="last Name"
+                android:inputType="textPassword"
+                android:textColor="#242424"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -63,8 +107,8 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="300dp"
+            android:id="@+id/ls_send_code_again"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -75,44 +119,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Send SMS"
+                android:text="Send Code Again"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/border_login"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Call Me"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:textColor="#919191"
-            android:textSize="15dp" />
 
 
     </LinearLayout>

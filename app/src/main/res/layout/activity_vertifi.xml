@@ -20,38 +20,49 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="We will send a verification code to"
-            android:textColor="#000000"
+            android:layout_marginLeft="20dp"
+            android:text="What's your name? (Display Name)"
+            android:textColor="#919191"
             android:textSize="15dp" />
 
         <LinearLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:orientation="vertical">
 
             <EditText
                 android:id="@+id/ed_name"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="097-442-4245"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Frist Name"
                 android:textColor="#242424"
                 android:textSize="13dp" />
 
         </LinearLayout>
 
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="To complate your phone number verification plase enter 6-digit verifiation code"
-            android:textColor="#919191"
-            android:textSize="15dp" />
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/ed_last"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="last Name"
+                android:inputType="textPassword"
+                android:textColor="#242424"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -63,8 +74,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
@@ -75,44 +85,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Send SMS"
+                android:text="Sing up Accept"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/border_login"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Call Me"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:textColor="#919191"
-            android:textSize="15dp" />
 
 
     </LinearLayout>
@@ -125,6 +104,39 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:background="#dedede" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Already have an account?"
+                android:textColor="#919191"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:text="Log in"
+                android:textColor="#009fd8"
+                android:textSize="18dp" />
+        </LinearLayout>
 
     </LinearLayout>
 

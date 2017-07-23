@@ -20,54 +20,45 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="We will send a verification code to"
-            android:textColor="#000000"
+            android:layout_marginLeft="30dp"
+            android:text="What's your email address?"
+            android:textColor="#919191"
             android:textSize="15dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Email"
+                android:textColor="#919191"
+                android:textSize="15dp" />
 
             <EditText
                 android:id="@+id/ed_name"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="097-442-4245"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Frist Name"
+                android:text="Mr.Chavel@gmail.com"
                 android:textColor="#242424"
                 android:textSize="13dp" />
 
         </LinearLayout>
 
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="To complate your phone number verification plase enter 6-digit verifiation code"
-            android:textColor="#919191"
-            android:textSize="15dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="top"
-        android:orientation="vertical">
-
         <LinearLayout
-            android:layout_gravity="center"
+            android:id="@+id/ls_next"
             android:layout_width="300dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:background="@drawable/border_login"
             android:orientation="vertical">
 
@@ -75,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Send SMS"
+                android:text="Next"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -84,20 +75,18 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="300dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/border_login"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border_skip"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="Call Me"
+                android:text="Skip"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 android:textStyle="bold" />
@@ -105,17 +94,9 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cancel"
-            android:textColor="#919191"
-            android:textSize="15dp" />
-
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
