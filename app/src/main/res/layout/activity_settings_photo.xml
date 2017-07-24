@@ -16,7 +16,8 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/add_photo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"

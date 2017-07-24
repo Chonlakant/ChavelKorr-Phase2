@@ -1,5 +1,6 @@
 package com.chavel.chavel.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -18,7 +19,7 @@ public class CreateUserIdActivity extends AppCompatActivity {
 
     TextView accout;
     LinearLayout login;
-    LinearLayout sign_up;
+    LinearLayout ls_next;
 
     EditText ed_create_id;
 
@@ -26,6 +27,8 @@ public class CreateUserIdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user_id);
+
+        ls_next = (LinearLayout) findViewById(R.id.ls_next);
 
         ed_create_id = (EditText) findViewById(R.id.ed_create_id);
 
@@ -37,6 +40,14 @@ public class CreateUserIdActivity extends AppCompatActivity {
         } else {
             ed_create_id.setBackgroundDrawable(drawable); // use setBackgroundDrawable because setBackground required API 16
         }
+
+        ls_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(getApplicationContext(),RegisterByPhoneAndEmailActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 
