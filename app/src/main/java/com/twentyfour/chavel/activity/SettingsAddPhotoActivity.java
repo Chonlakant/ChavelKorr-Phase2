@@ -1,4 +1,4 @@
-package com.chavel.chavel.activity;
+package com.twentyfour.chavel.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -6,14 +6,17 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
-import com.chavel.chavel.R;
+import com.twentyfour.chavel.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import siclo.com.ezphotopicker.api.EZPhotoPick;
 import siclo.com.ezphotopicker.api.EZPhotoPickStorage;
@@ -25,10 +28,20 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
     Bitmap bitmap;
     CircleImageView add_photo;
 
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_photo);
+
+        ButterKnife.bind(this);
+
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         add_photo = (CircleImageView) findViewById(R.id.add_photo);
 

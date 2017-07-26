@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.chavel.chavel">
+    package="com.twentyfour.chavel">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_TASKS" />
@@ -44,7 +44,9 @@
         <activity android:name=".activity.FindFacebookFriendsActivity"/>
         <activity android:name=".activity.FindContactFacebookFriendsActivity"/>
         <activity android:name=".activity.FindContactFriendsActivity"/>
-        <activity android:name=".activity.WhatsBirthDayActivity"/>
+        <activity android:name=".activity.WhatsBirthDayActivity"
+            android:windowSoftInputMode="adjustPan"
+            />
         <activity android:name=".activity.SettingsAddPhotoActivity"/>
         <activity android:name=".activity.WhatsYourEmailOrPhoneActivity"/>
         <activity android:name=".activity.VertificationSendEnterEmailActivity"/>

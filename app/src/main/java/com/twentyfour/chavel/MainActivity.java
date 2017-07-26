@@ -1,4 +1,4 @@
-package com.chavel.chavel;
+package com.twentyfour.chavel;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.chavel.chavel.activity.LoginActivity;
-import com.chavel.chavel.activity.SingInActivity;
+import com.twentyfour.chavel.activity.LoginActivity;
+import com.twentyfour.chavel.activity.SingInActivity;
 
 public class MainActivity extends AppCompatActivity {
 

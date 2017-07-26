@@ -1,4 +1,4 @@
-package com.chavel.chavel;
+package com.twentyfour.chavel;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

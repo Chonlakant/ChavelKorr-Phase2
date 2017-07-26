@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.chavel.chavel.MainActivity">
+    tools:context="com.twentyfour.chavel.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="50dp"
             android:src="@drawable/logo_chavel" />
 
 

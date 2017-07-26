@@ -1,28 +1,30 @@
-package com.chavel.chavel.activity;
+package com.twentyfour.chavel.activity;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 
-import com.chavel.chavel.R;
+import com.twentyfour.chavel.R;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 
 public class VertificationSendEnterEmailAgainActivity extends AppCompatActivity {
-
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow);
 
+        ButterKnife.bind(this);
 
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
     }

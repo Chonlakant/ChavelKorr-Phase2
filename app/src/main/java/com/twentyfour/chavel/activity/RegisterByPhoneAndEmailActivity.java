@@ -1,4 +1,4 @@
-package com.chavel.chavel.activity;
+package com.twentyfour.chavel.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,13 +7,18 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.chavel.chavel.R;
+import com.twentyfour.chavel.R;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 
 public class RegisterByPhoneAndEmailActivity extends AppCompatActivity {
 
@@ -22,10 +27,20 @@ public class RegisterByPhoneAndEmailActivity extends AppCompatActivity {
     LinearLayout ls_next;
     EditText ed_phone_code;
 
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_phone_email);
+
+        ButterKnife.bind(this);
+
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         txt_email = (TextView) findViewById(R.id.txt_email);
         txt_phone = (TextView) findViewById(R.id.txt_phone);
         ls_next = (LinearLayout) findViewById(R.id.ls_next);

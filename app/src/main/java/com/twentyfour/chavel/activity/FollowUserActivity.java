@@ -1,10 +1,10 @@
-package com.chavel.chavel.activity;
+package com.twentyfour.chavel.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.chavel.chavel.R;
+import com.twentyfour.chavel.R;
 
 public class FollowUserActivity extends AppCompatActivity {
 
@@ -12,7 +12,6 @@ public class FollowUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_county);
-
 
 
     }

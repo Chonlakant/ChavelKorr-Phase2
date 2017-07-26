@@ -1,29 +1,43 @@
-package com.chavel.chavel.activity;
+package com.twentyfour.chavel.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.chavel.chavel.R;
+import com.twentyfour.chavel.R;
 
-public class WhatsYourEmailOrPhoneActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+
+public class WhatsYourEmailActivity extends AppCompatActivity {
 
     LinearLayout ls_next;
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_whats_address);
+        setContentView(R.layout.activity_whats_email);
+
+        ButterKnife.bind(this);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ls_next = (LinearLayout) findViewById(R.id.ls_next);
 
 
         ls_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),VertificationSendEnterEmailActivity.class);
+                Intent intent = new Intent(getApplicationContext(),FindFacebookFriendsActivity.class);
                 startActivity(intent);
             }
         });

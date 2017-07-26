@@ -1,4 +1,4 @@
-package com.chavel.chavel.activity;
+package com.twentyfour.chavel.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,14 +7,17 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.chavel.chavel.R;
+import com.twentyfour.chavel.R;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class SingInActivity extends AppCompatActivity {
 
@@ -26,10 +29,19 @@ public class SingInActivity extends AppCompatActivity {
     EditText ed_mail;
     EditText ed_pass;
 
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        ButterKnife.bind(this);
+
+        toolbar.setTitle("Login");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         forget = (TextView) findViewById(R.id.forget);
         accout = (TextView) findViewById(R.id.accout);
         ed_mail = (EditText) findViewById(R.id.ed_mail);
