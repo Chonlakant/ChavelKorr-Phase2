@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -27,9 +28,15 @@ public class FindContactFacebookFriendsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_facebook);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("");
+        toolbar.setTitle("FindContactFacebookFriends");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         ls_follow = (LinearLayout) findViewById(R.id.ls_findfacebook);
 
@@ -45,12 +52,9 @@ public class FindContactFacebookFriendsActivity extends AppCompatActivity {
         });
     }
 
-    public static int getSum(int n) {
-        int sum = 0;
-        for (int i = 1; i <= n; i++) {
-            sum += i;
-            Log.e("sum", sum + "");
-        }
-        return sum;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_skip, menu);
+        return true;
     }
 }

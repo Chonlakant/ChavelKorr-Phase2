@@ -1,16 +1,10 @@
 package com.twentyfour.chavel.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,15 +13,14 @@ import com.twentyfour.chavel.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+
 public class SingInActivity extends AppCompatActivity {
 
-    TextView accout;
-    TextView forget;
-    LinearLayout login;
-    LinearLayout sign_up;
+    LinearLayout sing_create;
+    TextView txt_sing_in;
 
-    EditText ed_mail;
-    EditText ed_pass;
+    @Bind(R.id.txt_login)
+    TextView txt_login;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -35,53 +28,52 @@ public class SingInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_sign_login);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Login");
+        toolbar.setTitle("Sing in");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        forget = (TextView) findViewById(R.id.forget);
-        accout = (TextView) findViewById(R.id.accout);
-        ed_mail = (EditText) findViewById(R.id.ed_mail);
-        ed_pass = (EditText) findViewById(R.id.ed_pass);
-
-        Drawable drawable = ed_mail.getBackground(); // get current EditText drawable
-        drawable.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); // change the drawable color
-
-        if (Build.VERSION.SDK_INT > 16) {
-            ed_mail.setBackground(drawable); // set the new drawable to EditText
-            ed_pass.setBackground(drawable);
-        } else {
-            ed_mail.setBackgroundDrawable(drawable); // use setBackgroundDrawable because setBackground required API 16
-            ed_pass.setBackgroundDrawable(drawable);
-        }
-
-        accout.setOnClickListener(new View.OnClickListener() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SingInNextActivity.class);
+                onBackPressed();
+            }
+        });
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        txt_sing_in = (TextView) findViewById(R.id.txt_sing_in);
+        sing_create = (LinearLayout) findViewById(R.id.sing_create);
+
+        sing_create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CreateUserIdActivity.class);
                 startActivity(i);
             }
         });
 
-        forget.setOnClickListener(new View.OnClickListener() {
+        txt_sing_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SetPasswordActivity.class);
+
+                Intent i = new Intent(getApplicationContext(), RegisterByPhoneAndEmailActivity.class);
                 startActivity(i);
+
             }
         });
 
+        txt_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
-    public static int getSum(int n) {
-        int sum = 0;
-        for (int i = 1; i <= n; i++) {
-            sum += i;
-            Log.e("sum", sum + "");
-        }
-        return sum;
-    }
 }

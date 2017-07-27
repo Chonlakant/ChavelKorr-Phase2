@@ -37,7 +37,8 @@
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="MrChavel@mail.com"
+                android:text=""
+                android:hint="MrChavel@mail.com"
                 android:textColor="#242424"
                 android:textSize="13dp" />
 
@@ -64,7 +65,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:inputType="textPassword"
-                android:text="chave"
+                android:text=""
+                android:hint="chave"
                 android:textColor="#242424"
                 android:textSize="13dp" />
 
@@ -99,25 +101,21 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+        <Button
+            android:id="@+id/longButton"
+            android:background="@drawable/bg_unselected"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/border_login"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="16dp"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:text="Login"
+            />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Login"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -154,6 +152,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ls_facebook"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginLeft="30dp"

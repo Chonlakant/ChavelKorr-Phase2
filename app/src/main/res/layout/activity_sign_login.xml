@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context="com.twentyfour.chavel.MainActivity">
 
+    <include layout="@layout/toolbar"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="570dp"
@@ -169,6 +171,7 @@
                 android:textSize="18dp" />
 
             <TextView
+                android:id="@+id/txt_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

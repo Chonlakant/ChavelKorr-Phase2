@@ -6,8 +6,11 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -38,6 +41,12 @@ public class CreateUserIdActivity extends AppCompatActivity {
         toolbar.setTitle("Create User ID");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         ls_next = (LinearLayout) findViewById(R.id.ls_next);
 
@@ -55,11 +64,43 @@ public class CreateUserIdActivity extends AppCompatActivity {
         ls_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i =new Intent(getApplicationContext(),RegisterByPhoneAndEmailActivity.class);
+                Intent i = new Intent(getApplicationContext(), RegisterByPhoneAndEmailActivity.class);
                 startActivity(i);
             }
         });
 
+
+        ed_create_id.addTextChangedListener(new TextWatcher() {
+
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.toString().trim().length() == 0) {
+
+                    ls_next.setBackground(getResources().getDrawable(R.drawable.bg_unselected, null));
+                } else {
+
+                    ls_next.setBackground(getResources().getDrawable(R.drawable.bg_selected, null));
+
+                }
+
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+            }
+        });
     }
 
 }

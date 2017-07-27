@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.twentyfour.chavel.activity.FindContactFriendsActivity;
 import com.twentyfour.chavel.activity.LoginActivity;
 import com.twentyfour.chavel.activity.SingInActivity;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SingInActivity.class);
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(i);
             }
         });
@@ -43,11 +44,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent i = new Intent(getApplicationContext(), SingInActivity.class);
                 startActivity(i);
 
+            }
+        });
 
-
+        txt_conti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), FindContactFriendsActivity.class);
+                startActivity(i);
             }
         });
     }

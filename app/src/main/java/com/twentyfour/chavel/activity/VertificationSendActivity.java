@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,9 +33,15 @@ public class VertificationSendActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vertification_send);
         ButterKnife.bind(this);
-        toolbar.setTitle("");
+        toolbar.setTitle("Vertification");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
         ed_phone = (EditText) findViewById(R.id.ed_phone);
@@ -61,12 +68,11 @@ public class VertificationSendActivity extends AppCompatActivity {
 
     }
 
-    public static int getSum(int n) {
-        int sum = 0;
-        for (int i = 1; i <= n; i++) {
-            sum += i;
-            Log.e("sum", sum + "");
-        }
-        return sum;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
+
+
 }

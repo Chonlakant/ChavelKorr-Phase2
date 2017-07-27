@@ -5,9 +5,13 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +27,7 @@ public class SetPasswordActivity extends AppCompatActivity {
     LinearLayout login;
     LinearLayout sign_up;
     EditText ed_pass;
+    Button btn_next;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -38,6 +43,7 @@ public class SetPasswordActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        btn_next = (Button) findViewById(R.id.btn_next);
         ed_pass = (EditText) findViewById(R.id.ed_pass);
         accout = (TextView) findViewById(R.id.accout);
 
@@ -51,6 +57,37 @@ public class SetPasswordActivity extends AppCompatActivity {
             ed_pass.setBackgroundDrawable(drawable);
         }
 
+        ed_pass.addTextChangedListener(new TextWatcher() {
+
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.toString().trim().length() == 0) {
+
+                    btn_next.setBackground(getResources().getDrawable(R.drawable.bg_unselected, null));
+                } else {
+
+                    btn_next.setBackground(getResources().getDrawable(R.drawable.bg_selected, null));
+
+                }
+
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+            }
+        });
 
     }
 

@@ -6,14 +6,20 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hbb20.CountryCodePicker;
 import com.twentyfour.chavel.R;
 
 import butterknife.Bind;
@@ -24,11 +30,14 @@ public class RegisterByPhoneAndEmailActivity extends AppCompatActivity {
 
     TextView txt_phone;
     TextView txt_email;
-    LinearLayout ls_next;
+    Button btn_next;
+    EditText ed_name;
     EditText ed_phone_code;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+
+    CountryCodePicker countryCodePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +46,23 @@ public class RegisterByPhoneAndEmailActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        toolbar.setTitle("");
+        countryCodePicker = (CountryCodePicker) findViewById(R.id.ccp);
+
+        toolbar.setTitle("PHONE AND EMAIL");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
+        ed_name = (EditText) findViewById(R.id.ed_name);
         txt_email = (TextView) findViewById(R.id.txt_email);
         txt_phone = (TextView) findViewById(R.id.txt_phone);
-        ls_next = (LinearLayout) findViewById(R.id.ls_next);
-        ed_phone_code = (EditText) findViewById(R.id.ed_phone_code);
+        btn_next = (Button) findViewById(R.id.btn_next);
+
 
         txt_phone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,13 +75,13 @@ public class RegisterByPhoneAndEmailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),WhatsYourEmailOrPhoneActivity.class);
+                Intent intent = new Intent(getApplicationContext(), WhatsYourEmailOrPhoneActivity.class);
                 startActivity(intent);
 
             }
         });
 
-        ls_next.setOnClickListener(new View.OnClickListener() {
+        btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), VertificationSendActivity.class);
@@ -72,34 +90,72 @@ public class RegisterByPhoneAndEmailActivity extends AppCompatActivity {
             }
         });
 
-        ed_phone_code.setOnClickListener(new View.OnClickListener() {
+//        ed_phone_code.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getApplicationContext(), ChooseCountryActivity.class);
+//                startActivity(i);
+//            }
+//        });
+
+
+        Drawable drawable = ed_name.getBackground(); // get current EditText drawable
+        drawable.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); // change the drawable color
+
+        if (Build.VERSION.SDK_INT > 16) {
+            ed_name.setBackground(drawable); // set the new drawable to EditText
+
+        } else {
+            ed_name.setBackgroundDrawable(drawable);
+        }
+
+
+        ed_name.addTextChangedListener(new TextWatcher() {
+
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ChooseCountryActivity.class);
-                startActivity(i);
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.toString().trim().length() == 0) {
+
+                    btn_next.setBackground(getResources().getDrawable(R.drawable.bg_unselected, null));
+                } else {
+
+                    btn_next.setBackground(getResources().getDrawable(R.drawable.bg_selected, null));
+
+                }
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+        countryCodePicker.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                //  ed_name.setText(countryCodePicker.getSelectedCountryName());
+
             }
         });
 
 
-        Drawable drawable = ed_phone_code.getBackground(); // get current EditText drawable
-        drawable.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); // change the drawable color
-
-        if (Build.VERSION.SDK_INT > 16) {
-            ed_phone_code.setBackground(drawable); // set the new drawable to EditText
-
-        } else {
-            ed_phone_code.setBackgroundDrawable(drawable);
-        }
-
-
     }
 
-    public static int getSum(int n) {
-        int sum = 0;
-        for (int i = 1; i <= n; i++) {
-            sum += i;
-            Log.e("sum", sum + "");
-        }
-        return sum;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
+
 }

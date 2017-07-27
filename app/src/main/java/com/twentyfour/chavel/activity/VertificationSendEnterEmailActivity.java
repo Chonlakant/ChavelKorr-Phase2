@@ -6,9 +6,13 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -34,9 +38,15 @@ public class VertificationSendEnterEmailActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        toolbar.setTitle("");
+        toolbar.setTitle("Vertification Email");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         ls_send_code = (LinearLayout) findViewById(R.id.ls_send_code);
 
@@ -62,15 +72,40 @@ public class VertificationSendEnterEmailActivity extends AppCompatActivity {
             }
         });
 
+        ed_code.addTextChangedListener(new TextWatcher() {
+
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (s.toString().trim().length() == 0) {
+
+                    ls_send_code.setBackground(getResources().getDrawable(R.drawable.bg_unselected, null));
+                } else {
+
+                    ls_send_code.setBackground(getResources().getDrawable(R.drawable.bg_selected, null));
+
+                }
+
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
 
     }
 
-    public static int getSum(int n) {
-        int sum = 0;
-        for (int i = 1; i <= n; i++) {
-            sum += i;
-            Log.e("sum", sum + "");
-        }
-        return sum;
-    }
+
 }

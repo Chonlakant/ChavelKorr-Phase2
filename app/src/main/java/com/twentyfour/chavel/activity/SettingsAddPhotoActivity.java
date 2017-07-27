@@ -7,7 +7,9 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.twentyfour.chavel.R;
@@ -32,6 +34,9 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
+    @Bind(R.id.add_camera)
+    ImageView add_camera;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,13 +44,40 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        toolbar.setTitle("");
+        toolbar.setTitle("Settings Photo");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         add_photo = (CircleImageView) findViewById(R.id.add_photo);
 
         add_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(SettingsAddPhotoActivity.this);
+                builder.setMessage("Picture")
+                        .setPositiveButton("GALLERY", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Do something on Share
+                                chooseImage();
+                            }
+                        })
+                        .setNegativeButton("CAMERA", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Do something on Cancel
+                                chooseCamera();
+                            }
+                        });
+                builder.show();
+            }
+        });
+
+        add_camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(SettingsAddPhotoActivity.this);
@@ -125,5 +157,11 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_skip, menu);
+        return true;
     }
 }

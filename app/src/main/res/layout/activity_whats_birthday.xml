@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.twentyfour.chavel.MainActivity">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,16 +41,23 @@
                 android:textColor="#919191"
                 android:textSize="15dp" />
 
-            <EditText
-                android:id="@+id/ed_name"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:hint="05/Jan/1999"
-                android:text="05/Jan/1999"
-                android:textColor="#242424"
-                android:textSize="13dp" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/ed_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="05/Jan/1999"
+                    android:text="05/Jan/1999"
+                    android:textColor="#242424"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
 
         </LinearLayout>
 
@@ -75,10 +82,23 @@
 
         </LinearLayout>
 
+        <DatePicker
+            android:id="@+id/dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            />
+
+
     </LinearLayout>
 
 
+
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
@@ -177,8 +197,8 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/border_date"
                 android:layout_marginTop="5dp"
+                android:background="@drawable/border_date"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -189,8 +209,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:layout_marginBottom="5dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
@@ -200,7 +220,6 @@
                             android:text="01"
                             android:textColor="#919191"
                             android:textSize="15dp" />
-
 
 
                     </LinearLayout>
@@ -235,7 +254,6 @@
                             android:text="2016"
                             android:textColor="#919191"
                             android:textSize="15dp" />
-
 
 
                     </LinearLayout>
