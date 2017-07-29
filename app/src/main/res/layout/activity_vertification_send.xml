@@ -43,7 +43,7 @@
             android:layout_gravity="left"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
-            android:text="To complate your phone number verification"
+            android:text="To complete your phone number verification"
             android:textColor="#919191"
             android:textSize="15dp" />
 

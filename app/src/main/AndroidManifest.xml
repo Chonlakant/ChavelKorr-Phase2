@@ -52,6 +52,7 @@
         <activity android:name=".activity.VertificationSendEnterEmailActivity"/>
         <activity android:name=".activity.VertificationSendEnterEmailAgainActivity"/>
         <activity android:name=".activity.FollowUserActivity"/>
+        <activity android:name=".MainTabActivity"/>
     </application>
 
 </manifest>
