@@ -14,6 +14,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.twentyfour.chavel.fragment.HomeFragment;
+import com.twentyfour.chavel.fragment.LocationFragment;
+import com.twentyfour.chavel.fragment.SerachFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +48,8 @@ public class MainTabActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.insertNewFragment(new HomeFragment());
-        adapter.insertNewFragment(new HomeFragment());
-        adapter.insertNewFragment(new HomeFragment());
+        adapter.insertNewFragment(new SerachFragment());
+        adapter.insertNewFragment(new LocationFragment());
         adapter.insertNewFragment(new HomeFragment());
         adapter.insertNewFragment(new HomeFragment());
         viewPager.setAdapter(adapter);
