@@ -1,4 +1,4 @@
-package com.twentyfour.chavel;
+package com.twentyfour.chavel.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -9,54 +9,65 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.View;
 
+import com.twentyfour.chavel.MainTabActivity;
+import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.fragment.HomeFragment;
 import com.twentyfour.chavel.fragment.LocationFragment;
+import com.twentyfour.chavel.fragment.PinsFragment;
 import com.twentyfour.chavel.fragment.SerachFragment;
-import com.twentyfour.chavel.fragment.SettingsUserFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainTabActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
+
+public class RouteActivity extends AppCompatActivity {
+
+    @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-    public void onCreate(Bundle savedInstanceState) {
+    TabLayout tabLayout;
+    ViewPager viewPager;
+
+    String[] icons = {"OVERVIEW", "PINS"};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_tab);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        int[] icons = {R.drawable.tab_home,
-                R.drawable.tab_search,
-                R.drawable.tab_location,
-                R.drawable.tab_noti, R.drawable.tab_user
-        };
+        setContentView(R.layout.fragment_route);
+        ButterKnife.bind(this);
 
-        toolbar.setTitle("Chavel");
+        toolbar.setTitle("Route");
         setSupportActionBar(toolbar);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.main_tab_content);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        viewPager = (ViewPager) findViewById(R.id.main_tab_content);
         setupViewPager(viewPager);
-
 
         tabLayout.setupWithViewPager(viewPager);
 
         for (int i = 0; i < icons.length; i++) {
-            tabLayout.getTabAt(i).setIcon(icons[i]);
+            tabLayout.getTabAt(i).setText(icons[i]);
         }
         tabLayout.getTabAt(0).select();
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.insertNewFragment(new HomeFragment());
-        adapter.insertNewFragment(new SerachFragment());
-        adapter.insertNewFragment(new LocationFragment());
-        adapter.insertNewFragment(new HomeFragment());
-        adapter.insertNewFragment(new SettingsUserFragment());
+        adapter.insertNewFragment(new PinsFragment());
+        adapter.insertNewFragment(new PinsFragment());
         viewPager.setAdapter(adapter);
 
     }
@@ -85,22 +96,8 @@ public class MainTabActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = this.getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//
-//            case R.id.action_settings:
-//                Intent settingsIntent = new Intent(this, TabSample.class);
-//                startActivity(settingsIntent);
-//            default:
-//
-//        }
-        return super.onOptionsItemSelected(item);
     }
 
 }

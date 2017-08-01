@@ -53,6 +53,7 @@
         <activity android:name=".activity.VertificationSendEnterEmailAgainActivity"/>
         <activity android:name=".activity.FollowUserActivity"/>
         <activity android:name=".MainTabActivity"/>
+        <activity android:name=".activity.RouteActivity"/>
     </application>
 
 </manifest>
