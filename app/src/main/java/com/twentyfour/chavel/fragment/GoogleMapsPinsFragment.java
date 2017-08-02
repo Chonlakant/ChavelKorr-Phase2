@@ -1,30 +1,27 @@
-package com.twentyfour.chavel.activity;
+package com.twentyfour.chavel.fragment;
 
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
+import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -52,14 +49,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.twentyfour.chavel.AppController;
 import com.twentyfour.chavel.Driver;
-import com.twentyfour.chavel.MainTabActivity;
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.fragment.ActivityProfileUserFragment;
-import com.twentyfour.chavel.fragment.GoogleMapsPinsFragment;
-import com.twentyfour.chavel.fragment.HomeFragment;
-import com.twentyfour.chavel.fragment.LocationFragment;
-import com.twentyfour.chavel.fragment.PinsFragment;
-import com.twentyfour.chavel.fragment.SerachFragment;
+import com.twentyfour.chavel.activity.RouteActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -68,36 +59,15 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import static android.view.View.GONE;
 
 
-public class RouteActivity extends FragmentActivity implements
+public class GoogleMapsPinsFragment extends Fragment implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-
-    @Bind(R.id.btn_locaion_map)
-    Button btn_locaion_map;
-
-    @Bind(R.id.fragment_map)
-    LinearLayout fragment_map;
-
-    @Bind(R.id.fragment_container3)
-    LinearLayout fragment_container3;
-
-
-    TabLayout tabLayout;
-    ViewPager viewPager;
-
-    String[] icons = {"OVERVIEW", "PINS"};
-
 
 
     private static final String REQUESTING_LOCATION_UPDATES_KEY = "requesting_location_updates";
@@ -118,107 +88,37 @@ public class RouteActivity extends FragmentActivity implements
 
     protected static final String TAG = "Map Tutorial";
 
+    /**
+     * Stores the types of location services the client is interested in using. Used for checking
+     * settings to determine if the device has optimal location settings.
+     */
     protected LocationSettingsRequest mLocationSettingsRequest;
 
     public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
     public static final long FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS =
             UPDATE_INTERVAL_IN_MILLISECONDS / 2;
 
-    private static final int MY_PERMISSIONS_REQUEST_FINE_LOCATION = 111;
-
+    SupportMapFragment mapFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_route);
-        ButterKnife.bind(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.google_map_pins, null);
+        Toast.makeText(getActivity(),"Toast",Toast.LENGTH_SHORT).show();
 
-
-        ActivityCompat.requestPermissions(this, new String[]{
+        ActivityCompat.requestPermissions(getActivity(), new String[]{
                 Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION }, 1);
-
-
 
         updateValuesFromBundle(savedInstanceState);
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         buildGoogleApiClient();
         createLocationRequest();
         buildLocationSettingsRequest();
 
-//        toolbar.setTitle("Route");
-//        getActionBar()setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
 
-        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        viewPager = (ViewPager) findViewById(R.id.main_tab_content);
-        setupViewPager(viewPager);
-
-        tabLayout.setupWithViewPager(viewPager);
-
-        for (int i = 0; i < icons.length; i++) {
-            tabLayout.getTabAt(i).setText(icons[i]);
-        }
-        tabLayout.getTabAt(0).select();
-
-        btn_locaion_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                fragment_map.setVisibility(View.VISIBLE);
-                fragment_container3.setVisibility(View.GONE);
-
-            }
-        });
-
-    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.insertNewFragment(new PinsFragment());
-        adapter.insertNewFragment(new PinsFragment());
-        viewPager.setAdapter(adapter);
-
-    }
-
-
-
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void insertNewFragment(Fragment fragment) {
-            mFragmentList.add(fragment);
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+        return view;
     }
 
 
@@ -283,7 +183,7 @@ public class RouteActivity extends FragmentActivity implements
     }
 
     protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(RouteActivity.this)
+        mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
@@ -362,7 +262,7 @@ public class RouteActivity extends FragmentActivity implements
                             // Show the dialog by calling startResolutionForResult(),
                             // and check the result in onActivityResult().
                             status.startResolutionForResult(
-                                    RouteActivity.this,
+                                    getActivity(),
                                     REQUEST_CHECK_SETTINGS);
                         } catch (IntentSender.SendIntentException e) {
                             // Ignore the error.
@@ -439,7 +339,7 @@ public class RouteActivity extends FragmentActivity implements
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(RouteActivity.this, error.getMessage(),
+                Toast.makeText(getActivity(), error.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
         });
@@ -559,8 +459,5 @@ public class RouteActivity extends FragmentActivity implements
                     mGoogleApiClient, this);
         }
     }
-
-
-
 
 }

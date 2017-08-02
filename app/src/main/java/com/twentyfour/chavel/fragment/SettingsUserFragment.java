@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,7 +19,9 @@ import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.RouteActivity;
+import com.twentyfour.chavel.activity.SettingSystemActivity;
 import com.twentyfour.chavel.adapter.MyActivityProfileAdapter;
+import com.twentyfour.chavel.fragment.ActivityProfileUserFragment;
 import com.twentyfour.chavel.model.ModelActivityProfile;
 
 import java.util.ArrayList;
@@ -36,6 +41,7 @@ public class SettingsUserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.settings_user_fragment, null);
+        setHasOptionsMenu(true);
         txt_status = (TextView) view.findViewById(R.id.txt_status);
         txt_activity = (TextView) view.findViewById(R.id.txt_activity);
         ls_activity = (LinearLayout) view.findViewById(R.id.ls_activity);
@@ -74,5 +80,28 @@ public class SettingsUserFragment extends Fragment {
         v.setSelected(false);
         v.setPressed(false);
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragment_setting, menu);
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+
+
+                Intent i =new Intent(getActivity(),SettingSystemActivity.class);
+                startActivity(i);
+
+
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

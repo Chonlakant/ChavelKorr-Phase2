@@ -1,106 +1,151 @@
 package com.twentyfour.chavel;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.twentyfour.chavel.adapter.PageFragmentAdapter;
 import com.twentyfour.chavel.fragment.HomeFragment;
 import com.twentyfour.chavel.fragment.LocationFragment;
+import com.twentyfour.chavel.fragment.NotiFragment;
 import com.twentyfour.chavel.fragment.SerachFragment;
 import com.twentyfour.chavel.fragment.SettingsUserFragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainTabActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
+    private Toolbar toolbar;
+    private ActionBar actionbar;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private PageFragmentAdapter adapter;
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_tab);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        int[] icons = {R.drawable.tab_home,
-                R.drawable.tab_search,
-                R.drawable.tab_location,
-                R.drawable.tab_noti, R.drawable.tab_user
-        };
+    private HomeFragment f_home;
+    private SerachFragment f_search;
+    private LocationFragment f_location;
+    private NotiFragment f_notif;
+    private SettingsUserFragment f_user;
+    int[] icons = {R.drawable.tab_home,
+            R.drawable.tab_search,
+            R.drawable.tab_location,
+            R.drawable.tab_noti, R.drawable.tab_user
+    };
 
-        toolbar.setTitle("Chavel");
-        setSupportActionBar(toolbar);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.main_tab_content);
-
-        setupViewPager(viewPager);
-
-
-        tabLayout.setupWithViewPager(viewPager);
-
-        for (int i = 0; i < icons.length; i++) {
-            tabLayout.getTabAt(i).setIcon(icons[i]);
-        }
-        tabLayout.getTabAt(0).select();
-    }
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.insertNewFragment(new HomeFragment());
-        adapter.insertNewFragment(new SerachFragment());
-        adapter.insertNewFragment(new LocationFragment());
-        adapter.insertNewFragment(new HomeFragment());
-        adapter.insertNewFragment(new SettingsUserFragment());
-        viewPager.setAdapter(adapter);
-
-    }
-
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void insertNewFragment(Fragment fragment) {
-            mFragmentList.add(fragment);
-        }
-    }
+    boolean checkLogin;
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = this.getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        return true;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_tab);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //toolbar.setTitle("Chavel");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(false);
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+        setupTabIcons();
+        setupTabClick();
+
+
+        // for system bar in lollipop
+        Tools.systemBarLolipop(this);
+    }
+
+
+    private void setupViewPager(ViewPager viewPager) {
+        adapter = new PageFragmentAdapter(getSupportFragmentManager());
+        if (f_home == null) {
+            f_home = new HomeFragment();
+        }
+        if (f_search == null) {
+            f_search = new SerachFragment();
+        }
+        if (f_location == null) {
+            f_location = new LocationFragment();
+        }
+        if (f_notif == null) {
+            f_notif = new NotiFragment();
+        }
+        if (f_user == null) {
+            f_user = new SettingsUserFragment();
+        }
+        adapter.addFragment(f_home, "");
+        adapter.addFragment(f_search, "");
+        adapter.addFragment(f_location, "");
+        adapter.addFragment(f_notif, "");
+        adapter.addFragment(f_user, "");
+        viewPager.setAdapter(adapter);
+    }
+
+    private void setupTabIcons() {
+        tabLayout.getTabAt(0).setIcon(icons[0]);
+        tabLayout.getTabAt(1).setIcon(icons[1]);
+        tabLayout.getTabAt(2).setIcon(icons[2]);
+        tabLayout.getTabAt(3).setIcon(icons[3]);
+        tabLayout.getTabAt(4).setIcon(icons[4]);
+    }
+
+    private void setupTabClick() {
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                viewPager.setCurrentItem(position);
+                actionbar.setTitle(adapter.getTitle(position));
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//
-//            case R.id.action_settings:
-//                Intent settingsIntent = new Intent(this, TabSample.class);
-//                startActivity(settingsIntent);
-//            default:
-//
-//        }
+        int id = item.getItemId();
+
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    private long exitTime = 0;
+
+    public void doExitApp() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            Toast.makeText(this, "ออกจากระบบ", Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        doExitApp();
+    }
+
 
 }
