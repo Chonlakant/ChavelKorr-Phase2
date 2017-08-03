@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import com.twentyfour.chavel.activity.FindContactFriendsActivity;
 import com.twentyfour.chavel.activity.LoginActivity;
-import com.twentyfour.chavel.activity.SingInActivity;
+import com.twentyfour.chavel.activity.RegisterActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class LandingActivity extends AppCompatActivity {
 
     TextView txt_conti;
     LinearLayout login;
@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_landing);
+        Tools.systemBarLolipop(this);
+
         login = (LinearLayout) findViewById(R.id.login);
         sign_up = (LinearLayout) findViewById(R.id.sign_up);
         txt_conti = (TextView) findViewById(R.id.txt_conti);
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getApplicationContext(), SingInActivity.class);
+                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(i);
 
             }
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
     }
 
     public static int getSum(int n) {

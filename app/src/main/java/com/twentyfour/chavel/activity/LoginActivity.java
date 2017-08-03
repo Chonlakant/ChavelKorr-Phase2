@@ -1,6 +1,5 @@
 package com.twentyfour.chavel.activity;
 
-import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -8,11 +7,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
@@ -20,7 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.api.Apis;
@@ -33,14 +29,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.R.attr.button;
-
 public class LoginActivity extends AppCompatActivity {
 
     TextView accout;
     TextView forget;
-    LinearLayout login;
-    LinearLayout sign_up;
+
     LinearLayout ls_facebook;
     Button longButton;
 
@@ -53,22 +46,37 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        ActivityCompat.requestPermissions(this, new String[]{
-                Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION }, 1);
+//        ActivityCompat.requestPermissions(this, new String[]{
+//                Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION }, 1);
 
+        if(toolbar != null) {
 
-        toolbar.setTitle("Login");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setTitle("Sign Up");
+            toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+            toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+            toolbar.setNavigationIcon(R.drawable.ic_back);
+
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+
+        }
+
         ls_facebook = (LinearLayout) findViewById(R.id.ls_facebook);
 
         longButton = (Button) findViewById(R.id.longButton);
 
         forget = (TextView) findViewById(R.id.forget);
-        accout = (TextView) findViewById(R.id.accout);
+        accout = (TextView) findViewById(R.id.txt_no_account);
         ed_mail = (EditText) findViewById(R.id.ed_mail);
         ed_pass = (EditText) findViewById(R.id.ed_pass);
 

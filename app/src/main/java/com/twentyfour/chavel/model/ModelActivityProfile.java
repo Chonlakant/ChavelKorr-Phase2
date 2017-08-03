@@ -6,12 +6,21 @@ package com.twentyfour.chavel.model;
 
 public class ModelActivityProfile {
 
+    String title;
     String content;
     String time;
     String coverUrl;
 
     public ModelActivityProfile(){
 
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String content) {
+        this.title = title;
     }
 
     public String getContent() {

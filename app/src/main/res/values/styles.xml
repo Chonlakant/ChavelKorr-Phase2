@@ -1,21 +1,41 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="BaseTheme"/>
 
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item> 
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item> 
-        <item name="colorControlHighlight">@color/colorAccentLight</item> 
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/whitePrimary</item>
+        <!--<item name="android:background">@color/tab_background</item>-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item> -->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item> -->
+        <!--<item name="colorControlHighlight">@color/colorAccentLight</item> -->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
+
         <!--control color-->
         <!--<item name="colorControlNormal">@color/colorPrimary</item>-->
         <!--<item name="colorControlActivated">@color/colorAccent</item>-->
         <!--<item name="colorControlHighlight">@color/colorAccentLight</item>-->
     </style>
 
+    <style name="BaseThemeActionbar" parent="Theme.AppCompat.Light">
+        <item name="android:windowBackground">@color/whitePrimary</item>
+    </style>
+
+    <style name="Widget.MyApp.Toolbar.Solid" parent="Widget.AppCompat.ActionBar">
+        <item name="android:windowBackground">@color/whitePrimary</item>
+        <item name="android:elevation" tools:ignore="NewApi">4dp</item>
+        <item name="android:textColorPrimary">@color/textColorTitle</item>
+    </style>
+
+    <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <!-- Parent theme sets colorControlNormal to textColorPrimary. -->
+        <item name="android:textColorPrimary">@color/textColorTitle</item>
+        <item name="android:windowBackground">@color/whitePrimary</item>
+    </style>
+
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabIndicatorColor">@color/tab_indicator_color</item>
-        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabIndicatorHeight">2dp</item>
         <item name="tabPaddingStart">12dp</item>
         <item name="tabPaddingEnd">12dp</item>
         <item name="tabBackground">?attr/selectableItemBackground</item>

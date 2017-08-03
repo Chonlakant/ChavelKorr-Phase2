@@ -40,6 +40,8 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
+
+
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/photo"
                             android:layout_width="80dp"
@@ -188,10 +190,11 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/profile"
-                            android:text="24" />
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_activity_tab"
+                            android:layout_marginTop="5dp"
+                            />
 
                         <TextView
                             android:id="@+id/txt_activity"
@@ -208,7 +211,7 @@
                         android:background="#646464" />
 
                     <LinearLayout
-                        android:id="@+id/ls_route"
+                        android:id="@+id/ls_my_route"
                         android:background="@drawable/bg_unselected_setting"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -218,15 +221,18 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/profile"
-                            android:text="24" />
+                            android:id="@+id/my_route"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_route_tab"
+                            android:layout_marginTop="5dp"
+                            />
 
                         <TextView
+                            android:id="@+id/txt_my_route"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="My Routes(24)"
+                            android:text="My Routes (24)"
                             android:textSize="10dp" />
 
                     </LinearLayout>
@@ -237,7 +243,7 @@
                         android:background="#646464" />
 
                     <LinearLayout
-                        android:id="@+id/ls_raverit"
+                        android:id="@+id/ls_fav"
                         android:background="@drawable/bg_unselected_setting"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -248,15 +254,18 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/profile"
-                            android:text="24" />
+                            android:id="@+id/fav_route"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_star_tab"
+                            android:layout_marginTop="5dp"
+                            />
 
                         <TextView
+                            android:id="@+id/txt_fav_route"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Faverit Route(15)"
+                            android:text="Favorite Route (15)"
                             android:textSize="10dp" />
 
                     </LinearLayout>
@@ -278,10 +287,11 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:src="@drawable/profile"
-                            android:text="24" />
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_more_tab"
+                            android:layout_marginTop="5dp"
+                            />
 
 
                     </LinearLayout>

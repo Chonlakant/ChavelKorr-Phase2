@@ -45,7 +45,7 @@ public class SetPasswordActivity extends AppCompatActivity {
 
         btn_next = (Button) findViewById(R.id.btn_next);
         ed_pass = (EditText) findViewById(R.id.ed_pass);
-        accout = (TextView) findViewById(R.id.accout);
+        accout = (TextView) findViewById(R.id.txt_no_account);
 
         Drawable drawable = ed_pass.getBackground(); // get current EditText drawable
         drawable.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); // change the drawable color

@@ -1,41 +1,39 @@
 package com.twentyfour.chavel;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.twentyfour.chavel.activity.NotiFragment;
 import com.twentyfour.chavel.adapter.PageFragmentAdapter;
-import com.twentyfour.chavel.fragment.HomeFragment;
-import com.twentyfour.chavel.fragment.LocationFragment;
-import com.twentyfour.chavel.fragment.NotiFragment;
-import com.twentyfour.chavel.fragment.SerachFragment;
-import com.twentyfour.chavel.fragment.SettingsUserFragment;
+import com.twentyfour.chavel.fragment.TabMyRouteFragment;
+import com.twentyfour.chavel.fragment.NewRouteFragment;
+import com.twentyfour.chavel.fragment.SearchFragment;
+import com.twentyfour.chavel.fragment.UserProfileFragment;
 
 public class MainTabActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private ActionBar actionbar;
-    private TabLayout tabLayout;
+    private TabLayout mTabLayout;
     private ViewPager viewPager;
     private PageFragmentAdapter adapter;
 
-    private HomeFragment f_home;
-    private SerachFragment f_search;
-    private LocationFragment f_location;
+    private TabMyRouteFragment f_home;
+    private SearchFragment f_search;
+    private NewRouteFragment f_location;
     private NotiFragment f_notif;
-    private SettingsUserFragment f_user;
+    private UserProfileFragment f_user;
     int[] icons = {R.drawable.tab_home,
             R.drawable.tab_search,
             R.drawable.tab_location,
             R.drawable.tab_noti, R.drawable.tab_user
     };
+    String[] titles = {"Chavel","Search","Add Pin", "Notification", "My Profile"};
 
     boolean checkLogin;
 
@@ -45,20 +43,33 @@ public class MainTabActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_tab);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //toolbar.setTitle("Chavel");
-        toolbar.setTitleTextColor(Color.WHITE);
-        setSupportActionBar(toolbar);
-        actionbar = getSupportActionBar();
-        actionbar.setDisplayHomeAsUpEnabled(false);
+        if(toolbar != null) {
+
+            toolbar.setTitle("Chavel");
+            toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+            toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+            //toolbar.setNavigationIcon(R.drawable.ic_back);
+
+            setSupportActionBar(toolbar);
+            //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+//            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    onBackPressed();
+//                }
+//            });
+
+        }
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
+
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        mTabLayout = (TabLayout) findViewById(R.id.tabs);
+        mTabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
         setupTabClick();
-
 
         // for system bar in lollipop
         Tools.systemBarLolipop(this);
@@ -68,19 +79,19 @@ public class MainTabActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         adapter = new PageFragmentAdapter(getSupportFragmentManager());
         if (f_home == null) {
-            f_home = new HomeFragment();
+            f_home = new TabMyRouteFragment();
         }
         if (f_search == null) {
-            f_search = new SerachFragment();
+            f_search = new SearchFragment();
         }
         if (f_location == null) {
-            f_location = new LocationFragment();
+            f_location = new NewRouteFragment();
         }
         if (f_notif == null) {
             f_notif = new NotiFragment();
         }
         if (f_user == null) {
-            f_user = new SettingsUserFragment();
+            f_user = new UserProfileFragment();
         }
         adapter.addFragment(f_home, "");
         adapter.addFragment(f_search, "");
@@ -91,20 +102,28 @@ public class MainTabActivity extends AppCompatActivity {
     }
 
     private void setupTabIcons() {
-        tabLayout.getTabAt(0).setIcon(icons[0]);
-        tabLayout.getTabAt(1).setIcon(icons[1]);
-        tabLayout.getTabAt(2).setIcon(icons[2]);
-        tabLayout.getTabAt(3).setIcon(icons[3]);
-        tabLayout.getTabAt(4).setIcon(icons[4]);
+        for (int i = 0; i < mTabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = mTabLayout.getTabAt(i);
+            if (tab != null) tab.setCustomView(R.layout.view_home_tab);
+        }
+
+        mTabLayout.getTabAt(0).setIcon(icons[0]);
+        mTabLayout.getTabAt(1).setIcon(icons[1]);
+        mTabLayout.getTabAt(2).setIcon(icons[2]);
+        mTabLayout.getTabAt(3).setIcon(icons[3]);
+        mTabLayout.getTabAt(4).setIcon(icons[4]);
     }
 
     private void setupTabClick() {
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 viewPager.setCurrentItem(position);
-                actionbar.setTitle(adapter.getTitle(position));
+                if(toolbar != null) {
+                    toolbar.setTitle(titles[position]);
+                }
+
             }
 
             @Override

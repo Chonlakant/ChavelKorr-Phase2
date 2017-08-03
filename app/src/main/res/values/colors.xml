@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="colorPrimaryBg">#ff10a9e3</color>
     <color name="colorPrimary">#10a9e3</color>
     <color name="colorPrimaryDark">#10a9e3</color>
     <color name="colorAccent">#10a9e3</color>
     <color name="colorAccentLight">#10a9e3</color>
     <color name="colorUnSelect">#848889</color>
+
+    <color name="textColorTitle">#666666</color>
+    <color name="whitePrimary">#ffffffff</color>
+    <color name="black">#00000000</color>
 
     <color name="tab_border">#a7a7aa</color>
     <color name="tab_background">#f6f6f7</color>
@@ -13,14 +19,13 @@
     <color name="tabDark">#000000</color>
     <color name="tabTransparent">#10ffffff</color>
 
-
     <color name="grey_hard">#96989A</color>
     <color name="grey_medium">#BDBFC1</color>
     <color name="grey_soft">#F5F5F5</color>
 
     <color name="grey_bg">#E6E6E6</color>
     <color name="grey_text">#222D31</color>
-    <color name="tab_indicator_color">#FFFFFF</color>
+    <color name="tab_indicator_color">#10a9e3</color>
     <color name="me_chat_bg">#FFE0B2</color>
 
     <color name="darkOverlay">#80000000</color>

@@ -38,15 +38,25 @@ public class CreateUserIdActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user_id);
         ButterKnife.bind(this);
-        toolbar.setTitle("Create User ID");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+
+        if(toolbar != null) {
+
+            toolbar.setTitle("Create User ID");
+            toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+            toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+            toolbar.setNavigationIcon(R.drawable.ic_back);
+
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+
+        }
 
         ls_next = (LinearLayout) findViewById(R.id.ls_next);
 

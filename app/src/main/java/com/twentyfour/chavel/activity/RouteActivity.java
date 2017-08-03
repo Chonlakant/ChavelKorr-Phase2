@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,10 +14,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -52,14 +48,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.twentyfour.chavel.AppController;
 import com.twentyfour.chavel.Driver;
-import com.twentyfour.chavel.MainTabActivity;
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.fragment.ActivityProfileUserFragment;
-import com.twentyfour.chavel.fragment.GoogleMapsPinsFragment;
-import com.twentyfour.chavel.fragment.HomeFragment;
-import com.twentyfour.chavel.fragment.LocationFragment;
-import com.twentyfour.chavel.fragment.PinsFragment;
-import com.twentyfour.chavel.fragment.SerachFragment;
+import com.twentyfour.chavel.fragment.AddPinsFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -185,8 +175,8 @@ public class RouteActivity extends FragmentActivity implements
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.insertNewFragment(new PinsFragment());
-        adapter.insertNewFragment(new PinsFragment());
+        adapter.insertNewFragment(new AddPinsFragment());
+        adapter.insertNewFragment(new AddPinsFragment());
         viewPager.setAdapter(adapter);
 
     }

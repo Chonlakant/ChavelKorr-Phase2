@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
@@ -21,7 +20,6 @@ public class MyActivityProfileAdapter extends RecyclerView.Adapter<MyActivityPro
 
     private List<ModelActivityProfile> list = new ArrayList<>();
 
-
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
 
@@ -35,6 +33,7 @@ public class MyActivityProfileAdapter extends RecyclerView.Adapter<MyActivityPro
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        public TextView txt_title;
         public TextView txt_content;
         public TextView txt_time;
         public CircleImageView photo;
@@ -42,6 +41,7 @@ public class MyActivityProfileAdapter extends RecyclerView.Adapter<MyActivityPro
 
         public ViewHolder(View v) {
             super(v);
+            txt_title = (TextView) v.findViewById(R.id.txt_title);
             txt_content = (TextView) v.findViewById(R.id.txt_content);
             txt_time = (TextView) v.findViewById(R.id.txt_time);
             photo = (CircleImageView) v.findViewById(R.id.photo);
@@ -59,7 +59,7 @@ public class MyActivityProfileAdapter extends RecyclerView.Adapter<MyActivityPro
     @Override
     public MyActivityProfileAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_myprofile, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tab_activity, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -68,6 +68,7 @@ public class MyActivityProfileAdapter extends RecyclerView.Adapter<MyActivityPro
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final ModelActivityProfile c = list.get(position);
+        holder.txt_title.setText(c.getContent());
         holder.txt_content.setText(c.getContent());
         holder.txt_time.setText(c.getTime());
 

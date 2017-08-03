@@ -27,10 +27,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -39,7 +38,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".activity.SingInActivity"/>
+        <activity android:name=".activity.RegisterActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.SingInNextActivity"/>
         <activity android:name=".activity.SetPasswordActivity"/>
@@ -63,7 +62,7 @@
         <activity android:name=".MainTabActivity"/>
         <activity android:name=".activity.RouteActivity"/>
         <activity android:name=".activity.SettingSystemActivity"/>
-        <activity android:name=".activity.TapFollowActivity"/>
+        <activity android:name=".activity.NotiFragment"/>
     </application>
 
 </manifest>

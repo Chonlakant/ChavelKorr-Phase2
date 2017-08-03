@@ -27,6 +27,9 @@ public class FollowUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow);
 
+        Intent i = new Intent(getApplicationContext(), MainTabActivity.class);
+        startActivity(i);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         ls_next = (LinearLayout) findViewById(R.id.ls_next);
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.twentyfour.chavel.MainActivity">
+    tools:context="com.twentyfour.chavel.LandingActivity">
     <include layout="@layout/toolbar"/>
 
     <LinearLayout
@@ -49,7 +49,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/border_login"
+                android:background="@drawable/bg_btn_login"
                 android:gravity="center"
                 android:orientation="horizontal">
 

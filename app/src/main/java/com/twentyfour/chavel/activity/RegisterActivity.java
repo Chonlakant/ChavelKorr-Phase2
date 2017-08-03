@@ -14,13 +14,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class SingInActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
-    LinearLayout sing_create;
-    TextView txt_sing_in;
+    LinearLayout ll_create_account;
+    TextView register;
 
-    @Bind(R.id.txt_login)
-    TextView txt_login;
+    @Bind(R.id.login)
+    TextView login;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -28,28 +28,32 @@ public class SingInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_login);
+        setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Sing in");
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-        txt_sing_in = (TextView) findViewById(R.id.txt_sing_in);
-        sing_create = (LinearLayout) findViewById(R.id.sing_create);
+        if(toolbar != null) {
 
-        sing_create.setOnClickListener(new View.OnClickListener() {
+            toolbar.setTitle("Login");
+            toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+            toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+            toolbar.setNavigationIcon(R.drawable.ic_back);
+
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+
+        }
+
+        register = (TextView) findViewById(R.id.login);
+        ll_create_account = (LinearLayout) findViewById(R.id.create_account);
+
+        ll_create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), CreateUserIdActivity.class);
@@ -57,17 +61,15 @@ public class SingInActivity extends AppCompatActivity {
             }
         });
 
-        txt_sing_in.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(getApplicationContext(), RegisterByPhoneAndEmailActivity.class);
                 startActivity(i);
-
             }
         });
 
-        txt_login.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), LoginActivity.class);

@@ -7,4 +7,6 @@
     <dimen name="tab_space_bottom_line">36sp</dimen>
     <dimen name="tab_space_unselected_top">6sp</dimen>
     <dimen name="recycler_item_size">192dp</dimen>
+    <dimen name="tab_icon_height">36dp</dimen>
+    <dimen name="tab_icon_width">36dp</dimen>
 </resources>  
