@@ -39,6 +39,9 @@ public class SetPasswordActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         toolbar.setTitle("Set Password");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+        toolbar.setNavigationIcon(R.drawable.ic_back);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

@@ -35,6 +35,8 @@ public class VertificationSendActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         toolbar.setTitle("Vertification");
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

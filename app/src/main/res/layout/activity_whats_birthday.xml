@@ -67,7 +67,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:background="@drawable/bg_btn_login"
+            android:background="@drawable/bg_unselected"
             android:orientation="vertical">
 
             <TextView

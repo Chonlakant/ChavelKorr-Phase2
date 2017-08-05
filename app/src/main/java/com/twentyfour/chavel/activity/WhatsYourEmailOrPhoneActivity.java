@@ -39,6 +39,9 @@ public class WhatsYourEmailOrPhoneActivity extends AppCompatActivity {
 
         toolbar.setTitle("Whats Email");
         setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,6 +2,10 @@ package com.twentyfour.chavel.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,27 +16,40 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.adapter.MyActivityProfileAdapter;
+import com.twentyfour.chavel.adapter.SearchAdapter;
+import com.twentyfour.chavel.model.ModelActivityProfile;
+import com.twentyfour.chavel.model.Search;
+
+import java.util.ArrayList;
 
 
 public class SearchFragment extends Fragment {
+
+    SearchAdapter searchAdapter;
+    RecyclerView recyclerView;
+
+    ArrayList<Search> list = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-        GridLayout gridLayout = (GridLayout) view.findViewById(R.id.grid);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
 
-        gridLayout.setColumnCount(3);
-        gridLayout.setRowCount(15);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        ImageView iv = new ImageView(getContext());
-        iv.setImageDrawable(getResources().getDrawable(R.drawable.grid_placeholder));
-
-        for(int i=0;i<15;i++) {
-            gridLayout.addView(iv);
+        for (int i = 0; i <= 10; i++) {
+            Search modelPins = new Search();
+            modelPins.setImageUrl("http://2.bp.blogspot.com/-xRdb6iiVKec/TviHLTZT4qI/AAAAAAAAJ2g/Cn8FJsLEczQ/s1600/wallpapers-cafe.blogspot.com%2B%25252823%252529.jpg");
+            list.add(modelPins);
+            searchAdapter = new SearchAdapter(getActivity(), list);
+            recyclerView.setAdapter(searchAdapter);
         }
-        //gridLayout.addView(iv);
 
         return view;
     }

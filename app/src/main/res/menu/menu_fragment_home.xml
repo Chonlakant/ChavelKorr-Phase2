@@ -4,6 +4,14 @@
     tools:context=".ActivityMain">
 
     <item
+        android:id="@+id/action_add_friend"
+        android:orderInCategory="100"
+        android:title="Add Friend"
+        android:icon="@drawable/search_icon_tap"
+        app:showAsAction="always" />
+
+
+    <item
         android:id="@+id/action_more"
         android:orderInCategory="100"
     android:title="Menu "

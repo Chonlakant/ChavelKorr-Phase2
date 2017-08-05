@@ -73,7 +73,7 @@
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/bg_btn_login"
+            android:background="@drawable/bg_unselected"
             android:orientation="vertical">
 
             <TextView
@@ -95,7 +95,7 @@
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/bg_btn_login"
+            android:background="@drawable/bg_unselected"
             android:orientation="vertical">
 
             <TextView

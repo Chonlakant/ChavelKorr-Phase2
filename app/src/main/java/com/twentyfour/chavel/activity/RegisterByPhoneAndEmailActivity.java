@@ -50,6 +50,8 @@ public class RegisterByPhoneAndEmailActivity extends AppCompatActivity {
 
         toolbar.setTitle("PHONE AND EMAIL");
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

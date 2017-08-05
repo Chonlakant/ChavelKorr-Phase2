@@ -62,6 +62,7 @@ public class UserProfileFragment extends Fragment {
         ls_route.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 TabMyRouteFragment fragment = new TabMyRouteFragment();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container2, fragment);

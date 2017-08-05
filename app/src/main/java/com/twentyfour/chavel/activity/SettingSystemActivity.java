@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -23,7 +25,7 @@ public class SettingSystemActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         if(toolbar != null) {
 
-            toolbar.setTitle("Chavel");
+            toolbar.setTitle("Settings");
             toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
             toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
             toolbar.setNavigationIcon(R.drawable.ic_back);
@@ -41,4 +43,18 @@ public class SettingSystemActivity extends AppCompatActivity {
         }
 
     }
+
+        @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_setting, menu);
+        return true;
+    }
+
 }

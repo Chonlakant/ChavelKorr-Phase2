@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(toolbar != null) {
 
-            toolbar.setTitle("Login");
+            toolbar.setTitle("Sing up");
             toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
             toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
             toolbar.setNavigationIcon(R.drawable.ic_back);

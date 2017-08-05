@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(toolbar != null) {
 
-            toolbar.setTitle("Sign Up");
+            toolbar.setTitle("Log in");
             toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
             toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
             toolbar.setNavigationIcon(R.drawable.ic_back);

@@ -15,6 +15,20 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="np95.1"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
         <ImageView
             android:layout_width="150dp"
             android:layout_height="250dp"
@@ -116,7 +130,6 @@
             android:orientation="horizontal">
 
 
-
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -127,19 +140,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textSize="16dp"
                 android:gravity="center"
                 android:text="Continue"
-                android:textColor="#395997" />
+                android:textColor="#395997"
+                android:textSize="16dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
-                android:textSize="16dp"
                 android:text="as Mr.Chavel"
-                android:textColor="#395997" />
+                android:textColor="#395997"
+                android:textSize="16dp" />
 
         </LinearLayout>
 
