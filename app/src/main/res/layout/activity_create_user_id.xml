@@ -8,6 +8,8 @@
     tools:context="com.twentyfour.chavel.LandingActivity">
     <include layout="@layout/toolbar"/>
 
+
+
     <LinearLayout
         android:gravity="right"
         android:layout_width="match_parent"

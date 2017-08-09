@@ -12,14 +12,28 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.OverViewPinsActivity;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class TabMyRouteFragment extends Fragment {
+
+    CircleImageView photo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.item_content, null);
         setHasOptionsMenu(true);
+
+        photo = (CircleImageView) view.findViewById(R.id.photo);
+        photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), OverViewPinsActivity.class);
+                startActivity(i);
+            }
+        });
 
         return view;
     }

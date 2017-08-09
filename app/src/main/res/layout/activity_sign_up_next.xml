@@ -7,6 +7,20 @@
     android:orientation="vertical"
     tools:context="com.twentyfour.chavel.LandingActivity">
 
+    <LinearLayout
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="np106"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,7 +82,7 @@
             android:layout_height="40dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/bg_btn_login"
+            android:background="@drawable/bg_unselected"
             android:orientation="vertical">
 
             <TextView
@@ -90,7 +104,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/bg_btn_login"
+            android:background="@drawable/bg_unselected"
             android:orientation="vertical">
 
             <TextView

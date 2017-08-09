@@ -5,14 +5,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.twentyfour.chavel.activity.NotiFragment;
+import com.twentyfour.chavel.fragment.NotiFragment;
 import com.twentyfour.chavel.adapter.PageFragmentAdapter;
+import com.twentyfour.chavel.fragment.NewRouteTapFragment;
 import com.twentyfour.chavel.fragment.TabMyRouteFragment;
-import com.twentyfour.chavel.fragment.NewRouteFragment;
 import com.twentyfour.chavel.fragment.SearchFragment;
 import com.twentyfour.chavel.fragment.UserProfileFragment;
 
@@ -25,9 +23,10 @@ public class MainTabActivity extends AppCompatActivity {
 
     private TabMyRouteFragment f_home;
     private SearchFragment f_search;
-    private NewRouteFragment f_location;
+    private NewRouteTapFragment f_location;
     private NotiFragment f_notif;
     private UserProfileFragment f_user;
+
     int[] icons = {R.drawable.tab_home,
             R.drawable.tab_search,
             R.drawable.tab_location,
@@ -85,7 +84,7 @@ public class MainTabActivity extends AppCompatActivity {
             f_search = new SearchFragment();
         }
         if (f_location == null) {
-            f_location = new NewRouteFragment();
+            f_location = new NewRouteTapFragment();
         }
         if (f_notif == null) {
             f_notif = new NotiFragment();

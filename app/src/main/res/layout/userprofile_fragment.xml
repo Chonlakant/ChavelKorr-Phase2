@@ -7,6 +7,20 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="np46"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:background="#ffffff"
         android:id="@+id/fragment_container2"
         android:orientation="vertical"
@@ -70,6 +84,7 @@
 
 
                             <LinearLayout
+                                android:id="@+id/ls_edit_profile"
                                 android:layout_width="150dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="center"
@@ -192,7 +207,7 @@
                         <ImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-                            android:src="@drawable/ic_activity_tab"
+                            android:src="@drawable/icon_activity"
                             android:layout_marginTop="5dp"
                             />
 

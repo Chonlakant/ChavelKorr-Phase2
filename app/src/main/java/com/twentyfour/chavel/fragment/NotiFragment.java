@@ -1,4 +1,4 @@
-package com.twentyfour.chavel.activity;
+package com.twentyfour.chavel.fragment;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -27,9 +27,9 @@ public class NotiFragment extends Fragment {
     Toolbar toolbar;
 
     TabLayout tabLayout;
-    ViewPager viewPager;
+    ViewPager viewPagerNoti;
 
-    String[] icons = {"Following", "You"};
+    String[] iconsNoti = {"Following", "You"};
 
 
     @Override
@@ -38,13 +38,13 @@ public class NotiFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_noti,null);
         ButterKnife.bind(getActivity());
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
-        viewPager = (ViewPager) view.findViewById(R.id.main_tab_content);
-        setupViewPager(viewPager);
+        viewPagerNoti = (ViewPager) view.findViewById(R.id.main_tab_content);
+        setupViewPager(viewPagerNoti);
 
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPagerNoti);
 
-        for (int i = 0; i < icons.length; i++) {
-            tabLayout.getTabAt(i).setText(icons[i]);
+        for (int i = 0; i < iconsNoti.length; i++) {
+            tabLayout.getTabAt(i).setText(iconsNoti[i]);
         }
         tabLayout.getTabAt(0).select();
 
@@ -53,7 +53,7 @@ public class NotiFragment extends Fragment {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+        ViewPagerAdapterNoti adapter = new ViewPagerAdapterNoti(getActivity().getSupportFragmentManager());
         adapter.insertNewFragment(new TabActivityFragment());
         adapter.insertNewFragment(new TabActivityFragment());
         viewPager.setAdapter(adapter);
@@ -61,10 +61,10 @@ public class NotiFragment extends Fragment {
     }
 
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    class ViewPagerAdapterNoti extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
+        public ViewPagerAdapterNoti(FragmentManager manager) {
             super(manager);
         }
 

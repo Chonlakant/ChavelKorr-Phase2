@@ -4,6 +4,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include layout="@layout/toolbar"/>
+    <View
+        android:background="#464646"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+
+    <LinearLayout
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="npn60"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -108,31 +129,31 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
                     <ImageButton
                         android:id="@+id/btnEditPinImage"
-                        android:layout_width="150dp"
-                        android:layout_height="130dp"
-                        android:layout_marginLeft="30dp"
+                        android:layout_width="185dp"
+                        android:layout_height="160dp"
                         android:layout_marginRight="30dp"
                         android:background="@null"
                         android:scaleType="centerCrop"
                         android:src="@drawable/cover_img_plus" />
 
                     <LinearLayout
-                        android:layout_width="120dp"
+                        android:layout_width="140dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/border_pins">
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                        <ImageView
+                            android:layout_width="130dp"
+                            android:layout_height="35dp"
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:text="Save"
+                            android:background="@drawable/next_icon1"
                             android:textColor="@color/colorPrimary"
                             android:textSize="20dp"
                             android:textStyle="bold" />

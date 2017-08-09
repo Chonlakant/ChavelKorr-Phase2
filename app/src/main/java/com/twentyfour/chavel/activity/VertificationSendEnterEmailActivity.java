@@ -40,7 +40,6 @@ public class VertificationSendEnterEmailActivity extends AppCompatActivity {
 
         toolbar.setTitle("Vertification Email");
         setSupportActionBar(toolbar);
-        setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

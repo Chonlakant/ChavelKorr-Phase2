@@ -83,6 +83,12 @@ public class RouteActivity extends FragmentActivity implements
     @Bind(R.id.fragment_container3)
     LinearLayout fragment_container3;
 
+    @Bind(R.id.ls_save)
+    LinearLayout ls_save;
+
+
+
+
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -176,6 +182,16 @@ public class RouteActivity extends FragmentActivity implements
 
             }
         });
+
+        ls_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(getApplicationContext(),AddPinActivity.class);
+                startActivity(i);
+            }
+        });
+
+
 
     }
 

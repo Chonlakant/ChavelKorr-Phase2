@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.EditProfileActivity;
 import com.twentyfour.chavel.activity.SettingSystemActivity;
 
 
@@ -29,6 +30,7 @@ public class UserProfileFragment extends Fragment {
     LinearLayout ls_route;
     LinearLayout ls_fav;
     LinearLayout ls_more;
+    LinearLayout ls_edit_profile;
 
     boolean isFollowing = false;
 
@@ -44,6 +46,7 @@ public class UserProfileFragment extends Fragment {
         txt_fav_route = (TextView) view.findViewById(R.id.txt_fav_route);
         ls_fav = (LinearLayout) view.findViewById(R.id.ls_fav);
         ls_more = (LinearLayout) view.findViewById(R.id.ls_more);
+        ls_edit_profile = (LinearLayout) view.findViewById(R.id.ls_edit_profile);
 
         ls_activity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +56,7 @@ public class UserProfileFragment extends Fragment {
                 transaction.replace(R.id.fragment_container2, fragment);
                 transaction.commit();
 
-                String styledTextActivity = "<u><font color='#aaa'>Favorite</font></u>";
+                String styledTextActivity = "<u><font color='#cccccc'>Favorite</font></u>";
                 txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
 
             }
@@ -84,20 +87,28 @@ public class UserProfileFragment extends Fragment {
 
                 String styledTextActivity = "<u><font color='#aaa'>Favorite</font></u>";
                 txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
-                ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting, null));
+                ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting1, null));
 
             }
         });
 
         String styledTextActivity = "<u><font color='#aaa'>Activity</font></u>";
         txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
-        ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting, null));
+        ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting1, null));
         txt_activity.setTextColor(Color.WHITE);
 
         TabActivityFragment fragment = new TabActivityFragment();
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+
+        ls_edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(i);
+            }
+        });
 
         return view;
     }
@@ -130,7 +141,7 @@ public class UserProfileFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Intent i =new Intent(getActivity(),SettingSystemActivity.class);
+                Intent i = new Intent(getActivity(), SettingSystemActivity.class);
                 startActivity(i);
                 return true;
 

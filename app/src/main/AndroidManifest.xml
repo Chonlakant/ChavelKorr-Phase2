@@ -62,7 +62,23 @@
         <activity android:name=".MainTabActivity"/>
         <activity android:name=".activity.RouteActivity"/>
         <activity android:name=".activity.SettingSystemActivity"/>
-        <activity android:name=".activity.NotiFragment"/>
+        <activity android:name=".activity.AddPinActivity"/>
+        <activity android:name=".activity.PeriodTimeActivity"/>
+        <activity android:name=".activity.BudetActivity"/>
+        <activity android:name=".activity.CrossProvinceActivity"/>
+        <activity android:name=".activity.ActivityActivity"/>
+        <activity android:name=".activity.SuggestionActivity"/>
+        <activity android:name=".activity.LocationActivity"/>
+        <activity android:name=".activity.LocationAddActivity"/>
+        <activity android:name=".activity.TravelMethodActivity"/>
+        <activity android:name=".activity.RouteNameActivity"/>
+        <activity android:name=".activity.RouteDescriptionActivity"/>
+        <activity android:name=".activity.AdvanceSearchActivity"/>
+        <activity android:name=".activity.SearchMutiTypeActivity"/>
+        <activity android:name=".activity.FindPeopleActivity"/>
+        <activity android:name=".activity.EditProfileActivity"/>
+        <activity android:name=".activity.RouteHistoryActivity"/>
+        <activity android:name=".activity.OverViewPinsActivity"/>
     </application>
 
 </manifest>
