@@ -156,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        clickLike();
+
     }
 
     public void toggleStatusSelect(Button v) {
@@ -172,32 +172,6 @@ public class LoginActivity extends AppCompatActivity {
         // change state
         v.setSelected(false);
         v.setPressed(false);
-
-    }
-
-    private void clickLike() {
-
-        ServiceApi service = Apis.getClient().create(ServiceApi.class);
-
-        Call<Test> userCall = service.getAllFilms();
-
-        userCall.enqueue(new Callback<Test>() {
-            @Override
-            public void onResponse(Call<Test> call, Response<Test> response) {
-//               for(int i=0; i < response.body().getItems().size();i++) {
-//
-//
-//               }
-                Log.e("Size",response.body().getItems().size()+"");
-            }
-
-            @Override
-            public void onFailure(Call<Test> call, Throwable t) {
-                Log.e("getLocalizedMessage",t.getLocalizedMessage());
-                Log.e("getMessage",t.getMessage());
-
-            }
-        });
 
     }
 

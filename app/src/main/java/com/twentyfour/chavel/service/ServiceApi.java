@@ -1,8 +1,11 @@
 package com.twentyfour.chavel.service;
 
+import com.twentyfour.chavel.model.HomeFeed;
 import com.twentyfour.chavel.model.Test;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -11,8 +14,11 @@ import retrofit2.http.Query;
 
 public interface ServiceApi {
 
-    @GET("2.2/answers?order=desc&sort=activity&site=stackoverflow")
-    Call<Test> getAllFilms();
+
+    @FormUrlEncoded
+    @POST("public/v1/listRoutesFeedHome")
+    Call<HomeFeed> getFeedHome(@Field("user_id") String user_id,@Field("latitude") String latitude,@Field("longitude") String longitude);
+
 
 
 }

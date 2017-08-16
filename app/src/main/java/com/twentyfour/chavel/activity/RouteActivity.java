@@ -50,7 +50,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.twentyfour.chavel.AppController;
 import com.twentyfour.chavel.Driver;
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.fragment.AddPinsFragment;
+import com.twentyfour.chavel.fragment.OverviewFragment;
+import com.twentyfour.chavel.fragment.PinsFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -197,8 +198,8 @@ public class RouteActivity extends FragmentActivity implements
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.insertNewFragment(new AddPinsFragment());
-        adapter.insertNewFragment(new AddPinsFragment());
+        adapter.insertNewFragment(new OverviewFragment());
+        adapter.insertNewFragment(new PinsFragment());
         viewPager.setAdapter(adapter);
 
     }

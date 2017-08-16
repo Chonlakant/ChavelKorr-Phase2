@@ -12,11 +12,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.CommentActivity;
 import com.twentyfour.chavel.activity.EditProfileActivity;
+import com.twentyfour.chavel.activity.ProfileActivity;
 import com.twentyfour.chavel.activity.SettingSystemActivity;
 
 
@@ -31,6 +34,7 @@ public class UserProfileFragment extends Fragment {
     LinearLayout ls_fav;
     LinearLayout ls_more;
     LinearLayout ls_edit_profile;
+    ImageView photo;
 
     boolean isFollowing = false;
 
@@ -38,6 +42,7 @@ public class UserProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.userprofile_fragment, null);
         setHasOptionsMenu(true);
+        photo = (ImageView) view.findViewById(R.id.photo);
         txt_status = (TextView) view.findViewById(R.id.txt_status);
         txt_activity = (TextView) view.findViewById(R.id.txt_activity);
         ls_activity = (LinearLayout) view.findViewById(R.id.ls_activity);
@@ -47,6 +52,14 @@ public class UserProfileFragment extends Fragment {
         ls_fav = (LinearLayout) view.findViewById(R.id.ls_fav);
         ls_more = (LinearLayout) view.findViewById(R.id.ls_more);
         ls_edit_profile = (LinearLayout) view.findViewById(R.id.ls_edit_profile);
+
+        photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(getActivity(), ProfileActivity.class);
+                startActivity(i);
+            }
+        });
 
         ls_activity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,14 +93,17 @@ public class UserProfileFragment extends Fragment {
         ls_fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TabMyRouteFragment fragment = new TabMyRouteFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container2, fragment);
-                transaction.commit();
+//                TabMyRouteFragment fragment = new TabMyRouteFragment();
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.fragment_container2, fragment);
+//                transaction.commit();
+//
+//                String styledTextActivity = "<u><font color='#aaa'>Favorite</font></u>";
+//                txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
+//                ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting1, null));
 
-                String styledTextActivity = "<u><font color='#aaa'>Favorite</font></u>";
-                txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
-                ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting1, null));
+                Intent i = new Intent(getActivity(), CommentActivity.class);
+                startActivity(i);
 
             }
         });

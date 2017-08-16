@@ -10,12 +10,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.jakewharton.picasso.OkHttp3Downloader;
+import com.squareup.picasso.Picasso;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.model.ModelPins;
 import com.twentyfour.chavel.model.Search;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
 
@@ -68,10 +75,16 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         final Search c = list.get(position);
 
 
-        Glide.with(ctx)
-                .load(c.getImageUrl())
+
+
+        Picasso.with(ctx)
+                .load("http://skyfrog.net/store/skyfrog/00008/pictures/0897770008/A20170810214041.jpg")
                 .into(holder.img_cover);
-        ;
+
+//        Glide.with(ctx)
+//                .load(c.getImageUrl())
+//                .into(holder.img_cover);
+//        ;
 
     }
 

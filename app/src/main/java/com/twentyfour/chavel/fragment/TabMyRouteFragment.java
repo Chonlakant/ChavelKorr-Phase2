@@ -1,41 +1,101 @@
 package com.twentyfour.chavel.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.OverViewPinsActivity;
+import com.twentyfour.chavel.adapter.ExpandableListAdapter;
+import com.twentyfour.chavel.adapter.HomeFeedAdapter;
+import com.twentyfour.chavel.api.Apis;
+import com.twentyfour.chavel.model.HomeFeed;
+import com.twentyfour.chavel.service.ServiceApi;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class TabMyRouteFragment extends Fragment {
 
-    CircleImageView photo;
+    RecyclerView ryc;
+    HomeFeedAdapter homeFeedAdapter;
+    ArrayList<HomeFeed> list = new ArrayList<>();
+
+    List<ExpandableListAdapter.Item> data = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.item_content, null);
+        View view = inflater.inflate(R.layout.fragment_feed_home, null);
         setHasOptionsMenu(true);
+        ryc = (RecyclerView) view.findViewById(R.id.ryc);
+        ryc.setHasFixedSize(true);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        ryc.setLayoutManager(llm);
 
-        photo = (CircleImageView) view.findViewById(R.id.photo);
-        photo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), OverViewPinsActivity.class);
-                startActivity(i);
-            }
-        });
+        getSpareByServer("2", "30", "30");
 
         return view;
+    }
+
+
+    private void getSpareByServer(final String user_id, String lat, String lng) {
+
+        ServiceApi service = Apis.getClient().create(ServiceApi.class);
+
+        Call<HomeFeed> userCall = service.getFeedHome(user_id, lat, lng);
+
+        userCall.enqueue(new Callback<HomeFeed>() {
+            @Override
+            public void onResponse(Call<HomeFeed> call, Response<HomeFeed> response) {
+
+                if (response.body().getList() != null) {
+                    for (int i = 0; i < response.body().getList().size(); i++) {
+                        list.add(response.body());
+                        String header = response.body().getList().get(i).getRoute_title();
+                        String child = response.body().getList().get(i).getDiffDate();
+                        String user_id = response.body().getList().get(i).getUser_id();
+                        String user_name = response.body().getList().get(i).getUser_name();
+                        String user_image = response.body().getList().get(i).getUser_image();
+                        String route_id = response.body().getList().get(i).getRoute_id();
+                        String route_title = response.body().getList().get(i).getRoute_title();
+                        String route_detail = response.body().getList().get(i).getRoute_detail();
+                        String diffDate = response.body().getList().get(i).getDiffDate();
+                        String like_status = response.body().getList().get(i).getLike_status();
+                        String favorite_status = response.body().getList().get(i).getFavorite_status();
+                        String route_activity = response.body().getList().get(i).getRoute_activity();
+                        String route_city = response.body().getList().get(i).getRoute_city();
+                        String route_travel_method = response.body().getList().get(i).getRoute_travel_method();
+                        String route_budgetmin = response.body().getList().get(i).getRoute_budgetmin();
+                        String route_budgetmax = response.body().getList().get(i).getRoute_budgetmax();
+                        String route_suggestion = response.body().getList().get(i).getRoute_suggestion();
+
+
+                        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, header, "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""));
+                        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, child, user_id, user_name, user_image
+                                , route_id, route_title, route_detail, diffDate, like_status, favorite_status, route_activity, route_city,
+                                route_travel_method, route_budgetmin, route_budgetmax, route_suggestion));
+
+                        ryc.setAdapter(new ExpandableListAdapter(data));
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<HomeFeed> call, Throwable t) {
+
+            }
+        });
     }
 
 //    @Override
