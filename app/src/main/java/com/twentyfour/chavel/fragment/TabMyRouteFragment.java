@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class TabMyRouteFragment extends Fragment {
     RecyclerView ryc;
     HomeFeedAdapter homeFeedAdapter;
     ArrayList<HomeFeed> list = new ArrayList<>();
+    List<String> listString = new ArrayList<>();
 
     List<ExpandableListAdapter.Item> data = new ArrayList<>();
 
@@ -78,13 +80,19 @@ public class TabMyRouteFragment extends Fragment {
                         String route_budgetmax = response.body().getList().get(i).getRoute_budgetmax();
                         String route_suggestion = response.body().getList().get(i).getRoute_suggestion();
 
+                        for(int j=0;j < response.body().getList().get(i).getRoute_img().size();j++){
+                            Log.e("accc",response.body().getList().get(i).getRoute_img().get(j).getImg_text()+"");
+                            listString.add(response.body().getList().get(i).getRoute_img().get(j).getImg_text());
+                        }
 
-                        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, header, "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""));
+
+
+                        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, header, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",listString));
                         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, child, user_id, user_name, user_image
                                 , route_id, route_title, route_detail, diffDate, like_status, favorite_status, route_activity, route_city,
-                                route_travel_method, route_budgetmin, route_budgetmax, route_suggestion));
+                                route_travel_method, route_budgetmin, route_budgetmax, route_suggestion,listString));
 
-                        ryc.setAdapter(new ExpandableListAdapter(data));
+                        ryc.setAdapter(new ExpandableListAdapter(data,getActivity()));
                     }
 
                 }
