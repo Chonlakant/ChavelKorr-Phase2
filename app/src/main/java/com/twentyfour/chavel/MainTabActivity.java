@@ -32,7 +32,7 @@ public class MainTabActivity extends AppCompatActivity {
             R.drawable.tab_location,
             R.drawable.tab_noti, R.drawable.tab_user
     };
-    String[] titles = {"Chavel","Search","Add Pin", "Notification", "My Profile"};
+    String[] titles = {"Chavel","Search","Add Route", "Notification", "My Profile"};
 
     boolean checkLogin;
 

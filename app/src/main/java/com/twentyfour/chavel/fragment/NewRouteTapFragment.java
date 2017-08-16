@@ -18,10 +18,6 @@ import java.util.List;
 
 public class NewRouteTapFragment extends Fragment {
 
-
-    private NewRouteFragment f_location;
-    private TabLayout mTabLayout;
-
     String[] icons = {"New Route", "From Draft"};
 
     TabLayout tabLayout;

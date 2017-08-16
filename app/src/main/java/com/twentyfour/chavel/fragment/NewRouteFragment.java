@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +26,8 @@ import com.twentyfour.chavel.activity.RouteHistoryActivity;
 import com.twentyfour.chavel.activity.RouteNameActivity;
 import com.twentyfour.chavel.activity.SuggestionActivity;
 import com.twentyfour.chavel.activity.TravelMethodActivity;
+
+import java.util.ArrayList;
 
 
 public class NewRouteFragment extends Fragment {
@@ -42,6 +45,9 @@ public class NewRouteFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         View view = inflater.inflate(R.layout.fragment_new_route, null);
         imf_next = (ImageView) view.findViewById(R.id.imf_next);
         dt_period = (EditText) view.findViewById(R.id.dt_period);
@@ -53,6 +59,22 @@ public class NewRouteFragment extends Fragment {
         dt_route_descrition = (EditText) view.findViewById(R.id.dt_route_descrition);
         dt_name = (EditText) view.findViewById(R.id.dt_name);
         dt_details = (EditText) view.findViewById(R.id.dt_details);
+
+        ArrayList<View> views = new ArrayList<>();
+
+        views.add(dt_details);
+        views.add(dt_name);
+        views.add(dt_route_descrition);
+        views.add(dt_location);
+        views.add(dt_activity);
+        views.add(et_travel_method);
+        views.add(dt_period);
+        views.add(ed_suggesstion);
+
+        for(int i = 0 ; i < views.size() ; i++) {
+            views.get(i).setFocusable(false);
+            views.get(i).setClickable(true);
+        }
 
         imf_next.setOnClickListener(new View.OnClickListener() {
             @Override

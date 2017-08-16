@@ -16,7 +16,7 @@ public interface ServiceApi {
 
 
     @FormUrlEncoded
-    @POST("public/v1/listRoutesFeedHome")
+    @POST("public/v1/listRoutesFeed")
     Call<HomeFeed> getFeedHome(@Field("user_id") String user_id,@Field("latitude") String latitude,@Field("longitude") String longitude);
 
 

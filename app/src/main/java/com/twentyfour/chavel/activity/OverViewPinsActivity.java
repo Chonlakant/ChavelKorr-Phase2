@@ -12,8 +12,6 @@ import android.view.View;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.adapter.OrverViewPinAdapter;
-import com.twentyfour.chavel.adapter.SearchAdapter;
-import com.twentyfour.chavel.adapter.SearchProfileAdapter;
 import com.twentyfour.chavel.model.Search;
 
 import java.util.ArrayList;

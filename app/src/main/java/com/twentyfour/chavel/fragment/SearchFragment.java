@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,34 +12,25 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
-import android.widget.ImageView;
 
-import com.jakewharton.picasso.OkHttp3Downloader;
-import com.squareup.picasso.Picasso;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.AdvanceSearchActivity;
-import com.twentyfour.chavel.adapter.MyActivityProfileAdapter;
-import com.twentyfour.chavel.adapter.SearchAdapter;
+import com.twentyfour.chavel.adapter.SearchRouteAdapter;
 import com.twentyfour.chavel.adapter.SearchProfileAdapter;
-import com.twentyfour.chavel.model.ModelActivityProfile;
 import com.twentyfour.chavel.model.Search;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Protocol;
 
 
 public class SearchFragment extends Fragment {
 
-    SearchAdapter searchAdapter;
+    SearchRouteAdapter searchRouteAdapter;
     SearchProfileAdapter searchProfileAdapter;
     RecyclerView recyclerView;
     RecyclerView recyclerView_profile;
 
-    ArrayList<Search> list = new ArrayList<>();
+    ArrayList<Search> listProfile = new ArrayList<>();
+    ArrayList<Search> listRoute = new ArrayList<>();
 
 
     @Override
@@ -50,13 +40,11 @@ public class SearchFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         setHasOptionsMenu(true);
 
-
-
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView_profile = (RecyclerView) view.findViewById(R.id.recyclerView_profile);
 
 
-        recyclerView_profile.setLayoutManager(new GridLayoutManager(getActivity(), 4));
+        recyclerView_profile.setLayoutManager(new GridLayoutManager(getActivity(), 6));
         recyclerView_profile.setHasFixedSize(true);
         recyclerView_profile.setItemAnimator(new DefaultItemAnimator());
 
@@ -65,14 +53,21 @@ public class SearchFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         for (int i = 0; i <= 10; i++) {
-            Search modelPins = new Search();
-            modelPins.setImageUrl("https://skyfrog.net/store/skyfrog/00008/pictures/0897770008/A20170810214041.jpg");
-            list.add(modelPins);
-            searchAdapter = new SearchAdapter(getActivity(), list);
-            searchProfileAdapter = new SearchProfileAdapter(getActivity(), list);
+            Search modelRoute = new Search();
+            Search modelProfile = new Search();
+            modelRoute.setImageUrl("http://phuket.thai-sale.com/wp-content/uploads/2014/08/samui2.jpg");
+            modelProfile.setImageUrl("http://i.pravatar.cc/150?img=5");
+            listProfile.add(modelProfile);
+            listRoute.add(modelRoute);
+
+            searchRouteAdapter = new SearchRouteAdapter(getActivity(), listRoute);
+            searchProfileAdapter = new SearchProfileAdapter(getActivity(), listProfile);
+
             recyclerView_profile.setAdapter(searchProfileAdapter);
-            recyclerView.setAdapter(searchAdapter);
+            recyclerView.setAdapter(searchRouteAdapter);
         }
+
+
 
         return view;
     }

@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
         android:orientation="horizontal">
 
 
@@ -14,16 +15,17 @@
             android:id="@+id/ls_view"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/img_cover"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:background="#64646464">
 
             </ImageView>
