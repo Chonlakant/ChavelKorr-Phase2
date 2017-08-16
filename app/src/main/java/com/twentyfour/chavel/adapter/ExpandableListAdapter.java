@@ -98,6 +98,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 });
                 break;
             case CHILD:
+                position = (position + 1) / 2;
                 ListContentViewHolder itemContent = (ListContentViewHolder) holder;
                 itemContent.text_create.setText("Create " + data.get(position).text);
                 itemContent.txt_catgory.setText("Category " + data.get(position).diffDate);
@@ -108,9 +109,17 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 itemContent.ryc.setHasFixedSize(true);
                 itemContent.ryc.setItemAnimator(new DefaultItemAnimator());
 
+                listStr = new ArrayList<>();
+                //if(data.get(position) != null && data.get(position).list != null) {
+//                    for(int i = 0 ; i < data.get(position).list.size() ; i++)
+//                        listStr.add(data.get(position).list.get(i).toString());
+                listStr.add("");
+                listStr.add("");
+                listStr.add("");
+                listStr.add("");
+                    imageFeedHomeAdapter = new ImageFeedHomeAdapter(context, listStr);
+                //}
 
-                listStr.add(data.get(position).list.get(position).toString());
-                imageFeedHomeAdapter = new ImageFeedHomeAdapter(context, listStr);
                 itemContent.ryc.setAdapter(imageFeedHomeAdapter);
 //                Log.e("image",data.get(position).list.get(position).toString());
 

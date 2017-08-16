@@ -43,13 +43,13 @@ public class TabMyRouteFragment extends Fragment {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         ryc.setLayoutManager(llm);
 
-        getSpareByServer("2", "30", "30");
+        getHomeFeed("2", "30", "100");
 
         return view;
     }
 
 
-    private void getSpareByServer(final String user_id, String lat, String lng) {
+    private void getHomeFeed(final String user_id, String lat, String lng) {
 
         ServiceApi service = Apis.getClient().create(ServiceApi.class);
 
@@ -82,10 +82,9 @@ public class TabMyRouteFragment extends Fragment {
 
                         for(int j=0;j < response.body().getList().get(i).getRoute_img().size();j++){
                             Log.e("accc",response.body().getList().get(i).getRoute_img().get(j).getImg_text()+"");
-                            listString.add(response.body().getList().get(i).getRoute_img().get(j).getImg_text());
+                            //if(j < 4)
+                                listString.add(response.body().getList().get(i).getRoute_img().get(j).getImg_text());
                         }
-
-
 
                         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, header, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",listString));
                         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, child, user_id, user_name, user_image
@@ -93,6 +92,8 @@ public class TabMyRouteFragment extends Fragment {
                                 route_travel_method, route_budgetmin, route_budgetmax, route_suggestion,listString));
 
                         ryc.setAdapter(new ExpandableListAdapter(data,getActivity()));
+
+                        //listString.clear();
                     }
 
                 }

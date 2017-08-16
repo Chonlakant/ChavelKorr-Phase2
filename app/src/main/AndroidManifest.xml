@@ -28,10 +28,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LandingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <meta-data
@@ -59,7 +56,12 @@
         <activity android:name=".activity.VertificationSendEnterEmailActivity"/>
         <activity android:name=".activity.VertificationSendEnterEmailAgainActivity"/>
         <activity android:name=".activity.FollowUserActivity"/>
-        <activity android:name=".MainTabActivity"/>
+        <activity android:name=".MainTabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.RouteActivity"/>
         <activity android:name=".activity.SettingSystemActivity"/>
         <activity android:name=".activity.AddPinActivity"/>
