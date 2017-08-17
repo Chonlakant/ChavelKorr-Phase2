@@ -26,7 +26,7 @@ public class NotiFragment extends Fragment {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-    TabLayout tabLayout;
+    TabLayout tabLayoutNoti;
     ViewPager viewPagerNoti;
 
     String[] iconsNoti = {"Following", "You"};
@@ -37,22 +37,22 @@ public class NotiFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_noti,null);
         ButterKnife.bind(getActivity());
-        tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+        tabLayoutNoti = (TabLayout) view.findViewById(R.id.tab_layout);
         viewPagerNoti = (ViewPager) view.findViewById(R.id.main_tab_content);
-        setupViewPager(viewPagerNoti);
+        setupViewPagerNoti(viewPagerNoti);
 
-        tabLayout.setupWithViewPager(viewPagerNoti);
+        tabLayoutNoti.setupWithViewPager(viewPagerNoti);
 
         for (int i = 0; i < iconsNoti.length; i++) {
-            tabLayout.getTabAt(i).setText(iconsNoti[i]);
+            tabLayoutNoti.getTabAt(i).setText(iconsNoti[i]);
         }
-        tabLayout.getTabAt(0).select();
+        tabLayoutNoti.getTabAt(0).select();
 
         return view;
 
     }
 
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPagerNoti(ViewPager viewPager) {
         ViewPagerAdapterNoti adapter = new ViewPagerAdapterNoti(getActivity().getSupportFragmentManager());
         adapter.insertNewFragment(new TabActivityFragment());
         adapter.insertNewFragment(new TabActivityFragment());

@@ -58,12 +58,12 @@ public class OverViewPinsActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 4));
+        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3));
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
 
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i <= 8; i++) {
             Search modelPins = new Search();
             modelPins.setImageUrl("http://2.bp.blogspot.com/-xRdb6iiVKec/TviHLTZT4qI/AAAAAAAAJ2g/Cn8FJsLEczQ/s1600/wallpapers-cafe.blogspot.com%2B%25252823%252529.jpg");
             list.add(modelPins);

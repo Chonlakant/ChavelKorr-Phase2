@@ -38,9 +38,10 @@ public class TabActivityFragment extends Fragment {
             modelPins.setContent("ผู้นำ ฉลุย สุนทรีย์ มหภาคทอมเอนทรานซ์ อันเดอร์มั้งฮากกาฟลุก นรีแพทย์แซว");
             modelPins.setTime("15:0" + i);
             mPinList.add(modelPins);
-            Log.e("mPinList",mPinList.get(i).getTitle());
+//            Log.e("mPinList",mPinList.get(i).getTitle());
             myActivityProfileAdapter = new MyActivityProfileAdapter(getActivity(), mPinList);
             mRecyclerView.setAdapter(myActivityProfileAdapter);
+            myActivityProfileAdapter.notifyDataSetChanged();
         }
 
 
