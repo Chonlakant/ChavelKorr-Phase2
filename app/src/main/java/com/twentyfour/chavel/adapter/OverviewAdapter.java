@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
@@ -23,29 +24,42 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ViewHo
     private OnItemClickListener mOnItemClickListener;
 
     public interface OnItemClickListener {
-        void onItemClick(View view, ModelPins obj, int position);
+        void onItemClick(View view, int position);
     }
 
     public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
         this.mOnItemClickListener = mItemClickListener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txt_pins;
         public TextView txt_title_pins;
         public ImageView image;
+        public LinearLayout ls_image;
 
 
         public ViewHolder(View v) {
             super(v);
             txt_pins = (TextView) v.findViewById(R.id.txt_pins);
             txt_title_pins = (TextView) v.findViewById(R.id.txt_title_pins);
-
-
+            ls_image = (LinearLayout) v.findViewById(R.id.ls_image);
+            ls_image.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.ls_image:
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(v, getPosition());
+                    }
+                    break;
+
+            }
+        }
     }
+
     public OverviewAdapter(Context ctx, List<ModelPins> list) {
         this.ctx = ctx;
         this.list = list;

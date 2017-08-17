@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.ActivityActivity;
@@ -27,12 +28,17 @@ import com.twentyfour.chavel.activity.RouteNameActivity;
 import com.twentyfour.chavel.activity.SuggestionActivity;
 import com.twentyfour.chavel.activity.TravelMethodActivity;
 
+import net.cachapa.expandablelayout.ExpandableLayout;
+
 import java.util.ArrayList;
 
 
 public class NewRouteFragment extends Fragment {
 
+    private ExpandableLayout expandableLayout0;
+
     ImageView imf_next;
+    ImageView btn_expand_toggle;
     EditText dt_period;
     EditText ed_suggesstion;
     EditText et_travel_method;
@@ -40,7 +46,7 @@ public class NewRouteFragment extends Fragment {
     EditText dt_activity;
     EditText dt_route_descrition;
     EditText dt_name;
-    EditText dt_details;
+    TextView dt_details;
     LinearLayout ls_budget;
 
     @Override
@@ -49,7 +55,11 @@ public class NewRouteFragment extends Fragment {
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         View view = inflater.inflate(R.layout.fragment_new_route, null);
+
+        expandableLayout0 = (ExpandableLayout) view.findViewById(R.id.expandable_layout_0);
+
         imf_next = (ImageView) view.findViewById(R.id.imf_next);
+        btn_expand_toggle = (ImageView) view.findViewById(R.id.btn_expand_toggle);
         dt_period = (EditText) view.findViewById(R.id.dt_period);
         ed_suggesstion = (EditText) view.findViewById(R.id.ed_suggesstion);
         ls_budget = (LinearLayout) view.findViewById(R.id.ls_budget);
@@ -58,7 +68,7 @@ public class NewRouteFragment extends Fragment {
         dt_location = (EditText) view.findViewById(R.id.dt_location);
         dt_route_descrition = (EditText) view.findViewById(R.id.dt_route_descrition);
         dt_name = (EditText) view.findViewById(R.id.dt_name);
-        dt_details = (EditText) view.findViewById(R.id.dt_details);
+        dt_details = (TextView) view.findViewById(R.id.dt_details);
 
         ArrayList<View> views = new ArrayList<>();
 
@@ -71,7 +81,7 @@ public class NewRouteFragment extends Fragment {
         views.add(dt_period);
         views.add(ed_suggesstion);
 
-        for(int i = 0 ; i < views.size() ; i++) {
+        for (int i = 0; i < views.size(); i++) {
             views.get(i).setFocusable(false);
             views.get(i).setClickable(true);
         }
@@ -167,6 +177,21 @@ public class NewRouteFragment extends Fragment {
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), RouteHistoryActivity.class);
                 startActivity(i);
+            }
+        });
+
+        btn_expand_toggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (expandableLayout0.isExpanded()) {
+                    expandableLayout0.collapse();
+                    btn_expand_toggle.setImageResource(R.drawable.down_icon);
+                } else {
+                    expandableLayout0.expand();
+                    btn_expand_toggle.setImageResource(R.drawable.up_icon);
+                }
+
             }
         });
 
