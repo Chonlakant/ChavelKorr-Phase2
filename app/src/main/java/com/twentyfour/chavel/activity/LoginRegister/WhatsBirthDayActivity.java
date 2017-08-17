@@ -6,18 +6,15 @@ import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
-import com.hbb20.CountryCodePicker;
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.SettingsAddPhotoActivity;
 import com.twentyfour.chavel.service.BaseActivity;
 
 import java.util.Date;
@@ -36,6 +33,9 @@ public class WhatsBirthDayActivity extends BaseActivity {
     @Bind(R.id.ed_name)
     EditText ed_name;
 
+    int year;
+    int month;
+    int day;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -44,7 +44,14 @@ public class WhatsBirthDayActivity extends BaseActivity {
         setContentView(R.layout.activity_whats_birthday);
         ButterKnife.bind(this);
 
-        //toolbar.setTitle("WhatsBirthDay");
+        // Get a new Calendar instance
+        Calendar calendar = Calendar.getInstance();
+        // Get the Calendar current year, month and day of month
+        year = calendar.get(calendar.YEAR);
+        month = calendar.get(calendar.MONTH);
+        day = calendar.get(calendar.DAY_OF_MONTH);
+
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
@@ -61,13 +68,6 @@ public class WhatsBirthDayActivity extends BaseActivity {
 
         DatePicker dp = (DatePicker) findViewById(R.id.dp);
 
-        // Get a new Calendar instance
-        Calendar calendar = Calendar.getInstance();
-        // Get the Calendar current year, month and day of month
-        int year = calendar.get(calendar.YEAR);
-        final int month = calendar.get(calendar.MONTH);
-        int day = calendar.get(calendar.DAY_OF_MONTH);
-
         dp.init(year, month, day, new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -80,23 +80,33 @@ public class WhatsBirthDayActivity extends BaseActivity {
                 // Format the date
                 DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
                 String formattedDate = df.format(chosenDate);
-                ed_name.setText( formattedDate);
+                ed_name.setText(formattedDate);
+
+                if(year < 2017) {
+                    ls_next.setBackground(getDrawable(R.drawable.bg_selected));
+                } else {
+                    ls_next.setBackground(getDrawable(R.drawable.bg_unselected));
+                    Toast.makeText(getApplicationContext(),"Please select a valid birthday",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
-        ls_next = (LinearLayout) findViewById(R.id.ls_next);
 
+        ls_next = (LinearLayout) findViewById(R.id.ls_next);
 
         ls_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent i = new Intent(getApplicationContext(), SettingsAddPhotoActivity.class);
-                startActivity(i);
+                if(year < 2017) {
+                    Intent i = new Intent(getApplicationContext(), SettingsAddPhotoActivity.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(getApplicationContext(),"Please select a valid birthday.",Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
-
 
     }
 

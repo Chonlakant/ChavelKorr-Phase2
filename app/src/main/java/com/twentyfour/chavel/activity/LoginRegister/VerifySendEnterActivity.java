@@ -24,7 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class VertificationSendEnterActivity extends BaseActivity {
+public class VerifySendEnterActivity extends BaseActivity {
 
     EditText ed_code;
     LinearLayout ls_send_code_again;

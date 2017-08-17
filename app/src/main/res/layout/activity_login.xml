@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.twentyfour.chavel.LandingActivity">
+    tools:context="com.twentyfour.chavel.activity.LoginRegister.LandingActivity">
 
     <include layout="@layout/toolbar"/>
     <LinearLayout
@@ -139,29 +139,29 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
-                android:background="#919191" />
+                android:background="@color/grey_soft" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:text="or"
+                android:text="Or"
                 android:textColor="#919191" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:background="#9c9c9c" />
+                android:background="@color/grey_soft" />
 
         </LinearLayout>
 
@@ -192,7 +192,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:gravity="center"
                 android:text="as Mr.Chavel"
                 android:textColor="#45629c" />
@@ -223,10 +223,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
                 android:text="By Login in with the process above"
-                android:textColor="#919191" />
+                android:textColor="#919191"
+                android:textSize="14dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -241,19 +240,20 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="you agree to our"
-                    android:textColor="#919191" />
+                    android:textColor="#919191"
+                    android:textSize="14dp"/>
 
                 <TextView
+                    android:id="@+id/term"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="Term Privacy Policy"
                     android:textColor="#919191"
-                    android:textSize="15dp" />
+                    android:textSize="14dp" />
             </LinearLayout>
-
 
         </LinearLayout>
 

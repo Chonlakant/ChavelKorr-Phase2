@@ -20,7 +20,7 @@ import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.CommentActivity;
 import com.twentyfour.chavel.activity.MainTab.EditProfileActivity;
 import com.twentyfour.chavel.activity.LoginRegister.ProfileActivity;
-import com.twentyfour.chavel.activity.SettingSystemActivity;
+import com.twentyfour.chavel.SettingSystemActivity;
 
 
 public class UserProfileFragment extends Fragment {

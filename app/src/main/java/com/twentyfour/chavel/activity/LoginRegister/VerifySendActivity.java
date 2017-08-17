@@ -6,7 +6,6 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
@@ -20,7 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class VertificationSendActivity extends BaseActivity {
+public class VerifySendActivity extends BaseActivity {
 
     EditText ed_phone;
     TextView txt_send;
@@ -62,7 +61,7 @@ public class VertificationSendActivity extends BaseActivity {
         txt_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), VertificationSendEnterActivity.class);
+                Intent i = new Intent(getApplicationContext(), VerifySendEnterActivity.class);
                 startActivity(i);
             }
         });

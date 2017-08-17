@@ -1,4 +1,4 @@
-package com.twentyfour.chavel;
+package com.twentyfour.chavel.activity.LoginRegister;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,64 +8,57 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.LoginRegister.FindContactFriendsActivity;
 import com.twentyfour.chavel.activity.LoginRegister.LoginActivity;
 import com.twentyfour.chavel.activity.LoginRegister.RegisterActivity;
 import com.twentyfour.chavel.service.BaseActivity;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class LandingActivity extends BaseActivity {
 
+    @Bind(R.id.txt_conti)
     TextView txt_conti;
+
+    @Bind(R.id.login)
     LinearLayout login;
+
+    @Bind(R.id.sign_up)
     LinearLayout sign_up;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
+        ButterKnife.bind(this);
 
-
-        login = (LinearLayout) findViewById(R.id.login);
-        sign_up = (LinearLayout) findViewById(R.id.sign_up);
-        txt_conti = (TextView) findViewById(R.id.txt_conti);
-
-        String styledText = "<u><font color='#395997'>Continue</font></u>.";
+        String styledText = "<u><font color='#395997'>Login</font></u>";
         txt_conti.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(i);
+                toLogin();
             }
         });
 
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(i);
-
+                toRegister();
             }
         });
 
         txt_conti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FindContactFriendsActivity.class);
-                startActivity(i);
+                toFindContact();
             }
         });
 
     }
 
-    public static int getSum(int n) {
-        int sum = 0;
-        for (int i = 1; i <= n; i++) {
-            sum += i;
-            Log.e("sum", sum + "");
-        }
-        return sum;
-    }
 }

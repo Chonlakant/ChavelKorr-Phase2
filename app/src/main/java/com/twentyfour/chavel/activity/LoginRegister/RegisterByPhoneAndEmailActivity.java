@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,8 +18,6 @@ import android.widget.TextView;
 
 import com.hbb20.CountryCodePicker;
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.LoginRegister.VertificationSendActivity;
-import com.twentyfour.chavel.activity.LoginRegister.WhatsYourEmailOrPhoneActivity;
 import com.twentyfour.chavel.service.BaseActivity;
 
 import butterknife.Bind;
@@ -87,7 +84,7 @@ public class RegisterByPhoneAndEmailActivity extends BaseActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), VertificationSendActivity.class);
+                Intent i = new Intent(getApplicationContext(), VerifySendActivity.class);
                 startActivity(i);
 
             }

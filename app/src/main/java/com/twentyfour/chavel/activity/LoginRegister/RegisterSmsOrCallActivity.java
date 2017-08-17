@@ -9,7 +9,7 @@ import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.service.BaseActivity;
 
 
-public class SignInNextActivity extends BaseActivity {
+public class RegisterSmsOrCallActivity extends BaseActivity {
 
     TextView accout;
     LinearLayout login;
@@ -20,8 +20,6 @@ public class SignInNextActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_next);
-
-
     }
 
 }

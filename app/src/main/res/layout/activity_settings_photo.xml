@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.twentyfour.chavel.LandingActivity">
+    tools:context="com.twentyfour.chavel.activity.LoginRegister.LandingActivity">
 
     <include layout="@layout/toolbar"/>
 
@@ -103,7 +103,8 @@
                     android:text="Add a Photo"
                     android:textColor="#ffffff"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:id="@+id/add_photo_btn"/>
 
             </LinearLayout>
 

@@ -9,22 +9,27 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.service.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity {
 
-    TextView accout;
+    TextView account;
     TextView forget;
 
     LinearLayout ls_facebook;
@@ -36,11 +41,25 @@ public class LoginActivity extends BaseActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
+    @Bind(R.id.term)
+    TextView term;
+
+    @Bind(R.id.sign_up)
+    TextView sign_up;
+
+    @OnClick(R.id.sign_up)
+    void next(View view) {
+        toRegister();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        String styledText = "<u><font>Term&Privacy Policy</font></u>";
+        term.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
 
         if(toolbar != null) {
 
@@ -65,7 +84,7 @@ public class LoginActivity extends BaseActivity {
         longButton = (Button) findViewById(R.id.longButton);
 
         forget = (TextView) findViewById(R.id.forget);
-        accout = (TextView) findViewById(R.id.txt_no_account);
+        account = (TextView) findViewById(R.id.txt_no_account);
         ed_mail = (EditText) findViewById(R.id.ed_mail);
         ed_pass = (EditText) findViewById(R.id.ed_pass);
 
@@ -80,10 +99,10 @@ public class LoginActivity extends BaseActivity {
             ed_pass.setBackgroundDrawable(drawable);
         }
 
-        accout.setOnClickListener(new View.OnClickListener() {
+        account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SignInNextActivity.class);
+                Intent i = new Intent(getApplicationContext(), RegisterSmsOrCallActivity.class);
                 startActivity(i);
             }
         });
@@ -117,16 +136,13 @@ public class LoginActivity extends BaseActivity {
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
                 // TODO Auto-generated method stub
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
-
             }
         });
-
 
         longButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,13 +155,29 @@ public class LoginActivity extends BaseActivity {
         ls_facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(getApplicationContext(),FollowUserActivity.class);
                 startActivity(i);
             }
         });
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_setting, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_more: {
+                Toast.makeText(getApplicationContext(),"Soon",Toast.LENGTH_SHORT).show();
+                break;
+            }
+        }
+        return false;
     }
 
     public void toggleStatusSelect(Button v) {

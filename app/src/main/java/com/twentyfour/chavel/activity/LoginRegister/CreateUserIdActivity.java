@@ -25,7 +25,10 @@ import butterknife.ButterKnife;
 
 public class CreateUserIdActivity extends BaseActivity {
 
+    @Bind(R.id.ls_next)
     LinearLayout ls_next;
+
+    @Bind(R.id.ed_create_id)
     EditText ed_create_id;
 
     @Bind(R.id.toolbar)
@@ -56,9 +59,8 @@ public class CreateUserIdActivity extends BaseActivity {
 
         }
 
-        ls_next = (LinearLayout) findViewById(R.id.ls_next);
-
-        ed_create_id = (EditText) findViewById(R.id.ed_create_id);
+        //ls_next = (LinearLayout) findViewById();
+       // ed_create_id = (EditText) findViewById(R.id.ed_create_id);
 
         Drawable drawable = ed_create_id.getBackground(); // get current EditText drawable
         drawable.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); // change the drawable color

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.twentyfour.chavel.LandingActivity">
+    tools:context="com.twentyfour.chavel.activity.LoginRegister.LandingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -83,7 +83,6 @@
                         android:text="Log in"
                         android:textSize="20dp" />
 
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -142,17 +141,17 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:text="Continue"
-                android:textColor="#395997"
-                android:textSize="16dp" />
+                android:textColor="@color/facebook"
+                android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:gravity="center"
-                android:text="as Mr.Chavel"
-                android:textColor="#395997"
-                android:textSize="16dp" />
+                android:text="with Facebook"
+                android:textColor="@color/facebook"
+                android:textSize="18dp" />
 
         </LinearLayout>
 

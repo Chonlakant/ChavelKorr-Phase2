@@ -1,4 +1,4 @@
-package com.twentyfour.chavel.activity;
+package com.twentyfour.chavel;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -11,10 +11,16 @@
         <!--<item name="colorAccent">@color/colorAccent</item>-->
         <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
 
+        <item name="android:textColorSecondary">@android:color/black</item>
         <!--control color-->
         <!--<item name="colorControlNormal">@color/colorPrimary</item>-->
         <!--<item name="colorControlActivated">@color/colorAccent</item>-->
         <!--<item name="colorControlHighlight">@color/colorAccentLight</item>-->
+    </style>
+
+    <style name="MyToolbarStyle" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">#333333</item>
+        <item name="android:textColorPrimary">#333333</item>
     </style>
 
     <style name="BaseThemeActionbar" parent="Theme.AppCompat.Light">

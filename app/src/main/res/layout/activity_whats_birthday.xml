@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.twentyfour.chavel.LandingActivity">
+    tools:context="com.twentyfour.chavel.activity.LoginRegister.LandingActivity">
 
     <include layout="@layout/toolbar" />
 
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:text="When's your birthday?"
             android:textColor="#919191"
             android:textSize="15dp" />
@@ -50,8 +50,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="birthday"
+                android:layout_marginLeft="10dp"
+                android:text="ฺBirthday"
                 android:textColor="#919191"
                 android:textSize="15dp" />
 
@@ -63,12 +63,12 @@
                 <EditText
                     android:id="@+id/ed_name"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="46dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="20dp"
                     android:hint="DD/MM/YYY"
                     android:textColor="#242424"
-                    android:textSize="13dp" />
+                    android:textSize="18dp" />
             </LinearLayout>
 
 

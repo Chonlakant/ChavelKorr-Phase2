@@ -1,4 +1,4 @@
-package com.twentyfour.chavel.activity;
+package com.twentyfour.chavel.activity.LoginRegister;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,28 +8,32 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.twentyfour.chavel.MainTabActivity;
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.service.BaseActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import siclo.com.ezphotopicker.api.EZPhotoPick;
 import siclo.com.ezphotopicker.api.EZPhotoPickStorage;
 import siclo.com.ezphotopicker.api.models.EZPhotoPickConfig;
 import siclo.com.ezphotopicker.api.models.PhotoSource;
 
-public class SettingsAddPhotoActivity extends AppCompatActivity {
-    EZPhotoPickStorage ezPhotoPickStorage;
-    Bitmap bitmap;
-    CircleImageView add_photo;
-
+public class SettingsAddPhotoActivity extends BaseActivity {
+//    EZPhotoPickStorage ezPhotoPickStorage;
+//    Bitmap bitmap;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -37,14 +41,30 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
     @Bind(R.id.add_camera)
     ImageView add_camera;
 
+    @Bind(R.id.add_photo_btn)
+    TextView add_photo_btn;
+
+    @Bind(R.id.add_photo)
+    CircleImageView add_photo;
+
+    @OnClick(R.id.add_photo_btn)
+    void next(View view) {
+        if (view.getId() == R.id.action_skip) {
+            Toast.makeText(this, "Skiped", Toast.LENGTH_SHORT).show();
+
+        } else if(view.getId() == R.id.add_photo_btn) {
+            Toast.makeText(this, "Photo uploaded", Toast.LENGTH_SHORT).show();
+        }
+        toMainTab();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_photo);
-
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Settings Photo");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
@@ -56,8 +76,6 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
-        add_photo = (CircleImageView) findViewById(R.id.add_photo);
 
         add_photo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +142,6 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
             return;
         }
 
-
         if (requestCode == EZPhotoPick.PHOTO_PICK_GALLERY_REQUEST_CODE &&
                 resultCode == RESULT_OK) {
             try {
@@ -165,6 +182,19 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main_skip, menu);
+        //menu.getItem(0).setVisible(true);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_skip: {
+                toMainTab();
+                break;
+            }
+            // case blocks for other MenuItems (if any)
+        }
+        return false;
     }
 }
