@@ -83,6 +83,7 @@
         <activity android:name=".activity.OverViewPinsActivity"/>
         <activity android:name=".activity.ProfileActivity"/>
         <activity android:name=".activity.CommentActivity"/>
+        <activity android:name=".activity.SelectOverViewPinsActivity"/>
     </application>
 
 </manifest>

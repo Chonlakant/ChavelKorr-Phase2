@@ -1,5 +1,6 @@
 package com.twentyfour.chavel.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.adapter.OrverViewPinAdapter;
@@ -29,6 +31,8 @@ public class OverViewPinsActivity extends AppCompatActivity {
     OrverViewPinAdapter searchAdapter;
     RecyclerView recyclerView;
 
+    LinearLayout ls_view;
+
 
     ArrayList<Search> list = new ArrayList<>();
 
@@ -37,6 +41,7 @@ public class OverViewPinsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.overview_pins_activity);
         ButterKnife.bind(this);
+        ls_view = (LinearLayout) findViewById(R.id.ls_view);
 
         toolbar.setTitle("Overview (Pin)");
         setSupportActionBar(toolbar);
@@ -53,7 +58,6 @@ public class OverViewPinsActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
 
-
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 4));
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -67,6 +71,14 @@ public class OverViewPinsActivity extends AppCompatActivity {
             searchAdapter = new OrverViewPinAdapter(getApplicationContext(), list);
             recyclerView.setAdapter(searchAdapter);
         }
+
+        ls_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplication(), SelectOverViewPinsActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 
@@ -85,7 +97,6 @@ public class OverViewPinsActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
 }

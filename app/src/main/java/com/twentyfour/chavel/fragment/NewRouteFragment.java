@@ -49,12 +49,16 @@ public class NewRouteFragment extends Fragment {
     TextView dt_details;
     LinearLayout ls_budget;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         View view = inflater.inflate(R.layout.fragment_new_route, null);
+
+
 
         expandableLayout0 = (ExpandableLayout) view.findViewById(R.id.expandable_layout_0);
 

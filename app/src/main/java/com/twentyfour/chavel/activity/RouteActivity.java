@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -53,6 +54,8 @@ import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.fragment.OverviewFragment;
 import com.twentyfour.chavel.fragment.PinsFragment;
 
+import net.cachapa.expandablelayout.ExpandableLayout;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,6 +74,8 @@ public class RouteActivity extends FragmentActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
+
+    private ExpandableLayout expandableLayout0;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -124,7 +129,7 @@ public class RouteActivity extends FragmentActivity implements
 
     private static final int MY_PERMISSIONS_REQUEST_FINE_LOCATION = 111;
 
-
+    ImageView img_click;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,6 +141,9 @@ public class RouteActivity extends FragmentActivity implements
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
 
+        img_click = (ImageView) findViewById(R.id.img_click);
+
+        expandableLayout0 = (ExpandableLayout) findViewById(R.id.expandable_layout_0);
 
         ActivityCompat.requestPermissions(this, new String[]{
                 Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION }, 1);
@@ -193,7 +201,18 @@ public class RouteActivity extends FragmentActivity implements
         });
 
 
-
+        img_click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (expandableLayout0.isExpanded()) {
+                    expandableLayout0.collapse();
+                    img_click.setImageResource(R.drawable.down_icon);
+                } else {
+                    expandableLayout0.expand();
+                    img_click.setImageResource(R.drawable.up_icon);
+                }
+            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager) {

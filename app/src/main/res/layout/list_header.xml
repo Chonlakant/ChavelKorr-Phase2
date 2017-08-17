@@ -116,6 +116,7 @@
                             android:text="24" />
 
                         <ImageView
+                            android:id="@+id/img_comments"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="center"

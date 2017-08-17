@@ -1,6 +1,7 @@
 package com.twentyfour.chavel.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.CommentActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +98,14 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                         }
                     }
                 });
+
+                itemController.img_comments.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(context, CommentActivity.class);
+                        context.startActivity(i);
+                    }
+                });
                 break;
             case CHILD:
                 position = (position + 1) / 2;
@@ -117,7 +127,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 listStr.add("");
                 listStr.add("");
                 listStr.add("");
-                    imageFeedHomeAdapter = new ImageFeedHomeAdapter(context, listStr);
+                imageFeedHomeAdapter = new ImageFeedHomeAdapter(context, listStr);
                 //}
 
                 itemContent.ryc.setAdapter(imageFeedHomeAdapter);
@@ -142,11 +152,12 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public TextView header_title;
         public Item refferalItem;
         public ImageView btn_expand_toggle;
+        public ImageView img_comments;
 
         public ListHeaderViewHolder(View itemView) {
             super(itemView);
             header_title = (TextView) itemView.findViewById(R.id.header_title);
-
+            img_comments = (ImageView) itemView.findViewById(R.id.img_comments);
             btn_expand_toggle = (ImageView) itemView.findViewById(R.id.btn_expand_toggle);
         }
     }
