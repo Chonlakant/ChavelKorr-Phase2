@@ -21,18 +21,30 @@ import butterknife.ButterKnife;
 
 public class LocationActivity extends AppCompatActivity {
 
-    Dialog dialog;
-    LinearLayout ls_contry;
 
+    LinearLayout ls_contry;
+    LinearLayout ls_city_state;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+
+    Dialog dialogContry;
+    Dialog dialogCityState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_location);
         ButterKnife.bind(this);
+
+        ls_contry = (LinearLayout) findViewById(R.id.ls_contry);
+        ls_city_state = (LinearLayout) findViewById(R.id.ls_city_state);
+
+        dialogContry = new Dialog(LocationActivity.this, R.style.FullHeightDialog);
+        dialogContry.setContentView(R.layout.dialog_selelct_location);
+
+        dialogCityState = new Dialog(LocationActivity.this, R.style.FullHeightDialog);
+        dialogCityState.setContentView(R.layout.dialog_selelct_city_state);
 
         toolbar.setTitle("Location");
         setSupportActionBar(toolbar);
@@ -43,6 +55,20 @@ public class LocationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        ls_contry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogContry.show();
+            }
+        });
+
+        ls_city_state.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCityState.show();
             }
         });
     }
