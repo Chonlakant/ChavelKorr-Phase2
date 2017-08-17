@@ -207,7 +207,7 @@
                         <ImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-                            android:src="@drawable/icon_activity"
+                            android:src="@drawable/ic_activity_white"
                             android:layout_marginTop="5dp"
                             />
 

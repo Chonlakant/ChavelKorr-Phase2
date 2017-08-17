@@ -8,7 +8,7 @@
           android:id="@+id/action_add_friend"
           android:orderInCategory="100"
           android:title="Add Friend"
-          android:icon="@drawable/icon_route"
+          android:icon="@drawable/ic_route"
           app:showAsAction="always" />
 
 

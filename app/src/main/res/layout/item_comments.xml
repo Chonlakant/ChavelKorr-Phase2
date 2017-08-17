@@ -70,7 +70,7 @@
                         android:layout_height="25dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
-                        android:src="@drawable/like_icon" />
+                        android:src="@drawable/ic_like" />
 
                     <TextView
                         android:layout_width="wrap_content"

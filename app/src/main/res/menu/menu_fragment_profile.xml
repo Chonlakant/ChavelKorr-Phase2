@@ -8,7 +8,7 @@
         android:id="@+id/action_add_friend"
         android:orderInCategory="100"
         android:title="Add Friend"
-        android:icon="@drawable/icon_user_add"
+        android:icon="@drawable/ic_add_user"
         app:showAsAction="always" />
 
     <item

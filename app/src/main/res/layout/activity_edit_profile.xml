@@ -43,7 +43,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="bottom"
-                    android:background="@mipmap/ic_launcher" />
+                    android:background="@android:drawable/ic_menu_camera" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -51,6 +51,7 @@
                     android:layout_gravity="bottom"
                     android:layout_marginTop="0dp"
                     android:hint="Change Pictire"
+                    android:text="Change Picture"
                     android:textSize="12dp" />
             </LinearLayout>
 
@@ -96,6 +97,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:text="User ID"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="2dp"
+            android:text="Chavel24" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="5dp"
+            android:background="#848889" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="Status Massage"
             android:textColor="#000000" />
 
@@ -116,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Shre profile media updates"
+            android:text="Share profile media updates"
             android:textColor="#000000" />
 
 

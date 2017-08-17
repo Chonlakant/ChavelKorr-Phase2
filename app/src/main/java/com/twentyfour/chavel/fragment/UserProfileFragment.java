@@ -17,9 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.CommentActivity;
-import com.twentyfour.chavel.activity.EditProfileActivity;
-import com.twentyfour.chavel.activity.ProfileActivity;
+import com.twentyfour.chavel.activity.MainTab.CommentActivity;
+import com.twentyfour.chavel.activity.MainTab.EditProfileActivity;
+import com.twentyfour.chavel.activity.LoginRegister.ProfileActivity;
 import com.twentyfour.chavel.activity.SettingSystemActivity;
 
 

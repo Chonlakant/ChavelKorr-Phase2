@@ -1,7 +1,6 @@
 package com.twentyfour.chavel;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -9,11 +8,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.twentyfour.chavel.activity.FindContactFriendsActivity;
-import com.twentyfour.chavel.activity.LoginActivity;
-import com.twentyfour.chavel.activity.RegisterActivity;
+import com.twentyfour.chavel.activity.LoginRegister.FindContactFriendsActivity;
+import com.twentyfour.chavel.activity.LoginRegister.LoginActivity;
+import com.twentyfour.chavel.activity.LoginRegister.RegisterActivity;
+import com.twentyfour.chavel.service.BaseActivity;
 
-public class LandingActivity extends AppCompatActivity {
+public class LandingActivity extends BaseActivity {
 
     TextView txt_conti;
     LinearLayout login;
@@ -23,7 +23,7 @@ public class LandingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing);
-        Tools.systemBarLolipop(this);
+
 
         login = (LinearLayout) findViewById(R.id.login);
         sign_up = (LinearLayout) findViewById(R.id.sign_up);
@@ -31,8 +31,6 @@ public class LandingActivity extends AppCompatActivity {
 
         String styledText = "<u><font color='#395997'>Continue</font></u>.";
         txt_conti.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
-
-        Log.e("dddd", getSum(10) + "");
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

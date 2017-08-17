@@ -4,18 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.CommentActivity;
 import com.twentyfour.chavel.model.ModelPins;
 
 import java.util.ArrayList;
@@ -98,7 +94,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 itemController.refferalItem = item;
                 itemController.header_title.setText(item.text);
                 if (item.invisibleChildren == null) {
-                    itemController.btn_expand_toggle.setImageResource(R.drawable.down_icon);
+                    itemController.btn_expand_toggle.setImageResource(R.drawable.ic_down);
                 } else {
                     itemController.btn_expand_toggle.setImageResource(R.drawable.ic_up);
                 }
@@ -114,7 +110,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                                 count++;
                             }
                             notifyItemRangeRemoved(pos + 1, count);
-                            itemController.btn_expand_toggle.setImageResource(R.drawable.down_icon);
+                            itemController.btn_expand_toggle.setImageResource(R.drawable.ic_down);
                         } else {
                             int pos = data.indexOf(itemController.refferalItem);
                             int index = pos + 1;

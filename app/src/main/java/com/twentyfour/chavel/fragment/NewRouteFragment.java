@@ -3,7 +3,6 @@ package com.twentyfour.chavel.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,16 +16,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.ActivityActivity;
-import com.twentyfour.chavel.activity.BudetActivity;
-import com.twentyfour.chavel.activity.LocationActivity;
-import com.twentyfour.chavel.activity.PeriodTimeActivity;
-import com.twentyfour.chavel.activity.RouteActivity;
-import com.twentyfour.chavel.activity.RouteDescriptionActivity;
-import com.twentyfour.chavel.activity.RouteHistoryActivity;
-import com.twentyfour.chavel.activity.RouteNameActivity;
-import com.twentyfour.chavel.activity.SuggestionActivity;
-import com.twentyfour.chavel.activity.TravelMethodActivity;
+import com.twentyfour.chavel.activity.MainTab.SelectActivityActivity;
+import com.twentyfour.chavel.activity.MainTab.BudgetActivity;
+import com.twentyfour.chavel.activity.MainTab.LocationActivity;
+import com.twentyfour.chavel.activity.MainTab.PeriodTimeActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteDescriptionActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteHistoryActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteNameActivity;
+import com.twentyfour.chavel.activity.LoginRegister.SuggestionActivity;
+import com.twentyfour.chavel.activity.MainTab.SelectTravelMethodActivity;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -121,7 +120,7 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getActivity(), BudetActivity.class);
+                Intent i = new Intent(getActivity(), BudgetActivity.class);
                 startActivity(i);
 
             }
@@ -130,7 +129,7 @@ public class NewRouteFragment extends Fragment {
         et_travel_method.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), TravelMethodActivity.class);
+                Intent i = new Intent(getActivity(), SelectTravelMethodActivity.class);
                 startActivity(i);
             }
         });
@@ -149,7 +148,7 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getActivity(), ActivityActivity.class);
+                Intent i = new Intent(getActivity(), SelectActivityActivity.class);
                 startActivity(i);
 
             }
@@ -190,10 +189,10 @@ public class NewRouteFragment extends Fragment {
 
                 if (expandableLayout0.isExpanded()) {
                     expandableLayout0.collapse();
-                    btn_expand_toggle.setImageResource(R.drawable.down_icon);
+                    btn_expand_toggle.setImageResource(R.drawable.ic_down);
                 } else {
                     expandableLayout0.expand();
-                    btn_expand_toggle.setImageResource(R.drawable.up_icon);
+                    btn_expand_toggle.setImageResource(R.drawable.ic_up);
                 }
 
             }
