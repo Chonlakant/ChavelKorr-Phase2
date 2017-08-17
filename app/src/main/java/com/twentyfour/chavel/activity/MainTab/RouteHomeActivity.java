@@ -69,7 +69,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class RouteActivity extends FragmentActivity implements
+public class RouteHomeActivity extends FragmentActivity implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -79,21 +79,6 @@ public class RouteActivity extends FragmentActivity implements
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-
-    @Bind(R.id.btn_locaion_map)
-    Button btn_locaion_map;
-
-    @Bind(R.id.fragment_map)
-    LinearLayout fragment_map;
-
-    @Bind(R.id.fragment_container3)
-    LinearLayout fragment_container3;
-
-    @Bind(R.id.ls_save)
-    Button ls_save;
-
-
-
 
 
     TabLayout tabLayout;
@@ -133,13 +118,21 @@ public class RouteActivity extends FragmentActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_route);
+        setContentView(R.layout.fragment_route_home);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Route");
+        toolbar.setTitle("Home");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         img_click = (ImageView) findViewById(R.id.img_click);
 
@@ -182,37 +175,6 @@ public class RouteActivity extends FragmentActivity implements
         }
         tabLayout.getTabAt(0).select();
 
-        btn_locaion_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                fragment_map.setVisibility(View.VISIBLE);
-                fragment_container3.setVisibility(View.GONE);
-
-            }
-        });
-
-        ls_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i =new Intent(getApplicationContext(),AddPinActivity.class);
-                startActivity(i);
-            }
-        });
-
-
-        img_click.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (expandableLayout0.isExpanded()) {
-                    expandableLayout0.collapse();
-                    img_click.setImageResource(R.drawable.down_icon);
-                } else {
-                    expandableLayout0.expand();
-                    img_click.setImageResource(R.drawable.up_icon);
-                }
-            }
-        });
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -310,7 +272,7 @@ public class RouteActivity extends FragmentActivity implements
     }
 
     protected synchronized void buildGoogleApiClient() {
-        mGoogleApiClient = new GoogleApiClient.Builder(RouteActivity.this)
+        mGoogleApiClient = new GoogleApiClient.Builder(RouteHomeActivity.this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApi(LocationServices.API)
@@ -348,8 +310,8 @@ public class RouteActivity extends FragmentActivity implements
     }
 
     /**
-     * Uses a {@link com.google.android.gms.location.LocationSettingsRequest.Builder} to build
-     * a {@link com.google.android.gms.location.LocationSettingsRequest} that is used for checking
+     * Uses a {@link LocationSettingsRequest.Builder} to build
+     * a {@link LocationSettingsRequest} that is used for checking
      * if a device has the needed location settings.
      */
     protected void buildLocationSettingsRequest() {
@@ -389,7 +351,7 @@ public class RouteActivity extends FragmentActivity implements
                             // Show the dialog by calling startResolutionForResult(),
                             // and check the result in onActivityResult().
                             status.startResolutionForResult(
-                                    RouteActivity.this,
+                                    RouteHomeActivity.this,
                                     REQUEST_CHECK_SETTINGS);
                         } catch (IntentSender.SendIntentException e) {
                             // Ignore the error.
@@ -466,7 +428,7 @@ public class RouteActivity extends FragmentActivity implements
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(RouteActivity.this, error.getMessage(),
+                Toast.makeText(RouteHomeActivity.this, error.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
         });

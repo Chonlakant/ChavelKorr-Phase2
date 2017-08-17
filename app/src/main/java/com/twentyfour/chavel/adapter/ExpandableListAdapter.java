@@ -31,6 +31,11 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public static OnItemClickLikeListener mOnItemClickLikeListener;
     public static OnItemClickShListener mOnItemClickShListener;
     public static OnItemClickCommentListener mOnItemClickCommentListener;
+    public static OnItemClickPhotoListener mOnItemClickPhotoListener;
+    public static OnItemClickUsernameListener mOnItemClickUsernameListener;
+    public static OnItemClickRouteTitleListener mOnItemClickRouteTitleListener;
+
+
 
     public interface OnItemClickLikeListener {
         void onItemLikeClick(View view, int position);
@@ -52,8 +57,33 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         void onItemCommentClick(View view, int position);
     }
 
-    public void setOnItemClickCommentListener(final OnItemClickCommentListener mItemClickCommentListener) {
+    public void setOnItemClickCommentListener(final OnItemClickCommentListener mOnItemClickCommentListener) {
         this.mOnItemClickCommentListener = mOnItemClickCommentListener;
+    }
+
+
+    public interface OnItemClickPhotoListener {
+        void onItemPhotoClick(View view, int position);
+    }
+
+    public void setOnItemClickPhotoListener(final OnItemClickPhotoListener mOnItemClickPhotoListener) {
+        this.mOnItemClickPhotoListener = mOnItemClickPhotoListener;
+    }
+
+    public interface OnItemClickUsernameListener {
+        void onItemUsernameClick(View view, int position);
+    }
+
+    public void setOnItemClickUsernameListener(final OnItemClickUsernameListener mOnItemClickUsernameListener) {
+        this.mOnItemClickUsernameListener = mOnItemClickUsernameListener;
+    }
+
+    public interface OnItemClickRouteTitleListener {
+        void onItemRouteTitleClick(View view, int position);
+    }
+
+    public void setOnItemClickRouteTitleListener(final OnItemClickRouteTitleListener mOnItemClickRouteTitleListener) {
+        this.mOnItemClickRouteTitleListener = mOnItemClickRouteTitleListener;
     }
 
 
@@ -176,11 +206,13 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public ImageView img_comments;
         public ImageView img_like;
         public ImageView img_sh;
+        public ImageView photo;
 
         public ListHeaderViewHolder(View itemView) {
             super(itemView);
             header_title = (TextView) itemView.findViewById(R.id.header_title);
             img_comments = (ImageView) itemView.findViewById(R.id.img_comments);
+            photo = (ImageView) itemView.findViewById(R.id.photo);
             img_like = (ImageView) itemView.findViewById(R.id.img_like);
             img_sh = (ImageView) itemView.findViewById(R.id.img_sh);
             btn_expand_toggle = (ImageView) itemView.findViewById(R.id.btn_expand_toggle);
@@ -188,6 +220,8 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             img_like.setOnClickListener(this);
             img_comments.setOnClickListener(this);
             img_sh.setOnClickListener(this);
+            photo.setOnClickListener(this);
+            header_title.setOnClickListener(this);
         }
 
         @Override
@@ -210,12 +244,24 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                         mOnItemClickShListener.onItemShClick(v, getPosition());
                     }
                     break;
+                case R.id.photo:
+                    if (mOnItemClickPhotoListener != null) {
+                        mOnItemClickPhotoListener.onItemPhotoClick(v, getPosition());
+                    }
+                    break;
+
+                case R.id.header_title:
+                    if (mOnItemClickRouteTitleListener != null) {
+                        mOnItemClickRouteTitleListener.onItemRouteTitleClick(v, getPosition());
+                    }
+                    break;
+
 
             }
         }
     }
 
-    private static class ListContentViewHolder extends RecyclerView.ViewHolder {
+    private static class ListContentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView text_create;
         public TextView txt_catgory;
         public TextView txt_by_username;
@@ -230,6 +276,20 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             txt_by_username = (TextView) itemView.findViewById(R.id.txt_by_username);
             txt_msg = (TextView) itemView.findViewById(R.id.txt_msg);
             ryc = (RecyclerView) itemView.findViewById(R.id.ryc);
+            txt_by_username.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.txt_by_username:
+                    if (mOnItemClickUsernameListener != null) {
+                        mOnItemClickUsernameListener.onItemUsernameClick(v, getPosition());
+                    }
+                    break;
+
+            }
         }
     }
 

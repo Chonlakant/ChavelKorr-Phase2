@@ -23,14 +23,14 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
     private OnItemClickListener mOnItemClickListener;
 
     public interface OnItemClickListener {
-        void onItemClick(View view, ModelPins obj, int position);
+        void onItemClick(View viewj, int position);
     }
 
     public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
         this.mOnItemClickListener = mItemClickListener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txt_pins;
         public TextView txt_title_pins;
@@ -41,10 +41,25 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
             super(v);
             txt_pins = (TextView) v.findViewById(R.id.txt_pins);
             txt_title_pins = (TextView) v.findViewById(R.id.txt_title_pins);
-
+            txt_pins.setOnClickListener(this);
 
         }
 
+        @Override
+        public void onClick(View v) {
+
+            switch (v.getId()) {
+                case R.id.txt_pins:
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(v, getPosition());
+                    }
+                    break;
+
+
+
+            }
+
+        }
     }
     public PinsAdapter(Context ctx, List<ModelPins> list) {
         this.ctx = ctx;

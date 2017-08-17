@@ -16,7 +16,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class AddPinActivity extends AppCompatActivity {
+public class EditPinActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -32,7 +32,7 @@ public class AddPinActivity extends AppCompatActivity {
         expandableLayout0 = (ExpandableLayout) findViewById(R.id.expandable_layout_0);
         btn_expand_toggle = (ImageView) findViewById(R.id.btn_expand_toggle);
 
-        toolbar.setTitle("Add Pin");
+        toolbar.setTitle("Edit Pin");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));

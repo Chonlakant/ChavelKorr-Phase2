@@ -1,5 +1,6 @@
 package com.twentyfour.chavel.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.MainTab.EditPinActivity;
 import com.twentyfour.chavel.adapter.PinsAdapter;
 import com.twentyfour.chavel.model.ModelPins;
 
@@ -40,6 +42,14 @@ public class PinsFragment extends Fragment {
 
         pinsAdapter = new PinsAdapter(getActivity(), list);
         mRecyclerView.setAdapter(pinsAdapter);
+
+        pinsAdapter.setOnItemClickListener(new PinsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View viewj, int position) {
+                Intent i = new Intent(getActivity(), EditPinActivity.class);
+                startActivity(i);
+            }
+        });
 
         return view;
     }

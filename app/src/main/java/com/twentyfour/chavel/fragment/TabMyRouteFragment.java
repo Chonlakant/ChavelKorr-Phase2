@@ -1,5 +1,6 @@
 package com.twentyfour.chavel.fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,9 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.LoginRegister.ProfileActivity;
 import com.twentyfour.chavel.activity.MainTab.CommentActivity;
+import com.twentyfour.chavel.activity.MainTab.LocationActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteHomeActivity;
 import com.twentyfour.chavel.adapter.ExpandableListAdapter;
 import com.twentyfour.chavel.adapter.HomeFeedAdapter;
 import com.twentyfour.chavel.api.Apis;
@@ -36,6 +43,14 @@ public class TabMyRouteFragment extends Fragment {
 
     List<ExpandableListAdapter.Item> data = new ArrayList<>();
 
+    Dialog dialogShare;
+
+    TextView txt_route;
+    TextView txt_share_follower;
+    TextView txt_share_person;
+    TextView txt_share_public;
+    TextView txt_share_others;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed_home, null);
@@ -45,6 +60,16 @@ public class TabMyRouteFragment extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         ryc.setLayoutManager(llm);
+
+        dialogShare = new Dialog(getActivity(), R.style.FullHeightDialog);
+        dialogShare.setContentView(R.layout.dialog_share);
+
+        txt_route = (TextView) dialogShare.findViewById(R.id.txt_route);
+        txt_share_follower = (TextView) dialogShare.findViewById(R.id.txt_share_follower);
+        txt_share_person = (TextView) dialogShare.findViewById(R.id.txt_share_person);
+        txt_share_public = (TextView) dialogShare.findViewById(R.id.txt_share_public);
+        txt_share_others = (TextView) dialogShare.findViewById(R.id.txt_share_others);
+
 
         getHomeFeed("2", "30", "100");
 
@@ -99,6 +124,7 @@ public class TabMyRouteFragment extends Fragment {
                         expandableListAdapter.setOnItemClickCommentListener(new ExpandableListAdapter.OnItemClickCommentListener() {
                             @Override
                             public void onItemCommentClick(View view, int position) {
+
                                 Intent i = new Intent(getActivity(), CommentActivity.class);
                                 startActivity(i);
                             }
@@ -108,12 +134,77 @@ public class TabMyRouteFragment extends Fragment {
                             @Override
                             public void onItemLikeClick(View view, int position) {
 
+                                Toast.makeText(getActivity(),"Love this post",Toast.LENGTH_SHORT).show();
+
                             }
                         });
                         expandableListAdapter.setOnItemClickShListener(new ExpandableListAdapter.OnItemClickShListener() {
                             @Override
                             public void onItemShClick(View view, int position) {
 
+
+                                dialogShare.show();
+
+                                txt_route.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialogShare.dismiss();
+                                    }
+                                });
+
+                                txt_share_follower.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialogShare.dismiss();
+                                    }
+                                });
+
+                                txt_share_person.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialogShare.dismiss();
+                                    }
+                                });
+
+                                txt_share_public.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialogShare.dismiss();
+                                    }
+                                });
+
+                                txt_share_others.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        dialogShare.dismiss();
+                                    }
+                                });
+
+
+
+                            }
+                        });
+
+                        expandableListAdapter.setOnItemClickPhotoListener(new ExpandableListAdapter.OnItemClickPhotoListener() {
+                            @Override
+                            public void onItemPhotoClick(View view, int position) {
+                                Intent i =new Intent(getActivity(), ProfileActivity.class);
+                                startActivity(i);
+                            }
+                        });
+                        expandableListAdapter.setOnItemClickUsernameListener(new ExpandableListAdapter.OnItemClickUsernameListener() {
+                            @Override
+                            public void onItemUsernameClick(View view, int position) {
+                                Intent i =new Intent(getActivity(), ProfileActivity.class);
+                                startActivity(i);
+                            }
+                        });
+
+                        expandableListAdapter.setOnItemClickRouteTitleListener(new ExpandableListAdapter.OnItemClickRouteTitleListener() {
+                            @Override
+                            public void onItemRouteTitleClick(View view, int position) {
+                                Intent i =new Intent(getActivity(), RouteHomeActivity.class);
+                                startActivity(i);
                             }
                         });
                         //listString.clear();
