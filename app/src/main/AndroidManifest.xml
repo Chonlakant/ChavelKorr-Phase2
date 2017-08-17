@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.twentyfour.chavel">
 
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,11 +12,11 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".AppController"
@@ -27,62 +26,69 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LandingActivity">
-
-        </activity>
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".activity.RegisterActivity"/>
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.SingInNextActivity"/>
-        <activity android:name=".activity.SetPasswordActivity"/>
-        <activity android:name=".activity.CreateUserIdActivity"/>
-        <activity android:name=".activity.RegisterByPhoneAndEmailActivity"/>
-        <activity android:name=".activity.ChooseCountryActivity"/>
-        <activity android:name=".activity.VertificationSendActivity"/>
-        <activity android:name=".activity.VertificationSendEnterActivity"/>
-        <activity android:name=".activity.WhatsYourEmailActivity"/>
-        <activity android:name=".activity.FindFacebookFriendsActivity"/>
-        <activity android:name=".activity.FindContactFacebookFriendsActivity"/>
-        <activity android:name=".activity.FindContactFriendsActivity"/>
-        <activity android:name=".activity.WhatsBirthDayActivity"
-            android:windowSoftInputMode="adjustPan"
-            />
-        <activity android:name=".activity.SettingsAddPhotoActivity"/>
-        <activity android:name=".activity.WhatsYourEmailOrPhoneActivity"/>
-        <activity android:name=".activity.VertificationSendEnterEmailActivity"/>
-        <activity android:name=".activity.VertificationSendEnterEmailAgainActivity"/>
-        <activity android:name=".activity.FollowUserActivity"/>
-        <activity android:name=".MainTabActivity">
+        <activity android:name=".LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.RouteActivity"/>
-        <activity android:name=".activity.SettingSystemActivity"/>
-        <activity android:name=".activity.AddPinActivity"/>
-        <activity android:name=".activity.PeriodTimeActivity"/>
-        <activity android:name=".activity.BudetActivity"/>
-        <activity android:name=".activity.CrossProvinceActivity"/>
-        <activity android:name=".activity.ActivityActivity"/>
-        <activity android:name=".activity.SuggestionActivity"/>
-        <activity android:name=".activity.LocationActivity"/>
-        <activity android:name=".activity.LocationAddActivity"/>
-        <activity android:name=".activity.TravelMethodActivity"/>
-        <activity android:name=".activity.RouteNameActivity"/>
-        <activity android:name=".activity.RouteDescriptionActivity"/>
-        <activity android:name=".activity.AdvanceSearchActivity"/>
-        <activity android:name=".activity.SearchMutiTypeActivity"/>
-        <activity android:name=".activity.FindPeopleActivity"/>
-        <activity android:name=".activity.EditProfileActivity"/>
-        <activity android:name=".activity.RouteHistoryActivity"/>
-        <activity android:name=".activity.OverViewPinsActivity"/>
-        <activity android:name=".activity.ProfileActivity"/>
-        <activity android:name=".activity.CommentActivity"/>
+        <activity android:name=".MainTabActivity"></activity>
+
+        <!-- Login Register Zone -->
+        <activity android:name=".activity.LoginRegister.RegisterActivity" />
+        <activity android:name=".activity.LoginRegister.LoginActivity" />
+        <activity android:name=".activity.LoginRegister.SignInNextActivity" />
+        <activity android:name=".activity.LoginRegister.SetPasswordActivity" />
+        <activity android:name=".activity.LoginRegister.CreateUserIdActivity" />
+        <activity android:name=".activity.LoginRegister.RegisterByPhoneAndEmailActivity" />
+
+        <activity android:name=".activity.LoginRegister.VertificationSendActivity" />
+        <activity android:name=".activity.LoginRegister.VertificationSendEnterActivity" />
+        <activity android:name=".activity.LoginRegister.WhatsYourEmailActivity" />
+        <activity android:name=".activity.LoginRegister.FindFacebookFriendsActivity" />
+        <activity android:name=".activity.LoginRegister.FindContactFacebookFriendsActivity" />
+        <activity android:name=".activity.LoginRegister.FindContactFriendsActivity" />
+        <activity
+            android:name=".activity.LoginRegister.WhatsBirthDayActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.SettingsAddPhotoActivity" />
+        <activity android:name=".activity.LoginRegister.WhatsYourEmailOrPhoneActivity" />
+        <activity android:name=".activity.LoginRegister.VertificationSendEnterEmailActivity" />
+        <activity android:name=".activity.LoginRegister.VertificationSendEnterEmailAgainActivity" />
+        <activity android:name=".activity.LoginRegister.FollowUserActivity" />
+
+        <activity android:name=".activity.UnusedChooseCountryActivity" />
+
+        <!-- Main Tab Zone -->
+        <activity android:name=".activity.MainTab.RouteActivity" />
+        <activity android:name=".activity.SettingSystemActivity" />
+        <activity android:name=".activity.MainTab.AddPinActivity" />
+        <activity android:name=".activity.MainTab.PeriodTimeActivity" />
+        <activity android:name=".activity.MainTab.BudgetActivity" />
+        <activity android:name=".activity.MainTab.CrossProvinceActivity" />
+        <activity android:name=".activity.MainTab.SelectActivityActivity" />
+        <activity android:name=".activity.LoginRegister.SuggestionActivity" />
+        <activity android:name=".activity.MainTab.LocationActivity" />
+        <activity android:name=".activity.MainTab.LocationAddActivity" />
+        <activity android:name=".activity.MainTab.SelectTravelMethodActivity" />
+        <activity android:name=".activity.MainTab.RouteNameActivity" />
+        <activity android:name=".activity.MainTab.RouteDescriptionActivity" />
+        <activity android:name=".activity.MainTab.AdvanceSearchActivity" />
+        <activity android:name=".activity.MainTab.SearchMutiTypeActivity" />
+        <activity android:name=".activity.MainTab.FindPeopleActivity" />
+        <activity android:name=".activity.MainTab.EditProfileActivity" />
+        <activity android:name=".activity.MainTab.RouteHistoryActivity" />
+        <activity android:name=".activity.MainTab.OverViewPinsActivity" />
+        <activity android:name=".activity.LoginRegister.ProfileActivity" />
+        <activity android:name=".activity.MainTab.CommentActivity" />
+        <activity
+            android:name=".service.BaseActivity"
+            android:label="@string/title_activity_base"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

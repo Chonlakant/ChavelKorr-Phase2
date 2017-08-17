@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.AdvanceSearchActivity;
+import com.twentyfour.chavel.activity.MainTab.AdvanceSearchActivity;
 import com.twentyfour.chavel.adapter.SearchRouteAdapter;
 import com.twentyfour.chavel.adapter.SearchProfileAdapter;
 import com.twentyfour.chavel.model.Search;

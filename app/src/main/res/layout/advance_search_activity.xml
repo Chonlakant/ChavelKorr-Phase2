@@ -24,7 +24,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -36,8 +35,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:text="Activity" />
 
@@ -59,8 +57,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:text="Location" />
 
@@ -81,8 +78,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:text="Travel Method" />
 
@@ -98,9 +94,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_margin="10dp"
             android:text="Budget" />
 
         <LinearLayout
@@ -148,9 +142,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_margin="10dp"
             android:text="Period time" />
 
         <View
@@ -171,10 +163,10 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:gravity="center"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -185,9 +177,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
                     android:gravity="center"
                     android:text="Search"
-                    android:layout_marginLeft="5dp"
                     android:textColor="#10a9e3"
                     android:textSize="20dp"
                     android:textStyle="bold" />

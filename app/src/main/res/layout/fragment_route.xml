@@ -202,7 +202,7 @@
                                         android:layout_height="20dp"
                                         android:layout_gravity="center"
                                         android:layout_marginLeft="10dp"
-                                        android:src="@drawable/like_icon" />
+                                        android:src="@drawable/ic_like" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -262,7 +262,7 @@
                                 android:layout_height="20dp"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="5dp"
-                                android:src="@drawable/down_icon" />
+                                android:src="@drawable/ic_down" />
 
                         </LinearLayout>
 
