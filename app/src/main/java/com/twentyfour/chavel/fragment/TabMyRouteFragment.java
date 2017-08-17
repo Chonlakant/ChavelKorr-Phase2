@@ -1,5 +1,6 @@
 package com.twentyfour.chavel.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.CommentActivity;
 import com.twentyfour.chavel.adapter.ExpandableListAdapter;
 import com.twentyfour.chavel.adapter.HomeFeedAdapter;
 import com.twentyfour.chavel.api.Apis;
@@ -28,6 +30,7 @@ public class TabMyRouteFragment extends Fragment {
 
     RecyclerView ryc;
     HomeFeedAdapter homeFeedAdapter;
+    ExpandableListAdapter expandableListAdapter;
     ArrayList<HomeFeed> list = new ArrayList<>();
     List<String> listString = new ArrayList<>();
 
@@ -91,8 +94,28 @@ public class TabMyRouteFragment extends Fragment {
                                 , route_id, route_title, route_detail, diffDate, like_status, favorite_status, route_activity, route_city,
                                 route_travel_method, route_budgetmin, route_budgetmax, route_suggestion,listString));
 
-                        ryc.setAdapter(new ExpandableListAdapter(data,getActivity()));
+                        expandableListAdapter = new ExpandableListAdapter(data,getActivity());
+                        ryc.setAdapter(expandableListAdapter);
+                        expandableListAdapter.setOnItemClickCommentListener(new ExpandableListAdapter.OnItemClickCommentListener() {
+                            @Override
+                            public void onItemCommentClick(View view, int position) {
+                                Intent i = new Intent(getActivity(), CommentActivity.class);
+                                startActivity(i);
+                            }
+                        });
 
+                        expandableListAdapter.setOnItemClickLikeListener(new ExpandableListAdapter.OnItemClickLikeListener() {
+                            @Override
+                            public void onItemLikeClick(View view, int position) {
+
+                            }
+                        });
+                        expandableListAdapter.setOnItemClickShListener(new ExpandableListAdapter.OnItemClickShListener() {
+                            @Override
+                            public void onItemShClick(View view, int position) {
+
+                            }
+                        });
                         //listString.clear();
                     }
 
