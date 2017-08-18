@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -23,7 +24,7 @@ import com.twentyfour.chavel.activity.LoginRegister.ProfileActivity;
 import com.twentyfour.chavel.activity.SettingSystemActivity;
 
 
-public class UserProfileFragment extends Fragment {
+public class UserProfileFragment extends AppCompatActivity {
 
     TextView txt_status;
     TextView txt_activity;
@@ -39,24 +40,25 @@ public class UserProfileFragment extends Fragment {
     boolean isFollowing = false;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.userprofile_fragment, null);
-        setHasOptionsMenu(true);
-        photo = (ImageView) view.findViewById(R.id.photo);
-        txt_status = (TextView) view.findViewById(R.id.txt_status);
-        txt_activity = (TextView) view.findViewById(R.id.txt_activity);
-        ls_activity = (LinearLayout) view.findViewById(R.id.ls_activity);
-        txt_my_route = (TextView) view.findViewById(R.id.txt_my_route);
-        ls_route = (LinearLayout) view.findViewById(R.id.ls_my_route);
-        txt_fav_route = (TextView) view.findViewById(R.id.txt_fav_route);
-        ls_fav = (LinearLayout) view.findViewById(R.id.ls_fav);
-        ls_more = (LinearLayout) view.findViewById(R.id.ls_more);
-        ls_edit_profile = (LinearLayout) view.findViewById(R.id.ls_edit_profile);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.userprofile_fragment);
+
+        photo = (ImageView) findViewById(R.id.photo);
+        txt_status = (TextView) findViewById(R.id.txt_status);
+        txt_activity = (TextView) findViewById(R.id.txt_activity);
+        ls_activity = (LinearLayout) findViewById(R.id.ls_activity);
+        txt_my_route = (TextView) findViewById(R.id.txt_my_route);
+        ls_route = (LinearLayout) findViewById(R.id.ls_my_route);
+        txt_fav_route = (TextView) findViewById(R.id.txt_fav_route);
+        ls_fav = (LinearLayout) findViewById(R.id.ls_fav);
+        ls_more = (LinearLayout) findViewById(R.id.ls_more);
+        ls_edit_profile = (LinearLayout) findViewById(R.id.ls_edit_profile);
 
         photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i =new Intent(getActivity(), ProfileActivity.class);
+                Intent i =new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(i);
             }
         });
@@ -64,8 +66,8 @@ public class UserProfileFragment extends Fragment {
         ls_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TabActivityFragment fragment = new TabActivityFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FollowingFragment fragment = new FollowingFragment();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container2, fragment);
                 transaction.commit();
 
@@ -79,10 +81,10 @@ public class UserProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                TabMyRouteFragment fragment = new TabMyRouteFragment();
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container2, fragment);
-                transaction.commit();
+//                TabMyRouteFragment fragment1 = new TabMyRouteFragment();
+//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.fragment_container2, fragment1);
+//                transaction.commit();
 
                 String styledTextActivity = "<u><font color='#aaa'>My route</font></u>";
                 txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
@@ -102,7 +104,7 @@ public class UserProfileFragment extends Fragment {
 //                txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
 //                ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting1, null));
 
-                Intent i = new Intent(getActivity(), CommentActivity.class);
+                Intent i = new Intent(getApplicationContext(), CommentActivity.class);
                 startActivity(i);
 
             }
@@ -113,20 +115,20 @@ public class UserProfileFragment extends Fragment {
         ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting1, null));
         txt_activity.setTextColor(Color.WHITE);
 
-        TabActivityFragment fragment = new TabActivityFragment();
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        FollowingFragment fragment = new FollowingFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
 
         ls_edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), EditProfileActivity.class);
+                Intent i = new Intent(getApplicationContext(), EditProfileActivity.class);
                 startActivity(i);
             }
         });
 
-        return view;
+
     }
 
     public void toggleFollowing(LinearLayout v) {
@@ -147,21 +149,21 @@ public class UserProfileFragment extends Fragment {
 
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_fragment_profile, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                Intent i = new Intent(getActivity(), SettingSystemActivity.class);
-                startActivity(i);
-                return true;
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.menu_fragment_profile, menu);
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_settings:
+//                Intent i = new Intent(getApplicationContext(), SettingSystemActivity.class);
+//                startActivity(i);
+//                return true;
+//
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }

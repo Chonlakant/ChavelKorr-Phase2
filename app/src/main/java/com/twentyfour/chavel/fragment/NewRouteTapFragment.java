@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,36 +17,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class NewRouteTapFragment extends Fragment {
+public class NewRouteTapFragment extends AppCompatActivity {
 
     String[] icons = {"New Route", "From Draft"};
 
-    TabLayout tabLayout;
-    ViewPager viewPager;
+    TabLayout tabLayout2;
+    ViewPager viewPager2;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_pins2, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_pins2);
 
-        tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
-        viewPager = (ViewPager) view.findViewById(R.id.main_tab_content);
-        setupViewPager(viewPager);
 
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout2 = (TabLayout) findViewById(R.id.tab_layout);
+        viewPager2 = (ViewPager) findViewById(R.id.main_tab_content);
+        viewPager2.setOffscreenPageLimit(5);
+        setupViewPager2(viewPager2);
+
+        tabLayout2.setupWithViewPager(viewPager2);
 
         for (int i = 0; i < icons.length; i++) {
-            tabLayout.getTabAt(i).setText(icons[i]);
+            tabLayout2.getTabAt(i).setText(icons[i]);
         }
-        tabLayout.getTabAt(0).select();
+        tabLayout2.getTabAt(0).select();
 
-        return view;
+
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.insertNewFragment(new NewRouteFragment());
-        adapter.insertNewFragment(new NewRouteFragment());
-        viewPager.setAdapter(adapter);
+    private void setupViewPager2(ViewPager viewPager2) {
+        ViewPagerAdapter adapter2 = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter2.insertNewFragment(new NewRouteFragment());
+        adapter2.insertNewFragment(new NewRouteFragment());
+        viewPager2.setAdapter(adapter2);
 
     }
 

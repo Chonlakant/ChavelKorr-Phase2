@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import com.twentyfour.chavel.model.ModelActivityProfile;
 import java.util.ArrayList;
 
 
-public class TabActivityFragment extends Fragment {
+public class YouFragment extends Fragment {
 
     MyActivityProfileAdapter myActivityProfileAdapter;
     ArrayList<ModelActivityProfile> mPinList = new ArrayList<>();
@@ -43,8 +42,6 @@ public class TabActivityFragment extends Fragment {
             mRecyclerView.setAdapter(myActivityProfileAdapter);
             myActivityProfileAdapter.notifyDataSetChanged();
         }
-
-
 
         return view;
     }

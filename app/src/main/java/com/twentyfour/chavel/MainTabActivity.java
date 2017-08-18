@@ -1,168 +1,88 @@
 package com.twentyfour.chavel;
 
+import android.app.TabActivity;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v4.content.res.ResourcesCompat;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TabHost;
 import android.widget.Toast;
 
-import com.twentyfour.chavel.fragment.NotiFragment;
-import com.twentyfour.chavel.adapter.PageFragmentAdapter;
 import com.twentyfour.chavel.fragment.NewRouteTapFragment;
-import com.twentyfour.chavel.fragment.TabMyRouteFragment;
+import com.twentyfour.chavel.fragment.NotiFragment;
 import com.twentyfour.chavel.fragment.SearchFragment;
+import com.twentyfour.chavel.fragment.TabMyRouteFragment;
 import com.twentyfour.chavel.fragment.UserProfileFragment;
 
-public class MainTabActivity extends AppCompatActivity {
-
-    private Toolbar toolbar;
-    private TabLayout mTabLayout;
-    private ViewPager viewPager;
-    private PageFragmentAdapter adapter;
-
-    private TabMyRouteFragment f_home;
-    private SearchFragment f_search;
-    private NewRouteTapFragment f_location;
-    private NotiFragment f_notif;
-    private UserProfileFragment f_user;
-
-    int[] icons = {R.drawable.tab_home,
-            R.drawable.tab_search,
-            R.drawable.tab_location,
-            R.drawable.tab_noti, R.drawable.tab_user
-    };
-    String[] titles = {"Chavel","Search","Add Route", "Notification", "My Profile"};
-
-    boolean checkLogin;
-
+public class MainTabActivity extends TabActivity {
+    /**
+     * Called when the activity is first created.
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if(toolbar != null) {
+        TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost); // initiate TabHost
+        TabHost.TabSpec spec; // Reusable TabSpec for each tab
+        Intent intent; // Reusable Intent for each tab
 
-            toolbar.setTitle("Chavel");
-            toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
-            toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-            //toolbar.setNavigationIcon(R.drawable.ic_back);
+        spec = tabHost.newTabSpec(""); // Create a new TabSpec using tab host
+        Drawable dr1 = ResourcesCompat.getDrawable(getResources(), R.drawable.home_tab1, null);
+        spec.setIndicator("",dr1); // set the “HOME” as an indicator
+        // Create an Intent to launch an Activity for the tab (to be reused)
+        intent = new Intent(this, TabMyRouteFragment.class);
+        spec.setContent(intent);
+        tabHost.addTab(spec);
 
-            setSupportActionBar(toolbar);
-            //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Do the same for the other tabs
 
-//            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    onBackPressed();
-//                }
-//            });
+        spec = tabHost.newTabSpec(""); // Create a new TabSpec using tab host
+        Drawable dr2 = ResourcesCompat.getDrawable(getResources(), R.drawable.home_tab2, null);
+        spec.setIndicator("",dr2); // set the “CONTACT” as an indicator
+        // Create an Intent to launch an Activity for the tab (to be reused)
+        intent = new Intent(this, SearchFragment.class);
+        spec.setContent(intent);
+        tabHost.addTab(spec);
 
-        }
-
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-
-        setupViewPager(viewPager);
-
-        mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        mTabLayout.setupWithViewPager(viewPager);
-        setupTabIcons();
-        setupTabClick();
-
-        // for system bar in lollipop
-        Tools.systemBarLolipop(this);
-    }
+        spec = tabHost.newTabSpec(""); // Create a new TabSpec using tab host
+        Drawable dr3 = ResourcesCompat.getDrawable(getResources(), R.drawable.home_tab3, null);
+        spec.setIndicator("",dr3); // set the “ABOUT” as an indicator
+        // Create an Intent to launch an Activity for the tab (to be reused)
+        intent = new Intent(this, NewRouteTapFragment.class);
+        spec.setContent(intent);
+        tabHost.addTab(spec);
 
 
-    private void setupViewPager(ViewPager viewPager) {
-        adapter = new PageFragmentAdapter(getSupportFragmentManager());
-        if (f_home == null) {
-            f_home = new TabMyRouteFragment();
-        }
-        if (f_search == null) {
-            f_search = new SearchFragment();
-        }
-        if (f_location == null) {
-            f_location = new NewRouteTapFragment();
-        }
-        if (f_notif == null) {
-            f_notif = new NotiFragment();
-        }
-        if (f_user == null) {
-            f_user = new UserProfileFragment();
-        }
-        adapter.addFragment(f_home, "");
-        adapter.addFragment(f_search, "");
-        adapter.addFragment(f_location, "");
-        adapter.addFragment(f_notif, "");
-        adapter.addFragment(f_user, "");
-        viewPager.setAdapter(adapter);
-    }
+        spec = tabHost.newTabSpec(""); // Create a new TabSpec using tab host
+        Drawable dr4 = ResourcesCompat.getDrawable(getResources(), R.drawable.home_tab4, null);
+        spec.setIndicator("",dr4); // set the “ABOUT” as an indicator
+        // Create an Intent to launch an Activity for the tab (to be reused)
+        intent = new Intent(this, NotiFragment.class);
+        spec.setContent(intent);
+        tabHost.addTab(spec);
 
-    private void setupTabIcons() {
-        for (int i = 0; i < mTabLayout.getTabCount(); i++) {
-            TabLayout.Tab tab = mTabLayout.getTabAt(i);
-            if (tab != null) tab.setCustomView(R.layout.view_home_tab);
-        }
+        spec = tabHost.newTabSpec(""); // Create a new TabSpec using tab host
+        Drawable dr5 = ResourcesCompat.getDrawable(getResources(), R.drawable.home_tab5, null);
+        spec.setIndicator("",dr5); // set the “ABOUT” as an indicator
+        // Create an Intent to launch an Activity for the tab (to be reused)
+        intent = new Intent(this, UserProfileFragment.class);
+        spec.setContent(intent);
+        tabHost.addTab(spec);
 
-        mTabLayout.getTabAt(0).setIcon(icons[0]);
-        mTabLayout.getTabAt(1).setIcon(icons[1]);
-        mTabLayout.getTabAt(2).setIcon(icons[2]);
-        mTabLayout.getTabAt(3).setIcon(icons[3]);
-        mTabLayout.getTabAt(4).setIcon(icons[4]);
-    }
-
-    private void setupTabClick() {
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        //set tab which one you want to open first time 0 or 1 or 2
+        tabHost.setCurrentTab(0);
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                viewPager.setCurrentItem(position);
-                if(toolbar != null) {
-                    toolbar.setTitle(titles[position]);
-                }
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+            public void onTabChanged(String tabId) {
+                // display the name of the tab whenever a tab is changed
+               // Toast.makeText(getApplicationContext(), tabId, Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-
-    private long exitTime = 0;
-
-    public void doExitApp() {
-        if ((System.currentTimeMillis() - exitTime) > 2000) {
-            Toast.makeText(this, "ออกจากระบบ", Toast.LENGTH_SHORT).show();
-            exitTime = System.currentTimeMillis();
-        } else {
-            finish();
-        }
-    }
 
 
-    @Override
-    public void onBackPressed() {
-        doExitApp();
     }
 
 

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -33,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class TabMyRouteFragment extends Fragment {
+public class TabMyRouteFragment extends AppCompatActivity {
 
     RecyclerView ryc;
     HomeFeedAdapter homeFeedAdapter;
@@ -52,16 +53,17 @@ public class TabMyRouteFragment extends Fragment {
     TextView txt_share_others;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_feed_home, null);
-        setHasOptionsMenu(true);
-        ryc = (RecyclerView) view.findViewById(R.id.ryc);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_feed_home);
+
+        ryc = (RecyclerView) findViewById(R.id.ryc);
         ryc.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         ryc.setLayoutManager(llm);
 
-        dialogShare = new Dialog(getActivity(), R.style.FullHeightDialog);
+        dialogShare = new Dialog(getApplicationContext(), R.style.FullHeightDialog);
         dialogShare.setContentView(R.layout.dialog_share);
 
         txt_route = (TextView) dialogShare.findViewById(R.id.txt_route);
@@ -73,7 +75,7 @@ public class TabMyRouteFragment extends Fragment {
 
         getHomeFeed("2", "30", "100");
 
-        return view;
+
     }
 
 
@@ -108,24 +110,24 @@ public class TabMyRouteFragment extends Fragment {
                         String route_budgetmax = response.body().getList().get(i).getRoute_budgetmax();
                         String route_suggestion = response.body().getList().get(i).getRoute_suggestion();
 
-                        for(int j=0;j < response.body().getList().get(i).getRoute_img().size();j++){
-                            Log.e("accc",response.body().getList().get(i).getRoute_img().get(j).getImg_text()+"");
+                        for (int j = 0; j < response.body().getList().get(i).getRoute_img().size(); j++) {
+                            Log.e("accc", response.body().getList().get(i).getRoute_img().get(j).getImg_text() + "");
                             //if(j < 4)
-                                listString.add(response.body().getList().get(i).getRoute_img().get(j).getImg_text());
+                            listString.add(response.body().getList().get(i).getRoute_img().get(j).getImg_text());
                         }
 
-                        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, header, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",listString));
+                        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, header, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", listString));
                         data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, child, user_id, user_name, user_image
                                 , route_id, route_title, route_detail, diffDate, like_status, favorite_status, route_activity, route_city,
-                                route_travel_method, route_budgetmin, route_budgetmax, route_suggestion,listString));
+                                route_travel_method, route_budgetmin, route_budgetmax, route_suggestion, listString));
 
-                        expandableListAdapter = new ExpandableListAdapter(data,getActivity());
+                        expandableListAdapter = new ExpandableListAdapter(data, getApplicationContext());
                         ryc.setAdapter(expandableListAdapter);
                         expandableListAdapter.setOnItemClickCommentListener(new ExpandableListAdapter.OnItemClickCommentListener() {
                             @Override
                             public void onItemCommentClick(View view, int position) {
 
-                                Intent i = new Intent(getActivity(), CommentActivity.class);
+                                Intent i = new Intent(getApplicationContext(), CommentActivity.class);
                                 startActivity(i);
                             }
                         });
@@ -134,7 +136,7 @@ public class TabMyRouteFragment extends Fragment {
                             @Override
                             public void onItemLikeClick(View view, int position) {
 
-                                Toast.makeText(getActivity(),"Love this post",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Love this post", Toast.LENGTH_SHORT).show();
 
                             }
                         });
@@ -181,21 +183,20 @@ public class TabMyRouteFragment extends Fragment {
                                 });
 
 
-
                             }
                         });
 
                         expandableListAdapter.setOnItemClickPhotoListener(new ExpandableListAdapter.OnItemClickPhotoListener() {
                             @Override
                             public void onItemPhotoClick(View view, int position) {
-                                Intent i =new Intent(getActivity(), ProfileActivity.class);
+                                Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
                                 startActivity(i);
                             }
                         });
                         expandableListAdapter.setOnItemClickUsernameListener(new ExpandableListAdapter.OnItemClickUsernameListener() {
                             @Override
                             public void onItemUsernameClick(View view, int position) {
-                                Intent i =new Intent(getActivity(), ProfileActivity.class);
+                                Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
                                 startActivity(i);
                             }
                         });
@@ -203,7 +204,7 @@ public class TabMyRouteFragment extends Fragment {
                         expandableListAdapter.setOnItemClickRouteTitleListener(new ExpandableListAdapter.OnItemClickRouteTitleListener() {
                             @Override
                             public void onItemRouteTitleClick(View view, int position) {
-                                Intent i =new Intent(getActivity(), RouteHomeActivity.class);
+                                Intent i = new Intent(getApplicationContext(), RouteHomeActivity.class);
                                 startActivity(i);
                             }
                         });
