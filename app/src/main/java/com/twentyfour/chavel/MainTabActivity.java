@@ -1,9 +1,14 @@
 package com.twentyfour.chavel;
 
+import android.Manifest;
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,14 +21,37 @@ import com.twentyfour.chavel.fragment.SearchFragment;
 import com.twentyfour.chavel.fragment.TabMyRouteFragment;
 import com.twentyfour.chavel.fragment.UserProfileFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainTabActivity extends TabActivity {
-    /**
-     * Called when the activity is first created.
-     */
+
+    Context context;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
+
+        ActivityCompat.requestPermissions(MainTabActivity.this,
+                new String[]{Manifest.permission.CAMERA},
+                2);
+        ActivityCompat.requestPermissions(MainTabActivity.this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                1);
+
+        ActivityCompat.requestPermissions(MainTabActivity.this,
+                new String[]{Manifest.permission.LOCATION_HARDWARE},
+                3);
+
+        ActivityCompat.requestPermissions(MainTabActivity.this,
+                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+                4);
+
+        ActivityCompat.requestPermissions(MainTabActivity.this,
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                5);
+
 
         TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost); // initiate TabHost
         TabHost.TabSpec spec; // Reusable TabSpec for each tab
@@ -31,7 +59,7 @@ public class MainTabActivity extends TabActivity {
 
         spec = tabHost.newTabSpec(""); // Create a new TabSpec using tab host
         Drawable dr1 = ResourcesCompat.getDrawable(getResources(), R.drawable.home_tab1, null);
-        spec.setIndicator("",dr1); // set the “HOME” as an indicator
+        spec.setIndicator("", dr1); // set the “HOME” as an indicator
         // Create an Intent to launch an Activity for the tab (to be reused)
         intent = new Intent(this, TabMyRouteFragment.class);
         spec.setContent(intent);
@@ -41,7 +69,7 @@ public class MainTabActivity extends TabActivity {
 
         spec = tabHost.newTabSpec(""); // Create a new TabSpec using tab host
         Drawable dr2 = ResourcesCompat.getDrawable(getResources(), R.drawable.home_tab2, null);
-        spec.setIndicator("",dr2); // set the “CONTACT” as an indicator
+        spec.setIndicator("", dr2); // set the “CONTACT” as an indicator
         // Create an Intent to launch an Activity for the tab (to be reused)
         intent = new Intent(this, SearchFragment.class);
         spec.setContent(intent);
@@ -49,7 +77,7 @@ public class MainTabActivity extends TabActivity {
 
         spec = tabHost.newTabSpec(""); // Create a new TabSpec using tab host
         Drawable dr3 = ResourcesCompat.getDrawable(getResources(), R.drawable.home_tab3, null);
-        spec.setIndicator("",dr3); // set the “ABOUT” as an indicator
+        spec.setIndicator("", dr3); // set the “ABOUT” as an indicator
         // Create an Intent to launch an Activity for the tab (to be reused)
         intent = new Intent(this, NewRouteTapFragment.class);
         spec.setContent(intent);
@@ -58,7 +86,7 @@ public class MainTabActivity extends TabActivity {
 
         spec = tabHost.newTabSpec(""); // Create a new TabSpec using tab host
         Drawable dr4 = ResourcesCompat.getDrawable(getResources(), R.drawable.home_tab4, null);
-        spec.setIndicator("",dr4); // set the “ABOUT” as an indicator
+        spec.setIndicator("", dr4); // set the “ABOUT” as an indicator
         // Create an Intent to launch an Activity for the tab (to be reused)
         intent = new Intent(this, NotiFragment.class);
         spec.setContent(intent);
@@ -66,7 +94,7 @@ public class MainTabActivity extends TabActivity {
 
         spec = tabHost.newTabSpec(""); // Create a new TabSpec using tab host
         Drawable dr5 = ResourcesCompat.getDrawable(getResources(), R.drawable.home_tab5, null);
-        spec.setIndicator("",dr5); // set the “ABOUT” as an indicator
+        spec.setIndicator("", dr5); // set the “ABOUT” as an indicator
         // Create an Intent to launch an Activity for the tab (to be reused)
         intent = new Intent(this, UserProfileFragment.class);
         spec.setContent(intent);
@@ -78,11 +106,95 @@ public class MainTabActivity extends TabActivity {
             @Override
             public void onTabChanged(String tabId) {
                 // display the name of the tab whenever a tab is changed
-               // Toast.makeText(getApplicationContext(), tabId, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), tabId, Toast.LENGTH_SHORT).show();
             }
         });
 
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+
+                    Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            case 2: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+
+                    Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            case 3: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+
+                    Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            case 4: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+
+                    Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            case 5: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+
+                    Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 
 

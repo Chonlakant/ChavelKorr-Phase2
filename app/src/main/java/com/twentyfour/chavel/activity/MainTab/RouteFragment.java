@@ -57,6 +57,8 @@ public class RouteFragment extends Fragment  {
         tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+
+
         btn_locaion_map = (Button) rootView.findViewById(R.id.btn_locaion_map);
         ls_save_lin = (LinearLayout) rootView.findViewById(R.id.ls_save_lin);
         ls_locaion_map = (LinearLayout) rootView.findViewById(R.id.ls_locaion_map);
@@ -69,6 +71,13 @@ public class RouteFragment extends Fragment  {
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
 
         img_click = (ImageView) rootView.findViewById(R.id.img_click);
         expandableLayout0 = (ExpandableLayout) rootView.findViewById(R.id.expandable_layout_0);
