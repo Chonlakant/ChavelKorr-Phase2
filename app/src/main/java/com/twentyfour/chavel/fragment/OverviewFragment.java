@@ -33,6 +33,22 @@ public class OverviewFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if (savedInstanceState == null) {
+            for (int i = 0; i < 5; i++) {
+                ModelPins modelPins = new ModelPins();
+                modelPins.setPins("PINS" + i);
+                modelPins.setTitlePins("แวะกินข้าว อร่อยๆ" + i);
+                list.add(modelPins);
+            }
+        } else {
+            for (int i = 0; i < 5; i++) {
+                ModelPins modelPins = new ModelPins();
+                modelPins.setPins("PINS" + i);
+                modelPins.setTitlePins("แวะกินข้าว อร่อยๆ" + i);
+                list.add(modelPins);
+            }
+        }
+
     }
 
     @Override
@@ -43,12 +59,7 @@ public class OverviewFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        for (int i = 0; i < 5; i++) {
-            ModelPins modelPins = new ModelPins();
-            modelPins.setPins("PINS" + i);
-            modelPins.setTitlePins("แวะกินข้าว อร่อยๆ" + i);
-            list.add(modelPins);
-        }
+
 
         pinsAdapter = new OverviewAdapter(getActivity(), list);
         mRecyclerView.setAdapter(pinsAdapter);
@@ -62,6 +73,11 @@ public class OverviewFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override

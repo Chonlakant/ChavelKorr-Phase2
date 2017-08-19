@@ -14,8 +14,7 @@ import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.LoginRegister.ProfileFragment;
-import com.twentyfour.chavel.activity.MainTab.CommentFragment;
-import com.twentyfour.chavel.activity.MainTab.EditProfileFragment;
+import com.twentyfour.chavel.activity.MainTab.CommentActivity;
 import com.twentyfour.chavel.activity.MainTab.RouteHomeFragment;
 import com.twentyfour.chavel.adapter.ExpandableListAdapter;
 import com.twentyfour.chavel.adapter.HomeFeedAdapter;
@@ -142,11 +141,8 @@ public class TabMyRouteFragment extends FragmentActivity {
                             @Override
                             public void onItemCommentClick(View view, int position) {
 
-                                CommentFragment oneFragment = new CommentFragment();
-                                android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                                transaction.replace(R.id.fragment_container, oneFragment);
-                                transaction.addToBackStack(null);
-                                transaction.commit();
+                                Intent i =new Intent(getApplicationContext(),CommentActivity.class);
+                                startActivity(i);
 
                             }
                         });

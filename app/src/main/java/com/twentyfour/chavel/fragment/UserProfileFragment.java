@@ -7,15 +7,18 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.MainTab.CommentFragment;
+import com.twentyfour.chavel.activity.MainTab.CommentActivity;
 import com.twentyfour.chavel.activity.MainTab.EditProfileFragment;
 import com.twentyfour.chavel.activity.LoginRegister.ProfileFragment;
+import com.twentyfour.chavel.activity.SettingSystemActivity;
 
 
 public class UserProfileFragment extends AppCompatActivity {
@@ -43,16 +46,11 @@ public class UserProfileFragment extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         toolbar.setTitle("Mr.Chavel");
-
+        setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-       // toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        // toolbar.setNavigationIcon(R.drawable.ic_back);
+
 
         photo = (ImageView) findViewById(R.id.photo);
         txt_status = (TextView) findViewById(R.id.txt_status);
@@ -71,7 +69,6 @@ public class UserProfileFragment extends AppCompatActivity {
             public void onClick(View v) {
 
 
-
                 ProfileFragment profileFragment = new ProfileFragment();
                 android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container5, profileFragment);
@@ -84,7 +81,6 @@ public class UserProfileFragment extends AppCompatActivity {
         ls_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
 
                 FollowingFragment fragment = new FollowingFragment();
@@ -102,10 +98,10 @@ public class UserProfileFragment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                TabMyRouteFragment fragment1 = new TabMyRouteFragment();
-//                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.fragment_container2, fragment1);
-//                transaction.commit();
+                TabMyRouteFragment2 fragment1 = new TabMyRouteFragment2();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, fragment1);
+                transaction.commit();
 
                 String styledTextActivity = "<u><font color='#aaa'>My route</font></u>";
                 txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
@@ -125,8 +121,11 @@ public class UserProfileFragment extends AppCompatActivity {
 //                txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
 //                ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting1, null));
 
-                Intent i = new Intent(getApplicationContext(), CommentFragment.class);
+
+                Intent i =new Intent(getApplicationContext(),CommentActivity.class);
                 startActivity(i);
+
+
 
             }
         });
@@ -176,21 +175,28 @@ public class UserProfileFragment extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        inflater.inflate(R.menu.menu_fragment_profile, menu);
-//        super.onCreateOptionsMenu(menu, inflater);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                Intent i = new Intent(getApplicationContext(), SettingSystemActivity.class);
-//                startActivity(i);
-//                return true;
-//
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_fragment_profile, menu);
+
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+        switch (item.getItemId()) {
+            case R.id.action_search:
+
+                Intent i = new Intent(getApplicationContext(), SettingSystemActivity.class);
+                startActivity(i);
+
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
