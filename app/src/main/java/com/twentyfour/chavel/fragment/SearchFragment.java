@@ -1,26 +1,25 @@
 package com.twentyfour.chavel.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.MainTab.AdvanceSearchActivity;
+import com.twentyfour.chavel.activity.MainTab.AdvanceSearchFragment;
 import com.twentyfour.chavel.adapter.SearchRouteAdapter;
 import com.twentyfour.chavel.adapter.SearchProfileAdapter;
 import com.twentyfour.chavel.model.Search;
 
 import java.util.ArrayList;
+
+import butterknife.Bind;
 
 
 public class SearchFragment extends AppCompatActivity {
@@ -33,11 +32,19 @@ public class SearchFragment extends AppCompatActivity {
     ArrayList<Search> listProfile = new ArrayList<>();
     ArrayList<Search> listRoute = new ArrayList<>();
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_search);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setTitle("Search");
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -72,23 +79,29 @@ public class SearchFragment extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        inflater.inflate(R.menu.menu_fragment_search, menu);
-//        super.onCreateOptionsMenu(menu, inflater);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.action_search:
-//
-//                Intent i = new Intent(getApplicationContext(), AdvanceSearchActivity.class);
-//                startActivity(i);
-//
-//                return true;
-//
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_fragment_search, menu);
+
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+
+                AdvanceSearchFragment profileFragment = new AdvanceSearchFragment();
+                android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container6, profileFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

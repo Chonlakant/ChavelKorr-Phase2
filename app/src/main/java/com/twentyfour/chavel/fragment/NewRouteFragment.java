@@ -14,18 +14,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.MainTab.SelectActivityActivity;
-import com.twentyfour.chavel.activity.MainTab.BudgetActivity;
-import com.twentyfour.chavel.activity.MainTab.LocationActivity;
-import com.twentyfour.chavel.activity.MainTab.PeriodTimeActivity;
+import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
+import com.twentyfour.chavel.activity.MainTab.RouteDescriptionFragment;
+import com.twentyfour.chavel.activity.MainTab.RouteNameFragment;
+import com.twentyfour.chavel.activity.MainTab.SelectActivityFragment;
+import com.twentyfour.chavel.activity.MainTab.LocationFragment;
+import com.twentyfour.chavel.activity.MainTab.PeriodTimeFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteActivity;
-import com.twentyfour.chavel.activity.MainTab.RouteDescriptionActivity;
 import com.twentyfour.chavel.activity.MainTab.RouteHistoryActivity;
-import com.twentyfour.chavel.activity.MainTab.RouteNameActivity;
-import com.twentyfour.chavel.activity.LoginRegister.SuggestionActivity;
-import com.twentyfour.chavel.activity.MainTab.SelectTravelMethodActivity;
+import com.twentyfour.chavel.activity.MainTab.SuggestionFragment;
+import com.twentyfour.chavel.activity.MainTab.SelectTravelMethodFragment;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -49,14 +50,12 @@ public class NewRouteFragment extends Fragment {
     LinearLayout ls_budget;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         View view = inflater.inflate(R.layout.fragment_new_route, null);
-
 
 
         expandableLayout0 = (ExpandableLayout) view.findViewById(R.id.expandable_layout_0);
@@ -102,8 +101,14 @@ public class NewRouteFragment extends Fragment {
         dt_period.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), PeriodTimeActivity.class);
-                startActivity(i);
+
+
+                PeriodTimeFragment periodTimeFragment = new PeriodTimeFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content, periodTimeFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
             }
         });
 
@@ -111,8 +116,12 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getActivity(), SuggestionActivity.class);
-                startActivity(i);
+
+                SuggestionFragment suggestionFragment = new SuggestionFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content, suggestionFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
@@ -120,8 +129,12 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getActivity(), BudgetActivity.class);
-                startActivity(i);
+
+                BudgetFragment budgetFragment = new BudgetFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content, budgetFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
             }
         });
@@ -129,8 +142,14 @@ public class NewRouteFragment extends Fragment {
         et_travel_method.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), SelectTravelMethodActivity.class);
-                startActivity(i);
+
+
+                SelectTravelMethodFragment selectTravelMethodFragment = new SelectTravelMethodFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content, selectTravelMethodFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
             }
         });
 
@@ -138,8 +157,12 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getActivity(), LocationActivity.class);
-                startActivity(i);
+
+                LocationFragment locationFragment = new LocationFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content, locationFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
             }
         });
@@ -148,8 +171,12 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getActivity(), SelectActivityActivity.class);
-                startActivity(i);
+
+                SelectActivityFragment routeDescriptionFragment = new SelectActivityFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content, routeDescriptionFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
             }
         });
@@ -158,8 +185,11 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getActivity(), RouteDescriptionActivity.class);
-                startActivity(i);
+                RouteDescriptionFragment routeDescriptionFragment = new RouteDescriptionFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content, routeDescriptionFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
             }
         });
@@ -169,8 +199,13 @@ public class NewRouteFragment extends Fragment {
             public void onClick(View v) {
 
 
-                Intent i = new Intent(getActivity(), RouteNameActivity.class);
-                startActivity(i);
+
+                RouteNameFragment routeNameFragment = new RouteNameFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content, routeNameFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
 
             }
         });

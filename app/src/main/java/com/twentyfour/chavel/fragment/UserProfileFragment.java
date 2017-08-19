@@ -3,25 +3,18 @@ package com.twentyfour.chavel.fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.MainTab.CommentActivity;
-import com.twentyfour.chavel.activity.MainTab.EditProfileActivity;
-import com.twentyfour.chavel.activity.LoginRegister.ProfileActivity;
-import com.twentyfour.chavel.activity.SettingSystemActivity;
+import com.twentyfour.chavel.activity.MainTab.CommentFragment;
+import com.twentyfour.chavel.activity.MainTab.EditProfileFragment;
+import com.twentyfour.chavel.activity.LoginRegister.ProfileFragment;
 
 
 public class UserProfileFragment extends AppCompatActivity {
@@ -35,6 +28,7 @@ public class UserProfileFragment extends AppCompatActivity {
     LinearLayout ls_fav;
     LinearLayout ls_more;
     LinearLayout ls_edit_profile;
+
     ImageView photo;
 
     boolean isFollowing = false;
@@ -48,6 +42,7 @@ public class UserProfileFragment extends AppCompatActivity {
         txt_status = (TextView) findViewById(R.id.txt_status);
         txt_activity = (TextView) findViewById(R.id.txt_activity);
         ls_activity = (LinearLayout) findViewById(R.id.ls_activity);
+
         txt_my_route = (TextView) findViewById(R.id.txt_my_route);
         ls_route = (LinearLayout) findViewById(R.id.ls_my_route);
         txt_fav_route = (TextView) findViewById(R.id.txt_fav_route);
@@ -58,17 +53,27 @@ public class UserProfileFragment extends AppCompatActivity {
         photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i =new Intent(getApplicationContext(), ProfileActivity.class);
-                startActivity(i);
+
+
+
+                ProfileFragment profileFragment = new ProfileFragment();
+                android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container5, profileFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
             }
         });
 
         ls_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 FollowingFragment fragment = new FollowingFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container2, fragment);
+                transaction.replace(R.id.fragment_container, fragment);
                 transaction.commit();
 
                 String styledTextActivity = "<u><font color='#cccccc'>Favorite</font></u>";
@@ -104,7 +109,7 @@ public class UserProfileFragment extends AppCompatActivity {
 //                txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
 //                ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting1, null));
 
-                Intent i = new Intent(getApplicationContext(), CommentActivity.class);
+                Intent i = new Intent(getApplicationContext(), CommentFragment.class);
                 startActivity(i);
 
             }
@@ -123,8 +128,14 @@ public class UserProfileFragment extends AppCompatActivity {
         ls_edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EditProfileActivity.class);
-                startActivity(i);
+
+
+                EditProfileFragment profileFragment = new EditProfileFragment();
+                android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container5, profileFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
             }
         });
 

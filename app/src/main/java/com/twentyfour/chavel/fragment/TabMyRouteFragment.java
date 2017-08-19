@@ -3,23 +3,19 @@ package com.twentyfour.chavel.fragment;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.LoginRegister.ProfileActivity;
-import com.twentyfour.chavel.activity.MainTab.CommentActivity;
-import com.twentyfour.chavel.activity.MainTab.LocationActivity;
-import com.twentyfour.chavel.activity.MainTab.RouteActivity;
-import com.twentyfour.chavel.activity.MainTab.RouteHomeActivity;
+import com.twentyfour.chavel.activity.LoginRegister.ProfileFragment;
+import com.twentyfour.chavel.activity.MainTab.CommentFragment;
+import com.twentyfour.chavel.activity.MainTab.EditProfileFragment;
+import com.twentyfour.chavel.activity.MainTab.RouteHomeFragment;
 import com.twentyfour.chavel.adapter.ExpandableListAdapter;
 import com.twentyfour.chavel.adapter.HomeFeedAdapter;
 import com.twentyfour.chavel.api.Apis;
@@ -34,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class TabMyRouteFragment extends AppCompatActivity {
+public class TabMyRouteFragment extends FragmentActivity {
 
     RecyclerView ryc;
     HomeFeedAdapter homeFeedAdapter;
@@ -124,11 +120,16 @@ public class TabMyRouteFragment extends AppCompatActivity {
                         expandableListAdapter = new ExpandableListAdapter(data, getApplicationContext());
                         ryc.setAdapter(expandableListAdapter);
                         expandableListAdapter.setOnItemClickCommentListener(new ExpandableListAdapter.OnItemClickCommentListener() {
+
                             @Override
                             public void onItemCommentClick(View view, int position) {
 
-                                Intent i = new Intent(getApplicationContext(), CommentActivity.class);
-                                startActivity(i);
+                                CommentFragment oneFragment = new CommentFragment();
+                                android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                                transaction.replace(R.id.fragment_container, oneFragment);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
                             }
                         });
 
@@ -189,23 +190,38 @@ public class TabMyRouteFragment extends AppCompatActivity {
                         expandableListAdapter.setOnItemClickPhotoListener(new ExpandableListAdapter.OnItemClickPhotoListener() {
                             @Override
                             public void onItemPhotoClick(View view, int position) {
-                                Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
-                                startActivity(i);
+                                ProfileFragment profileFragment = new ProfileFragment();
+                                android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                                transaction.replace(R.id.fragment_container, profileFragment);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
                             }
                         });
                         expandableListAdapter.setOnItemClickUsernameListener(new ExpandableListAdapter.OnItemClickUsernameListener() {
                             @Override
                             public void onItemUsernameClick(View view, int position) {
-                                Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
-                                startActivity(i);
+
+
+                                ProfileFragment profileFragment = new ProfileFragment();
+                                android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                                transaction.replace(R.id.fragment_container, profileFragment);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
                             }
                         });
 
                         expandableListAdapter.setOnItemClickRouteTitleListener(new ExpandableListAdapter.OnItemClickRouteTitleListener() {
                             @Override
                             public void onItemRouteTitleClick(View view, int position) {
-                                Intent i = new Intent(getApplicationContext(), RouteHomeActivity.class);
-                                startActivity(i);
+
+                                RouteHomeFragment routeHomeFragment = new RouteHomeFragment();
+                                android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                                transaction.replace(R.id.fragment_container, routeHomeFragment);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
+
                             }
                         });
                         //listString.clear();

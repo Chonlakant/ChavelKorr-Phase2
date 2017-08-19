@@ -71,27 +71,14 @@
         <activity android:name=".activity.MainTab.AddPinActivity" />
         <!--p65-->
         <activity android:name=".activity.MainTab.EditPinActivity"/>
-        <activity android:name=".activity.MainTab.PeriodTimeActivity" />
-        <activity android:name=".activity.MainTab.BudgetActivity" />
         <activity android:name=".activity.MainTab.CrossProvinceActivity" />
-        <activity android:name=".activity.MainTab.SelectActivityActivity" />
-        <activity android:name=".activity.LoginRegister.SuggestionActivity" />
-        <activity android:name=".activity.MainTab.LocationActivity" />
         <activity android:name=".activity.MainTab.LocationAddActivity" />
-        <activity android:name=".activity.MainTab.SelectTravelMethodActivity" />
-        <activity android:name=".activity.MainTab.RouteNameActivity" />
-        <activity android:name=".activity.MainTab.RouteDescriptionActivity" />
-        <activity android:name=".activity.MainTab.AdvanceSearchActivity" />
-        <activity android:name=".activity.MainTab.SearchMutiTypeActivity" />
-        <activity android:name=".activity.MainTab.FindPeopleActivity" />
-        <activity android:name=".activity.MainTab.EditProfileActivity" />
+
         <activity android:name=".activity.MainTab.RouteHistoryActivity" />
         <activity android:name=".activity.MainTab.OverViewPinsActivity" />
-        <activity android:name=".activity.LoginRegister.ProfileActivity" />
-        <activity android:name=".activity.MainTab.CommentActivity" />
 
-        <!--p135-->
-        <activity android:name=".activity.MainTab.RouteHomeActivity"/>
+
+
         <activity
             android:name=".service.BaseActivity"
             android:label="@string/title_activity_base"

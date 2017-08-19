@@ -12,36 +12,40 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.service.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class RouteNameActivity extends AppCompatActivity {
+public class SuggestionFragment extends Fragment {
 
 
-
-    @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_route_name);
-        ButterKnife.bind(this);
 
-        toolbar.setTitle("Route Name*");
-        setSupportActionBar(toolbar);
+
+    public static SuggestionFragment newInstance() {
+        return new SuggestionFragment();
+    }
+
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_suggestion, container, false);
+        toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        toolbar.setTitle("Suggestion");
+      //  setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                getActivity().onBackPressed();
             }
         });
-
+        return rootView;
     }
+
 
 }

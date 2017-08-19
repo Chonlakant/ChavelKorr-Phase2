@@ -1,11 +1,15 @@
 package com.twentyfour.chavel.activity.MainTab;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
 
@@ -13,48 +17,33 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class EditProfileActivity extends AppCompatActivity {
+public class SelectActivityFragment extends Fragment {
 
 
-    @Bind(R.id.toolbar)
     Toolbar toolbar;
 
+    public static SelectActivityFragment newInstance() {
+        return new SelectActivityFragment();
+    }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
-        ButterKnife.bind(this);
-
-        toolbar.setTitle("Edit My Profile");
-        setSupportActionBar(toolbar);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_activity, container, false);
+        toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        toolbar.setTitle("Activity");
+        // setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                getActivity().onBackPressed();
             }
         });
 
-
+        return rootView;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_phone_email, menu);
-
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        return super.onOptionsItemSelected(item);
-    }
 
 }
