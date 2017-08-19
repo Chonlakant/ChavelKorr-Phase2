@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -25,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TabHost;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -79,10 +82,8 @@ public class RouteHomeFragment extends Fragment {
     Toolbar toolbar;
 
 
-    TabLayout tabLayoutHome;
-    ViewPager viewPagerHome;
-
-    String[] icons = {"OVERVIEW", "PINS"};
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
 
     public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
@@ -102,7 +103,10 @@ public class RouteHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_route_home, container, false);
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-
+        viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
         toolbar.setTitle("Home");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
@@ -132,34 +136,24 @@ public class RouteHomeFragment extends Fragment {
 //            }
 //        });
 
-        tabLayoutHome = (TabLayout) rootView.findViewById(R.id.tab_layout);
-        viewPagerHome = (ViewPager) rootView.findViewById(R.id.main_tab_content);
-        setupViewPager(viewPagerHome);
 
-        tabLayoutHome.setupWithViewPager(viewPagerHome);
 
-        for (int i = 0; i < icons.length; i++) {
-            tabLayoutHome.getTabAt(i).setText(icons[i]);
-        }
-        tabLayoutHome.getTabAt(0).select();
 
 
         return rootView;
     }
 
-
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.insertNewFragment(new OverviewFragment());
-        adapter.insertNewFragment(new PinsFragment());
+       ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
+        adapter.addFragment(new OverviewFragment(), "OVERVIEW");
+        adapter.addFragment(new PinsFragment(), "PINS");
+
         viewPager.setAdapter(adapter);
-
     }
-
-
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
         public ViewPagerAdapter(FragmentManager manager) {
             super(manager);
@@ -175,10 +169,17 @@ public class RouteHomeFragment extends Fragment {
             return mFragmentList.size();
         }
 
-        public void insertNewFragment(Fragment fragment) {
+        public void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
         }
     }
+
 
     @Override
     public void onStop() {

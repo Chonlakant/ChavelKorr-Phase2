@@ -25,6 +25,16 @@ public class OverviewFragment extends Fragment {
 
     RecyclerView mRecyclerView;
 
+    public OverviewFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_orverview, null);
@@ -42,6 +52,7 @@ public class OverviewFragment extends Fragment {
 
         pinsAdapter = new OverviewAdapter(getActivity(), list);
         mRecyclerView.setAdapter(pinsAdapter);
+        pinsAdapter.notifyDataSetChanged();
         pinsAdapter.setOnItemClickListener(new OverviewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -51,5 +62,11 @@ public class OverviewFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
     }
 }

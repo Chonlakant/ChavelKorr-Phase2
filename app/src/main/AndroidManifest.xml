@@ -65,7 +65,7 @@
         <activity android:name=".activity.UnusedChooseCountryActivity" />
 
         <!-- Main Tab Zone -->
-        <activity android:name=".activity.MainTab.RouteActivity" />
+        <activity android:name=".activity.MainTab.RouteFragment" />
         <activity android:name=".activity.SettingSystemActivity" />
         <!--P65-->
         <activity android:name=".activity.MainTab.AddPinActivity" />
@@ -76,6 +76,9 @@
 
         <activity android:name=".activity.MainTab.RouteHistoryActivity" />
         <activity android:name=".activity.MainTab.OverViewPinsActivity" />
+
+        <activity android:name=".fragment.OverviewFragment"/>
+        <activity android:name=".fragment.PinsFragment"/>
 
 
 

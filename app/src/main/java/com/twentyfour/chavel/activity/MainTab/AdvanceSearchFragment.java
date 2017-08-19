@@ -44,9 +44,9 @@ public class AdvanceSearchFragment extends Fragment {
         ls_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AdvanceSearchFragment profileFragment = new AdvanceSearchFragment();
+                SearchMutiTypeFragment searchMutiTypeFragment = new SearchMutiTypeFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container6, profileFragment);
+                transaction.replace(R.id.fragment_container6, searchMutiTypeFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }

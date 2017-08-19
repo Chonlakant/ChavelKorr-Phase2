@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -25,6 +26,8 @@ import com.twentyfour.chavel.service.ServiceApi;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,10 +51,25 @@ public class TabMyRouteFragment extends FragmentActivity {
     TextView txt_share_public;
     TextView txt_share_others;
 
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_feed_home);
+        ButterKnife.bind(this);
+        toolbar.setTitle("Chavel");
+       // setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+        toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+//        toolbar.setNavigationIcon(R.drawable.ic_back);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onBackPressed();
+//            }
+//        });
 
         ryc = (RecyclerView) findViewById(R.id.ryc);
         ryc.setHasFixedSize(true);

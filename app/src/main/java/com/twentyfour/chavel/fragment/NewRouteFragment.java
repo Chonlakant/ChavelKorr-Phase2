@@ -14,16 +14,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteDescriptionFragment;
+import com.twentyfour.chavel.activity.MainTab.RouteFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteNameFragment;
 import com.twentyfour.chavel.activity.MainTab.SelectActivityFragment;
 import com.twentyfour.chavel.activity.MainTab.LocationFragment;
 import com.twentyfour.chavel.activity.MainTab.PeriodTimeFragment;
-import com.twentyfour.chavel.activity.MainTab.RouteActivity;
 import com.twentyfour.chavel.activity.MainTab.RouteHistoryActivity;
 import com.twentyfour.chavel.activity.MainTab.SuggestionFragment;
 import com.twentyfour.chavel.activity.MainTab.SelectTravelMethodFragment;
@@ -92,8 +91,11 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(getActivity(), RouteActivity.class);
-                startActivity(i);
+                RouteFragment routeFragment = new RouteFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.add(R.id.content, routeFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
             }
         });
