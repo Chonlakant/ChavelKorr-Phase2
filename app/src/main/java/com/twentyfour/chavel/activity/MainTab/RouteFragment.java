@@ -1,14 +1,10 @@
 package com.twentyfour.chavel.activity.MainTab;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -17,20 +13,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TabHost;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.fragment.OverviewFragment;
 import com.twentyfour.chavel.fragment.PinsFragment;
-import com.twentyfour.chavel.fragment.SearchFragment;
-import com.twentyfour.chavel.fragment.TabMyRouteFragment;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.Bind;
 
 
 public class RouteFragment extends Fragment  {
@@ -115,9 +106,9 @@ public class RouteFragment extends Fragment  {
         ls_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i =new Intent(getActivity(),AddPinActivity.class);
+//                Intent i =new Intent(getActivity(),AddPinFragment.class);
 //                startActivity(i);
-                AddPinActivity addPinActivity = new AddPinActivity();
+                AddPinFragment addPinActivity = new AddPinFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container8, addPinActivity);
                 transaction.addToBackStack(null);
@@ -142,11 +133,11 @@ public class RouteFragment extends Fragment  {
         ls_save_lin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i =new Intent(getActivity(),AddPinActivity.class);
+//                Intent i =new Intent(getActivity(),AddPinFragment.class);
 //                startActivity(i);
 
 
-                AddPinActivity addPinActivity = new AddPinActivity();
+                AddPinFragment addPinActivity = new AddPinFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container8, addPinActivity);
                 transaction.addToBackStack(null);

@@ -68,9 +68,9 @@
         <activity android:name=".activity.MainTab.RouteFragment" />
         <activity android:name=".activity.SettingSystemActivity" />
         <!--P65-->
-        <activity android:name=".activity.MainTab.AddPinActivity" />
+        <activity android:name=".activity.MainTab.AddPinFragment" />
         <!--p65-->
-        <activity android:name=".activity.MainTab.EditPinActivity"/>
+        <activity android:name=".activity.MainTab.EditPinFragment"/>
         <activity android:name=".activity.MainTab.CrossProvinceActivity" />
         <activity android:name=".activity.MainTab.LocationAddActivity" />
 

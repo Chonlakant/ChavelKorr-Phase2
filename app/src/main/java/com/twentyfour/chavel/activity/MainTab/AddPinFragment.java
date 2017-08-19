@@ -2,12 +2,8 @@ package com.twentyfour.chavel.activity.MainTab;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,10 +13,9 @@ import com.twentyfour.chavel.R;
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 
-public class AddPinActivity extends Fragment {
+public class AddPinFragment extends Fragment {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -28,15 +23,18 @@ public class AddPinActivity extends Fragment {
     ImageView btn_expand_toggle;
     private ExpandableLayout expandableLayout0;
 
+    ImageView img_next;
 
-    public static AddPinActivity newInstance() {
-        return new AddPinActivity();
+
+    public static AddPinFragment newInstance() {
+        return new AddPinFragment();
     }
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.add_pin_activity, container, false);
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        img_next = (ImageView) rootView.findViewById(R.id.img_next);
         expandableLayout0 = (ExpandableLayout) rootView.findViewById(R.id.expandable_layout_0);
         btn_expand_toggle = (ImageView) rootView.findViewById(R.id.btn_expand_toggle);
 
@@ -62,6 +60,17 @@ public class AddPinActivity extends Fragment {
                     expandableLayout0.expand();
                     btn_expand_toggle.setImageResource(R.drawable.ic_up);
                 }
+            }
+        });
+
+        img_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditPinFragment editPinActivity = new EditPinFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container8, editPinActivity);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
         return rootView;

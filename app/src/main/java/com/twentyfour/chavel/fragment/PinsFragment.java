@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.MainTab.EditPinActivity;
+import com.twentyfour.chavel.activity.MainTab.EditPinFragment;
 import com.twentyfour.chavel.adapter.PinsAdapter;
 import com.twentyfour.chavel.model.ModelPins;
 
@@ -56,8 +56,15 @@ public class PinsFragment extends Fragment {
         pinsAdapter.setOnItemClickListener(new PinsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View viewj, int position) {
-                Intent i = new Intent(getActivity(), EditPinActivity.class);
-                startActivity(i);
+
+                EditPinFragment editPinActivity = new EditPinFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container9, editPinActivity);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+//                Intent i = new Intent(getActivity(), EditPinFragment.class);
+//                startActivity(i);
             }
         });
 
