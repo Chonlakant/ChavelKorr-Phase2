@@ -48,7 +48,7 @@ public class NewRouteTapFragment extends AppCompatActivity {
     private void setupViewPager2(ViewPager viewPager2) {
         ViewPagerAdapter adapter2 = new ViewPagerAdapter(getSupportFragmentManager());
         adapter2.insertNewFragment(new NewRouteFragment());
-        adapter2.insertNewFragment(new NewRouteFragment());
+        adapter2.insertNewFragment(new RouteDetailsFragment());
         viewPager2.setAdapter(adapter2);
 
     }

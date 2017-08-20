@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
@@ -21,6 +22,7 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
 
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
+    private OnItemClickImageListener mOnItemClickImageListener;
 
     public interface OnItemClickListener {
         void onItemClick(View viewj, int position);
@@ -30,19 +32,28 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
         this.mOnItemClickListener = mItemClickListener;
     }
 
+    public interface OnItemClickImageListener {
+        void onItemClickImage(View viewj, int position);
+    }
+
+    public void setOnItemClickImageListener(final OnItemClickImageListener mOnItemClickImageListener) {
+        this.mOnItemClickImageListener = mOnItemClickImageListener;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView txt_pins;
         public TextView txt_title_pins;
         public ImageView image;
-
+        public RelativeLayout rl_image;
 
         public ViewHolder(View v) {
             super(v);
             txt_pins = (TextView) v.findViewById(R.id.txt_pins);
             txt_title_pins = (TextView) v.findViewById(R.id.txt_title_pins);
+            rl_image = (RelativeLayout) v.findViewById(R.id.rl_image);
             txt_pins.setOnClickListener(this);
-
+            rl_image.setOnClickListener(this);
         }
 
         @Override
@@ -52,6 +63,12 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
                 case R.id.txt_pins:
                     if (mOnItemClickListener != null) {
                         mOnItemClickListener.onItemClick(v, getPosition());
+                    }
+                    break;
+
+                case R.id.rl_image:
+                    if (mOnItemClickImageListener != null) {
+                        mOnItemClickImageListener.onItemClickImage(v, getPosition());
                     }
                     break;
 

@@ -154,6 +154,14 @@ public class UserProfileFragment extends AppCompatActivity {
             }
         });
 
+        ls_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SettingSystemActivity.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 
@@ -188,7 +196,7 @@ public class UserProfileFragment extends AppCompatActivity {
 
 
         switch (item.getItemId()) {
-            case R.id.action_search:
+            case R.id.action_settings:
 
                 Intent i = new Intent(getApplicationContext(), SettingSystemActivity.class);
                 startActivity(i);

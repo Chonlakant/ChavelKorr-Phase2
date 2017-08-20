@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -32,7 +33,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class TabMyRouteFragment extends FragmentActivity {
+public class TabMyRouteFragment extends AppCompatActivity {
 
     RecyclerView ryc;
     HomeFeedAdapter homeFeedAdapter;
@@ -76,7 +77,7 @@ public class TabMyRouteFragment extends FragmentActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         ryc.setLayoutManager(llm);
 
-        dialogShare = new Dialog(getApplicationContext(), R.style.FullHeightDialog);
+        dialogShare = new Dialog(TabMyRouteFragment.this, R.style.FullHeightDialog);
         dialogShare.setContentView(R.layout.dialog_share);
 
         txt_route = (TextView) dialogShare.findViewById(R.id.txt_route);
