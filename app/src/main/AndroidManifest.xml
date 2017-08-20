@@ -36,10 +36,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainTabActivity">
+        <activity android:name=".MainActivity">
 
         </activity>
         <activity android:name=".SettingSystemActivity" />
+
+
 
         <!-- Login Register Zone -->
         <!-- np 95.1 -->
@@ -64,7 +66,6 @@
         <activity
             android:name=".activity.LoginRegister.WhatsBirthDayActivity"
             android:windowSoftInputMode="adjustPan" >
-
         </activity>
 
         <activity android:name=".activity.LoginRegister.SettingsAddPhotoActivity" >
@@ -76,18 +77,18 @@
         <activity android:name=".activity.LoginRegister.FindContactFacebookFriendsActivity" />
         <activity android:name=".activity.LoginRegister.FindContactFriendsActivity" />
         <activity android:name=".activity.LoginRegister.FollowUserActivity" />
+        <activity android:name=".activity.LoginRegister.SuggestionActivity" />
 
         <activity android:name=".activity.UnusedChooseCountryActivity" />
 
         <!-- Main Tab Zone -->
-        <activity android:name=".activity.MainTab.RouteActivity" />
 
         <activity android:name=".activity.MainTab.AddPinActivity" />
         <activity android:name=".activity.MainTab.PeriodTimeActivity" />
         <activity android:name=".activity.MainTab.BudgetActivity" />
         <activity android:name=".activity.MainTab.CrossProvinceActivity" />
         <activity android:name=".activity.MainTab.SelectActivityActivity" />
-        <activity android:name=".activity.LoginRegister.SuggestionActivity" />
+
         <activity android:name=".activity.MainTab.LocationActivity" />
         <activity android:name=".activity.MainTab.LocationAddActivity" />
         <activity android:name=".activity.MainTab.SelectTravelMethodActivity" />
@@ -102,9 +103,11 @@
         <activity android:name=".activity.LoginRegister.ProfileActivity" />
         <activity android:name=".activity.MainTab.CommentActivity" />
         <activity
-            android:name=".service.BaseActivity"
+            android:name=".BaseActivity"
             android:label="@string/title_activity_base"
             android:theme="@style/AppTheme"></activity>
+
+
     </application>
 
 </manifest>

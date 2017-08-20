@@ -3,7 +3,7 @@
     <style name="AppTheme" parent="BaseTheme" />
 
     <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/whitePrimary</item>
+        <item name="android:windowBackground">@color/transparent</item>
         <!--<item name="android:background">@color/tab_background</item>-->
         <!--<item name="colorPrimary">@color/colorPrimary</item> -->
         <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item> -->
@@ -24,11 +24,11 @@
     </style>
 
     <style name="BaseThemeActionbar" parent="Theme.AppCompat.Light">
-        <item name="android:windowBackground">@color/whitePrimary</item>
+        <item name="android:windowBackground">@color/transparent</item>
     </style>
 
     <style name="Widget.MyApp.Toolbar.Solid" parent="Widget.AppCompat.ActionBar">
-        <item name="android:windowBackground">@color/whitePrimary</item>
+        <item name="android:windowBackground">@color/transparent</item>
         <item name="android:elevation" tools:ignore="NewApi">4dp</item>
         <item name="android:textColorPrimary">@color/textColorTitle</item>
     </style>
@@ -36,7 +36,7 @@
     <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
         <!-- Parent theme sets colorControlNormal to textColorPrimary. -->
         <item name="android:textColorPrimary">@color/textColorTitle</item>
-        <item name="android:windowBackground">@color/whitePrimary</item>
+        <item name="android:windowBackground">@color/transparent</item>
     </style>
 
     <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">

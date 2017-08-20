@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.AdvanceSearchActivity;
 import com.twentyfour.chavel.adapter.SearchRouteAdapter;
@@ -31,6 +32,12 @@ public class SearchFragment extends Fragment {
 
     ArrayList<Search> listProfile = new ArrayList<>();
     ArrayList<Search> listRoute = new ArrayList<>();
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)getActivity()).showToolbar();
+    }
 
 
     @Override

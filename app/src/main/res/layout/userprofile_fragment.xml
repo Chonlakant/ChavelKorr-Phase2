@@ -238,7 +238,7 @@
                         <ImageView
                             android:id="@+id/my_route"
                             android:layout_width="32dp"
-                            android:layout_height="32dp"
+                            android:layout_height="wrap_content"
                             android:src="@drawable/ic_route_tab"
                             android:layout_marginTop="5dp"
                             />
@@ -280,7 +280,7 @@
                             android:id="@+id/txt_fav_route"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Favorite Route (15)"
+                            android:text="Favorite (15)"
                             android:textSize="10dp" />
 
                     </LinearLayout>

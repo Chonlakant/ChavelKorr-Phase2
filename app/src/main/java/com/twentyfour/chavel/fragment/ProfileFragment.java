@@ -16,14 +16,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.MainTab.CommentActivity;
 import com.twentyfour.chavel.activity.MainTab.EditProfileActivity;
 import com.twentyfour.chavel.activity.LoginRegister.ProfileActivity;
 import com.twentyfour.chavel.SettingSystemActivity;
 
 
-public class UserProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
     TextView txt_status;
     TextView txt_activity;
@@ -37,6 +37,13 @@ public class UserProfileFragment extends Fragment {
     ImageView photo;
 
     boolean isFollowing = false;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)getActivity()).hideToolbar();
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -69,7 +76,7 @@ public class UserProfileFragment extends Fragment {
                 transaction.replace(R.id.fragment_container2, fragment);
                 transaction.commit();
 
-                String styledTextActivity = "<u><font color='#cccccc'>Favorite</font></u>";
+                String styledTextActivity = "<u><font color='#aaa'>Activity</font></u>";
                 txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
 
             }
@@ -79,7 +86,7 @@ public class UserProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                TabMyRouteFragment fragment = new TabMyRouteFragment();
+                HomeFragment fragment = new HomeFragment();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container2, fragment);
                 transaction.commit();
@@ -93,17 +100,14 @@ public class UserProfileFragment extends Fragment {
         ls_fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                TabMyRouteFragment fragment = new TabMyRouteFragment();
-//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.fragment_container2, fragment);
-//                transaction.commit();
-//
-//                String styledTextActivity = "<u><font color='#aaa'>Favorite</font></u>";
-//                txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
-//                ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting1, null));
+                HomeFragment fragment = new HomeFragment();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container2, fragment);
+                transaction.commit();
 
-                Intent i = new Intent(getActivity(), CommentActivity.class);
-                startActivity(i);
+                String styledTextActivity = "<u><font color='#aaa'>Favorite</font></u>";
+                txt_status.setText(Html.fromHtml(styledTextActivity), TextView.BufferType.SPANNABLE);
+                ls_activity.setBackground(getResources().getDrawable(R.drawable.bg_selected_setting1, null));
 
             }
         });

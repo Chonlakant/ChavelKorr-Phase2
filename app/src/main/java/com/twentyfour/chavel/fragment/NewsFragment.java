@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.fragment.TabActivityFragment;
 
@@ -21,7 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class NotiFragment extends Fragment {
+public class NewsFragment extends Fragment {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -30,6 +31,13 @@ public class NotiFragment extends Fragment {
     ViewPager viewPagerNoti;
 
     String[] iconsNoti = {"Following", "You"};
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)getActivity()).hideToolbar();
+
+    }
 
 
     @Override

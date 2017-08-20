@@ -1,22 +1,16 @@
 package com.twentyfour.chavel.activity.LoginRegister;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.LoginRegister.FindContactFriendsActivity;
-import com.twentyfour.chavel.activity.LoginRegister.LoginActivity;
-import com.twentyfour.chavel.activity.LoginRegister.RegisterActivity;
-import com.twentyfour.chavel.service.BaseActivity;
+import com.twentyfour.chavel.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class LandingActivity extends BaseActivity {
 

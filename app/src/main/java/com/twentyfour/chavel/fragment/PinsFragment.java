@@ -1,5 +1,6 @@
 package com.twentyfour.chavel.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.fragment.EditPinFragment;
+import com.twentyfour.chavel.activity.MainTab.PinDetailsFragment;
 import com.twentyfour.chavel.adapter.PinsAdapter;
 import com.twentyfour.chavel.model.ModelPins;
 
@@ -22,6 +25,16 @@ public class PinsFragment extends Fragment {
     ArrayList<ModelPins> list = new ArrayList<>();
 
     RecyclerView mRecyclerView;
+
+    public PinsFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +53,33 @@ public class PinsFragment extends Fragment {
 
         pinsAdapter = new PinsAdapter(getActivity(), list);
         mRecyclerView.setAdapter(pinsAdapter);
+
+        pinsAdapter.setOnItemClickListener(new PinsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View viewj, int position) {
+
+                EditPinFragment editPinActivity = new EditPinFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container9, editPinActivity);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+//                Intent i = new Intent(getActivity(), EditPinFragment.class);
+//                startActivity(i);
+            }
+        });
+
+
+        pinsAdapter.setOnItemClickImageListener(new PinsAdapter.OnItemClickImageListener() {
+            @Override
+            public void onItemClickImage(View viewj, int position) {
+                PinDetailsFragment pinDetailsFragment = new PinDetailsFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container9, pinDetailsFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
         return view;
     }

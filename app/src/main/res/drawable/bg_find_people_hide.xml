@@ -18,6 +18,6 @@
         android:top="3dp"
         android:bottom="3dp"/>
 
-    <solid android:color="@color/whitePrimary"/>
+    <solid android:color="@color/transparent"/>
 
 </shape>

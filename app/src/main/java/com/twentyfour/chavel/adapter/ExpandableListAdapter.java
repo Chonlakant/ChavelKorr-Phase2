@@ -1,6 +1,7 @@
 package com.twentyfour.chavel.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.model.ModelPins;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,65 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private List<Item> data;
     private List<String> listStr = new ArrayList<>();
+
+    public static OnItemClickLikeListener mOnItemClickLikeListener;
+    public static OnItemClickShListener mOnItemClickShListener;
+    public static OnItemClickCommentListener mOnItemClickCommentListener;
+    public static OnItemClickPhotoListener mOnItemClickPhotoListener;
+    public static OnItemClickUsernameListener mOnItemClickUsernameListener;
+    public static OnItemClickRouteTitleListener mOnItemClickRouteTitleListener;
+
+
+
+    public interface OnItemClickLikeListener {
+        void onItemLikeClick(View view, int position);
+    }
+
+    public void setOnItemClickLikeListener(final OnItemClickLikeListener mItemClickLikeListener) {
+        this.mOnItemClickLikeListener = mItemClickLikeListener;
+    }
+
+    public interface OnItemClickShListener {
+        void onItemShClick(View view, int position);
+    }
+
+    public void setOnItemClickShListener(final OnItemClickShListener mItemClickShListener) {
+        this.mOnItemClickShListener = mItemClickShListener;
+    }
+
+    public interface OnItemClickCommentListener {
+        void onItemCommentClick(View view, int position);
+    }
+
+    public void setOnItemClickCommentListener(final OnItemClickCommentListener mOnItemClickCommentListener) {
+        this.mOnItemClickCommentListener = mOnItemClickCommentListener;
+    }
+
+
+    public interface OnItemClickPhotoListener {
+        void onItemPhotoClick(View view, int position);
+    }
+
+    public void setOnItemClickPhotoListener(final OnItemClickPhotoListener mOnItemClickPhotoListener) {
+        this.mOnItemClickPhotoListener = mOnItemClickPhotoListener;
+    }
+
+    public interface OnItemClickUsernameListener {
+        void onItemUsernameClick(View view, int position);
+    }
+
+    public void setOnItemClickUsernameListener(final OnItemClickUsernameListener mOnItemClickUsernameListener) {
+        this.mOnItemClickUsernameListener = mOnItemClickUsernameListener;
+    }
+
+    public interface OnItemClickRouteTitleListener {
+        void onItemRouteTitleClick(View view, int position);
+    }
+
+    public void setOnItemClickRouteTitleListener(final OnItemClickRouteTitleListener mOnItemClickRouteTitleListener) {
+        this.mOnItemClickRouteTitleListener = mOnItemClickRouteTitleListener;
+    }
+
 
 
     public ExpandableListAdapter(List<Item> data, Context context) {
@@ -93,6 +154,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                         }
                     }
                 });
+
                 break;
             case CHILD:
                 position = (position + 1) / 2;
@@ -114,7 +176,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 listStr.add("");
                 listStr.add("");
                 listStr.add("");
-                    imageFeedHomeAdapter = new ImageFeedHomeAdapter(context, listStr);
+                imageFeedHomeAdapter = new ImageFeedHomeAdapter(context, listStr);
                 //}
 
                 itemContent.ryc.setAdapter(imageFeedHomeAdapter);
@@ -135,20 +197,69 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return data.size();
     }
 
-    private static class ListHeaderViewHolder extends RecyclerView.ViewHolder {
+    private static class ListHeaderViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView header_title;
         public Item refferalItem;
         public ImageView btn_expand_toggle;
+        public ImageView img_comments;
+        public ImageView img_like;
+        public ImageView img_sh;
+        public ImageView photo;
 
         public ListHeaderViewHolder(View itemView) {
             super(itemView);
             header_title = (TextView) itemView.findViewById(R.id.header_title);
-
+            img_comments = (ImageView) itemView.findViewById(R.id.img_comments);
+            photo = (ImageView) itemView.findViewById(R.id.photo);
+            img_like = (ImageView) itemView.findViewById(R.id.img_like);
+            img_sh = (ImageView) itemView.findViewById(R.id.img_sh);
             btn_expand_toggle = (ImageView) itemView.findViewById(R.id.btn_expand_toggle);
+
+            img_like.setOnClickListener(this);
+            img_comments.setOnClickListener(this);
+            img_sh.setOnClickListener(this);
+            photo.setOnClickListener(this);
+            header_title.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.img_like:
+                    if (mOnItemClickLikeListener != null) {
+                        mOnItemClickLikeListener.onItemLikeClick(v, getPosition());
+                    }
+                    break;
+
+                case R.id.img_comments:
+                    if (mOnItemClickCommentListener != null) {
+                        mOnItemClickCommentListener.onItemCommentClick(v, getPosition());
+                    }
+                    break;
+
+                case R.id.img_sh:
+                    if (mOnItemClickShListener != null) {
+                        mOnItemClickShListener.onItemShClick(v, getPosition());
+                    }
+                    break;
+                case R.id.photo:
+                    if (mOnItemClickPhotoListener != null) {
+                        mOnItemClickPhotoListener.onItemPhotoClick(v, getPosition());
+                    }
+                    break;
+
+                case R.id.header_title:
+                    if (mOnItemClickRouteTitleListener != null) {
+                        mOnItemClickRouteTitleListener.onItemRouteTitleClick(v, getPosition());
+                    }
+                    break;
+
+
+            }
         }
     }
 
-    private static class ListContentViewHolder extends RecyclerView.ViewHolder {
+    private static class ListContentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView text_create;
         public TextView txt_catgory;
         public TextView txt_by_username;
@@ -163,6 +274,20 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             txt_by_username = (TextView) itemView.findViewById(R.id.txt_by_username);
             txt_msg = (TextView) itemView.findViewById(R.id.txt_msg);
             ryc = (RecyclerView) itemView.findViewById(R.id.ryc);
+            txt_by_username.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.txt_by_username:
+                    if (mOnItemClickUsernameListener != null) {
+                        mOnItemClickUsernameListener.onItemUsernameClick(v, getPosition());
+                    }
+                    break;
+
+            }
         }
     }
 

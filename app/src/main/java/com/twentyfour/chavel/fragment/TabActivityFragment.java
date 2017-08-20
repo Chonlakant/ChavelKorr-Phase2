@@ -40,8 +40,6 @@ public class TabActivityFragment extends Fragment {
             mRecyclerView.setAdapter(myActivityProfileAdapter);
         }
 
-
-
         return view;
     }
 }

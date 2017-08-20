@@ -19,8 +19,6 @@ public class EditProfileActivity extends AppCompatActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +36,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-
-
     }
 
     @Override

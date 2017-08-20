@@ -2,7 +2,6 @@ package com.twentyfour.chavel.activity.LoginRegister;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,8 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.LoginRegister.WhatsBirthDayActivity;
-import com.twentyfour.chavel.service.BaseActivity;
+import com.twentyfour.chavel.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

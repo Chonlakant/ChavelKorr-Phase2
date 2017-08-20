@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.twentyfour.chavel.MainTabActivity;
+import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
 
 import butterknife.Bind;
@@ -26,7 +26,7 @@ public class FollowUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow);
 
-        Intent i = new Intent(getApplicationContext(), MainTabActivity.class);
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,7 +47,7 @@ public class FollowUserActivity extends AppCompatActivity {
         ls_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainTabActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
             }
         });

@@ -9,11 +9,17 @@
     <color name="colorUnSelect">#848889</color>
 
     <color name="textColorTitle">#666666</color>
-    <color name="whitePrimary">#ffffffff</color>
-    <color name="black">#00000000</color>
+
+
+    <color name="whitePrimary">#ffffff</color>
+    <color name="transparent">#ffffffff</color>
+    <color name="black_transparent">#00000000</color>
+    <color name="black_25_transparent">#44000000</color>
 
     <color name="tab_border">#a7a7aa</color>
     <color name="tab_background">#f6f6f7</color>
+
+
 
     <color name="tabMedium">#2B2B2B</color>
     <color name="tabDark">#000000</color>

@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.hbb20.CountryCodePicker;
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.service.BaseActivity;
+import com.twentyfour.chavel.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

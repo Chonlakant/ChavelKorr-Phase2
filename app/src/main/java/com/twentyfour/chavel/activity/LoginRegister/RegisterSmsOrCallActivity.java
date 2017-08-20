@@ -1,12 +1,11 @@
 package com.twentyfour.chavel.activity.LoginRegister;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.service.BaseActivity;
+import com.twentyfour.chavel.BaseActivity;
 
 
 public class RegisterSmsOrCallActivity extends BaseActivity {
