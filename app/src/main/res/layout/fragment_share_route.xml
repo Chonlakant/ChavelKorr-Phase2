@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/share_route_tablayout"
+        style="@style/MyCustomTabDefaultLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/grey_soft"
+        app:tabGravity="fill"
+        app:tabMode="fixed" />
+
+    <FrameLayout
+        android:id="@+id/share_route_frame"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+</LinearLayout>
+

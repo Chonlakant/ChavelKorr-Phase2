@@ -1,4 +1,4 @@
-package com.twentyfour.chavel.activity.MainTab;
+package com.twentyfour.chavel.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -1,7 +1,6 @@
 package com.twentyfour.chavel;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
@@ -12,7 +11,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.twentyfour.chavel.fragment.NewsFragment;
-import com.twentyfour.chavel.fragment.ShareFragment;
+import com.twentyfour.chavel.fragment.PageFriendFragment;
+import com.twentyfour.chavel.fragment.PageProfileFragment;
+import com.twentyfour.chavel.fragment.ShareRouteFragment;
 import com.twentyfour.chavel.fragment.HomeFragment;
 import com.twentyfour.chavel.fragment.SearchFragment;
 import com.twentyfour.chavel.fragment.ProfileFragment;
@@ -37,7 +38,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
 
     private HomeFragment f_home;
     private SearchFragment f_search;
-    private ShareFragment f_location;
+    private ShareRouteFragment f_location;
     private NewsFragment f_notif;
     private ProfileFragment f_user;
 
@@ -310,11 +311,13 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
             case FragNavController.TAB2:
                 return new SearchFragment();
             case FragNavController.TAB3:
-                return new ShareFragment();
+                return new ShareRouteFragment();
             case FragNavController.TAB4:
-                return new NewsFragment();
+                //return new NewsFragment();
+                return new PageFriendFragment();
             case FragNavController.TAB5:
-                return new ProfileFragment();
+                //return new ProfileFragment();
+                return new PageProfileFragment();
 
 
         }

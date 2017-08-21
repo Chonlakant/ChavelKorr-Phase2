@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.twentyfour.chavel.R;
 
 
-public class SettingSystemActivity extends AppCompatActivity {
+public class SettingSystemActivity extends BaseActivity {
 
     Toolbar toolbar;
 

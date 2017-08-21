@@ -35,7 +35,7 @@ public class WhatsYourEmailActivity extends BaseActivity {
         setContentView(R.layout.activity_whats_email);
 
         ButterKnife.bind(this);
-        toolbar.setTitle("WhatsYourEmail");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));

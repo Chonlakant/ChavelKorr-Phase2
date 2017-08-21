@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.adapter.OrverViewPinAdapter;
+import com.twentyfour.chavel.adapter.OverViewPinAdapter;
 import com.twentyfour.chavel.model.Search;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class OverViewPinsActivity extends AppCompatActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-    OrverViewPinAdapter searchAdapter;
+    OverViewPinAdapter searchAdapter;
     RecyclerView recyclerView;
 
 
@@ -64,7 +64,7 @@ public class OverViewPinsActivity extends AppCompatActivity {
             modelPins.setImageUrl("http://2.bp.blogspot.com/-xRdb6iiVKec/TviHLTZT4qI/AAAAAAAAJ2g/Cn8FJsLEczQ/s1600/wallpapers-cafe.blogspot.com%2B%25252823%252529.jpg");
             list.add(modelPins);
 
-            searchAdapter = new OrverViewPinAdapter(getApplicationContext(), list);
+            searchAdapter = new OverViewPinAdapter(getApplicationContext(), list);
             recyclerView.setAdapter(searchAdapter);
         }
 

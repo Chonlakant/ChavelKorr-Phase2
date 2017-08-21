@@ -36,7 +36,6 @@ public class NewsFragment extends Fragment {
     public void onResume() {
         super.onResume();
         ((MainActivity)getActivity()).hideToolbar();
-
     }
 
 

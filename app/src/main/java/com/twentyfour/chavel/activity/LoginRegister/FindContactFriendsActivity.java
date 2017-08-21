@@ -21,12 +21,7 @@ public class FindContactFriendsActivity extends BaseActivity {
     @Bind(R.id.ls_follow)
     LinearLayout ls_follow;
 
-    @OnClick(R.id.ls_follow)
-    void next(View view) {
-        Toast.makeText(this, "Follow all friends", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(getApplicationContext(), WhatsBirthDayActivity.class);
-        startActivity(i);
-    }
+
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -46,6 +41,15 @@ public class FindContactFriendsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        ls_follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Follow all friends", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), WhatsBirthDayActivity.class);
+                startActivity(i);
             }
         });
 

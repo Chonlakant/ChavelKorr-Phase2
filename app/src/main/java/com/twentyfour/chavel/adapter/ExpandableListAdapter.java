@@ -116,7 +116,12 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         return null;
     }
 
+    @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        onBindHolder(holder,position);
+    }
+
+    public void onBindHolder(RecyclerView.ViewHolder holder, int position) {
         final Item item = data.get(position);
         switch (item.type) {
             case HEADER:

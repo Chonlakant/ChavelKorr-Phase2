@@ -10,6 +10,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -21,7 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class CreateUserIdActivity extends BaseActivity {
+public class  CreateUserIdActivity extends BaseActivity {
 
     @Bind(R.id.ls_next)
     LinearLayout ls_next;
@@ -40,7 +41,7 @@ public class CreateUserIdActivity extends BaseActivity {
 
         if(toolbar != null) {
 
-            toolbar.setTitle("Create User ID");
+            toolbar.setTitle("");
             toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
             toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
             toolbar.setNavigationIcon(R.drawable.ic_back);
@@ -111,4 +112,8 @@ public class CreateUserIdActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 }

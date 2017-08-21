@@ -46,7 +46,7 @@ public class RegisterByPhoneAndEmailActivity extends BaseActivity {
 
         countryCodePicker = (CountryCodePicker) findViewById(R.id.ccp);
 
-        toolbar.setTitle("PHONE AND EMAIL");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));

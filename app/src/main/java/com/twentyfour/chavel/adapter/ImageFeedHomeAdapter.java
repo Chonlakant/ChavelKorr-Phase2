@@ -53,7 +53,7 @@ public class ImageFeedHomeAdapter extends RecyclerView.Adapter<ImageFeedHomeAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         final String c = list.get(position);
 
 
@@ -62,13 +62,14 @@ public class ImageFeedHomeAdapter extends RecyclerView.Adapter<ImageFeedHomeAdap
 
         Log.e("url",url);
 
-                Glide.with(ctx)
+        Glide.with(ctx)
                 .load(a[position]).override(100, 100)
-                        .centerCrop()
-                        .error(R.drawable.profile_photo)
-                        .into(holder.img_cover);
-
+                .centerCrop()
+                .error(R.drawable.profile_photo)
+                .into(holder.img_cover);
     }
+
+
 
     @Override
     public int getItemCount() {

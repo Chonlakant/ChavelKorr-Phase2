@@ -47,7 +47,7 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.userprofile_fragment, null);
+        View view = inflater.inflate(R.layout.profile_fragment, null);
         setHasOptionsMenu(true);
         photo = (ImageView) view.findViewById(R.id.photo);
         txt_status = (TextView) view.findViewById(R.id.txt_status);

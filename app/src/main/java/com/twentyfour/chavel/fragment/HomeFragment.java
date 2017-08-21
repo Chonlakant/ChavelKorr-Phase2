@@ -13,10 +13,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.twentyfour.chavel.BaseFragment;
 import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.LoginRegister.ProfileActivity;
 import com.twentyfour.chavel.activity.MainTab.CommentActivity;
+import com.twentyfour.chavel.activity.UserProfileActivity;
 import com.twentyfour.chavel.adapter.ExpandableListAdapter;
 import com.twentyfour.chavel.adapter.HomeFeedAdapter;
 import com.twentyfour.chavel.api.Apis;
@@ -31,7 +33,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     RecyclerView ryc;
     HomeFeedAdapter homeFeedAdapter;
@@ -191,12 +193,13 @@ public class HomeFragment extends Fragment {
                             public void onItemPhotoClick(View view, int position) {
                                 Intent i = new Intent(getActivity(), ProfileActivity.class);
                                 startActivity(i);
+
                             }
                         });
                         expandableListAdapter.setOnItemClickUsernameListener(new ExpandableListAdapter.OnItemClickUsernameListener() {
                             @Override
                             public void onItemUsernameClick(View view, int position) {
-                                Intent i = new Intent(getActivity(), ProfileActivity.class);
+                                Intent i = new Intent(getActivity(), UserProfileActivity.class);
                                 startActivity(i);
                             }
                         });

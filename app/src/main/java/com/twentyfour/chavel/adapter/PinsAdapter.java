@@ -94,12 +94,12 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         final ModelPins c = list.get(position);
         holder.txt_pins.setText(c.getPins());
         holder.txt_title_pins.setText(c.getTitlePins());
-
     }
+
 
     @Override
     public int getItemCount() {

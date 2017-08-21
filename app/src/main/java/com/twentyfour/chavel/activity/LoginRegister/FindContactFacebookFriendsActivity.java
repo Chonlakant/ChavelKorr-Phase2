@@ -21,13 +21,6 @@ public class FindContactFacebookFriendsActivity extends BaseActivity {
     @Bind(R.id.ls_follow)
     LinearLayout ls_follow;
 
-    @OnClick(R.id.ls_follow)
-    void next(View view) {
-        Toast.makeText(this, "Follow all friends", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(getApplicationContext(), WhatsBirthDayActivity.class);
-        startActivity(i);
-    }
-
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
@@ -37,7 +30,7 @@ public class FindContactFacebookFriendsActivity extends BaseActivity {
         setContentView(R.layout.activity_facebook);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("FindContactFacebookFriends");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
@@ -46,6 +39,15 @@ public class FindContactFacebookFriendsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        ls_follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Follow all friends", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), WhatsBirthDayActivity.class);
+                startActivity(i);
             }
         });
 

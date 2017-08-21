@@ -66,13 +66,13 @@ public class RouteHistoryAdapter extends RecyclerView.Adapter<RouteHistoryAdapte
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         final ModelActivityProfile c = list.get(position);
         holder.text_name.setText(c.getTitle());
-      //  holder.txt_content.setText(c.getContent());
+        //  holder.txt_content.setText(c.getContent());
         holder.txt_time.setText(c.getTime());
-
     }
+
 
     @Override
     public int getItemCount() {

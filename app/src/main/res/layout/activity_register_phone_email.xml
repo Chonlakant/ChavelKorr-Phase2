@@ -79,10 +79,6 @@
                 app:ccp_autoDetectCountry="true"
                 app:ccp_defaultNameCode="us" />
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="40dp"
-                android:background="#848889" />
 
 
             <LinearLayout

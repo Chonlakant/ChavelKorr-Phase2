@@ -63,12 +63,10 @@ public class HomeFeedAdapter extends RecyclerView.Adapter<HomeFeedAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
-        final HomeFeed c = list.get(position);
-
-
+    public void onBindViewHolder(ViewHolder holder, int position) {
 
     }
+
 
     @Override
     public int getItemCount() {

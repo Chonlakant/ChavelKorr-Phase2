@@ -25,10 +25,10 @@
     <color name="tabDark">#000000</color>
     <color name="tabTransparent">#10ffffff</color>
 
+    <color name="grey_dark">#262626</color>
     <color name="grey_hard">#96989A</color>
     <color name="grey_medium">#BDBFC1</color>
     <color name="grey_soft">#F5F5F5</color>
-
     <color name="grey_bg">#E6E6E6</color>
     <color name="grey_text">#222D31</color>
     <color name="tab_indicator_color">#10a9e3</color>
@@ -39,9 +39,27 @@
     <color name="darkOverlaySoft1">#f2f2f2</color>
     <color name="whiteOverlay">#40FFFFFF</color>
 
+    <color name="facebook">#395997</color>
+
+    <color name="style_color_primary">#2d5d82</color>
+    <color name="style_color_primary_dark">#21425d</color>
+    <color name="style_color_accent">#01bcd5</color>
+
+    <color name="fab_color_pressed">#007787</color>
+    <color name="fab_color_shadow">#44000000</color>
+
+    <color name="btn_default_light_normal">#00000000</color>
+    <color name="btn_default_light_pressed">#40ffffff</color>
+    <color name="btn_send_normal">#02c754</color>
+    <color name="btn_send_pressed">#006633</color>
+    <color name="btn_default_shadow">#99000000</color>
+    <color name="btn_context_menu_normal">#ffffff</color>
+    <color name="btn_context_menu_pressed">#40000000</color>
+    <color name="btn_context_menu_text_red">#ffff0000</color>
+
     <color name="text_like_counter">#2b5a83</color>
 
-    <color name="facebook">#395997</color>
+    <color name="bg_comments">#ffffff</color>
 
 
 </resources>

@@ -1,6 +1,5 @@
 package com.twentyfour.chavel.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.fragment.EditPinFragment;
-import com.twentyfour.chavel.activity.MainTab.PinDetailsFragment;
 import com.twentyfour.chavel.adapter.PinsAdapter;
 import com.twentyfour.chavel.model.ModelPins;
 

@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
+
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:theme="@style/MyToolbarStyle"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize">
+
+    </android.support.v7.widget.Toolbar>
 
     <View
+        android:background="@color/grey_medium"
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/grey_hard" />
+        android:layout_height="0.5dp"/>
+
+
 
 </LinearLayout>
 

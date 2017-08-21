@@ -64,7 +64,7 @@ public class SearchProfileAdapter extends RecyclerView.Adapter<SearchProfileAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         final Search c = list.get(position);
 
 
@@ -72,8 +72,9 @@ public class SearchProfileAdapter extends RecyclerView.Adapter<SearchProfileAdap
                 .load(c.getImageUrl())
                 .into(holder.img_cover);
         ;
-
     }
+
+
 
     @Override
     public int getItemCount() {
