@@ -56,7 +56,7 @@ public class RegisterActivity extends BaseActivity {
         ll_create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CreateUserIdActivity.class);
+                Intent i = new Intent(getApplicationContext(), WhatTheNameActivity.class);
                 startActivity(i);
             }
         });

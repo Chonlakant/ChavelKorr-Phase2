@@ -10,19 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#646464" />
-    <LinearLayout
+    <TextView
+        android:text="P136"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="np85" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/fragment_container2"
@@ -91,7 +83,7 @@
                                 android:layout_width="150dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="center"
-                                android:background="@drawable/bg_selected_user"
+                                android:background="@drawable/bg_btn_follow_"
                                 android:gravity="center">
 
                                 <TextView
@@ -100,9 +92,9 @@
                                     android:layout_gravity="center"
                                     android:gravity="center"
                                     android:text="Follow"
-                                    android:textColor="#ffffff"
+                                    android:textColor="#000000"
                                     android:textSize="20dp"
-                                    android:textStyle="bold" />
+                                   />
 
                             </LinearLayout>
 

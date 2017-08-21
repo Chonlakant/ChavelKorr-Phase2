@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
+import com.twentyfour.chavel.activity.MainTab.CrossProvinceActivity;
+import com.twentyfour.chavel.activity.MainTab.LocationAddActivity;
 import com.twentyfour.chavel.activity.MainTab.RouteDescriptionFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteNameFragment;
@@ -46,7 +48,9 @@ public class NewRouteFragment extends Fragment {
     EditText dt_route_descrition;
     EditText dt_name;
     TextView dt_details;
-    LinearLayout ls_budget;
+    LinearLayout ls_budget,ls_cover;
+    TextView txt_rout_name;
+    TextView txt_loction;
 
 
     @Override
@@ -55,8 +59,9 @@ public class NewRouteFragment extends Fragment {
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         View view = inflater.inflate(R.layout.fragment_new_route, null);
-
-
+        ls_cover = (LinearLayout) view.findViewById(R.id.ls_cover);
+        txt_rout_name = (TextView) view.findViewById(R.id.txt_rout_name);
+        txt_loction = (TextView) view.findViewById(R.id.txt_loction);
         expandableLayout0 = (ExpandableLayout) view.findViewById(R.id.expandable_layout_0);
 
         imf_next = (ImageView) view.findViewById(R.id.imf_next);
@@ -86,6 +91,27 @@ public class NewRouteFragment extends Fragment {
             views.get(i).setFocusable(false);
             views.get(i).setClickable(true);
         }
+
+        txt_loction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CrossProvinceActivity crossProvinceActivity = new CrossProvinceActivity();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.add(R.id.content, crossProvinceActivity);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        txt_rout_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(getActivity(),LocationAddActivity.class);
+                startActivity(i);
+            }
+        });
+
+
 
         imf_next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,7 +202,7 @@ public class NewRouteFragment extends Fragment {
 
                 SelectActivityFragment routeDescriptionFragment = new SelectActivityFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.content, routeDescriptionFragment);
+                transaction.add(R.id.content, routeDescriptionFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
 
@@ -225,9 +251,11 @@ public class NewRouteFragment extends Fragment {
             public void onClick(View v) {
 
                 if (expandableLayout0.isExpanded()) {
+                    ls_cover.setVisibility(View.VISIBLE);
                     expandableLayout0.collapse();
                     btn_expand_toggle.setImageResource(R.drawable.ic_down);
                 } else {
+                    ls_cover.setVisibility(View.GONE);
                     expandableLayout0.expand();
                     btn_expand_toggle.setImageResource(R.drawable.ic_up);
                 }

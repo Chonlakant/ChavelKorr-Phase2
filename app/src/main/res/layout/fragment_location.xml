@@ -10,6 +10,10 @@
         android:layout_height="0.5dp"
         android:background="#919191" />
 
+    <TextView
+        android:text="P126"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="match_parent"

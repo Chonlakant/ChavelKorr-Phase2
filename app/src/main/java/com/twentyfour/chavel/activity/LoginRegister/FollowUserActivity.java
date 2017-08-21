@@ -32,7 +32,7 @@ public class FollowUserActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         ls_next = (LinearLayout) findViewById(R.id.ls_next);
 
-        toolbar.setTitle("FollowUser");
+        toolbar.setTitle("24 Likes");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));

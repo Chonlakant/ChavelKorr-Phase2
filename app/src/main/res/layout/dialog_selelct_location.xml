@@ -5,6 +5,11 @@
     android:background="@drawable/bg_linear"
     android:orientation="vertical">
 
+    <TextView
+        android:text="P124"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
     <LinearLayout
         android:layout_width="300dp"

@@ -88,6 +88,9 @@
         <activity android:name=".fragment.NotiFragment"/>
         <activity android:name=".fragment.UserProfileFragment"/>
 
+        <activity android:name=".activity.SelectOverViewPinsActivity"/>
+        <activity android:name=".activity.LoginRegister.WhatTheNameActivity"/>
+
     </application>
 
 </manifest>
