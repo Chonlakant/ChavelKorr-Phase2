@@ -37,6 +37,7 @@ public class SearchFragment extends Fragment {
     public void onResume() {
         super.onResume();
         ((MainActivity)getActivity()).showToolbar();
+        ((MainActivity)getActivity()).updateToolbarTitle("Search");
     }
 
 

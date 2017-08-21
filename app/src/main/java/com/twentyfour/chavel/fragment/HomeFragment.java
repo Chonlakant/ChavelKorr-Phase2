@@ -3,11 +3,14 @@ package com.twentyfour.chavel.fragment;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -16,11 +19,10 @@ import android.widget.Toast;
 import com.twentyfour.chavel.BaseFragment;
 import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.activity.LoginRegister.ProfileActivity;
+import com.twentyfour.chavel.activity.MainTab.ProfileActivity;
 import com.twentyfour.chavel.activity.MainTab.CommentActivity;
 import com.twentyfour.chavel.activity.UserProfileActivity;
 import com.twentyfour.chavel.adapter.ExpandableListAdapter;
-import com.twentyfour.chavel.adapter.HomeFeedAdapter;
 import com.twentyfour.chavel.api.Apis;
 import com.twentyfour.chavel.model.HomeFeed;
 import com.twentyfour.chavel.service.ServiceApi;
@@ -36,7 +38,6 @@ import retrofit2.Response;
 public class HomeFragment extends BaseFragment {
 
     RecyclerView ryc;
-    HomeFeedAdapter homeFeedAdapter;
     ExpandableListAdapter expandableListAdapter;
     ArrayList<HomeFeed> list = new ArrayList<>();
     List<String> listString = new ArrayList<>();
@@ -54,6 +55,40 @@ public class HomeFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         ((MainActivity)getActivity()).showToolbar();
+        ((MainActivity)getActivity()).updateToolbarTitle("Chavel");
+        ((MainActivity)getActivity()).updateToolbarUpIndicator(R.drawable.ic_launcher);
+
+
+        //ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
+
+
+        //actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
+        //LayoutInflater inflator = LayoutInflater.from(this);
+        //View v = inflator.inflate(R.layout.actionbar_layout, null); //hear set your costume layout
+        //actionBar.setCustomView(v);
+        //actionBar.setDisplayShowCustomEnabled(true);
+        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8731a0")));
+
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragment_home, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                Snackbar.make(getActivity().findViewById(R.id.content_frame), "Add friend clicked", Snackbar.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_more:
+                Snackbar.make(getActivity().findViewById(R.id.content_frame), "More clicked", Snackbar.LENGTH_SHORT).show();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

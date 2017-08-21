@@ -340,6 +340,13 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
 
     }
 
+    public void updateToolbarUpIndicator(int resId) {
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(resId);
+
+    }
+
     public void showToolbar() {
         toolbar.setVisibility(View.VISIBLE);
         //appbar.setVisibility(View.VISIBLE);

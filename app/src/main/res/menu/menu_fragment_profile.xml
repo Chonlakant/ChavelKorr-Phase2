@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <item
+        android:id="@+id/action_add_friend"
+        android:orderInCategory="100"
+        android:title="Add friend"
+        app:showAsAction="always"
+        android:visible="true"
+        android:icon="@drawable/ic_add_user"/>
+
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="Settings"

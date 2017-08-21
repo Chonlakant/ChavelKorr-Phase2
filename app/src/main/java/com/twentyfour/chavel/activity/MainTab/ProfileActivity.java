@@ -1,4 +1,4 @@
-package com.twentyfour.chavel.activity.LoginRegister;
+package com.twentyfour.chavel.activity.MainTab;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;

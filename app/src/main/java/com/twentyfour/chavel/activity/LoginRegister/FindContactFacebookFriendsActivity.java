@@ -30,7 +30,7 @@ public class FindContactFacebookFriendsActivity extends BaseActivity {
         setContentView(R.layout.activity_facebook);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("");
+        toolbar.setTitle("Facebook Friends");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));

@@ -77,6 +77,15 @@ public class PageProfileFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //((MainActivity)getActivity()).hideToolbar();
+
+    }
+
+
+
 
     @Nullable
     @Override

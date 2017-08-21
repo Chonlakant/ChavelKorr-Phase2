@@ -100,7 +100,7 @@
         <activity android:name=".activity.MainTab.EditProfileActivity" />
         <activity android:name=".activity.MainTab.RouteHistoryActivity" />
         <activity android:name=".activity.MainTab.OverViewPinsActivity" />
-        <activity android:name=".activity.LoginRegister.ProfileActivity" />
+        <activity android:name=".activity.MainTab.ProfileActivity" />
         <activity android:name=".activity.MainTab.CommentActivity" />
         <activity
             android:name=".BaseActivity"

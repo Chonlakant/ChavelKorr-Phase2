@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.EditProfileActivity;
-import com.twentyfour.chavel.activity.LoginRegister.ProfileActivity;
+import com.twentyfour.chavel.activity.MainTab.ProfileActivity;
 import com.twentyfour.chavel.SettingSystemActivity;
 
 

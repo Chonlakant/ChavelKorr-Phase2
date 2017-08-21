@@ -1,22 +1,21 @@
 package com.twentyfour.chavel.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.twentyfour.chavel.activity.MainTab.AdvanceSearchActivity;
 
 
 public class ShareRouteFragment extends Fragment {
@@ -25,6 +24,30 @@ public class ShareRouteFragment extends Fragment {
 
     TabLayout tabLayout;
     FrameLayout frameLayout;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((MainActivity)getActivity()).hideToolbar();
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragment_add_route, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_more:
+
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
     @Nullable

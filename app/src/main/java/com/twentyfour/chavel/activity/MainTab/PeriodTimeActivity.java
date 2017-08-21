@@ -39,7 +39,7 @@ public class PeriodTimeActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_fragment_add_pin, menu);
+        getMenuInflater().inflate(R.menu.menu_fragment_add_route, menu);
 
         return true;
     }
