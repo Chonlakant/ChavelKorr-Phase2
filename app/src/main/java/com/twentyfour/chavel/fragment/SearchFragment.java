@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.AdvanceSearchFragment;
+import com.twentyfour.chavel.activity.MainTab.SearchFragmentAdvance;
+import com.twentyfour.chavel.activity.MainTab.SearchMutiTypeFragment;
 import com.twentyfour.chavel.adapter.SearchRouteAdapter;
 import com.twentyfour.chavel.adapter.SearchProfileAdapter;
 import com.twentyfour.chavel.model.Search;
@@ -93,11 +95,14 @@ public class SearchFragment extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_search:
 
-                AdvanceSearchFragment profileFragment = new AdvanceSearchFragment();
+                SearchMutiTypeFragment searchFragmentAdvance = new SearchMutiTypeFragment();
                 android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container6, profileFragment);
+                transaction.replace(R.id.fragment_container6, searchFragmentAdvance);
                 transaction.addToBackStack(null);
                 transaction.commit();
+
+
+
 
                 return true;
 

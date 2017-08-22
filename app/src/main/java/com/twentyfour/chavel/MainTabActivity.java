@@ -126,7 +126,7 @@ public class MainTabActivity extends TabActivity {
                     // contacts-related task you need to do.
                 } else {
 
-                    Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
@@ -141,7 +141,7 @@ public class MainTabActivity extends TabActivity {
                     // contacts-related task you need to do.
                 } else {
 
-                    Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
@@ -156,7 +156,7 @@ public class MainTabActivity extends TabActivity {
                     // contacts-related task you need to do.
                 } else {
 
-                    Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
@@ -171,7 +171,7 @@ public class MainTabActivity extends TabActivity {
                     // contacts-related task you need to do.
                 } else {
 
-                    Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
@@ -186,7 +186,7 @@ public class MainTabActivity extends TabActivity {
                     // contacts-related task you need to do.
                 } else {
 
-                    Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(MainTabActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }

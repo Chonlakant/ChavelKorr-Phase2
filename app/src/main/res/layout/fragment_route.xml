@@ -14,6 +14,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
+
         <include layout="@layout/toolbar" />
 
         <View
@@ -22,9 +23,9 @@
             android:background="#464646" />
 
         <TextView
-            android:text="P138"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="P138" />
 
 
         <LinearLayout
@@ -56,9 +57,9 @@
                 android:paddingBottom="0dp">
 
                 <LinearLayout
-                    android:background="#ffffff"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:background="#ffffff"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -140,7 +141,7 @@
                 <LinearLayout
                     android:id="@+id/fragment_container3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:background="#ffffff"
                     android:orientation="vertical">
 
@@ -301,12 +302,25 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/ls_feed"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ryc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
         <net.cachapa.expandablelayout.ExpandableLayout
             android:id="@+id/expandable_layout_0"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:el_duration="1000"
             app:el_expanded="true">
 
             <LinearLayout
@@ -322,23 +336,22 @@
 
                     <android.support.design.widget.TabLayout
                         android:id="@+id/tabs"
+                        style="@style/CustomTabLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:tabGravity="fill"
-                        style="@style/CustomTabLayoutStyle"
                         app:tabMode="fixed" />
                 </android.support.design.widget.AppBarLayout>
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewpager"
-                    android:background="#ffffff"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="#ffffff"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
             </LinearLayout>
         </net.cachapa.expandablelayout.ExpandableLayout>
-
 
 
     </LinearLayout>
