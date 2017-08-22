@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -28,6 +29,8 @@ public class SearchFragmentAdvance extends Fragment {
     RecyclerView recyclerView;
     RecyclerView recyclerView_profile;
 
+    private RecyclerView.LayoutManager mLayoutManager;
+
     ArrayList<Search> listProfile = new ArrayList<>();
     ArrayList<Search> listRoute = new ArrayList<>();
 
@@ -39,9 +42,9 @@ public class SearchFragmentAdvance extends Fragment {
         recyclerView_profile = (RecyclerView) rootView.findViewById(R.id.recyclerView_profile);
 
 
-        recyclerView_profile.setLayoutManager(new GridLayoutManager(getActivity(), 6));
-        recyclerView_profile.setHasFixedSize(true);
-        recyclerView_profile.setItemAnimator(new DefaultItemAnimator());
+        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false
+        );
+        recyclerView_profile.setLayoutManager(mLayoutManager);
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         recyclerView.setHasFixedSize(true);
