@@ -23,17 +23,6 @@ public class CommentActivity extends AppCompatActivity {
         setContentView(R.layout.item_comments);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Mr.Chavel");
-        setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
-        toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
     }
 
 

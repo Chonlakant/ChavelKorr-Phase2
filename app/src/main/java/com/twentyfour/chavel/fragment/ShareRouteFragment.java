@@ -26,13 +26,6 @@ public class ShareRouteFragment extends Fragment {
     FrameLayout frameLayout;
 
     @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity)getActivity()).hideToolbar();
-
-    }
-
-    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_fragment_add_route, menu);
         super.onCreateOptionsMenu(menu, inflater);

@@ -56,11 +56,11 @@ public class ImageFeedHomeAdapter extends RecyclerView.Adapter<ImageFeedHomeAdap
     public void onBindViewHolder(ViewHolder holder, int position) {
         final String c = list.get(position);
 
-
         String url = "http://chavel.me/api/uploads/"+c.toString();
-        String[] a = {"https://www.ilovetogo.com/FileUpload/Webboard/091225015340319.jpg","https://image.dek-d.com/24/651421/107696373","http://phuket.thai-sale.com/wp-content/uploads/2014/08/samui2.jpg?039e20?039e20","http://travel.mthai.com/app/uploads/2013/07/Ang-Thong-National-Marine-Park-view-point.jpg"};
-
-        Log.e("url",url);
+        String[] a = {"https://www.ilovetogo.com/FileUpload/Webboard/091225015340319.jpg",
+                "https://image.dek-d.com/24/651421/107696373",
+                "http://phuket.thai-sale.com/wp-content/uploads/2014/08/samui2.jpg?039e20?039e20",
+                url};
 
         Glide.with(ctx)
                 .load(a[position]).override(100, 100)

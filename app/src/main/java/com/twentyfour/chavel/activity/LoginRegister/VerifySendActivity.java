@@ -32,7 +32,7 @@ public class VerifySendActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vertification_send);
         ButterKnife.bind(this);
-        toolbar.setTitle("Vertification");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
@@ -43,7 +43,6 @@ public class VerifySendActivity extends BaseActivity {
                 onBackPressed();
             }
         });
-
 
         ed_phone = (EditText) findViewById(R.id.ed_phone);
         txt_send = (TextView) findViewById(R.id.txt_send);

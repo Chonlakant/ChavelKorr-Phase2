@@ -1,5 +1,6 @@
 package com.twentyfour.chavel.activity.LoginRegister;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -33,7 +34,6 @@ public class VerifySendEnterEmailAgainActivity extends BaseActivity {
     LinearLayout ls_send_code_again;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +41,7 @@ public class VerifySendEnterEmailAgainActivity extends BaseActivity {
 
         ButterKnife.bind(this);
 
-        toolbar.setTitle("VertificationSendEnterEmail");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
@@ -57,6 +57,14 @@ public class VerifySendEnterEmailAgainActivity extends BaseActivity {
 
         startTimer(maxTimeInMilliseconds, 1000);
 
+        ls_send_code_again.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CreateUserIdActivity.class);
+                startActivity(i);
+            }
+        });
+
         ed_code.addTextChangedListener(new TextWatcher() {
 
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -69,9 +77,16 @@ public class VerifySendEnterEmailAgainActivity extends BaseActivity {
                     ls_send_code_again.setBackground(getResources().getDrawable(R.drawable.bg_unselected, null));
                 } else {
 
-                    ls_send_code_again.setBackground(getResources().getDrawable(R.drawable.bg_selected, null));
+                    if(s.toString().trim().length() == 6) {
+                        ls_send_code_again.setBackground(getResources().getDrawable(R.drawable.bg_selected, null));
+                        
+                    }
+
+
 
                 }
+
+
 
 
             }

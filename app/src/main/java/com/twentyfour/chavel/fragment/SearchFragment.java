@@ -33,13 +33,6 @@ public class SearchFragment extends Fragment {
     ArrayList<Search> listProfile = new ArrayList<>();
     ArrayList<Search> listRoute = new ArrayList<>();
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity)getActivity()).showToolbar();
-        ((MainActivity)getActivity()).updateToolbarTitle("Search");
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

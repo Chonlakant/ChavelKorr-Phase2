@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.fragment.TabActivityFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,22 +23,10 @@ import butterknife.ButterKnife;
 
 public class NewsFragment extends Fragment {
 
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-
     TabLayout tabLayout;
     ViewPager viewPagerNoti;
 
     String[] iconsNoti = {"Following", "You"};
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity)getActivity()).hideToolbar();
-    }
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

@@ -198,7 +198,7 @@
                 android:clickable="true"
 
                 android:padding="@dimen/spacing_middle"
-                android:src="@drawable/ic_route_tab"
+                android:src="@drawable/ic_tab_my_route"
                 android:tint="@color/grey_medium" />
 
             <View
@@ -215,7 +215,7 @@
                 android:clickable="true"
 
                 android:padding="@dimen/spacing_middle"
-                android:src="@drawable/ic_star_tab"
+                android:src="@drawable/ic_tab_my_favourite"
                 android:tint="@color/grey_medium" />
 
             <View
@@ -232,7 +232,7 @@
                 android:clickable="true"
 
                 android:padding="@dimen/spacing_middle"
-                android:src="@drawable/ic_more_tab"
+                android:src="@mipmap/ic_more"
                 android:tint="@color/grey_medium" />
         </LinearLayout>
 

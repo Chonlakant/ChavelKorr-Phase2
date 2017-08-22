@@ -174,7 +174,7 @@
                                         android:layout_height="25dp"
                                         android:layout_gravity="center"
                                         android:layout_marginLeft="10dp"
-                                        android:src="@drawable/share_icon" />
+                                        android:src="@drawable/ic_share" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -206,7 +206,7 @@
                                         android:layout_height="25dp"
                                         android:layout_gravity="center"
                                         android:layout_marginLeft="10dp"
-                                        android:src="@drawable/msg_icon" />
+                                         />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -475,7 +475,7 @@
                                 android:layout_width="40dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="bottom"
-                                android:src="@drawable/photo_icon" />
+                                 />
 
                         </LinearLayout>
 

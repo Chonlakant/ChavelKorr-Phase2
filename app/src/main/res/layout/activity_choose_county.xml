@@ -40,7 +40,7 @@
                 android:layout_height="27dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/ic_find" />
+                android:src="@mipmap/ic_tab_search" />
 
             <TextView
                 android:layout_width="wrap_content"

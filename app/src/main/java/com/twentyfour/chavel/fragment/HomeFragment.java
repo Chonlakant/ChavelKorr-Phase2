@@ -17,14 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.twentyfour.chavel.BaseFragment;
-import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.ProfileActivity;
 import com.twentyfour.chavel.activity.MainTab.CommentActivity;
 import com.twentyfour.chavel.activity.UserProfileActivity;
-import com.twentyfour.chavel.adapter.ExpandableListAdapter;
+import com.twentyfour.chavel.adapter.FeedAdapter;
 import com.twentyfour.chavel.api.Apis;
-import com.twentyfour.chavel.model.HomeFeed;
 import com.twentyfour.chavel.service.ServiceApi;
 
 import java.util.ArrayList;
@@ -38,11 +36,11 @@ import retrofit2.Response;
 public class HomeFragment extends BaseFragment {
 
     RecyclerView ryc;
-    ExpandableListAdapter expandableListAdapter;
-    ArrayList<HomeFeed> list = new ArrayList<>();
+    FeedAdapter feedAdapter;
+    ArrayList<com.twentyfour.chavel.model.HomeFeed> list = new ArrayList<>();
     List<String> listString = new ArrayList<>();
 
-    List<ExpandableListAdapter.Item> data = new ArrayList<>();
+    List<FeedAdapter.Item> data = new ArrayList<>();
 
     Dialog dialogShare;
     TextView txt_route;
@@ -50,27 +48,6 @@ public class HomeFragment extends BaseFragment {
     TextView txt_share_person;
     TextView txt_share_public;
     TextView txt_share_others;
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((MainActivity)getActivity()).showToolbar();
-        ((MainActivity)getActivity()).updateToolbarTitle("Chavel");
-        ((MainActivity)getActivity()).updateToolbarUpIndicator(R.drawable.ic_launcher);
-
-
-        //ActionBar actionBar = ((MainActivity)getActivity()).getSupportActionBar();
-
-
-        //actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
-        //LayoutInflater inflator = LayoutInflater.from(this);
-        //View v = inflator.inflate(R.layout.actionbar_layout, null); //hear set your costume layout
-        //actionBar.setCustomView(v);
-        //actionBar.setDisplayShowCustomEnabled(true);
-        //actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8731a0")));
-
-
-    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -120,11 +97,11 @@ public class HomeFragment extends BaseFragment {
 
         ServiceApi service = Apis.getClient().create(ServiceApi.class);
 
-        Call<HomeFeed> userCall = service.getFeedHome(user_id, lat, lng);
+        Call<com.twentyfour.chavel.model.HomeFeed> userCall = service.getFeedHome(user_id, lat, lng);
 
-        userCall.enqueue(new Callback<HomeFeed>() {
+        userCall.enqueue(new Callback<com.twentyfour.chavel.model.HomeFeed>() {
             @Override
-            public void onResponse(Call<HomeFeed> call, Response<HomeFeed> response) {
+            public void onResponse(Call<com.twentyfour.chavel.model.HomeFeed> call, Response<com.twentyfour.chavel.model.HomeFeed> response) {
 
                 if (response.body().getList() != null) {
                     for (int i = 0; i < response.body().getList().size(); i++) {
@@ -148,19 +125,17 @@ public class HomeFragment extends BaseFragment {
                         String route_suggestion = response.body().getList().get(i).getRoute_suggestion();
 
                         for (int j = 0; j < response.body().getList().get(i).getRoute_img().size(); j++) {
-                            Log.e("accc", response.body().getList().get(i).getRoute_img().get(j).getImg_text() + "");
-                            //if(j < 4)
                             listString.add(response.body().getList().get(i).getRoute_img().get(j).getImg_text());
                         }
 
-                        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, header, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", listString));
-                        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, child, user_id, user_name, user_image
+                        data.add(new FeedAdapter.Item(FeedAdapter.HEADER, header, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", listString));
+                        data.add(new FeedAdapter.Item(FeedAdapter.CHILD, child, user_id, user_name, user_image
                                 , route_id, route_title, route_detail, diffDate, like_status, favorite_status, route_activity, route_city,
                                 route_travel_method, route_budgetmin, route_budgetmax, route_suggestion, listString));
 
-                        expandableListAdapter = new ExpandableListAdapter(data, getActivity());
-                        ryc.setAdapter(expandableListAdapter);
-                        expandableListAdapter.setOnItemClickCommentListener(new ExpandableListAdapter.OnItemClickCommentListener() {
+                        feedAdapter = new FeedAdapter(data, getActivity());
+                        ryc.setAdapter(feedAdapter);
+                        feedAdapter.setOnItemClickCommentListener(new FeedAdapter.OnItemClickCommentListener() {
                             @Override
                             public void onItemCommentClick(View view, int position) {
 
@@ -169,7 +144,7 @@ public class HomeFragment extends BaseFragment {
                             }
                         });
 
-                        expandableListAdapter.setOnItemClickLikeListener(new ExpandableListAdapter.OnItemClickLikeListener() {
+                        feedAdapter.setOnItemClickLikeListener(new FeedAdapter.OnItemClickLikeListener() {
                             @Override
                             public void onItemLikeClick(View view, int position) {
 
@@ -177,7 +152,7 @@ public class HomeFragment extends BaseFragment {
 
                             }
                         });
-                        expandableListAdapter.setOnItemClickShListener(new ExpandableListAdapter.OnItemClickShListener() {
+                        feedAdapter.setOnItemClickShListener(new FeedAdapter.OnItemClickShListener() {
                             @Override
                             public void onItemShClick(View view, int position) {
 
@@ -223,7 +198,7 @@ public class HomeFragment extends BaseFragment {
                             }
                         });
 
-                        expandableListAdapter.setOnItemClickPhotoListener(new ExpandableListAdapter.OnItemClickPhotoListener() {
+                        feedAdapter.setOnItemClickPhotoListener(new FeedAdapter.OnItemClickPhotoListener() {
                             @Override
                             public void onItemPhotoClick(View view, int position) {
                                 Intent i = new Intent(getActivity(), ProfileActivity.class);
@@ -231,7 +206,7 @@ public class HomeFragment extends BaseFragment {
 
                             }
                         });
-                        expandableListAdapter.setOnItemClickUsernameListener(new ExpandableListAdapter.OnItemClickUsernameListener() {
+                        feedAdapter.setOnItemClickUsernameListener(new FeedAdapter.OnItemClickUsernameListener() {
                             @Override
                             public void onItemUsernameClick(View view, int position) {
                                 Intent i = new Intent(getActivity(), UserProfileActivity.class);
@@ -239,7 +214,7 @@ public class HomeFragment extends BaseFragment {
                             }
                         });
 
-                        expandableListAdapter.setOnItemClickRouteTitleListener(new ExpandableListAdapter.OnItemClickRouteTitleListener() {
+                        feedAdapter.setOnItemClickRouteTitleListener(new FeedAdapter.OnItemClickRouteTitleListener() {
                             @Override
                             public void onItemRouteTitleClick(View view, int position) {
 //                                Intent i = new Intent(getActivity(), RouteHomeActivity.class);
@@ -254,7 +229,7 @@ public class HomeFragment extends BaseFragment {
             }
 
             @Override
-            public void onFailure(Call<HomeFeed> call, Throwable t) {
+            public void onFailure(Call<com.twentyfour.chavel.model.HomeFeed> call, Throwable t) {
 
             }
         });

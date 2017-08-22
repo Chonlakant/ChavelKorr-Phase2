@@ -56,7 +56,7 @@ public class HomeFeedAdapter extends RecyclerView.Adapter<HomeFeedAdapter.ViewHo
     @Override
     public HomeFeedAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
         return vh;

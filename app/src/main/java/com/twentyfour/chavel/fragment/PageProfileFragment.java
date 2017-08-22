@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.SettingSystemActivity;
+import com.twentyfour.chavel.activity.HolderActivity;
 import com.twentyfour.chavel.activity.LoginRegister.LoginActivity;
 import com.twentyfour.chavel.adapter.ExploreGridAdapter;
 import com.twentyfour.chavel.adapter.FeedListAdapter;
@@ -77,14 +78,6 @@ public class PageProfileFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        //((MainActivity)getActivity()).hideToolbar();
-
-    }
-
-
 
 
     @Nullable
@@ -94,7 +87,7 @@ public class PageProfileFragment extends Fragment {
         //ButterKnife.bind(view,getActivity());
         // activate fragment menu
         setHasOptionsMenu(true);
-        ((MainActivity) getActivity()).updateToolbarTitle("Korr Thananon");
+
         items = Constant.getListMyFeed(getActivity(), 15);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         switchMyActivityMode();
@@ -149,20 +142,17 @@ public class PageProfileFragment extends Fragment {
 //                switchListMode();
 //            }
 //        });
-        HomeFragment homeFragment = new HomeFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.add(R.id.content_frame, homeFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+
+        Intent i = new Intent(getActivity(), HolderActivity.class);
+        i.putExtra("index",1);
+        getActivity().startActivity(i);
 
     }
 
     private void switchMyFavMode(){
-        HomeFragment homeFragment = new HomeFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.add(R.id.content_frame, homeFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        Intent i = new Intent(getActivity(), HolderActivity.class);
+        i.putExtra("index",2);
+        getActivity().startActivity(i);
     }
 
     private void switchMyActivityMode() {

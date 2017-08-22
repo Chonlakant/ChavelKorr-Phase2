@@ -5,18 +5,20 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.twentyfour.chavel.fragment.HomeFragment;
 import com.twentyfour.chavel.fragment.NewsFragment;
 import com.twentyfour.chavel.fragment.PageFriendFragment;
 import com.twentyfour.chavel.fragment.PageProfileFragment;
-import com.twentyfour.chavel.fragment.ShareRouteFragment;
-import com.twentyfour.chavel.fragment.HomeFragment;
-import com.twentyfour.chavel.fragment.SearchFragment;
 import com.twentyfour.chavel.fragment.ProfileFragment;
+import com.twentyfour.chavel.fragment.SearchFragment;
+import com.twentyfour.chavel.fragment.ShareRouteFragment;
 import com.twentyfour.chavel.utils.FragNavController;
 import com.twentyfour.chavel.utils.FragmentHistory;
 import com.twentyfour.chavel.utils.Utils;
@@ -32,77 +34,51 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-//    @Bind(R.id.appbar)
-//    AppBarLayout appbar;
-
-
-    private HomeFragment f_home;
-    private SearchFragment f_search;
-    private ShareRouteFragment f_location;
-    private NewsFragment f_notif;
-    private ProfileFragment f_user;
+    int[] mTabIconsNormal = {
+            R.mipmap.ic_tab_home,
+            R.mipmap.ic_tab_search,
+            R.mipmap.ic_tab_chavel,
+            R.mipmap.ic_tab_noti,
+            R.mipmap.ic_tab_profile
+    };
 
     int[] mTabIconsSelected = {
-            R.mipmap.home_icon,
-            R.mipmap.search_icon,
-            R.mipmap.location_icon,
-            R.mipmap.noti_icon,
-            R.mipmap.user_icon
+            R.mipmap.ic_tab_home_color,
+            R.mipmap.ic_tab_search_color,
+            R.mipmap.ic_tab_chavel_color,
+            R.mipmap.ic_tab_noti_color,
+            R.mipmap.ic_tab_profile_color
     };
-    String[] TABS = {"Chavel","Search","Add Route", "Notification", "Mr.Chavel"};
+    String[] TABS = {"Chavel", "Search", "Add Route", "Notification", "Mr.Chavel24"};
+    @Bind(R.id.bottom_tab_layout)
+    TabLayout bottomTabLayout;
+    TextView toolbar_title;
+    ImageView toolbar_icon;
+    private HomeFragment f_home;
+    private SearchFragment f_search;
 
 //    @BindArray(R.array.tab_name)
 //    String[] TABS;
-
-    @Bind(R.id.bottom_tab_layout)
-    TabLayout bottomTabLayout;
-
+    private ShareRouteFragment f_location;
+    private NewsFragment f_notif;
+    private ProfileFragment f_user;
     private FragNavController mNavController;
-
     private FragmentHistory fragmentHistory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
-
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if(toolbar != null) {
-
-            toolbar.setTitle("Chavel");
-            toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
-            toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-            //toolbar.setNavigationIcon(R.drawable.ic_back);
-
-            setSupportActionBar(toolbar);
-            //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-//            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    onBackPressed();
-//                }
-//            });
-
-        }
-
-
-
-        initToolbar();
 
         initTab();
 
         fragmentHistory = new FragmentHistory();
 
-
         mNavController = FragNavController.newBuilder(savedInstanceState, getSupportFragmentManager(), R.id.content_frame)
                 .transactionListener(this)
                 .rootFragmentListener(this, TABS.length)
                 .build();
-
 
         switchTab(0);
 
@@ -113,7 +89,6 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
                 fragmentHistory.push(tab.getPosition());
 
                 switchTab(tab.getPosition());
-
 
             }
 
@@ -129,16 +104,8 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
 
                 switchTab(tab.getPosition());
 
-
             }
         });
-    }
-
-
-    private void initToolbar() {
-        setSupportActionBar(toolbar);
-
-
     }
 
     private void initTab() {
@@ -152,14 +119,12 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
         }
     }
 
-
     private View getTabView(int position) {
         View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.tab_item_bottom, null);
         ImageView icon = (ImageView) view.findViewById(R.id.tab_icon);
-        icon.setImageDrawable(Utils.setDrawableSelector(MainActivity.this, mTabIconsSelected[position], mTabIconsSelected[position]));
+        icon.setImageDrawable(Utils.setDrawableSelector(MainActivity.this, mTabIconsNormal[position], mTabIconsSelected[position]));
         return view;
     }
-
 
     @Override
     public void onStart() {
@@ -172,45 +137,46 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
         super.onStop();
     }
 
-
     private void switchTab(int position) {
         mNavController.switchTab(position);
 
-
 //        updateToolbarTitle(position);
     }
-
 
     @Override
     protected void onResume() {
         super.onResume();
     }
 
-
     @Override
     protected void onPause() {
         super.onPause();
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
 
-
             case android.R.id.home:
-
 
                 onBackPressed();
                 return true;
         }
 
-
         return super.onOptionsItemSelected(item);
 
     }
 
+    Menu toolbar_menu;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        toolbar_menu = menu;
+        getMenuInflater().inflate(R.menu.menu_fragment_home, menu);
+        return true;
+    }
     @Override
     public void onBackPressed() {
 
@@ -221,7 +187,6 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
             if (fragmentHistory.isEmpty()) {
                 super.onBackPressed();
             } else {
-
 
                 if (fragmentHistory.getStackSize() > 1) {
 
@@ -244,14 +209,13 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
         }
     }
 
+    private void updateTabSelection(int currentTab) {
 
-    private void updateTabSelection(int currentTab){
-
-        for (int i = 0; i <  TABS.length; i++) {
+        for (int i = 0; i < TABS.length; i++) {
             TabLayout.Tab selectedTab = bottomTabLayout.getTabAt(i);
-            if(currentTab != i) {
+            if (currentTab != i) {
                 selectedTab.getCustomView().setSelected(false);
-            }else{
+            } else {
                 selectedTab.getCustomView().setSelected(true);
             }
         }
@@ -272,24 +236,65 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
         }
     }
 
-
     @Override
     public void onTabTransaction(Fragment fragment, int index) {
         // If we have a backstack, show the back button
         if (getSupportActionBar() != null && mNavController != null) {
 
-
-            updateToolbar();
+            updateToolbar(index);
 
         }
     }
 
-    private void updateToolbar() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(!mNavController.isRootFragment());
-        getSupportActionBar().setDisplayShowHomeEnabled(!mNavController.isRootFragment());
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
+    private void updateToolbar(int index) {
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        updateToolbarTitle(index);
+        updateToolbarIcon(index);
+
+
+
+        View view = getSupportActionBar().getCustomView();
+        assert view == null;
+
+
+        switch (index) {
+            case 0:
+                //getSupportActionBar().setTitle("Chavel");
+                getSupportActionBar().show();
+                getMenuInflater().inflate(R.menu.menu_fragment_home, toolbar_menu);
+                break;
+            case 1:
+                //getSupportActionBar().setTitle("Search");
+                getSupportActionBar().show();
+                getMenuInflater().inflate(R.menu.menu_fragment_search, toolbar_menu);
+                break;
+            case 2:
+                //getSupportActionBar().setTitle("New Route");
+                getSupportActionBar().hide();
+                break;
+            case 3:
+                //getSupportActionBar().setTitle("Notification");
+                getSupportActionBar().hide();
+                break;
+            case 4:
+                //getSupportActionBar().setTitle("Mr.Chavel24");
+                getSupportActionBar().show();
+                getMenuInflater().inflate(R.menu.menu_fragment_profile, toolbar_menu);
+                break;
+            default:
+                getSupportActionBar().setTitle("Chavel App");
+                break;
+        }
     }
 
+    private void updateToolbar() {
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(!mNavController.isRootFragment());
+        //getSupportActionBar().setDisplayShowHomeEnabled(!mNavController.isRootFragment());
+    }
 
     @Override
     public void onFragmentTransaction(Fragment fragment, FragNavController.TransactionType transactionType) {
@@ -319,41 +324,29 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
                 //return new ProfileFragment();
                 return new PageProfileFragment();
 
-
         }
         throw new IllegalStateException("Need to send an index that we know");
     }
 
+    private void updateToolbarTitle(int index) {
 
-//    private void updateToolbarTitle(int position){
-//
-//
-//        getSupportActionBar().setTitle(TABS[position]);
-//
-//    }
-
-
-    public void updateToolbarTitle(String title) {
-
-
-        getSupportActionBar().setTitle(title);
+        toolbar_title = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.toolbar_title);
+        toolbar_title.setText(TABS[index]);
 
     }
 
-    public void updateToolbarUpIndicator(int resId) {
+    private void updateToolbarIcon(int index) {
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(resId);
+        toolbar_icon = (ImageView) getSupportActionBar().getCustomView().findViewById(R.id.toolbar_icon);
+        if (toolbar != null) {
 
+            if (index == 0) {
+                toolbar_icon.setImageDrawable(getDrawable(R.mipmap.ic_tab_chavel_color));
+            } else {
+                toolbar_icon.setVisibility(View.GONE);
+            }
+
+        }
     }
 
-    public void showToolbar() {
-        toolbar.setVisibility(View.VISIBLE);
-        //appbar.setVisibility(View.VISIBLE);
-    }
-
-    public void hideToolbar() {
-        toolbar.setVisibility(View.GONE);
-        //appbar.setVisibility(View.GONE);
-    }
 }

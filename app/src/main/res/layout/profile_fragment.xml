@@ -238,7 +238,7 @@
                             android:id="@+id/my_route"
                             android:layout_width="32dp"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_route_tab"
+                            android:src="@drawable/ic_tab_my_route"
                             android:layout_marginTop="5dp"
                             />
 
@@ -272,7 +272,7 @@
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginTop="5dp"
-                            android:src="@drawable/ic_star_tab" />
+                            android:src="@drawable/ic_tab_my_favourite" />
 
                         <TextView
                             android:id="@+id/txt_fav_route"
@@ -303,7 +303,7 @@
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginTop="5dp"
-                            android:src="@drawable/ic_more_tab" />
+                            android:src="@mipmap/ic_more_tab" />
 
 
                     </LinearLayout>

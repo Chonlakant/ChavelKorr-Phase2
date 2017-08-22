@@ -12,6 +12,7 @@
 
 
     <color name="whitePrimary">#ffffff</color>
+    <color name="blackPrimary">#000000</color>
     <color name="transparent">#ffffffff</color>
     <color name="black_transparent">#00000000</color>
     <color name="black_25_transparent">#44000000</color>

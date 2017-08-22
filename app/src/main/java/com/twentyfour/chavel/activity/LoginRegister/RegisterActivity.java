@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.BaseActivity;
 
@@ -20,15 +21,17 @@ import butterknife.ButterKnife;
 
 public class RegisterActivity extends BaseActivity {
 
+    @Bind(R.id.create_account)
     LinearLayout ll_create_account;
-    TextView register;
+
+    @Bind(R.id.continue_fb)
+    LinearLayout ll_continue_fb;
 
     @Bind(R.id.login)
     TextView login;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-
 
     @Bind(R.id.term)
     TextView term;
@@ -47,7 +50,6 @@ public class RegisterActivity extends BaseActivity {
             toolbar.setTitle("Sign up");
             toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
             toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-            toolbar.setNavigationIcon(R.drawable.ic_back);
 
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -58,24 +60,20 @@ public class RegisterActivity extends BaseActivity {
                     onBackPressed();
                 }
             });
-
         }
-
-        register = (TextView) findViewById(R.id.login);
-        ll_create_account = (LinearLayout) findViewById(R.id.create_account);
 
         ll_create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), CreateUserIdActivity.class);
+                Intent i = new Intent(getApplicationContext(), RegisterByPhoneAndEmailActivity.class);
                 startActivity(i);
             }
         });
 
-        register.setOnClickListener(new View.OnClickListener() {
+        ll_continue_fb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), RegisterByPhoneAndEmailActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
             }
         });

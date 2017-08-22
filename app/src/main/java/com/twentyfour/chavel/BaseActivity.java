@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.twentyfour.chavel.activity.LoginRegister.FindContactFriendsActivity;
 import com.twentyfour.chavel.activity.LoginRegister.LoginActivity;
@@ -21,7 +22,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         if(isBackEnabled) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
 
         }
     }
@@ -33,12 +33,42 @@ public abstract class BaseActivity extends AppCompatActivity {
         if(isBackEnabled) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
 
         }
 
         getSupportActionBar().setTitle(title);
 
+
+    }
+
+    public void updateToolbarTitle(String title) {
+
+
+        getSupportActionBar().setTitle(title);
+
+    }
+
+    public void updateToolbarUpIndicator(int resId) {
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(resId);
+
+    }
+
+    Toolbar toolbar;
+
+    public void showToolbar() {
+
+        if(toolbar != null) {
+            toolbar.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+    public void hideToolbar() {
+        if(toolbar != null) {
+            toolbar.setVisibility(View.GONE);
+        }
 
     }
 

@@ -9,7 +9,6 @@
         <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item> -->
         <!--<item name="colorControlHighlight">@color/colorAccentLight</item> -->
         <!--<item name="colorAccent">@color/colorAccent</item>-->
-        <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
 
         <item name="android:textColorSecondary">@android:color/black</item>
         <!--control color-->
@@ -25,6 +24,9 @@
 
     <style name="BaseThemeActionbar" parent="Theme.AppCompat.Light">
         <item name="android:windowBackground">@color/transparent</item>
+        <item name="colorControlNormal">@color/grey_medium</item>
+        <item name="colorControlActivated">@color/grey_soft</item>
+        <item name="colorControlHighlight">@color/grey_medium</item>
     </style>
 
     <style name="Widget.MyApp.Toolbar.Solid" parent="Widget.AppCompat.ActionBar">

@@ -7,7 +7,7 @@
         android:id="@+id/action_more"
         android:orderInCategory="100"
         android:title="Menu "
-        android:icon="@drawable/ic_more"
+        android:icon="@mipmap/ic_more"
         app:showAsAction="always" />
 
 </menu>

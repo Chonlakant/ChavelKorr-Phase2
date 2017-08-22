@@ -14,8 +14,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.BaseActivity;
+import com.twentyfour.chavel.R;
 
 import java.util.Date;
 
@@ -70,7 +70,11 @@ public class WhatsBirthDayActivity extends BaseActivity {
 
         dp.init(year, month, day, new DatePicker.OnDateChangedListener() {
             @Override
-            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            public void onDateChanged(DatePicker view, int selectedYear, int monthOfYear, int dayOfMonth) {
+
+                year = selectedYear;
+                month = monthOfYear;
+                day = dayOfMonth;
 
                 Calendar cal = Calendar.getInstance();
                 cal.setTimeInMillis(0);
@@ -82,11 +86,11 @@ public class WhatsBirthDayActivity extends BaseActivity {
                 String formattedDate = df.format(chosenDate);
                 ed_name.setText(formattedDate);
 
-                if(year < 2017) {
+                if (year < 2017) {
                     ls_next.setBackground(getDrawable(R.drawable.bg_selected));
                 } else {
                     ls_next.setBackground(getDrawable(R.drawable.bg_unselected));
-                    Toast.makeText(getApplicationContext(),"Please select a valid birthday",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please select a valid birthday", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -98,11 +102,11 @@ public class WhatsBirthDayActivity extends BaseActivity {
         ls_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(year < 2017) {
+                if (year < 2017) {
                     Intent i = new Intent(getApplicationContext(), SettingsAddPhotoActivity.class);
                     startActivity(i);
                 } else {
-                    Toast.makeText(getApplicationContext(),"Please select a valid birthday.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please select a valid birthday.", Toast.LENGTH_SHORT).show();
                 }
 
             }

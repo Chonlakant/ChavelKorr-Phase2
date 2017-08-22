@@ -61,7 +61,7 @@
                         android:layout_height="40dp"
                         android:clickable="true"
                         android:padding="8dp"
-                        android:src="@drawable/ic_more"
+                        android:src="@mipmap/ic_more"
                         android:tint="@color/grey_hard" />
                 </com.balysv.materialripple.MaterialRippleLayout>
             </LinearLayout>
@@ -127,7 +127,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:clickable="true"
-                        android:src="@drawable/ic_comment"
+
                         android:tint="@color/grey_hard" />
                 </com.balysv.materialripple.MaterialRippleLayout>
 

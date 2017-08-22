@@ -88,7 +88,7 @@ public class FeedListAdapter extends RecyclerView.Adapter<FeedListAdapter.ViewHo
                         return true;
                     }
                 });
-                popupMenu.inflate(R.menu.menu_feed_popup);
+                //popupMenu.inflate(R.menu.menu_feed_popup);
                 popupMenu.show();
             }
         });

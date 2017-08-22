@@ -37,8 +37,6 @@ public class VerifySendEnterActivity extends BaseActivity {
     @Bind(R.id.txt_time)
     TextView txt_time;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -23,11 +23,10 @@ public class BudgetActivity extends AppCompatActivity {
         setContentView(R.layout.fragment_budget);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Budet");
+        toolbar.setTitle("Budget");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-        toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -77,7 +77,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="2dp"
-                android:background="@drawable/ic_write" />
+                 />
 
             <ImageView
                 android:layout_width="20dp"

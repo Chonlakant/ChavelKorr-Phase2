@@ -11,12 +11,6 @@
         android:gravity="right"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="np40" />
-
     </LinearLayout>
 
 
@@ -216,12 +210,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Preiod Time" />
+                android:text="Period Time" />
 
             <EditText
                 android:id="@+id/dt_period"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp" />
 
@@ -232,7 +226,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="Suggesstion"
-                android:textSize="12dp" />
+                android:textSize="14dp" />
 
             <EditText
                 android:id="@+id/ed_suggesstion"
@@ -268,7 +262,7 @@
             android:layout_width="40dp"
             android:layout_height="35dp"
             android:layout_gravity="bottom"
-            android:src="@drawable/photo_icon" />
+            android:src="@drawable/ic_camera" />
 
     </LinearLayout>
 

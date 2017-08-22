@@ -2,6 +2,8 @@ package com.twentyfour.chavel.activity.LoginRegister;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.twentyfour.chavel.R;
@@ -27,7 +29,6 @@ public class SuggestionActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-        toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,7 +36,20 @@ public class SuggestionActivity extends BaseActivity {
             }
         });
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_setting, menu);
+
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return super.onOptionsItemSelected(item);
     }
 
 
