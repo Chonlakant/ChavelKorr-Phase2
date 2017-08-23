@@ -104,9 +104,6 @@ public class Utils {
 
         BitmapDrawable state_normal_drawable = new BitmapDrawable(context.getResources(), disabledBitmap);
 
-
-
-
         StateListDrawable drawable = new StateListDrawable();
 
         drawable.addState(new int[]{android.R.attr.state_selected},

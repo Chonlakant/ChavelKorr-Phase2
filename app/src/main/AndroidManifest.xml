@@ -30,13 +30,17 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".activity.LoginRegister.LandingActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.LoginRegister.LandingActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".MainActivity">
+
         </activity>
         <activity android:name=".SettingSystemActivity" />
 
@@ -79,7 +83,7 @@
         <activity android:name=".activity.MainTab.RouteNameActivity" />
         <activity android:name=".activity.MainTab.RouteDescriptionActivity" />
         <activity android:name=".activity.MainTab.AdvanceSearchActivity" />
-        <activity android:name=".activity.MainTab.SearchMutiTypeActivity" />
+        <activity android:name=".activity.MainTab.SearchMultiTypeActivity" />
         <activity android:name=".activity.MainTab.FindPeopleActivity" />
         <activity android:name=".activity.MainTab.EditProfileActivity" />
         <activity android:name=".activity.MainTab.RouteHistoryActivity" />

@@ -3,11 +3,9 @@ package com.twentyfour.chavel.activity.MainTab;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
 
@@ -15,19 +13,19 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class SearchMutiTypeActivity extends AppCompatActivity {
+public class SearchMultiTypeActivity extends AppCompatActivity {
 
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-
-    @Bind(R.id.text_location)
-    TextView text_location;
+//
+//    @Bind(R.id.text_location)
+//    TextView text_location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search_muti_type_activity);
+        setContentView(R.layout.activity_search_multi_type);
         ButterKnife.bind(this);
 
         toolbar.setTitle("Search Location");
@@ -42,8 +40,8 @@ public class SearchMutiTypeActivity extends AppCompatActivity {
         });
 
 
-        String styledText = "<u><font color='#2F4F4F'>Location</font></u>.";
-        text_location.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
+//        String styledText = "<u><font color='#2F4F4F'>Location</font></u>.";
+//        text_location.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
     }
 
     @Override

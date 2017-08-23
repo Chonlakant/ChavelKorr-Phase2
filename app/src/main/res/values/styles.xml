@@ -9,6 +9,10 @@
         <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item> -->
         <!--<item name="colorControlHighlight">@color/colorAccentLight</item> -->
         <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <item name="android:homeAsUpIndicator">@drawable/ic_back2</item>
+
+        <item name="colorControlNormal">#333333</item>
+        <item name="android:textColorPrimary">#333333</item>
 
         <item name="android:textColorSecondary">@android:color/black</item>
         <!--control color-->
@@ -24,9 +28,17 @@
 
     <style name="BaseThemeActionbar" parent="Theme.AppCompat.Light">
         <item name="android:windowBackground">@color/transparent</item>
-        <item name="colorControlNormal">@color/grey_medium</item>
-        <item name="colorControlActivated">@color/grey_soft</item>
-        <item name="colorControlHighlight">@color/grey_medium</item>
+        <!--<item name="android:background">@color/tab_background</item>-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item> -->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item> -->
+        <!--<item name="colorControlHighlight">@color/colorAccentLight</item> -->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
+
+        <item name="colorControlNormal">#333333</item>
+        <item name="android:textColorPrimary">#333333</item>
+
+        <item name="android:textColorSecondary">@android:color/black</item>
     </style>
 
     <style name="Widget.MyApp.Toolbar.Solid" parent="Widget.AppCompat.ActionBar">
@@ -40,16 +52,6 @@
         <item name="android:textColorPrimary">@color/textColorTitle</item>
         <item name="android:windowBackground">@color/transparent</item>
     </style>
-
-    <!--<style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">-->
-        <!--<item name="tabIndicatorColor">@color/tab_indicator_color</item>-->
-        <!--<item name="tabIndicatorHeight">2dp</item>-->
-        <!--<item name="tabPaddingStart">12dp</item>-->
-        <!--<item name="tabPaddingEnd">12dp</item>-->
-        <!--<item name="tabBackground">?attr/selectableItemBackground</item>-->
-        <!--<item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>-->
-        <!--<item name="tabSelectedTextColor">?android:textColorPrimary</item>-->
-    <!--</style>-->
 
     <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">16sp</item>

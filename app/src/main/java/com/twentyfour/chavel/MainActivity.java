@@ -3,6 +3,7 @@ package com.twentyfour.chavel;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,10 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.fragment.HomeFragment;
-import com.twentyfour.chavel.fragment.NewsFragment;
 import com.twentyfour.chavel.fragment.PageFriendFragment;
 import com.twentyfour.chavel.fragment.PageProfileFragment;
-import com.twentyfour.chavel.fragment.ProfileFragment;
 import com.twentyfour.chavel.fragment.SearchFragment;
 import com.twentyfour.chavel.fragment.ShareRouteFragment;
 import com.twentyfour.chavel.utils.FragNavController;
@@ -30,9 +29,6 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
 
     @Bind(R.id.content_frame)
     FrameLayout contentFrame;
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
 
     int[] mTabIconsNormal = {
             R.mipmap.ic_tab_home,
@@ -54,14 +50,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
     TabLayout bottomTabLayout;
     TextView toolbar_title;
     ImageView toolbar_icon;
-    private HomeFragment f_home;
-    private SearchFragment f_search;
 
-//    @BindArray(R.array.tab_name)
-//    String[] TABS;
-    private ShareRouteFragment f_location;
-    private NewsFragment f_notif;
-    private ProfileFragment f_user;
     private FragNavController mNavController;
     private FragmentHistory fragmentHistory;
 
@@ -71,6 +60,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        initActionBar();
         initTab();
 
         fragmentHistory = new FragmentHistory();
@@ -108,6 +98,22 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
         });
     }
 
+    Toolbar toolbar;
+
+    private void initActionBar() {
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //getSupportActionBar().setCustomView(R.layout.toolbar_custom);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        //actionBar = getSupportActionBar().getCustomView();
+
+        updateToolbar(0);
+
+    }
+
     private void initTab() {
         if (bottomTabLayout != null) {
             for (int i = 0; i < TABS.length; i++) {
@@ -119,11 +125,14 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
         }
     }
 
+    View viewTab;
+
+
     private View getTabView(int position) {
-        View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.tab_item_bottom, null);
-        ImageView icon = (ImageView) view.findViewById(R.id.tab_icon);
+        viewTab = LayoutInflater.from(MainActivity.this).inflate(R.layout.tab_item_bottom, null);
+        ImageView icon = (ImageView) viewTab.findViewById(R.id.tab_icon);
         icon.setImageDrawable(Utils.setDrawableSelector(MainActivity.this, mTabIconsNormal[position], mTabIconsSelected[position]));
-        return view;
+        return viewTab;
     }
 
     @Override
@@ -174,9 +183,12 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         toolbar_menu = menu;
-        getMenuInflater().inflate(R.menu.menu_fragment_home, menu);
+        //getMenuInflater().inflate(R.menu.menu_fragment_home, menu);
         return true;
     }
+
+
+
     @Override
     public void onBackPressed() {
 
@@ -248,42 +260,30 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
 
     private void updateToolbar(int index) {
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         updateToolbarTitle(index);
         updateToolbarIcon(index);
 
-
-
-        View view = getSupportActionBar().getCustomView();
-        assert view == null;
-
+//        View indicator = findViewById(R.id.indicator);
+//        indicator.setVisibility(View.INVISIBLE);
 
         switch (index) {
             case 0:
-                //getSupportActionBar().setTitle("Chavel");
                 getSupportActionBar().show();
-                getMenuInflater().inflate(R.menu.menu_fragment_home, toolbar_menu);
+                toolbar.inflateMenu(R.menu.menu_fragment_home);
                 break;
             case 1:
-                //getSupportActionBar().setTitle("Search");
                 getSupportActionBar().show();
-                getMenuInflater().inflate(R.menu.menu_fragment_search, toolbar_menu);
+                toolbar.inflateMenu(R.menu.menu_fragment_search);
                 break;
             case 2:
-                //getSupportActionBar().setTitle("New Route");
                 getSupportActionBar().hide();
                 break;
             case 3:
-                //getSupportActionBar().setTitle("Notification");
                 getSupportActionBar().hide();
                 break;
             case 4:
-                //getSupportActionBar().setTitle("Mr.Chavel24");
                 getSupportActionBar().show();
-                getMenuInflater().inflate(R.menu.menu_fragment_profile, toolbar_menu);
+                toolbar.inflateMenu(R.menu.menu_fragment_profile);
                 break;
             default:
                 getSupportActionBar().setTitle("Chavel App");
@@ -330,14 +330,14 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
 
     private void updateToolbarTitle(int index) {
 
-        toolbar_title = (TextView) getSupportActionBar().getCustomView().findViewById(R.id.toolbar_title);
+        toolbar_title = (TextView) findViewById(R.id.toolbar_title);
         toolbar_title.setText(TABS[index]);
 
     }
 
     private void updateToolbarIcon(int index) {
 
-        toolbar_icon = (ImageView) getSupportActionBar().getCustomView().findViewById(R.id.toolbar_icon);
+        toolbar_icon = (ImageView) findViewById(R.id.toolbar_icon);
         if (toolbar != null) {
 
             if (index == 0) {

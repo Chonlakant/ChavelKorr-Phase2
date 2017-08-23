@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,6 +34,8 @@ public class SearchFragment extends Fragment {
     ArrayList<Search> listProfile = new ArrayList<>();
     ArrayList<Search> listRoute = new ArrayList<>();
 
+    private RecyclerView.LayoutManager mLayoutManager;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,10 +47,11 @@ public class SearchFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView_profile = (RecyclerView) view.findViewById(R.id.recyclerView_profile);
 
-
-        recyclerView_profile.setLayoutManager(new GridLayoutManager(getActivity(), 6));
+        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false
+        );
         recyclerView_profile.setHasFixedSize(true);
         recyclerView_profile.setItemAnimator(new DefaultItemAnimator());
+        recyclerView_profile.setLayoutManager(mLayoutManager);
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         recyclerView.setHasFixedSize(true);

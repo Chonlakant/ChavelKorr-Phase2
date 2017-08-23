@@ -35,55 +35,55 @@
     </string-array>
 
     <integer-array name="people_photos">
-        <item>@drawable/photo_male_1</item>
-        <item>@drawable/photo_male_2</item>
-        <item>@drawable/photo_female_1</item>
-        <item>@drawable/photo_female_2</item>
-        <item>@drawable/photo_male_3</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
 
-        <item>@drawable/photo_female_3</item>
-        <item>@drawable/photo_male_4</item>
-        <item>@drawable/photo_female_4</item>
-        <item>@drawable/photo_female_5</item>
-        <item>@drawable/photo_male_5</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
 
-        <item>@drawable/photo_female_6</item>
-        <item>@drawable/photo_male_6</item>
-        <item>@drawable/photo_male_7</item>
-        <item>@drawable/photo_female_7</item>
-        <item>@drawable/photo_female_8</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
+        <item>@drawable/unknown_avatar</item>
     </integer-array>
 
     <integer-array name="feed_photos">
         <item>@drawable/feed_photo_1</item>
-        <item>@drawable/feed_photo_2</item>
-        <item>@drawable/feed_photo_3</item>
-        <item>@drawable/feed_photo_4</item>
-        <item>@drawable/feed_photo_5</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
 
-        <item>@drawable/feed_photo_6</item>
-        <item>@drawable/feed_photo_7</item>
-        <item>@drawable/feed_photo_8</item>
-        <item>@drawable/feed_photo_9</item>
-        <item>@drawable/feed_photo_10</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
 
-        <item>@drawable/feed_photo_11</item>
-        <item>@drawable/feed_photo_12</item>
-        <item>@drawable/feed_photo_13</item>
-        <item>@drawable/feed_photo_14</item>
-        <item>@drawable/feed_photo_15</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
 
-        <item>@drawable/feed_photo_16</item>
-        <item>@drawable/feed_photo_17</item>
-        <item>@drawable/feed_photo_18</item>
-        <item>@drawable/feed_photo_19</item>
-        <item>@drawable/feed_photo_20</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
 
-        <item>@drawable/feed_photo_21</item>
-        <item>@drawable/feed_photo_22</item>
-        <item>@drawable/feed_photo_23</item>
-        <item>@drawable/feed_photo_24</item>
-        <item>@drawable/feed_photo_25</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
     </integer-array>
 
     <string-array name="friend_photo_album_name">
@@ -94,11 +94,11 @@
         <item>Food</item>
     </string-array>
     <integer-array name="friend_photo_album_photo">
-        <item>@drawable/feed_photo_4</item>
-        <item>@drawable/feed_photo_2</item>
-        <item>@drawable/feed_photo_6</item>
-        <item>@drawable/feed_photo_7</item>
-        <item>@drawable/feed_photo_5</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
+        <item>@drawable/feed_photo_1</item>
     </integer-array>
 
     <string-array name="random_date">

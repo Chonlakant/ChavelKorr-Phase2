@@ -48,7 +48,7 @@ public class AdvanceSearchActivity extends AppCompatActivity {
         ls_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), SearchMutiTypeActivity.class);
+                Intent i = new Intent(getApplicationContext(), SearchMultiTypeActivity.class);
                 startActivity(i);
             }
         });

@@ -17,15 +17,13 @@
         <ImageView
             android:id="@+id/toolbar_icon"
             android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_logo" />
+            android:layout_height="32dp" />
 
         <TextView
             android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:text="Chavel Title"
             android:textSize="24dp" />
 
     </android.support.v7.widget.Toolbar>

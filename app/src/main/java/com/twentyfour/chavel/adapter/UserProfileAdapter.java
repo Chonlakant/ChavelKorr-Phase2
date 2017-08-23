@@ -61,7 +61,7 @@ public class UserProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private void bindPhoto(final PhotoViewHolder holder, int position) {
         Picasso.with(context)
                 .load(photos.get(position))
-                .error(R.drawable.img_feed_center_1)
+                .error(R.drawable.feed_photo_1)
                 .resize(cellSize, cellSize)
                 .centerCrop()
                 .into(holder.ivPhoto, new Callback() {
