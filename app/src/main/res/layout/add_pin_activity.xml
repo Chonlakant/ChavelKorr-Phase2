@@ -265,6 +265,36 @@
                         </LinearLayout>
 
 
+
+                    </LinearLayout>
+
+                </net.cachapa.expandablelayout.ExpandableLayout>
+
+                <net.cachapa.expandablelayout.ExpandableLayout
+                    android:id="@+id/expandable_layout_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:el_duration="1000"
+                    app:el_expanded="true"
+                    app:el_parallax="0.5">
+
+                    <LinearLayout
+                        android:id="@+id/ls_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                            xmlns:map="http://schemas.android.com/apk/res-auto"
+                            xmlns:tools="http://schemas.android.com/tools"
+                            android:id="@+id/map"
+                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            tools:context=".activity.MainTab.RouteFragment" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -304,34 +334,7 @@
                         </LinearLayout>
                     </LinearLayout>
 
-                </net.cachapa.expandablelayout.ExpandableLayout>
 
-                <net.cachapa.expandablelayout.ExpandableLayout
-                    android:id="@+id/expandable_layout_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:el_duration="1000"
-                    app:el_expanded="true"
-                    app:el_parallax="0.5">
-
-                    <LinearLayout
-                        android:id="@+id/ls_map"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:orientation="vertical">
-
-                        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:map="http://schemas.android.com/apk/res-auto"
-                            xmlns:tools="http://schemas.android.com/tools"
-                            android:id="@+id/map"
-                            android:name="com.google.android.gms.maps.SupportMapFragment"
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            tools:context=".activity.MainTab.RouteFragment" />
-
-                    </LinearLayout>
 
                 </net.cachapa.expandablelayout.ExpandableLayout>
             </LinearLayout>
