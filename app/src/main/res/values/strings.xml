@@ -6,6 +6,13 @@
 
     <color name="bt_add_color">#49a6e9</color>
 
+    <string name="t_cont"><u>Continue</u></string>
+    <string name="t_signup"><u>Sign up</u></string>
+    <string name="t_login"><u>Login</u></string>
+
+    <string name="t_phone"><u>PHONE</u></string>
+    <string name="t_email">EMAIL</string>
+
     <string-array name="user_photos">
         <item>http://scontent-a-fra.cdninstagram.com/hphotos-xpf1/t51.2885-15/s306x306/e15/10665483_429615813855717_1490926670_n.jpg</item>
         <item>http://scontent-b-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10891026_694434897342602_1094773634_n.jpg</item>

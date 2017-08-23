@@ -33,8 +33,6 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static OnItemClickUsernameListener mOnItemClickUsernameListener;
     public static OnItemClickRouteTitleListener mOnItemClickRouteTitleListener;
 
-
-
     public interface OnItemClickLikeListener {
         void onItemLikeClick(View view, int position);
     }

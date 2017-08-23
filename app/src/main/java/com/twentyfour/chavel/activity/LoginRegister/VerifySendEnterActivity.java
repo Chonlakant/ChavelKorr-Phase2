@@ -43,7 +43,7 @@ public class VerifySendEnterActivity extends BaseActivity {
         setContentView(R.layout.activity_vertifi_again);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("VertificationSendEnter");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));

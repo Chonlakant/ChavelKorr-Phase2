@@ -5,6 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -15,6 +17,13 @@
         android:theme="@style/MyToolbarStyle">
 
         <ImageView
+            android:id="@+id/back_icon"
+            android:src="@drawable/ic_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+
+        <ImageView
+            android:src="@drawable/ic_tab_my_route"
             android:id="@+id/toolbar_icon"
             android:layout_width="32dp"
             android:layout_height="32dp" />

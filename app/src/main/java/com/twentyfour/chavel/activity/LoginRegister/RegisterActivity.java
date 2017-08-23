@@ -36,6 +36,12 @@ public class RegisterActivity extends BaseActivity {
     @Bind(R.id.term)
     TextView term;
 
+    @Bind(R.id.signup_text)
+    TextView signup_text;
+
+    @Bind(R.id.cont_text)
+    TextView cont_text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +49,11 @@ public class RegisterActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         String styledText = "<u><font>Term&Privacy Policy</font></u>";
+        String signUpText = "<u><font>Sign up</font></u>";
+        String contText = "<u><font>Continue</font></u>";
         term.setText(Html.fromHtml(styledText), TextView.BufferType.SPANNABLE);
+        signup_text.setText(Html.fromHtml(signUpText), TextView.BufferType.SPANNABLE);
+        cont_text.setText(Html.fromHtml(contText), TextView.BufferType.SPANNABLE);
 
         if(toolbar != null) {
 

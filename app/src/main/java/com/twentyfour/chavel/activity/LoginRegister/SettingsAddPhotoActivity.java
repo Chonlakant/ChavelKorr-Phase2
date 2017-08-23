@@ -48,7 +48,7 @@ public class SettingsAddPhotoActivity extends BaseActivity {
     @OnClick(R.id.add_photo_btn)
     void next(View view) {
         if (view.getId() == R.id.action_skip) {
-            Toast.makeText(this, "Skiped", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Skipped", Toast.LENGTH_SHORT).show();
 
         } else if(view.getId() == R.id.add_photo_btn) {
             Toast.makeText(this, "Photo uploaded", Toast.LENGTH_SHORT).show();

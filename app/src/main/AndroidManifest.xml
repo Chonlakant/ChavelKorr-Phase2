@@ -34,7 +34,6 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -46,9 +45,12 @@
 
         <!-- Login Register Zone -->
         <!-- np 95.1 -->
-        <activity android:name=".activity.LoginRegister.RegisterActivity" />
+        <activity android:name=".activity.LoginRegister.RegisterActivity"
+            android:theme="@style/BaseThemeBack"></activity>
         <!-- np 97.1 -->
-        <activity android:name=".activity.LoginRegister.LoginActivity" />
+        <activity android:name=".activity.LoginRegister.LoginActivity"
+            android:theme="@style/BaseThemeBack"
+            ></activity>
         <activity android:name=".activity.LoginRegister.RegisterSmsOrCallActivity" />
         <activity android:name=".activity.LoginRegister.RegisterByPhoneAndEmailActivity" />
         <activity android:name=".activity.LoginRegister.CreateUserIdActivity" />
@@ -94,7 +96,8 @@
             android:name=".BaseActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".activity.UserProfileActivity" />
-        <activity android:name=".activity.HolderActivity"></activity>
+        <activity android:name=".activity.HolderActivity"
+            ></activity>
     </application>
 
 </manifest>

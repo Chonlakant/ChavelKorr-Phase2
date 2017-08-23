@@ -22,12 +22,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_weight="1"
         android:orientation="vertical">
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,19 +34,29 @@
             android:text="Create a UserID"
             android:textColor="#242424"
             android:textSize="15dp" />
+
         <TextView
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:text="Your friend will use your UserID to add you on Chavel"
             android:textColor="#919191"
             android:textSize="15dp" />
 
-        <LinearLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
+            android:text="UserID"
+            android:textSize="15dp"
+            android:textColor="#242424"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <EditText
@@ -59,10 +67,9 @@
                 android:layout_marginRight="20dp"
                 android:hint=""
                 android:textColor="#242424"
-                android:textSize="13dp" />
+                android:textSize="16dp" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 
@@ -98,48 +105,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        android:layout_weight="1"
-        android:gravity="bottom"
-        android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp"
-            android:background="#dedede" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:text="Already have an account?"
-                android:textColor="#919191"
-                android:textSize="18dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:text="Log in"
-                android:textColor="#009fd8"
-                android:textSize="18dp" />
-        </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

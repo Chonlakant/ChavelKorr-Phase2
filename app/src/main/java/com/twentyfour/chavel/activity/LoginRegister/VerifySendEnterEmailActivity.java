@@ -36,7 +36,7 @@ public class VerifySendEnterEmailActivity extends BaseActivity {
 
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Vertification Email");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));

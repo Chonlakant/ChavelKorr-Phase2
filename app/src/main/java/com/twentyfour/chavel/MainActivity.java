@@ -1,5 +1,6 @@
 package com.twentyfour.chavel;
 
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -50,6 +51,7 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
     TabLayout bottomTabLayout;
     TextView toolbar_title;
     ImageView toolbar_icon;
+    ImageView toolbar_back_icon;
 
     private FragNavController mNavController;
     private FragmentHistory fragmentHistory;
@@ -111,6 +113,12 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
         //actionBar = getSupportActionBar().getCustomView();
 
         updateToolbar(0);
+
+        toolbar_title.setText("Chavel");
+        toolbar_icon.setImageDrawable(getDrawable(R.drawable.ic_logo));
+
+        toolbar_back_icon = (ImageView) findViewById(R.id.back_icon);
+        toolbar_back_icon.setVisibility(View.GONE);
 
     }
 
@@ -292,8 +300,8 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
     }
 
     private void updateToolbar() {
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(!mNavController.isRootFragment());
-        //getSupportActionBar().setDisplayShowHomeEnabled(!mNavController.isRootFragment());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(!mNavController.isRootFragment());
+        getSupportActionBar().setDisplayShowHomeEnabled(!mNavController.isRootFragment());
     }
 
     @Override

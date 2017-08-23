@@ -114,6 +114,8 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+
+
         ed_mail.addTextChangedListener(new TextWatcher() {
 
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

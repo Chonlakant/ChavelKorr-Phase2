@@ -60,10 +60,10 @@ public class ImageFeedHomeAdapter extends RecyclerView.Adapter<ImageFeedHomeAdap
         String[] a = {"https://www.ilovetogo.com/FileUpload/Webboard/091225015340319.jpg",
                 "https://image.dek-d.com/24/651421/107696373",
                 "http://phuket.thai-sale.com/wp-content/uploads/2014/08/samui2.jpg?039e20?039e20",
-                url};
+                "http://phuket.thai-sale.com/wp-content/uploads/2014/08/samui2.jpg?039e20?039e20"};
 
         Glide.with(ctx)
-                .load(a[position]).override(100, 100)
+                .load(a[position]).override(120, 90)
                 .centerCrop()
                 .error(R.drawable.profile_photo)
                 .into(holder.img_cover);

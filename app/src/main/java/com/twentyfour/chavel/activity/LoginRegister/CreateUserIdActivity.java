@@ -72,7 +72,7 @@ public class  CreateUserIdActivity extends BaseActivity {
         ls_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), RegisterByPhoneAndEmailActivity.class);
+                Intent i = new Intent(getApplicationContext(), SetPasswordActivity.class);
                 startActivity(i);
             }
         });

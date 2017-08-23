@@ -9,7 +9,7 @@
         <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item> -->
         <!--<item name="colorControlHighlight">@color/colorAccentLight</item> -->
         <!--<item name="colorAccent">@color/colorAccent</item>-->
-        <item name="android:homeAsUpIndicator">@drawable/ic_back2</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_back</item>
 
         <item name="colorControlNormal">#333333</item>
         <item name="android:textColorPrimary">#333333</item>
@@ -19,6 +19,10 @@
         <!--<item name="colorControlNormal">@color/colorPrimary</item>-->
         <!--<item name="colorControlActivated">@color/colorAccent</item>-->
         <!--<item name="colorControlHighlight">@color/colorAccentLight</item>-->
+    </style>
+
+    <style name="BaseThemeBack" parent="BaseTheme">
+        <item name="android:homeAsUpIndicator">@drawable/ic_back2</item>
     </style>
 
     <style name="MyToolbarStyle" parent="ThemeOverlay.AppCompat.ActionBar">

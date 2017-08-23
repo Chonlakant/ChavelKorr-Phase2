@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimaryBg">#ff10a9e3</color>
-    <color name="colorPrimary">#10a9e3</color>
-    <color name="colorPrimaryDark">#10a9e3</color>
-    <color name="colorAccent">#10a9e3</color>
+    <color name="colorPrimaryBg">#ff0FA9E0</color>
+    <color name="colorPrimary">#0FA9E0</color>
+    <color name="colorPrimaryDark">#0FA9E0</color>
+    <color name="colorAccent">#0FA9E0</color>
     <color name="colorAccentLight">#10a9e3</color>
     <color name="colorUnSelect">#848889</color>
 
@@ -32,7 +32,7 @@
     <color name="grey_soft">#F5F5F5</color>
     <color name="grey_bg">#E6E6E6</color>
     <color name="grey_text">#222D31</color>
-    <color name="tab_indicator_color">#10a9e3</color>
+    <color name="tab_indicator_color">#0FA9E0</color>
     <color name="me_chat_bg">#FFE0B2</color>
 
     <color name="darkOverlay">#80000000</color>
@@ -44,7 +44,7 @@
 
     <color name="style_color_primary">#2d5d82</color>
     <color name="style_color_primary_dark">#21425d</color>
-    <color name="style_color_accent">#01bcd5</color>
+    <color name="style_color_accent">#0FA9E0</color>
 
     <color name="fab_color_pressed">#007787</color>
     <color name="fab_color_shadow">#44000000</color>
