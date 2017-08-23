@@ -103,6 +103,7 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
 
     }
 
+
     private void chooseImage() {
         EZPhotoPickConfig config = new EZPhotoPickConfig();
         config.photoSource = PhotoSource.GALLERY;

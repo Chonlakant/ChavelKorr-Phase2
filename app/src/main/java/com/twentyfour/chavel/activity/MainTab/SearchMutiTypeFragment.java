@@ -32,6 +32,7 @@ public class SearchMutiTypeFragment extends Fragment {
     EditText et_search;
     ImageView img_back;
 
+
     String[] iconsNoti = {"Top", "People", "Location", "RID"};
 
 
@@ -123,6 +124,8 @@ public class SearchMutiTypeFragment extends Fragment {
 
             }
         });
+
+
         return rootView;
     }
 
