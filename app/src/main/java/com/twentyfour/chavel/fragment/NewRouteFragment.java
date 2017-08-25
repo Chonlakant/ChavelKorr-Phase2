@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
 import com.twentyfour.chavel.activity.MainTab.CrossProvinceActivity;
+import com.twentyfour.chavel.activity.MainTab.FindPeopleFragment;
 import com.twentyfour.chavel.activity.MainTab.LocationAddActivity;
 import com.twentyfour.chavel.activity.MainTab.RouteDescriptionFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteFragment;
@@ -213,7 +214,7 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                RouteDescriptionFragment routeDescriptionFragment = new RouteDescriptionFragment();
+                FindPeopleFragment routeDescriptionFragment = new FindPeopleFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content, routeDescriptionFragment);
                 transaction.addToBackStack(null);

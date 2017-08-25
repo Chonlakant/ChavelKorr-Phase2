@@ -22,7 +22,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:text="np95.1"
+                android:text="p95"
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

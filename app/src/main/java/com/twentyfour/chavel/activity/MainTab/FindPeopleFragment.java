@@ -35,6 +35,7 @@ public class FindPeopleFragment extends Fragment {
         //setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+        toolbar.setNavigationIcon(R.drawable.ic_back);
         //setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

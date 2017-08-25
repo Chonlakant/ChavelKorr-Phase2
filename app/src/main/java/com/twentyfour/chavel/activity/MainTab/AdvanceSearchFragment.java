@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.fragment.TabMyRouteFragment4;
 
 
 public class AdvanceSearchFragment extends Fragment {
@@ -62,7 +63,7 @@ public class AdvanceSearchFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                SelectActivityFragment selectActivityFragment = new SelectActivityFragment();
+                TabMyRouteFragment4 selectActivityFragment = new TabMyRouteFragment4();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container6, selectActivityFragment);
                 transaction.addToBackStack(null);
