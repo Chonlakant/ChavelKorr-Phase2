@@ -18,8 +18,8 @@ import butterknife.OnClick;
 
 public class FindContactFacebookFriendsActivity extends BaseActivity {
 
-    @Bind(R.id.ls_follow)
-    LinearLayout ls_follow;
+    @Bind(R.id.ls_findfacebook)
+    LinearLayout ls_findfacebook;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -42,7 +42,7 @@ public class FindContactFacebookFriendsActivity extends BaseActivity {
             }
         });
 
-        ls_follow.setOnClickListener(new View.OnClickListener() {
+        ls_findfacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Follow all friends", Toast.LENGTH_SHORT).show();

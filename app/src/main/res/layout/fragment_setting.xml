@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-
+                android:background="@color/grey_soft"
                 >
                 <!-- Invite Friends -->
                 <TextView
@@ -56,7 +56,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/menuFindfriends"
+                        android:id="@+id/menuInviteFriends"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
@@ -96,13 +96,12 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/menuFBFriends"
+                        android:id="@+id/menuInviteFBFriends"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
                         android:layout_marginRight="25dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/linebottom"
                         android:clickable="true"
                         android:orientation="horizontal"
                         android:paddingBottom="5dp"
@@ -149,7 +148,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/menuFollowPeople"
+                        android:id="@+id/menuFollowFriend"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
@@ -189,13 +188,12 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/menuFBPeopleFriends"
+                        android:id="@+id/menuFollowFBFriend"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="25dp"
                         android:layout_marginRight="25dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/linebottom"
                         android:clickable="true"
                         android:orientation="horizontal"
                         android:paddingBottom="5dp"
@@ -438,7 +436,6 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginRight="25dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/linebottom"
                         android:clickable="true"
                         android:orientation="horizontal"
                         android:paddingBottom="5dp"
@@ -467,7 +464,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="Genral Setting"
+                    android:text="General"
                     android:textColor="#858585"
                     android:textSize="16dp" />
 
@@ -674,7 +671,7 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginRight="25dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/linebottom"
+
                         android:clickable="true"
                         android:orientation="horizontal"
                         android:paddingBottom="5dp"
@@ -719,7 +716,7 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginRight="25dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/linebottom"
+
                         android:clickable="true"
                         android:orientation="vertical"
                         android:paddingBottom="5dp"
@@ -920,7 +917,6 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginRight="25dp"
                         android:layout_marginTop="0dp"
-                        android:background="@drawable/linebottom"
                         android:clickable="true"
                         android:orientation="horizontal"
                         android:paddingBottom="5dp"
@@ -1089,7 +1085,7 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginRight="25dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/linebottom"
+
                         android:clickable="true"
                         android:orientation="horizontal"
                         android:paddingBottom="5dp"

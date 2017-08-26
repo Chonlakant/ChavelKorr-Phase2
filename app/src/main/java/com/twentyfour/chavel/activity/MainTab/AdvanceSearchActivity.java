@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.LoginRegister.FindPeopleActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
