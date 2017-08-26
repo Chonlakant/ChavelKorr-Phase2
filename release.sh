@@ -2,7 +2,7 @@
 command -v git-flow >/dev/null 2>&1 || brew install git-flow
 
 # Tag as version
-tag=v
+tag=v0.5.2
 
 run() {
   # Start release
