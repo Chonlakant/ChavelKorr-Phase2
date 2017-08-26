@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.twentyfour.chavel.MainActivity;
@@ -24,6 +25,7 @@ import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.SettingSystemActivity;
 import com.twentyfour.chavel.activity.HolderActivity;
 import com.twentyfour.chavel.activity.LoginRegister.LoginActivity;
+import com.twentyfour.chavel.activity.MainTab.EditProfileActivity;
 import com.twentyfour.chavel.adapter.ExploreGridAdapter;
 import com.twentyfour.chavel.adapter.FeedListAdapter;
 import com.twentyfour.chavel.adapter.MyActivityProfileAdapter;
@@ -60,6 +62,9 @@ public class PageProfileFragment extends Fragment {
     ImageView bt_places;
     @Bind(R.id.bt_tags)
     ImageView bt_tags;
+
+    @Bind(R.id.edit_profile_btn)
+    Button editProfileBtn;
 
 //    @Nullable
 //    @OnClick({R.id.bt_grid,R.id.bt_list,R.id.bt_places,R.id.bt_tags})
@@ -122,6 +127,14 @@ public class PageProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 actionClick(v);
+            }
+        });
+
+        editProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(i);
             }
         });
         return view;

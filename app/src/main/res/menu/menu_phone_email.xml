@@ -3,14 +3,11 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       tools:context=".activity.LoginRegister.LandingActivity">
 
-
-
       <item
           android:id="@+id/action_more"
           android:orderInCategory="100"
           android:title="Menu "
           android:icon="@mipmap/ic_more"
           app:showAsAction="always" />
-
 
 </menu>
