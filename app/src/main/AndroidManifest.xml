@@ -69,7 +69,7 @@
         <activity android:name=".activity.LoginRegister.FindContactFacebookFriendsActivity" />
         <activity android:name=".activity.LoginRegister.FindContactFriendsActivity" />
         <activity android:name=".activity.LoginRegister.FollowUserActivity" />
-        <activity android:name=".activity.LoginRegister.SuggestionActivity"></activity>
+        <activity android:name=".activity.MainTab.SuggestionActivity"></activity>
         <activity android:name=".activity.UnusedChooseCountryActivity" />
 
         <!-- Main Tab Zone -->
@@ -86,7 +86,7 @@
         <activity android:name=".activity.MainTab.RouteDescriptionActivity" />
         <activity android:name=".activity.MainTab.AdvanceSearchActivity" />
         <activity android:name=".activity.MainTab.SearchMultiTypeActivity" />
-        <activity android:name=".activity.MainTab.FindPeopleActivity" />
+        <activity android:name=".activity.LoginRegister.FindPeopleActivity" />
         <activity android:name=".activity.MainTab.EditProfileActivity" />
         <activity android:name=".activity.MainTab.RouteHistoryActivity" />
         <activity android:name=".activity.MainTab.OverViewPinsActivity" />

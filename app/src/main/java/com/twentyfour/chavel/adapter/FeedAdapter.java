@@ -20,7 +20,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int HEADER = 0;
     public static final int CHILD = 1;
 
-    ImageFeedHomeAdapter imageFeedHomeAdapter;
+    FeedImageAdapter feedImageAdapter;
     Context context;
 
     private List<Item> data;
@@ -177,10 +177,10 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 listStr.add("");
                 listStr.add("");
                 listStr.add("");
-                imageFeedHomeAdapter = new ImageFeedHomeAdapter(context, listStr);
+                feedImageAdapter = new FeedImageAdapter(context, listStr);
                 //}
 
-                itemContent.ryc.setAdapter(imageFeedHomeAdapter);
+                itemContent.ryc.setAdapter(feedImageAdapter);
 
 
                 break;

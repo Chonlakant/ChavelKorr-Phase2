@@ -91,9 +91,8 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+ 
                 mNavController.clearStack();
-
                 switchTab(tab.getPosition());
 
             }
@@ -119,7 +118,6 @@ public class MainActivity extends BaseActivity implements BaseFragment.FragmentN
 
         toolbar_back_icon = (ImageView) findViewById(R.id.back_icon);
         toolbar_back_icon.setVisibility(View.GONE);
-
     }
 
     private void initTab() {

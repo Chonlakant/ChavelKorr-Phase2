@@ -23,7 +23,7 @@ import com.twentyfour.chavel.activity.MainTab.PeriodTimeActivity;
 import com.twentyfour.chavel.activity.MainTab.RouteDescriptionActivity;
 import com.twentyfour.chavel.activity.MainTab.RouteHistoryActivity;
 import com.twentyfour.chavel.activity.MainTab.RouteNameActivity;
-import com.twentyfour.chavel.activity.LoginRegister.SuggestionActivity;
+import com.twentyfour.chavel.activity.MainTab.SuggestionActivity;
 import com.twentyfour.chavel.activity.MainTab.SelectTravelMethodActivity;
 
 import net.cachapa.expandablelayout.ExpandableLayout;

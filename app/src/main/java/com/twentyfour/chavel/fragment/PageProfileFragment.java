@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.twentyfour.chavel.MainActivity;
@@ -24,6 +25,7 @@ import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.SettingSystemActivity;
 import com.twentyfour.chavel.activity.HolderActivity;
 import com.twentyfour.chavel.activity.LoginRegister.LoginActivity;
+import com.twentyfour.chavel.activity.MainTab.EditProfileActivity;
 import com.twentyfour.chavel.adapter.ExploreGridAdapter;
 import com.twentyfour.chavel.adapter.FeedListAdapter;
 import com.twentyfour.chavel.adapter.MyActivityProfileAdapter;
@@ -42,11 +44,7 @@ import butterknife.OnClick;
 public class PageProfileFragment extends Fragment {
     private View view;
 
-//    @Nullable
-//    @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-    //private ExploreGridAdapter mGridAdapter;
-    //private FeedListAdapter mListAdapter;
     List<Feed> items = new ArrayList<>();
 
     MyActivityProfileAdapter myActivityProfileAdapter;
@@ -60,6 +58,9 @@ public class PageProfileFragment extends Fragment {
     ImageView bt_places;
     @Bind(R.id.bt_tags)
     ImageView bt_tags;
+
+    @Bind(R.id.edit_profile_btn)
+    Button editProfileBtn;
 
 //    @Nullable
 //    @OnClick({R.id.bt_grid,R.id.bt_list,R.id.bt_places,R.id.bt_tags})
@@ -97,6 +98,8 @@ public class PageProfileFragment extends Fragment {
         bt_places = (ImageView) view.findViewById(R.id.bt_places);
         bt_tags = (ImageView) view.findViewById(R.id.bt_tags);
 
+        editProfileBtn = (Button) view.findViewById(R.id.edit_profile_btn);
+
         bt_grid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,24 +127,18 @@ public class PageProfileFragment extends Fragment {
                 actionClick(v);
             }
         });
+
+        editProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(i);
+            }
+        });
         return view;
     }
 
     private void switchMyRouteMode() {
-//        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), Tools.getGridExplorerCount(getActivity()));
-//        layoutManager.setAutoMeasureEnabled(true);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setPadding(2, 2, 2, 2);
-//
-//        //set data and list adapter
-//        mGridAdapter = new ExploreGridAdapter(getActivity(), items);
-//        recyclerView.setAdapter(mGridAdapter);
-//        mGridAdapter.setOnItemClickListener(new ExploreGridAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, Feed obj, int position) {
-//                switchListMode();
-//            }
-//        });
 
         Intent i = new Intent(getActivity(), HolderActivity.class);
         i.putExtra("index",1);
@@ -156,16 +153,6 @@ public class PageProfileFragment extends Fragment {
     }
 
     private void switchMyActivityMode() {
-//        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
-//        layoutManager.setAutoMeasureEnabled(true);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setPadding(0, 0, 0, 0);
-//        recyclerView.setNestedScrollingEnabled(false);
-//
-//        mListAdapter = new FeedListAdapter(getActivity(), items);
-//        recyclerView.setAdapter(mListAdapter);
-        ///
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

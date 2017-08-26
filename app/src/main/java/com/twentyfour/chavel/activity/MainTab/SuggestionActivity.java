@@ -1,18 +1,20 @@
 package com.twentyfour.chavel.activity.MainTab;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class FindPeopleActivity extends AppCompatActivity {
+public class SuggestionActivity extends BaseActivity {
+
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -20,14 +22,13 @@ public class FindPeopleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_people);
+        setContentView(R.layout.fragment_suggestion);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Find People");
+        toolbar.setTitle("Suggestion");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,12 +36,21 @@ public class FindPeopleActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main_skip, menu);
+        getMenuInflater().inflate(R.menu.menu_setting, menu);
+
         return true;
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
