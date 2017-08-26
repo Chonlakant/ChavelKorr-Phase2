@@ -44,11 +44,7 @@ import butterknife.OnClick;
 public class PageProfileFragment extends Fragment {
     private View view;
 
-//    @Nullable
-//    @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-    //private ExploreGridAdapter mGridAdapter;
-    //private FeedListAdapter mListAdapter;
     List<Feed> items = new ArrayList<>();
 
     MyActivityProfileAdapter myActivityProfileAdapter;
@@ -102,6 +98,8 @@ public class PageProfileFragment extends Fragment {
         bt_places = (ImageView) view.findViewById(R.id.bt_places);
         bt_tags = (ImageView) view.findViewById(R.id.bt_tags);
 
+        editProfileBtn = (Button) view.findViewById(R.id.edit_profile_btn);
+
         bt_grid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,20 +139,6 @@ public class PageProfileFragment extends Fragment {
     }
 
     private void switchMyRouteMode() {
-//        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), Tools.getGridExplorerCount(getActivity()));
-//        layoutManager.setAutoMeasureEnabled(true);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setPadding(2, 2, 2, 2);
-//
-//        //set data and list adapter
-//        mGridAdapter = new ExploreGridAdapter(getActivity(), items);
-//        recyclerView.setAdapter(mGridAdapter);
-//        mGridAdapter.setOnItemClickListener(new ExploreGridAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View view, Feed obj, int position) {
-//                switchListMode();
-//            }
-//        });
 
         Intent i = new Intent(getActivity(), HolderActivity.class);
         i.putExtra("index",1);
@@ -169,16 +153,6 @@ public class PageProfileFragment extends Fragment {
     }
 
     private void switchMyActivityMode() {
-//        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
-//        layoutManager.setAutoMeasureEnabled(true);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setPadding(0, 0, 0, 0);
-//        recyclerView.setNestedScrollingEnabled(false);
-//
-//        mListAdapter = new FeedListAdapter(getActivity(), items);
-//        recyclerView.setAdapter(mListAdapter);
-        ///
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
