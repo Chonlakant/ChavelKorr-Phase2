@@ -71,7 +71,7 @@ public class SearchProfileAdapter extends RecyclerView.Adapter<SearchProfileAdap
         Glide.with(ctx)
                 .load(c.getImageUrl())
                 .into(holder.img_cover);
-        ;
+
 
     }
 

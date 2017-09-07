@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.model.DraftModel;
 import com.twentyfour.chavel.model.ModelPins;
@@ -43,10 +44,12 @@ public class DratfAdapter extends RecyclerView.Adapter<DratfAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
+        ImageView image_cover;
 
         public ViewHolder(View v) {
             super(v);
+
+            image_cover = (ImageView) v.findViewById(R.id.image_cover);
 
         }
 
@@ -72,6 +75,7 @@ public class DratfAdapter extends RecyclerView.Adapter<DratfAdapter.ViewHolder> 
 
         }
     }
+
     public DratfAdapter(Context ctx, List<DraftModel> list) {
         this.ctx = ctx;
         this.list = list;
@@ -81,9 +85,14 @@ public class DratfAdapter extends RecyclerView.Adapter<DratfAdapter.ViewHolder> 
     @Override
     public DratfAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pins, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_draft, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
+
+        Glide.with(ctx)
+                .load("https://2.bp.blogspot.com/-s8USOiaFfJw/WSbruKwBVvI/AAAAAAAAAMs/YIjd1jqXFVwy70NwBpSgRmHnMmJnKvIDwCLcB/s640/DSC_0419_Cover-599x400.jpg")
+                .into(vh.image_cover);
+
         return vh;
     }
 
