@@ -48,6 +48,13 @@ public class RouteDetailsFragment extends Fragment {
     TextView dt_details;
     LinearLayout ls_budget;
 
+    public static RouteDetailsFragment newInstance() {
+        RouteDetailsFragment fragment = new RouteDetailsFragment();
+
+        return fragment;
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

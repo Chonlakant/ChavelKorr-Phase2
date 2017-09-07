@@ -66,9 +66,9 @@ public class SearchRouteAdapter extends RecyclerView.Adapter<SearchRouteAdapter.
 
         Glide.with(ctx)
                 .load(c.getImageUrl())
-                .override(120, 120)
-                .centerCrop()
-                .error(R.drawable.profile_photo)
+              //  .override(120, 120)
+              //  .centerCrop()
+               // .error(R.drawable.profile_photo)
                 .into(holder.img_cover);
 
     }

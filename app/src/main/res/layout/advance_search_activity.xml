@@ -64,7 +64,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:background="#848889" />
 
         <LinearLayout
@@ -86,7 +86,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:background="#848889" />
 
         <LinearLayout
@@ -108,7 +108,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:background="#848889" />
 
         <TextView
@@ -123,15 +123,11 @@
             android:layout_height="40dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Minimum" />
 
             <EditText
-                android:layout_width="50dp"
+                android:layout_width="100dp"
+                android:text="Minimum"
+                android:textSize="12dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp" />
@@ -144,18 +140,14 @@
                 android:text="To" />
 
             <EditText
-                android:layout_width="50dp"
+                android:layout_width="100dp"
+                android:text="Maximun"
+                android:textSize="12dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:gravity="bottom" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Maximun" />
 
         </LinearLayout>
 
@@ -169,13 +161,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:background="#848889" />
 
         <LinearLayout
             android:id="@+id/ls_next"
             android:layout_width="170dp"
-            android:layout_height="40dp"
+            android:layout_height="37dp"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"

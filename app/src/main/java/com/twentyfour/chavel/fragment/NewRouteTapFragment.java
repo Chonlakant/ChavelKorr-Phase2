@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.MainTab.DraftFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class NewRouteTapFragment extends AppCompatActivity {
     private void setupViewPager2(ViewPager viewPager2) {
         ViewPagerAdapter adapter2 = new ViewPagerAdapter(getSupportFragmentManager());
         adapter2.insertNewFragment(new NewRouteFragment());
-        adapter2.insertNewFragment(new RouteDetailsFragment());
+        adapter2.insertNewFragment(new DraftFragment());
         viewPager2.setAdapter(adapter2);
 
     }

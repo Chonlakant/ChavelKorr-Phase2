@@ -1,7 +1,6 @@
 package com.twentyfour.chavel.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,17 +11,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.model.ModelPins;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ExpandableHomeFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int HEADER = 0;
     public static final int CHILD = 1;
 
-    ImageFeedHomeAdapter imageFeedHomeAdapter;
+    ImageFeedHomeAdapter2 imageFeedHomeAdapter;
     Context context;
 
     private List<Item> data;
@@ -87,7 +85,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
 
-    public ExpandableListAdapter(List<Item> data, Context context) {
+    public ExpandableHomeFeedAdapter(List<Item> data, Context context) {
         this.data = data;
         this.context = context;
     }
@@ -102,12 +100,12 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         switch (type) {
             case HEADER:
                 LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = inflater.inflate(R.layout.list_header, parent, false);
+                view = inflater.inflate(R.layout.list_header2, parent, false);
                 ListHeaderViewHolder header = new ListHeaderViewHolder(view);
                 return header;
             case CHILD:
                 LayoutInflater inflater2 = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = inflater2.inflate(R.layout.item_home, parent, false);
+                view = inflater2.inflate(R.layout.item_home_feed, parent, false);
                 ListContentViewHolder content = new ListContentViewHolder(view);
                 return content;
 
@@ -154,20 +152,9 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     }
                 });
 
-
-
-                break;
-            case CHILD:
-                position = (position + 1) / 2;
-                ListContentViewHolder itemContent = (ListContentViewHolder) holder;
-                itemContent.text_create.setText("Create " + data.get(position).text);
-                itemContent.txt_catgory.setText("Category " + data.get(position).diffDate);
-                itemContent.txt_by_username.setText(data.get(position).user_name);
-                itemContent.txt_msg.setText(data.get(position).route_detail);
-
-                itemContent.ryc.setLayoutManager(new GridLayoutManager(context, 2));
-                itemContent.ryc.setHasFixedSize(true);
-                itemContent.ryc.setItemAnimator(new DefaultItemAnimator());
+                itemController.ryc.setLayoutManager(new GridLayoutManager(context, 2));
+                itemController.ryc.setHasFixedSize(true);
+                itemController.ryc.setItemAnimator(new DefaultItemAnimator());
 
                 listStr = new ArrayList<>();
                 //if(data.get(position) != null && data.get(position).list != null) {
@@ -177,11 +164,21 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                 listStr.add("");
                 listStr.add("");
                 listStr.add("");
-                imageFeedHomeAdapter = new ImageFeedHomeAdapter(context, listStr);
+                imageFeedHomeAdapter = new ImageFeedHomeAdapter2(context, listStr);
                 //}
 
-                itemContent.ryc.setAdapter(imageFeedHomeAdapter);
+                itemController.ryc.setAdapter(imageFeedHomeAdapter);
 //                Log.e("image",data.get(position).list.get(position).toString());
+
+
+
+                break;
+            case CHILD:
+                position = (position + 1) / 2;
+                ListContentViewHolder itemContent = (ListContentViewHolder) holder;
+
+
+
 
 
                 break;
@@ -206,6 +203,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public ImageView img_like;
         public ImageView img_sh;
         public ImageView photo;
+        public RecyclerView ryc;
 
         public ListHeaderViewHolder(View itemView) {
             super(itemView);
@@ -215,6 +213,7 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             img_like = (ImageView) itemView.findViewById(R.id.img_like);
             img_sh = (ImageView) itemView.findViewById(R.id.img_sh);
             btn_expand_toggle = (ImageView) itemView.findViewById(R.id.btn_expand_toggle);
+            ryc = (RecyclerView) itemView.findViewById(R.id.ryc);
 
             img_like.setOnClickListener(this);
             img_comments.setOnClickListener(this);
@@ -261,34 +260,27 @@ public class ExpandableListAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private static class ListContentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public TextView text_create;
-        public TextView txt_catgory;
-        public TextView txt_by_username;
-        public TextView txt_msg;
-        public RecyclerView ryc;
+
+
 
 
         public ListContentViewHolder(View itemView) {
             super(itemView);
-            text_create = (TextView) itemView.findViewById(R.id.text_create);
-            txt_catgory = (TextView) itemView.findViewById(R.id.txt_catgory);
-            txt_by_username = (TextView) itemView.findViewById(R.id.txt_by_username);
-            txt_msg = (TextView) itemView.findViewById(R.id.txt_msg);
-            ryc = (RecyclerView) itemView.findViewById(R.id.ryc);
-            txt_by_username.setOnClickListener(this);
+
+
 
         }
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.txt_by_username:
-                    if (mOnItemClickUsernameListener != null) {
-                        mOnItemClickUsernameListener.onItemUsernameClick(v, getPosition());
-                    }
-                    break;
-
-            }
+//            switch (v.getId()) {
+//                case R.id.txt_by_username:
+//                    if (mOnItemClickUsernameListener != null) {
+//                        mOnItemClickUsernameListener.onItemUsernameClick(v, getPosition());
+//                    }
+//                    break;
+//
+//            }
         }
     }
 

@@ -136,7 +136,7 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
 
                 Glide.with(getApplicationContext())
                         .load(stream.toByteArray())
-                        .crossFade()
+                        //.crossFade()
                         .into(add_photo);
 
             } catch (IOException e) {
@@ -154,7 +154,7 @@ public class SettingsAddPhotoActivity extends AppCompatActivity {
 
                 Glide.with(getApplicationContext())
                         .load(stream.toByteArray())
-                        .crossFade()
+                       // .crossFade()
                         .into(add_photo);
             } catch (IOException e) {
                 e.printStackTrace();

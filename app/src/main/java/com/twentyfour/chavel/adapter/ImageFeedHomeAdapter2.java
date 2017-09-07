@@ -7,20 +7,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.RoundedCornersTransformation1;
 import com.twentyfour.chavel.model.ModelPins;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImageFeedHomeAdapter extends RecyclerView.Adapter<ImageFeedHomeAdapter.ViewHolder> {
+public class ImageFeedHomeAdapter2 extends RecyclerView.Adapter<ImageFeedHomeAdapter2.ViewHolder> {
 
     private List<String> list = new ArrayList<>();
     private Context ctx;
     private OnItemClickListener mOnItemClickListener;
+
+    public static int sCorner = 13;
+    public static int sMargin = 0;
+    public static int sBorder = 3;
+    public static String sColor = "#cfd2ce";
 
     public interface OnItemClickListener {
         void onItemClick(View view, ModelPins obj, int position);
@@ -40,15 +46,15 @@ public class ImageFeedHomeAdapter extends RecyclerView.Adapter<ImageFeedHomeAdap
 
     }
 
-    public ImageFeedHomeAdapter(Context ctx, List<String> list) {
+    public ImageFeedHomeAdapter2(Context ctx, List<String> list) {
         this.ctx = ctx;
         this.list = list;
 
     }
 
     @Override
-    public ImageFeedHomeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image_feed_home, parent, false);
+    public ImageFeedHomeAdapter2.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_image_feed_home2, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -63,9 +69,19 @@ public class ImageFeedHomeAdapter extends RecyclerView.Adapter<ImageFeedHomeAdap
 
         Log.e("url", url);
 
+
+//        Glide.with(ctx)
+//                .load(a[position]).override(120, 90)
+//                .centerCrop()
+//                .error(R.drawable.profile_photo)
+//                .into(holder.img_cover);
+
+
         Glide.with(ctx)
                 .load(a[position])
+                .apply(RequestOptions.bitmapTransform(new RoundedCornersTransformation1(ctx, sCorner, sMargin, sColor, sBorder)))
                 .into(holder.img_cover);
+
 
     }
 

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.adapter.ViewPagerAdapterNoti;
 import com.twentyfour.chavel.fragment.FollowingFragment;
+import com.twentyfour.chavel.fragment.HomeFeedFragment;
 import com.twentyfour.chavel.fragment.TabMyRouteFragment2;
 import com.twentyfour.chavel.fragment.TabMyRouteFragment3;
 import com.twentyfour.chavel.fragment.YouFragment;
@@ -133,7 +134,7 @@ public class SearchMutiTypeFragment extends Fragment {
 
     private void setupviewPagerSearch(ViewPager viewPager1) {
         ViewPagerAdapterNoti adapter = new ViewPagerAdapterNoti(getFragmentManager());
-        adapter.insertNewFragment(new SearchFragmentAdvance());
+        adapter.insertNewFragment(new HomeFeedFragment());
         adapter.insertNewFragment(new SearchFragmentAdvance());
         adapter.insertNewFragment(new SearchFragmentAdvance());
         adapter.insertNewFragment(new TabMyRouteFragment3());

@@ -20,6 +20,7 @@ import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
 import com.twentyfour.chavel.activity.MainTab.CrossProvinceActivity;
 import com.twentyfour.chavel.activity.MainTab.FindPeopleFragment;
 import com.twentyfour.chavel.activity.MainTab.LocationAddActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteActivity;
 import com.twentyfour.chavel.activity.MainTab.RouteDescriptionFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteNameFragment;
@@ -49,9 +50,15 @@ public class NewRouteFragment extends Fragment {
     EditText dt_route_descrition;
     EditText dt_name;
     TextView dt_details;
-    LinearLayout ls_budget,ls_cover;
+    LinearLayout ls_budget, ls_cover;
     TextView txt_rout_name;
     TextView txt_loction;
+
+    public static NewRouteFragment newInstance() {
+        NewRouteFragment fragment = new NewRouteFragment();
+
+        return fragment;
+    }
 
 
     @Override
@@ -107,22 +114,24 @@ public class NewRouteFragment extends Fragment {
         txt_rout_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i =new Intent(getActivity(),LocationAddActivity.class);
+                Intent i = new Intent(getActivity(), LocationAddActivity.class);
                 startActivity(i);
             }
         });
-
 
 
         imf_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                RouteFragment routeFragment = new RouteFragment();
-                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.add(R.id.content, routeFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+//                RouteFragment routeFragment = new RouteFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.add(R.id.content, routeFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+
+                Intent i = new Intent(getActivity(), RouteActivity.class);
+                startActivity(i);
 
             }
         });
@@ -226,7 +235,6 @@ public class NewRouteFragment extends Fragment {
         dt_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
 
                 RouteNameFragment routeNameFragment = new RouteNameFragment();
