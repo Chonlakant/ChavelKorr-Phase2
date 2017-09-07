@@ -45,11 +45,13 @@ public class DratfAdapter extends RecyclerView.Adapter<DratfAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView image_cover;
+        ImageView image_map;
 
         public ViewHolder(View v) {
             super(v);
 
             image_cover = (ImageView) v.findViewById(R.id.image_cover);
+            image_map = (ImageView) v.findViewById(R.id.image_map);
 
         }
 
@@ -89,9 +91,15 @@ public class DratfAdapter extends RecyclerView.Adapter<DratfAdapter.ViewHolder> 
 
         ViewHolder vh = new ViewHolder(v);
 
+
+
         Glide.with(ctx)
                 .load("https://2.bp.blogspot.com/-s8USOiaFfJw/WSbruKwBVvI/AAAAAAAAAMs/YIjd1jqXFVwy70NwBpSgRmHnMmJnKvIDwCLcB/s640/DSC_0419_Cover-599x400.jpg")
                 .into(vh.image_cover);
+
+        Glide.with(ctx)
+                .load("http://blumenthals.com/blog/wp-content/uploads/2013/11/Map-your-world.jpg")
+                .into(vh.image_map);
 
         return vh;
     }
