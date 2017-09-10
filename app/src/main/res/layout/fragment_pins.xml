@@ -28,10 +28,10 @@
 
                 <LinearLayout
                     android:id="@+id/view_all"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="30dp"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/border_pins"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -54,11 +54,11 @@
 
                 <LinearLayout
                     android:id="@+id/add_pins"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/border_pins"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -75,14 +75,14 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:visibility="gone"
-                    android:layout_marginRight="30dp"
                     android:layout_width="120dp"
                     android:layout_height="40dp"
+                    android:layout_marginRight="30dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/border_pins"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="30dp"
@@ -96,9 +96,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginRight="10dp"
                         android:gravity="center"
                         android:text="Add Pin"
-                        android:layout_marginRight="10dp"
                         android:textColor="#24a9e2"
                         android:textStyle="bold" />
 
@@ -111,16 +111,22 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/ryc"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            </android.support.v7.widget.RecyclerView>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/ryc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+            </ScrollView>
+
 
         </LinearLayout>
 

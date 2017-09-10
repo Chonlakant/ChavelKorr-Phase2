@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.inthecheesefactory.thecheeselibrary.fragment.StatedFragment;
 import com.twentyfour.chavel.R;
 
 import butterknife.Bind;

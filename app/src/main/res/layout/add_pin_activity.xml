@@ -287,8 +287,8 @@
                         android:layout_marginTop="10dp"
                         android:orientation="vertical">
 
-                        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:id="@+id/flMapContainer"
+                        <FrameLayout
+                            android:id="@+id/flMapContainer2"
                             android:layout_width="match_parent"
                             android:layout_height="220dp"
                             android:orientation="vertical">

@@ -12,10 +12,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -81,6 +83,7 @@ public class AddPinFragment extends Fragment implements
     private LatLngBounds mInitialMapBounds;
 
     ArrayList<GetMapData> listMap = new ArrayList<>();
+    EditText txtPinnameEdit;
 
 
 
@@ -98,6 +101,8 @@ public class AddPinFragment extends Fragment implements
         View rootView = inflater.inflate(R.layout.add_pin_activity, container, false);
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         img_next = (LinearLayout) rootView.findViewById(R.id.img_next);
+        txtPinnameEdit = (EditText) rootView.findViewById(R.id.txtPinnameEdit);
+
         expandableLayout0 = (ExpandableLayout) rootView.findViewById(R.id.expandable_layout_0);
         expandableLayout1 = (ExpandableLayout) rootView.findViewById(R.id.expandable_layout_1);
         btn_expand_toggle = (ImageView) rootView.findViewById(R.id.btn_expand_toggle);
@@ -105,7 +110,7 @@ public class AddPinFragment extends Fragment implements
         btnEditPinImage = (ImageView) rootView.findViewById(R.id.btnEditPinImage);
 
         mMapFragment = CustomSupportMapFragment.newInstance();
-        getChildFragmentManager().beginTransaction().replace(R.id.flMapContainer, mMapFragment).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.flMapContainer2, mMapFragment).commit();
 
         toolbar.setTitle("Add Pin");
         //  setSupportActionBar(toolbar);
@@ -144,8 +149,13 @@ public class AddPinFragment extends Fragment implements
 //                transaction.commit();
 
 
+                if (TextUtils.isEmpty(txtPinnameEdit.getText().toString())) {
+                    Toast.makeText(getActivity(),"Pin Name",Toast.LENGTH_SHORT).show();
+                }else{
+                    getActivity().onBackPressed();
+                }
 
-                getFragmentManager().popBackStack();
+
             }
         });
 

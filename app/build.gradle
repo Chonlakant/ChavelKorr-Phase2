@@ -52,6 +52,5 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'net.cachapa.expandablelayout:expandablelayout:2.9.1'
     compile 'com.kbeanie:multipicker:1.1.31@aar'
-    compile 'com.inthecheesefactory.thecheeselibrary:stated-fragment-support-v4:0.9.3'
-    compile 'com.inthecheesefactory.thecheeselibrary:stated-fragment:0.9.3'
+
 }

@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -90,6 +91,9 @@ public class NewRouteFragment extends Fragment {
     private ImageView ls_next_2;
 
     private ImagePicker imagePicker;
+    private final int SPLASH_DISPLAY_LENGTH = 1000;
+
+    boolean status = false;
 
     public static NewRouteFragment newInstance() {
         NewRouteFragment fragment = new NewRouteFragment();
@@ -130,8 +134,9 @@ public class NewRouteFragment extends Fragment {
 
         ArrayList<View> views = new ArrayList<>();
 
+
         views.add(dt_details);
-        views.add(dt_name);
+//        views.add(dt_name);
         views.add(dt_route_descrition);
         views.add(dt_location);
         views.add(dt_activity);
@@ -143,6 +148,8 @@ public class NewRouteFragment extends Fragment {
             views.get(i).setFocusable(false);
             views.get(i).setClickable(true);
         }
+
+
 
         txt_loction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -288,20 +295,20 @@ public class NewRouteFragment extends Fragment {
             }
         });
 
-        dt_name.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                RouteNameFragment routeNameFragment = new RouteNameFragment();
-                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.content, routeNameFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-
-
-            }
-        });
+//        dt_name.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+////                RouteNameFragment routeNameFragment = new RouteNameFragment();
+////                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+////                transaction.replace(R.id.content, routeNameFragment);
+////                transaction.addToBackStack(null);
+////                transaction.commit();
+//
+//
+//            }
+//        });
 
         dt_details.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -339,6 +346,9 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showAlertDialogOne();
+                status = true;
+
+
             }
         });
 
@@ -429,6 +439,20 @@ public class NewRouteFragment extends Fragment {
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 pickedCamera.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
+                if(status == true){
+                    new Handler().postDelayed(new Runnable(){
+                        @Override
+                        public void run() {
+                            RouteFragment routeFragment = new RouteFragment();
+                            android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                            transaction.add(R.id.content, routeFragment);
+                            transaction.addToBackStack(null);
+                            transaction.commit();
+
+                        }
+                    }, SPLASH_DISPLAY_LENGTH);
+                }
+
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -443,6 +467,20 @@ public class NewRouteFragment extends Fragment {
                 img_cover.setImageBitmap(pickedPhoto);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 pickedPhoto.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+                if(status == true){
+                    new Handler().postDelayed(new Runnable(){
+                        @Override
+                        public void run() {
+                            RouteFragment routeFragment = new RouteFragment();
+                            android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                            transaction.add(R.id.content, routeFragment);
+                            transaction.addToBackStack(null);
+                            transaction.commit();
+
+                        }
+                    }, SPLASH_DISPLAY_LENGTH);
+                }
 
 
             } catch (IOException e) {

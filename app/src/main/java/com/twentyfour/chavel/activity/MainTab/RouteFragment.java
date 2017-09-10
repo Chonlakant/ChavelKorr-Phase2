@@ -146,7 +146,7 @@ public class RouteFragment extends Fragment {
             public void onClick(View v) {
                 AddPinFragment addPinActivity = new AddPinFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.content, addPinActivity);
+                transaction.replace(R.id.content_2, addPinActivity);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
