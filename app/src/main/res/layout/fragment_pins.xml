@@ -27,6 +27,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/view_all"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="30dp"
                     android:layout_width="100dp"
@@ -50,6 +51,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1" />
+
+                <LinearLayout
+                    android:id="@+id/add_pins"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/border_pins"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Add Pin"
+                        android:textColor="#24a9e2"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:visibility="gone"

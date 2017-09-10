@@ -1,25 +1,47 @@
 package com.twentyfour.chavel.activity.MainTab;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.model.GetMapData;
+import com.twentyfour.chavel.uilt.CustomSupportMapFragment;
+import com.twentyfour.chavel.uilt.MapMarker;
+import com.twentyfour.chavel.uilt.PermissionUtils;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 
@@ -27,11 +49,16 @@ import siclo.com.ezphotopicker.api.EZPhotoPick;
 import siclo.com.ezphotopicker.api.EZPhotoPickStorage;
 import siclo.com.ezphotopicker.api.models.EZPhotoPickConfig;
 import siclo.com.ezphotopicker.api.models.PhotoSource;
+import siclo.com.ezphotopicker.models.PhotoIntentException;
 
 import static android.app.Activity.RESULT_OK;
 
 
-public class AddPinFragment extends Fragment {
+public class AddPinFragment extends Fragment implements
+        GoogleMap.OnMyLocationButtonClickListener,
+        OnMapReadyCallback,
+        ActivityCompat.OnRequestPermissionsResultCallback,
+        CustomSupportMapFragment.OnMapFragmentReadyListener ,LocationListener {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -41,9 +68,20 @@ public class AddPinFragment extends Fragment {
     private ExpandableLayout expandableLayout1;
 
 
-    ImageView img_next;
+    LinearLayout img_next;
     LinearLayout ls_map;
-    ImageButton btnEditPinImage;
+    ImageView btnEditPinImage;
+
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private boolean mPermissionDenied = false;
+
+    private SupportMapFragment mMapFragment;
+    private GoogleMap mMap;
+    Location location;
+    private LatLngBounds mInitialMapBounds;
+
+    ArrayList<GetMapData> listMap = new ArrayList<>();
+
 
 
     public static AddPinFragment newInstance() {
@@ -51,15 +89,23 @@ public class AddPinFragment extends Fragment {
     }
 
 
+    public interface OnNewLocationFoundListener {
+        public void OnNewLocationFound(Location location);
+    }
+
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.add_pin_activity, container, false);
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-        img_next = (ImageView) rootView.findViewById(R.id.img_next);
+        img_next = (LinearLayout) rootView.findViewById(R.id.img_next);
         expandableLayout0 = (ExpandableLayout) rootView.findViewById(R.id.expandable_layout_0);
         expandableLayout1 = (ExpandableLayout) rootView.findViewById(R.id.expandable_layout_1);
         btn_expand_toggle = (ImageView) rootView.findViewById(R.id.btn_expand_toggle);
         ls_map = (LinearLayout) rootView.findViewById(R.id.ls_map);
-        btnEditPinImage = (ImageButton) rootView.findViewById(R.id.btnEditPinImage);
+        btnEditPinImage = (ImageView) rootView.findViewById(R.id.btnEditPinImage);
+
+        mMapFragment = CustomSupportMapFragment.newInstance();
+        getChildFragmentManager().beginTransaction().replace(R.id.flMapContainer, mMapFragment).commit();
 
         toolbar.setTitle("Add Pin");
         //  setSupportActionBar(toolbar);
@@ -69,7 +115,8 @@ public class AddPinFragment extends Fragment {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+//                getActivity().onBackPressed();
+                getFragmentManager().popBackStack();
             }
         });
 
@@ -90,11 +137,15 @@ public class AddPinFragment extends Fragment {
         img_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditPinFragment editPinActivity = new EditPinFragment();
-                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container8, editPinActivity);
-                transaction.addToBackStack(null);
-                transaction.commit();
+//                EditPinFragment editPinActivity = new EditPinFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.fragment_container8, editPinActivity);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+
+
+
+                getFragmentManager().popBackStack();
             }
         });
 
@@ -104,6 +155,9 @@ public class AddPinFragment extends Fragment {
                 showAlertDialogOne();
             }
         });
+
+        mLocationListener.onLocationChanged(location);
+
 
         return rootView;
     }
@@ -131,14 +185,22 @@ public class AddPinFragment extends Fragment {
         EZPhotoPickConfig config = new EZPhotoPickConfig();
         config.photoSource = PhotoSource.GALLERY;
         config.exportingSize = 900;
-        EZPhotoPick.startPhotoPickActivity(getActivity(), config);
+        try {
+            EZPhotoPick.startPhotoPickActivity(this, config);
+        } catch (PhotoIntentException e) {
+            e.printStackTrace();
+        }
     }
 
     public void chooseCamera() {
         EZPhotoPickConfig config = new EZPhotoPickConfig();
         config.photoSource = PhotoSource.CAMERA;
         config.exportingSize = 900;
-        EZPhotoPick.startPhotoPickActivity(getActivity(), config);
+        try {
+            EZPhotoPick.startPhotoPickActivity(this, config);
+        } catch (PhotoIntentException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -178,6 +240,162 @@ public class AddPinFragment extends Fragment {
 
             }
         }
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+    }
+
+
+    private LocationListener mLocationListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            if(location != null){
+
+                Log.e("dddd",location.getLongitude()+"");
+            }else{
+                Log.e("dddd","dddddddddddd");
+            }
+
+
+
+
+
+
+        }
+    };
+
+    // This method gets called when CustomSupportMapFragment has been initialized and is ready for
+    // map initialization
+    public void onMapFragmentReady() {
+        mMapFragment.getMapAsync(this);  // async create GoogleMap, calls onMapReady when ready
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+        mMap = map;
+        map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+
+        // button in upper right of map that zooms to current location when pressed
+        map.getUiSettings().setMyLocationButtonEnabled(true);
+        enableMyLocation();
+
+        // zoom controls in lower right of map
+        map.getUiSettings().setZoomControlsEnabled(true);
+
+        mInitialMapBounds = loadMapMarkers(map);
+        mMap.setMinZoomPreference(6.0f);
+        mMap.setMaxZoomPreference(14.0f);
+        map.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+            @Override
+            public void onMapLoaded() {
+                mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(mInitialMapBounds, 10));
+            }
+        });
+
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                Log.e("Location ", latLng.latitude + " :" + latLng.longitude + "");
+
+                GetMapData loction = new GetMapData();
+                loction.setLatitude(latLng.latitude);
+                loction.setLongitude(latLng.longitude);
+                listMap.add(loction);
+
+                mMap.addMarker(new MarkerOptions().position(
+                        new LatLng(latLng.latitude, latLng.longitude))
+                        .title("Test")
+                        .snippet("Thailand"));
+
+                for (int i = 0; i < listMap.size(); i++) {
+                    double lati = listMap.get(i).getLatitude();
+                    double longLat = listMap.get(i).getLongitude();
+
+                    Log.e("Loop",lati + ": " + longLat);
+
+
+                }
+
+            }
+        });
+    }
+
+
+    private LatLngBounds loadMapMarkers(GoogleMap map) {
+
+        ArrayList<MapMarker> mapMarkers = MapMarker.getMapMarkers();
+
+        LatLngBounds.Builder bounds = new LatLngBounds.Builder();
+        MarkerOptions markerOptions;
+        Marker marker;
+        for (MapMarker mapMarker : mapMarkers) {
+            markerOptions = new MarkerOptions();
+            markerOptions.position(new LatLng(mapMarker.getLat(), mapMarker.getLng()));
+            marker = map.addMarker(markerOptions);
+            bounds.include(marker.getPosition());
+        }
+        return bounds.build();
+    }
+
+    /**
+     * Enables the My Location layer if the fine location permission has been granted.
+     * // https://gist.github.com/MariusVolkhart/618a51bb09c4fc7f86a4
+     */
+    private void enableMyLocation() {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission to access the location is missing.
+            this.requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        } else if (mMap != null) {
+            // Access to the location has been granted to the app.
+            mMap.setMyLocationEnabled(true);
+
+            // zoom map to current location, if known
+//            LocationManager locationManager =
+//                    (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
+//            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//            if (location != null) {
+//                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+//                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 11);
+//                mMap.animateCamera(cameraUpdate);
+//            }
+        }
+    }
+
+    @Override
+    public boolean onMyLocationButtonClick() {
+        // Return false so that we don't consume the event and the default behavior till occurs
+        // (the camera animates to the user's current position).
+        return false;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode != LOCATION_PERMISSION_REQUEST_CODE) {
+            return;
+        }
+
+        if (PermissionUtils.isPermissionGranted(permissions, grantResults,
+                Manifest.permission.ACCESS_FINE_LOCATION)) {
+            // Enable the my location layer if the permission has been granted.
+            enableMyLocation();
+        } else {
+            // Display the missing permission error dialog when the fragments resume.
+            mPermissionDenied = true;
+        }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+        Toast.makeText(getActivity(),location.getLatitude()+" : "+location.getLongitude(), Toast.LENGTH_SHORT).show();
+
     }
 
 //    @Override

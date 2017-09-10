@@ -287,14 +287,12 @@
                         android:layout_marginTop="10dp"
                         android:orientation="vertical">
 
-                        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                            xmlns:map="http://schemas.android.com/apk/res-auto"
-                            xmlns:tools="http://schemas.android.com/tools"
-                            android:id="@+id/map"
-                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:id="@+id/flMapContainer"
                             android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            tools:context=".activity.MainTab.RouteFragment" />
+                            android:layout_height="220dp"
+                            android:orientation="vertical">
+                        </FrameLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -313,6 +311,7 @@
                                 android:src="@drawable/cover_img_plus" />
 
                             <LinearLayout
+                                android:id="@+id/img_next"
                                 android:layout_width="140dp"
                                 android:layout_height="40dp"
                                 android:layout_gravity="center"
@@ -320,11 +319,10 @@
                                 android:gravity="center">
 
                                 <ImageView
-                                    android:id="@+id/img_next"
                                     android:layout_width="130dp"
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
-                                    android:background="@drawable/next_icon1"
+                                    android:background="@drawable/save_pins"
                                     android:gravity="center"
                                     android:text="Save Pin"
                                     android:textColor="@color/colorPrimary"

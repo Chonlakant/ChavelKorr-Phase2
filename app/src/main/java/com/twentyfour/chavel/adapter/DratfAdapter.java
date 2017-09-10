@@ -94,11 +94,11 @@ public class DratfAdapter extends RecyclerView.Adapter<DratfAdapter.ViewHolder> 
 
 
         Glide.with(ctx)
-                .load("https://2.bp.blogspot.com/-s8USOiaFfJw/WSbruKwBVvI/AAAAAAAAAMs/YIjd1jqXFVwy70NwBpSgRmHnMmJnKvIDwCLcB/s640/DSC_0419_Cover-599x400.jpg")
+                .load("https://4.bp.blogspot.com/-nVpNaFD3uO0/WAIGO_s-SzI/AAAAAAAANZg/mA-LdqbA-fYC4wpG-HrVBneD87hoXVTrwCLcB/s640/20160719162112655956.jpg")
                 .into(vh.image_cover);
 
         Glide.with(ctx)
-                .load("http://blumenthals.com/blog/wp-content/uploads/2013/11/Map-your-world.jpg")
+                .load("https://www.expat-dakar.com/modAnnonces/images/annonces/max_google-map_59075b10a5d9d.png")
                 .into(vh.image_map);
 
         return vh;

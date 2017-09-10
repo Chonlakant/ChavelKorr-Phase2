@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.MainTab.AddPinFragment;
 import com.twentyfour.chavel.activity.MainTab.EditPinFragment;
 import com.twentyfour.chavel.activity.MainTab.PinDetailsFragment;
 import com.twentyfour.chavel.adapter.PinsAdapter;
@@ -23,6 +25,8 @@ public class PinsFragment extends Fragment {
 
     PinsAdapter pinsAdapter;
     ArrayList<ModelPins> list = new ArrayList<>();
+    LinearLayout view_all;
+    LinearLayout add_pins;
 
     RecyclerView mRecyclerView;
 
@@ -40,6 +44,9 @@ public class PinsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pins, null);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.ryc);
+        view_all = (LinearLayout) view.findViewById(R.id.view_all);
+        add_pins = (LinearLayout) view.findViewById(R.id.add_pins);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -78,6 +85,32 @@ public class PinsFragment extends Fragment {
                 transaction.replace(R.id.fragment_container8, pinDetailsFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+            }
+        });
+
+        view_all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                GetMapFragment addPinActivity = new GetMapFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container8, addPinActivity);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+            }
+        });
+
+        add_pins.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AddPinFragment addPinActivity = new AddPinFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container8, addPinActivity);
+                transaction.addToBackStack(null);
+                transaction.commit();
+
             }
         });
 

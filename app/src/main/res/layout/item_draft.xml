@@ -89,7 +89,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="Finish"
-                    android:textSize="20dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -112,7 +112,7 @@
                     android:gravity="center"
                     android:text="Edit"
                     android:textColor="#ffffff"
-                    android:textSize="20dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -134,7 +134,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="Delete"
-                    android:textSize="20dp"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
             </LinearLayout>

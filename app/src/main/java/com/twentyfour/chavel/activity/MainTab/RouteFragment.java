@@ -136,8 +136,7 @@ public class RouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                fragment_map.setVisibility(View.VISIBLE);
-                fragment_container3.setVisibility(View.GONE);
+
 
             }
         });
@@ -145,8 +144,11 @@ public class RouteFragment extends Fragment {
         ls_locaion_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragment_map.setVisibility(View.VISIBLE);
-                fragment_container3.setVisibility(View.GONE);
+                AddPinFragment addPinActivity = new AddPinFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content, addPinActivity);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
@@ -155,11 +157,12 @@ public class RouteFragment extends Fragment {
             public void onClick(View v) {
 //                Intent i =new Intent(getActivity(),AddPinFragment.class);
 //                startActivity(i);
-                AddPinFragment addPinActivity = new AddPinFragment();
-                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container8, addPinActivity);
-                transaction.addToBackStack(null);
-                transaction.commit();
+
+//                AddPinFragment addPinActivity = new AddPinFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.fragment_container8, addPinActivity);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
             }
         });
 

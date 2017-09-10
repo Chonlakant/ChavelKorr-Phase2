@@ -1,8 +1,18 @@
 package com.twentyfour.chavel.fragment;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,14 +24,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.kbeanie.multipicker.api.CameraImagePicker;
+import com.kbeanie.multipicker.api.ImagePicker;
+import com.kbeanie.multipicker.api.Picker;
+import com.kbeanie.multipicker.api.callbacks.ImagePickerCallback;
+import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
 import com.twentyfour.chavel.activity.MainTab.CrossProvinceActivity;
 import com.twentyfour.chavel.activity.MainTab.FindPeopleFragment;
 import com.twentyfour.chavel.activity.MainTab.LocationAddActivity;
-import com.twentyfour.chavel.activity.MainTab.RouteActivity;
-import com.twentyfour.chavel.activity.MainTab.RouteDescriptionFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteNameFragment;
 import com.twentyfour.chavel.activity.MainTab.SelectActivityFragment;
@@ -33,10 +47,25 @@ import com.twentyfour.chavel.activity.MainTab.SelectTravelMethodFragment;
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import siclo.com.ezphotopicker.api.EZPhotoPick;
+import siclo.com.ezphotopicker.api.EZPhotoPickStorage;
+import siclo.com.ezphotopicker.api.models.EZPhotoPickConfig;
+import siclo.com.ezphotopicker.api.models.PhotoSource;
+import siclo.com.ezphotopicker.models.PhotoIntentException;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class NewRouteFragment extends Fragment {
+
+    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1888;
+    private static final int PICK_IMAGE = 1887;
 
     private ExpandableLayout expandableLayout0;
 
@@ -53,6 +82,14 @@ public class NewRouteFragment extends Fragment {
     LinearLayout ls_budget, ls_cover;
     TextView txt_rout_name;
     TextView txt_loction;
+    ImageView camera_cover;
+    private String pickerPath;
+    private ImageView imageView;
+    private ImageView img_cover;
+    private ImageView take_photo;
+    private ImageView ls_next_2;
+
+    private ImagePicker imagePicker;
 
     public static NewRouteFragment newInstance() {
         NewRouteFragment fragment = new NewRouteFragment();
@@ -68,11 +105,18 @@ public class NewRouteFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_new_route, null);
         ls_cover = (LinearLayout) view.findViewById(R.id.ls_cover);
+        ls_next_2 = (ImageView) view.findViewById(R.id.ls_next_2);
+
         txt_rout_name = (TextView) view.findViewById(R.id.txt_rout_name);
         txt_loction = (TextView) view.findViewById(R.id.txt_loction);
         expandableLayout0 = (ExpandableLayout) view.findViewById(R.id.expandable_layout_0);
+        camera_cover = (ImageView) view.findViewById(R.id.camera_cover);
+
+        img_cover = (ImageView) view.findViewById(R.id.img_cover);
+        take_photo = (ImageView) view.findViewById(R.id.take_photo);
 
         imf_next = (ImageView) view.findViewById(R.id.imf_next);
+        imageView = (ImageView) view.findViewById(R.id.imageView);
         btn_expand_toggle = (ImageView) view.findViewById(R.id.btn_expand_toggle);
         dt_period = (EditText) view.findViewById(R.id.dt_period);
         ed_suggesstion = (EditText) view.findViewById(R.id.ed_suggesstion);
@@ -124,14 +168,26 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-//                RouteFragment routeFragment = new RouteFragment();
+                if (TextUtils.isEmpty(dt_name.getText().toString())) {
+                    Toast.makeText(getActivity(), "Route name", Toast.LENGTH_SHORT).show();
+                } else {
+                    RouteFragment routeFragment = new RouteFragment();
+                    android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.add(R.id.content, routeFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+
+
+//                GetMapFragment routeFragment = new GetMapFragment();
 //                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
 //                transaction.add(R.id.content, routeFragment);
 //                transaction.addToBackStack(null);
 //                transaction.commit();
 
-                Intent i = new Intent(getActivity(), RouteActivity.class);
-                startActivity(i);
+
+//                Intent i = new Intent(getActivity(), RouteActivity.class);
+//                startActivity(i);
 
             }
         });
@@ -272,8 +328,169 @@ public class NewRouteFragment extends Fragment {
             }
         });
 
+        camera_cover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAlertDialogOne();
+            }
+        });
+
+        take_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAlertDialogOne();
+            }
+        });
+
+        ls_next_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (TextUtils.isEmpty(dt_name.getText().toString())) {
+                    Toast.makeText(getActivity(), "Route name", Toast.LENGTH_SHORT).show();
+                } else {
+                    RouteFragment routeFragment = new RouteFragment();
+                    android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.add(R.id.content, routeFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+
+            }
+        });
+
 
         return view;
+    }
+
+    private void showAlertDialogOne() {
+        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(getActivity());
+        builder.setMessage("เลือกรูปภาพ")
+                .setPositiveButton("แกลอรี่", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Do something on Share
+                        chooseImage();
+                    }
+                })
+                .setNegativeButton("กล้อง", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Do something on Cancel
+                        chooseCamera();
+                    }
+                });
+        builder.show();
+    }
+
+//    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+//        super.onActivityResult(requestCode, resultCode, intent);
+//// perform your action here
+//
+//        if (requestCode == EZPhotoPick.PHOTO_PICK_GALLERY_REQUEST_CODE &&
+//                resultCode == RESULT_OK) {
+//            try {
+//                Bitmap pickedPhoto = new EZPhotoPickStorage(getActivity()).loadLatestStoredPhotoBitmap();
+//                camera_cover.setImageBitmap(pickedPhoto);
+//                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                pickedPhoto.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//
+//                Log.e("pickedPhoto", pickedPhoto.toString());
+//                Toast.makeText(getActivity(),"ggg",Toast.LENGTH_SHORT).show();
+//
+//
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//
+//            }
+//        }
+//        if (requestCode == EZPhotoPick.PHOTO_PICK_CAMERA_REQUEST_CODE &&
+//                resultCode == RESULT_OK) {
+//            try {
+//                Bitmap pickedCamera = new EZPhotoPickStorage(getActivity()).loadLatestStoredPhotoBitmap();
+//                camera_cover.setImageBitmap(pickedCamera);
+//                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                pickedCamera.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                Log.e("pickedPhoto", pickedCamera.toString());
+//                Toast.makeText(getActivity(),"ggg",Toast.LENGTH_SHORT).show();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//
+//            }
+//        }
+//    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == EZPhotoPick.PHOTO_PICK_CAMERA_REQUEST_CODE &&
+                resultCode == RESULT_OK) {
+            try {
+                Bitmap pickedCamera = new EZPhotoPickStorage(getActivity()).loadLatestStoredPhotoBitmap();
+                imageView.setImageBitmap(pickedCamera);
+                img_cover.setImageBitmap(pickedCamera);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pickedCamera.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
+        if (requestCode == EZPhotoPick.PHOTO_PICK_GALLERY_REQUEST_CODE &&
+                resultCode == RESULT_OK) {
+            try {
+                Bitmap pickedPhoto = new EZPhotoPickStorage(getActivity()).loadLatestStoredPhotoBitmap();
+                imageView.setImageBitmap(pickedPhoto);
+                img_cover.setImageBitmap(pickedPhoto);
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                pickedPhoto.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
+
+
+
+    public void chooseImage() {
+        EZPhotoPickConfig config = new EZPhotoPickConfig();
+        config.photoSource = PhotoSource.GALLERY;
+        config.exportingSize = 900;
+        try {
+            EZPhotoPick.startPhotoPickActivity(this, config);
+        } catch (PhotoIntentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void chooseCamera() {
+        EZPhotoPickConfig config = new EZPhotoPickConfig();
+        config.photoSource = PhotoSource.CAMERA;
+        config.exportingSize = 900;
+        try {
+            EZPhotoPick.startPhotoPickActivity(this, config);
+        } catch (PhotoIntentException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        // You have to save path in case your activity is killed.
+        // In such a scenario, you will need to re-initialize the CameraImagePicker
+//        outState.putString("picker_path", pickerPath);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null) {
+
+        }
     }
 
     @Override
@@ -292,4 +509,6 @@ public class NewRouteFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
