@@ -321,7 +321,7 @@
                     <net.cachapa.expandablelayout.ExpandableLayout
                         android:id="@+id/expandable_layout_0"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
                         app:el_expanded="true">
 
@@ -330,27 +330,85 @@
                             android:layout_height="match_parent"
                             android:orientation="vertical">
 
-                            <android.support.design.widget.AppBarLayout
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="#ffffff">
+                                android:layout_height="60dp"
+                                android:orientation="horizontal">
 
-
-                                <android.support.design.widget.TabLayout
-                                    android:id="@+id/tabs"
-                                    style="@style/CustomTabLayoutStyle"
+                                <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:tabGravity="fill"
-                                    app:tabMode="fixed" />
-                            </android.support.design.widget.AppBarLayout>
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1">
 
-                            <android.support.v4.view.ViewPager
-                                android:id="@+id/viewpager"
+                                    <LinearLayout
+                                        android:id="@+id/ls_1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:gravity="center"
+                                            android:text="OVERVIEW" />
+
+
+
+                                        <View
+                                            android:id="@+id/view_1"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="2dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginRight="5dp"
+                                            android:background="#ff10a9e3" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1">
+
+                                    <LinearLayout
+                                        android:id="@+id/ls_2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="10dp"
+                                            android:gravity="center"
+                                            android:text="PINS" />
+
+
+                                        <View
+                                            android:id="@+id/view_2"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="2dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_marginLeft="5dp"
+                                            android:background="#ff10a9e3"
+                                            android:visibility="gone" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
+
+                            <FrameLayout
+                                android:id="@+id/layout_fragment_container"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="#ffffff"
-                                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                                android:layout_height="0dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:background="#ffffff" />
 
                         </LinearLayout>
                     </net.cachapa.expandablelayout.ExpandableLayout>

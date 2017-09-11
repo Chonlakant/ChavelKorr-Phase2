@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,7 +40,7 @@ import retrofit2.Response;
 
 
 public class RouteFragment extends Fragment {
-    private ViewPagerAdapter adapter;
+
     private ExpandableLayout expandableLayout0;
 
     Toolbar toolbar;
@@ -55,8 +56,7 @@ public class RouteFragment extends Fragment {
     Button ls_save;
 
     RecyclerView ryc;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+
 
     ImageView img_click;
     boolean check1 = false;
@@ -67,6 +67,11 @@ public class RouteFragment extends Fragment {
     List<String> listString = new ArrayList<>();
 
     List<ExpandableListAdapter.Item> data = new ArrayList<>();
+
+    LinearLayout ls_1;
+    LinearLayout ls_2;
+    View view_1;
+    View view_2;
 
 
     public static RouteFragment newInstance() {
@@ -83,10 +88,14 @@ public class RouteFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_route, container, false);
-        viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-        tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+
+
+        ls_1 = (LinearLayout) rootView.findViewById(R.id.ls_1);
+        ls_2 = (LinearLayout) rootView.findViewById(R.id.ls_2);
+
+        view_1 = (View) rootView.findViewById(R.id.view_1);
+        view_2 = (View) rootView.findViewById(R.id.view_2);
+
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
 
         ryc = (RecyclerView) rootView.findViewById(R.id.ryc);
@@ -137,7 +146,6 @@ public class RouteFragment extends Fragment {
             public void onClick(View v) {
 
 
-
             }
         });
 
@@ -163,7 +171,7 @@ public class RouteFragment extends Fragment {
 //                transaction.replace(R.id.fragment_container8, addPinActivity);
 //                transaction.addToBackStack(null);
 //                transaction.commit();
-                Toast.makeText(getActivity(),"Save",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Save", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -187,14 +195,13 @@ public class RouteFragment extends Fragment {
         });
 
 
-
         ls_save_lin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Intent i =new Intent(getActivity(),AddPinFragment.class);
 //                startActivity(i);
 
-                Toast.makeText(getActivity(),"Save",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Save", Toast.LENGTH_SHORT).show();
 
 
 //                AddPinFragment addPinActivity = new AddPinFragment();
@@ -207,46 +214,50 @@ public class RouteFragment extends Fragment {
             }
         });
 
+        view_1.setVisibility(View.GONE);
+        view_2.setVisibility(View.VISIBLE);
+        PinsFragment twoFragment = new PinsFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.layout_fragment_container, twoFragment);
+        transaction.commit();
+
         getHomeFeed("2", "30", "100");
+
+
+        ls_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OverviewFragment twoFragment = new OverviewFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.layout_fragment_container, twoFragment);
+                transaction.commit();
+                view_1.setVisibility(View.VISIBLE);
+                view_2.setVisibility(View.GONE);
+
+            }
+        });
+
+        ls_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                view_1.setVisibility(View.GONE);
+                view_2.setVisibility(View.VISIBLE);
+                PinsFragment twoFragment = new PinsFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.layout_fragment_container, twoFragment);
+                transaction.commit();
+
+
+            }
+        });
+
         return rootView;
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getFragmentManager());
-        adapter.addFragment(new OverviewFragment(), "OVERVIEW");
-        adapter.addFragment(new PinsFragment(), "PINS");
 
-        viewPager.setAdapter(adapter);
-    }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-    }
 
     private void getHomeFeed(final String user_id, String lat, String lng) {
 

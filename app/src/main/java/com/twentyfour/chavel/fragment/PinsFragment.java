@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.AddPinFragment;
 import com.twentyfour.chavel.activity.MainTab.EditPinFragment;
+import com.twentyfour.chavel.activity.MainTab.MySigleRouteFragment;
 import com.twentyfour.chavel.activity.MainTab.PinDetailsFragment;
 import com.twentyfour.chavel.adapter.PinsAdapter;
 import com.twentyfour.chavel.model.ModelPins;
@@ -73,9 +74,9 @@ public class PinsFragment extends Fragment {
             @Override
             public void onItemClick(View viewj, int position) {
 
-                EditPinFragment editPinActivity = new EditPinFragment();
+                MySigleRouteFragment pinDetailsFragment = new MySigleRouteFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container8, editPinActivity);
+                transaction.replace(R.id.content_2, pinDetailsFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
 
@@ -85,16 +86,6 @@ public class PinsFragment extends Fragment {
         });
 
 
-        pinsAdapter.setOnItemClickImageListener(new PinsAdapter.OnItemClickImageListener() {
-            @Override
-            public void onItemClickImage(View viewj, int position) {
-                PinDetailsFragment pinDetailsFragment = new PinDetailsFragment();
-                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container8, pinDetailsFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
 
         view_all.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +106,7 @@ public class PinsFragment extends Fragment {
 
                 AddPinFragment addPinActivity = new AddPinFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container8, addPinActivity);
+                transaction.replace(R.id.content_2, addPinActivity);
                 transaction.addToBackStack(null);
                 transaction.commit();
 
