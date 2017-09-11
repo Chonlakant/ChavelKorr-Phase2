@@ -31,7 +31,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".LandingActivity">
+        <activity android:name=".fragment.NewRouteTapFragment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -85,7 +85,6 @@
 
         <activity android:name=".fragment.TabMyRouteFragment"/>
         <activity android:name=".fragment.SearchFragment"/>
-        <activity android:name=".fragment.NewRouteTapFragment"/>
         <activity android:name=".fragment.NotiFragment"/>
         <activity android:name=".fragment.UserProfileFragment"/>
 

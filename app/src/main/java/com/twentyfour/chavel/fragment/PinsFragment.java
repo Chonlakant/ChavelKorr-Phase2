@@ -34,6 +34,14 @@ public class PinsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static PinsFragment newInstance() {
+        PinsFragment fragment = new PinsFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putString(EXTRA_KEY, key);
+//        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

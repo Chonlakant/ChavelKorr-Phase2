@@ -60,7 +60,7 @@ public class AddPinFragment extends Fragment implements
         GoogleMap.OnMyLocationButtonClickListener,
         OnMapReadyCallback,
         ActivityCompat.OnRequestPermissionsResultCallback,
-        CustomSupportMapFragment.OnMapFragmentReadyListener ,LocationListener {
+        CustomSupportMapFragment.OnMapFragmentReadyListener, LocationListener {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -84,7 +84,6 @@ public class AddPinFragment extends Fragment implements
 
     ArrayList<GetMapData> listMap = new ArrayList<>();
     EditText txtPinnameEdit;
-
 
 
     public static AddPinFragment newInstance() {
@@ -150,9 +149,15 @@ public class AddPinFragment extends Fragment implements
 
 
                 if (TextUtils.isEmpty(txtPinnameEdit.getText().toString())) {
-                    Toast.makeText(getActivity(),"Pin Name",Toast.LENGTH_SHORT).show();
-                }else{
-                    getActivity().onBackPressed();
+                    Toast.makeText(getActivity(), "Pin Name", Toast.LENGTH_SHORT).show();
+                } else {
+                    RouteFragment routeFragment = new RouteFragment();
+                    android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.add(R.id.content, routeFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                   
+
                 }
 
 
@@ -230,7 +235,6 @@ public class AddPinFragment extends Fragment implements
                 pickedPhoto.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
 
-
             } catch (IOException e) {
                 e.printStackTrace();
 
@@ -262,16 +266,12 @@ public class AddPinFragment extends Fragment implements
     private LocationListener mLocationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
-            if(location != null){
+            if (location != null) {
 
-                Log.e("dddd",location.getLongitude()+"");
-            }else{
-                Log.e("dddd","dddddddddddd");
+                Log.e("dddd", location.getLongitude() + "");
+            } else {
+                Log.e("dddd", "dddddddddddd");
             }
-
-
-
-
 
 
         }
@@ -325,7 +325,7 @@ public class AddPinFragment extends Fragment implements
                     double lati = listMap.get(i).getLatitude();
                     double longLat = listMap.get(i).getLongitude();
 
-                    Log.e("Loop",lati + ": " + longLat);
+                    Log.e("Loop", lati + ": " + longLat);
 
 
                 }
@@ -404,7 +404,7 @@ public class AddPinFragment extends Fragment implements
     @Override
     public void onLocationChanged(Location location) {
 
-        Toast.makeText(getActivity(),location.getLatitude()+" : "+location.getLongitude(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), location.getLatitude() + " : " + location.getLongitude(), Toast.LENGTH_SHORT).show();
 
     }
 

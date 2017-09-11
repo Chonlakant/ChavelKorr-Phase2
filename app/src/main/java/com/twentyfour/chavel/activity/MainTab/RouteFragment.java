@@ -39,7 +39,7 @@ import retrofit2.Response;
 
 
 public class RouteFragment extends Fragment {
-
+    private ViewPagerAdapter adapter;
     private ExpandableLayout expandableLayout0;
 
     Toolbar toolbar;
@@ -163,6 +163,7 @@ public class RouteFragment extends Fragment {
 //                transaction.replace(R.id.fragment_container8, addPinActivity);
 //                transaction.addToBackStack(null);
 //                transaction.commit();
+                Toast.makeText(getActivity(),"Save",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -193,12 +194,14 @@ public class RouteFragment extends Fragment {
 //                Intent i =new Intent(getActivity(),AddPinFragment.class);
 //                startActivity(i);
 
+                Toast.makeText(getActivity(),"Save",Toast.LENGTH_SHORT).show();
 
-                AddPinFragment addPinActivity = new AddPinFragment();
-                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container8, addPinActivity);
-                transaction.addToBackStack(null);
-                transaction.commit();
+
+//                AddPinFragment addPinActivity = new AddPinFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.fragment_container8, addPinActivity);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
 
 
             }

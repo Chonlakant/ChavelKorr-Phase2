@@ -25,6 +25,14 @@ public class OverviewFragment extends Fragment {
 
     RecyclerView mRecyclerView;
 
+    public static OverviewFragment newInstance() {
+        OverviewFragment fragment = new OverviewFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putString(EXTRA_KEY, key);
+//        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     public OverviewFragment() {
         // Required empty public constructor
     }
@@ -61,16 +69,16 @@ public class OverviewFragment extends Fragment {
 
 
 
-        pinsAdapter = new OverviewAdapter(getActivity(), list);
-        mRecyclerView.setAdapter(pinsAdapter);
-        pinsAdapter.notifyDataSetChanged();
-        pinsAdapter.setOnItemClickListener(new OverviewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Intent i = new Intent(getActivity(), OverViewPinsActivity.class);
-                startActivity(i);
-            }
-        });
+//        pinsAdapter = new OverviewAdapter(getActivity(), list);
+//        mRecyclerView.setAdapter(pinsAdapter);
+//        pinsAdapter.notifyDataSetChanged();
+//        pinsAdapter.setOnItemClickListener(new OverviewAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                Intent i = new Intent(getActivity(), OverViewPinsActivity.class);
+//                startActivity(i);
+//            }
+//        });
 
         return view;
     }

@@ -33,6 +33,7 @@ import com.kbeanie.multipicker.api.Picker;
 import com.kbeanie.multipicker.api.callbacks.ImagePickerCallback;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.activity.MainTab.AddPinFragment;
 import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
 import com.twentyfour.chavel.activity.MainTab.CrossProvinceActivity;
 import com.twentyfour.chavel.activity.MainTab.FindPeopleFragment;
@@ -92,6 +93,7 @@ public class NewRouteFragment extends Fragment {
 
     private ImagePicker imagePicker;
     private final int SPLASH_DISPLAY_LENGTH = 1000;
+    private Bitmap bitmap;
 
     boolean status = false;
 
@@ -148,7 +150,6 @@ public class NewRouteFragment extends Fragment {
             views.get(i).setFocusable(false);
             views.get(i).setClickable(true);
         }
-
 
 
         txt_loction.setOnClickListener(new View.OnClickListener() {
@@ -345,8 +346,14 @@ public class NewRouteFragment extends Fragment {
         take_photo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlertDialogOne();
-                status = true;
+
+
+                if (TextUtils.isEmpty(dt_name.getText().toString())) {
+                    Toast.makeText(getActivity(), "Route name", Toast.LENGTH_SHORT).show();
+                } else {
+                    showAlertDialogOne();
+                    status = true;
+                }
 
 
             }
@@ -358,10 +365,15 @@ public class NewRouteFragment extends Fragment {
 
                 if (TextUtils.isEmpty(dt_name.getText().toString())) {
                     Toast.makeText(getActivity(), "Route name", Toast.LENGTH_SHORT).show();
+                }
+                if (bitmap == null) {
+                    Toast.makeText(getActivity(), "Take Photo", Toast.LENGTH_SHORT).show();
                 } else {
-                    RouteFragment routeFragment = new RouteFragment();
+
+
+                    AddPinFragment addPinActivity = new AddPinFragment();
                     android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.add(R.id.content, routeFragment);
+                    transaction.replace(R.id.content, addPinActivity);
                     transaction.addToBackStack(null);
                     transaction.commit();
                 }
@@ -436,11 +448,12 @@ public class NewRouteFragment extends Fragment {
                 Bitmap pickedCamera = new EZPhotoPickStorage(getActivity()).loadLatestStoredPhotoBitmap();
                 imageView.setImageBitmap(pickedCamera);
                 img_cover.setImageBitmap(pickedCamera);
+                bitmap = pickedCamera;
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 pickedCamera.compress(Bitmap.CompressFormat.PNG, 100, stream);
 
-                if(status == true){
-                    new Handler().postDelayed(new Runnable(){
+                if (status == true) {
+                    new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             RouteFragment routeFragment = new RouteFragment();
@@ -467,14 +480,14 @@ public class NewRouteFragment extends Fragment {
                 img_cover.setImageBitmap(pickedPhoto);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 pickedPhoto.compress(Bitmap.CompressFormat.PNG, 100, stream);
-
-                if(status == true){
-                    new Handler().postDelayed(new Runnable(){
+                bitmap = pickedPhoto;
+                if (status == true) {
+                    new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            RouteFragment routeFragment = new RouteFragment();
+                            AddPinFragment addPinActivity = new AddPinFragment();
                             android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                            transaction.add(R.id.content, routeFragment);
+                            transaction.replace(R.id.content, addPinActivity);
                             transaction.addToBackStack(null);
                             transaction.commit();
 
@@ -489,7 +502,6 @@ public class NewRouteFragment extends Fragment {
             }
         }
     }
-
 
 
     public void chooseImage() {

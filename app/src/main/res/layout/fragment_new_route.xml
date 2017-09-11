@@ -97,7 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
 
                 <LinearLayout
@@ -152,7 +152,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 app:el_duration="1000"
-                app:el_expanded="true">
+                app:el_expanded="false">
 
                 <ScrollView
                     android:layout_width="match_parent"
