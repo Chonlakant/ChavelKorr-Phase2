@@ -74,7 +74,7 @@ public class PinsFragment extends Fragment {
             @Override
             public void onItemClick(View viewj, int position) {
 
-                MySigleRouteFragment pinDetailsFragment = new MySigleRouteFragment();
+                HomeFeedFragment pinDetailsFragment = new HomeFeedFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_2, pinDetailsFragment);
                 transaction.addToBackStack(null);

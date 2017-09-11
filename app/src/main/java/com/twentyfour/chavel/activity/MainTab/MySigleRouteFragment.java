@@ -34,7 +34,7 @@ import retrofit2.Response;
 public class MySigleRouteFragment extends Fragment {
 
     RecyclerView ryc;
-    ExpandableSingleAdapter expandableListAdapter;
+    ExpandableHomeFeedAdapter expandableListAdapter;
 
     ArrayList<HomeFeed> list = new ArrayList<>();
     List<String> listString = new ArrayList<>();
