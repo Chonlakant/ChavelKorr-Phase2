@@ -353,7 +353,7 @@ public class NewRouteFragment extends Fragment {
                 if (TextUtils.isEmpty(dt_name.getText().toString())) {
                     Toast.makeText(getActivity(), "Route name", Toast.LENGTH_SHORT).show();
                 } else {
-                    showAlertDialogOne();
+                    chooseCamera();
                     status = true;
                 }
 
@@ -458,9 +458,9 @@ public class NewRouteFragment extends Fragment {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            RouteFragment routeFragment = new RouteFragment();
+                            AddPinFragment addPinActivity = new AddPinFragment();
                             android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                            transaction.add(R.id.content, routeFragment);
+                            transaction.replace(R.id.content, addPinActivity);
                             transaction.addToBackStack(null);
                             transaction.commit();
 
@@ -487,6 +487,7 @@ public class NewRouteFragment extends Fragment {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
+
                             AddPinFragment addPinActivity = new AddPinFragment();
                             android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                             transaction.replace(R.id.content, addPinActivity);

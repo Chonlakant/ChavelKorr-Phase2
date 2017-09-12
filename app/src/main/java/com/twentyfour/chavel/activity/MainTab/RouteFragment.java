@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.LoginRegister.ProfileFragment;
+import com.twentyfour.chavel.activity.SelectOverViewPinsActivity;
 import com.twentyfour.chavel.adapter.ExpandableListAdapter;
 import com.twentyfour.chavel.api.Apis;
 import com.twentyfour.chavel.fragment.OverviewFragment;
@@ -221,12 +222,18 @@ public class RouteFragment extends Fragment {
         ls_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OverviewFragment twoFragment = new OverviewFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.layout_fragment_container, twoFragment);
-                transaction.commit();
+
+                Intent i =new Intent(getActivity(),SelectOverViewPinsActivity.class);
+                startActivity(i);
+
+//                OverviewFragment twoFragment = new OverviewFragment();
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.layout_fragment_container, twoFragment);
+//                transaction.commit();
                 view_1.setVisibility(View.VISIBLE);
                 view_2.setVisibility(View.GONE);
+
+
 
             }
         });
