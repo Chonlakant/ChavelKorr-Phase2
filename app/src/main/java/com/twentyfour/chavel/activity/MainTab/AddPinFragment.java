@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,9 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -98,6 +102,7 @@ public class AddPinFragment extends Fragment implements
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.add_pin_activity, container, false);
+        setHasOptionsMenu(true);
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         img_next = (LinearLayout) rootView.findViewById(R.id.img_next);
         txtPinnameEdit = (EditText) rootView.findViewById(R.id.txtPinnameEdit);
@@ -167,7 +172,8 @@ public class AddPinFragment extends Fragment implements
         btnEditPinImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlertDialogOne();
+              //  showAlertDialogOne();
+                chooseCamera();
             }
         });
 
@@ -408,28 +414,22 @@ public class AddPinFragment extends Fragment implements
 
     }
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.add_pin_activity);
-//        ButterKnife.bind(this);
-//
-//
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_phone_email, menu);
-//
-//        return true;
-//    }
-//
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragment_add_pin, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_more:
+
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 
 }

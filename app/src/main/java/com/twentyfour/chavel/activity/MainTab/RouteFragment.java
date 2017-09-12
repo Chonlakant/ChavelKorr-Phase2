@@ -98,11 +98,7 @@ public class RouteFragment extends Fragment {
 
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
 
-        ryc = (RecyclerView) rootView.findViewById(R.id.ryc);
-        ryc.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        ryc.setLayoutManager(llm);
+
 
 
         ls_feed = (LinearLayout) rootView.findViewById(R.id.ls_feed);
@@ -221,8 +217,6 @@ public class RouteFragment extends Fragment {
         transaction.replace(R.id.layout_fragment_container, twoFragment);
         transaction.commit();
 
-        getHomeFeed("2", "30", "100");
-
 
         ls_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -259,83 +253,7 @@ public class RouteFragment extends Fragment {
 
 
 
-    private void getHomeFeed(final String user_id, String lat, String lng) {
 
-        ServiceApi service = Apis.getClient().create(ServiceApi.class);
-
-        Call<HomeFeed> userCall = service.getFeedHome(user_id, lat, lng);
-
-        userCall.enqueue(new Callback<HomeFeed>() {
-            @Override
-            public void onResponse(Call<HomeFeed> call, Response<HomeFeed> response) {
-
-                if (response.body().getList() != null) {
-                    for (int i = 0; i < response.body().getList().size(); i++) {
-                        list.add(response.body());
-                        String header = response.body().getList().get(i).getRoute_title();
-                        String child = response.body().getList().get(i).getDiffDate();
-                        String user_id = response.body().getList().get(i).getUser_id();
-                        String user_name = response.body().getList().get(i).getUser_name();
-                        String user_image = response.body().getList().get(i).getUser_image();
-                        String route_id = response.body().getList().get(i).getRoute_id();
-                        String route_title = response.body().getList().get(i).getRoute_title();
-                        String route_detail = response.body().getList().get(i).getRoute_detail();
-                        String diffDate = response.body().getList().get(i).getDiffDate();
-                        String like_status = response.body().getList().get(i).getLike_status();
-                        String favorite_status = response.body().getList().get(i).getFavorite_status();
-                        String route_activity = response.body().getList().get(i).getRoute_activity();
-                        String route_city = response.body().getList().get(i).getRoute_city();
-                        String route_travel_method = response.body().getList().get(i).getRoute_travel_method();
-                        String route_budgetmin = response.body().getList().get(i).getRoute_budgetmin();
-                        String route_budgetmax = response.body().getList().get(i).getRoute_budgetmax();
-                        String route_suggestion = response.body().getList().get(i).getRoute_suggestion();
-
-                        for (int j = 0; j < response.body().getList().get(i).getRoute_img().size(); j++) {
-                            Log.e("accc", response.body().getList().get(i).getRoute_img().get(j).getImg_text() + "");
-                            //if(j < 4)
-                            listString.add(response.body().getList().get(i).getRoute_img().get(j).getImg_text());
-                        }
-
-                        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.HEADER, header, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", listString));
-                        data.add(new ExpandableListAdapter.Item(ExpandableListAdapter.CHILD, child, user_id, user_name, user_image
-                                , route_id, route_title, route_detail, diffDate, like_status, favorite_status, route_activity, route_city,
-                                route_travel_method, route_budgetmin, route_budgetmax, route_suggestion, listString));
-
-                        expandableListAdapter = new ExpandableListAdapter(data, getActivity());
-                        ryc.setAdapter(expandableListAdapter);
-                        expandableListAdapter.setOnItemClickCommentListener(new ExpandableListAdapter.OnItemClickCommentListener() {
-
-                            @Override
-                            public void onItemCommentClick(View view, int position) {
-
-                                Intent i = new Intent(getActivity(), CommentActivity.class);
-                                startActivity(i);
-
-                            }
-                        });
-
-                        expandableListAdapter.setOnItemClickLikeListener(new ExpandableListAdapter.OnItemClickLikeListener() {
-                            @Override
-                            public void onItemLikeClick(View view, int position) {
-
-                                Toast.makeText(getActivity(), "Love this post", Toast.LENGTH_SHORT).show();
-
-                            }
-                        });
-
-
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<HomeFeed> call, Throwable t) {
-
-            }
-        });
-    }
 
 
 //    @Override

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.AddPinFragment;
@@ -74,7 +75,7 @@ public class PinsFragment extends Fragment {
             @Override
             public void onItemClick(View viewj, int position) {
 
-                HomeFeedFragment pinDetailsFragment = new HomeFeedFragment();
+                EditPinFragment pinDetailsFragment = new EditPinFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_2, pinDetailsFragment);
                 transaction.addToBackStack(null);
@@ -82,6 +83,13 @@ public class PinsFragment extends Fragment {
 
 //                Intent i = new Intent(getActivity(), EditPinFragment.class);
 //                startActivity(i);
+            }
+        });
+
+        pinsAdapter.setOnItemClickImageListener(new PinsAdapter.OnItemClickImageListener() {
+            @Override
+            public void onItemClickImage(View viewj, int position) {
+                Toast.makeText(getActivity(),"DELETE",Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -46,27 +46,33 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
         public TextView txt_title_pins;
         public ImageView image;
         public RelativeLayout rl_image;
+        public ImageView img_edit_pin;
+        public ImageView img_delete_pin;
 
         public ViewHolder(View v) {
             super(v);
+            img_edit_pin = (ImageView) v.findViewById(R.id.img_edit_pin);
+            img_delete_pin = (ImageView) v.findViewById(R.id.img_delete_pin);
             txt_pins = (TextView) v.findViewById(R.id.txt_pins);
             txt_title_pins = (TextView) v.findViewById(R.id.txt_title_pins);
             rl_image = (RelativeLayout) v.findViewById(R.id.rl_image);
             txt_pins.setOnClickListener(this);
             rl_image.setOnClickListener(this);
+            img_edit_pin.setOnClickListener(this);
+            img_delete_pin.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
 
             switch (v.getId()) {
-                case R.id.txt_pins:
+                case R.id.img_edit_pin:
                     if (mOnItemClickListener != null) {
                         mOnItemClickListener.onItemClick(v, getPosition());
                     }
                     break;
 
-                case R.id.rl_image:
+                case R.id.img_delete_pin:
                     if (mOnItemClickImageListener != null) {
                         mOnItemClickImageListener.onItemClickImage(v, getPosition());
                     }

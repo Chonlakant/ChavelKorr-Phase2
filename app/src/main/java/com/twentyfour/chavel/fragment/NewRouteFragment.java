@@ -339,8 +339,10 @@ public class NewRouteFragment extends Fragment {
         camera_cover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAlertDialogOne();
+               // showAlertDialogOne();
+                chooseCamera();
             }
+
         });
 
         take_photo.setOnClickListener(new View.OnClickListener() {
