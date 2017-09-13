@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,12 +33,24 @@ import com.kbeanie.multipicker.api.ImagePicker;
 import com.kbeanie.multipicker.api.Picker;
 import com.kbeanie.multipicker.api.callbacks.ImagePickerCallback;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
+import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
+import com.twentyfour.chavel.BusProvider.BusProvider;
+import com.twentyfour.chavel.Event.Events;
+import com.twentyfour.chavel.Event.Events_Desc;
+import com.twentyfour.chavel.Event.Events_Route_Activity;
+import com.twentyfour.chavel.Event.Events_Route_Loction;
+import com.twentyfour.chavel.Event.Events_Route_Name;
+import com.twentyfour.chavel.Event.Events_Route_Period;
+import com.twentyfour.chavel.Event.Events_Route_Suggestion;
+import com.twentyfour.chavel.Event.Events_Route_Travel;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.AddPinFragment;
 import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
 import com.twentyfour.chavel.activity.MainTab.CrossProvinceActivity;
 import com.twentyfour.chavel.activity.MainTab.FindPeopleFragment;
 import com.twentyfour.chavel.activity.MainTab.LocationAddActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteDescriptionFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteFragment;
 import com.twentyfour.chavel.activity.MainTab.RouteNameFragment;
 import com.twentyfour.chavel.activity.MainTab.SelectActivityFragment;
@@ -90,6 +103,9 @@ public class NewRouteFragment extends Fragment {
     private ImageView img_cover;
     private ImageView take_photo;
     private ImageView ls_next_2;
+    private LinearLayout ls_loction;
+    private TextView txt_counrty;
+    private TextView txt_city;
 
     private ImagePicker imagePicker;
     private final int SPLASH_DISPLAY_LENGTH = 1000;
@@ -103,6 +119,15 @@ public class NewRouteFragment extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        BusProvider.getBus().register(this);
+        setRetainInstance(true);
+        // key = getArguments().getString(EXTRA_KEY);
+
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -112,6 +137,9 @@ public class NewRouteFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_new_route, null);
         ls_cover = (LinearLayout) view.findViewById(R.id.ls_cover);
         ls_next_2 = (ImageView) view.findViewById(R.id.ls_next_2);
+        ls_loction = (LinearLayout) view.findViewById(R.id.ls_loction);
+        txt_counrty = (TextView) view.findViewById(R.id.txt_counrty);
+        txt_city = (TextView) view.findViewById(R.id.txt_city);
 
         txt_rout_name = (TextView) view.findViewById(R.id.txt_rout_name);
         txt_loction = (TextView) view.findViewById(R.id.txt_loction);
@@ -138,7 +166,7 @@ public class NewRouteFragment extends Fragment {
 
 
         views.add(dt_details);
-//        views.add(dt_name);
+        views.add(dt_name);
         views.add(dt_route_descrition);
         views.add(dt_location);
         views.add(dt_activity);
@@ -151,7 +179,6 @@ public class NewRouteFragment extends Fragment {
             views.get(i).setClickable(true);
         }
 
-
         txt_loction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,11 +190,14 @@ public class NewRouteFragment extends Fragment {
             }
         });
 
-        txt_rout_name.setOnClickListener(new View.OnClickListener() {
+        dt_name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), LocationAddActivity.class);
-                startActivity(i);
+                RouteNameFragment routeNameFragment = new RouteNameFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content, routeNameFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
@@ -260,7 +290,7 @@ public class NewRouteFragment extends Fragment {
             public void onClick(View v) {
 
 
-                LocationFragment locationFragment = new LocationFragment();
+                LocationAddActivity locationFragment = new LocationAddActivity();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content, locationFragment);
                 transaction.addToBackStack(null);
@@ -287,7 +317,7 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                FindPeopleFragment routeDescriptionFragment = new FindPeopleFragment();
+                RouteDescriptionFragment routeDescriptionFragment = new RouteDescriptionFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content, routeDescriptionFragment);
                 transaction.addToBackStack(null);
@@ -296,20 +326,6 @@ public class NewRouteFragment extends Fragment {
             }
         });
 
-//        dt_name.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-////                RouteNameFragment routeNameFragment = new RouteNameFragment();
-////                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-////                transaction.replace(R.id.content, routeNameFragment);
-////                transaction.addToBackStack(null);
-////                transaction.commit();
-//
-//
-//            }
-//        });
 
         dt_details.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -339,7 +355,7 @@ public class NewRouteFragment extends Fragment {
         camera_cover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // showAlertDialogOne();
+                // showAlertDialogOne();
                 chooseCamera();
             }
 
@@ -474,6 +490,8 @@ public class NewRouteFragment extends Fragment {
 
             }
         }
+
+
         if (requestCode == EZPhotoPick.PHOTO_PICK_GALLERY_REQUEST_CODE &&
                 resultCode == RESULT_OK) {
             try {
@@ -488,11 +506,16 @@ public class NewRouteFragment extends Fragment {
                         @Override
                         public void run() {
 
+                            Events.ActivityFragmentMessage fragmentActivityMessageEvent = new Events.ActivityFragmentMessage("123456");
+                            BusProvider.getBus().post(fragmentActivityMessageEvent);
+
+
                             AddPinFragment addPinActivity = new AddPinFragment();
                             android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                             transaction.replace(R.id.content, addPinActivity);
                             transaction.addToBackStack(null);
                             transaction.commit();
+
 
                         }
                     }, SPLASH_DISPLAY_LENGTH);
@@ -561,6 +584,71 @@ public class NewRouteFragment extends Fragment {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void onDestroy() {
+        super.onDestroy();
+        BusProvider.getBus().unregister(this);
+    }
+
+
+    @Subscribe
+    public void getRoteDesc(Events_Desc.Events_DescFragmentMessage texts) {
+        if (texts.getMessage() != "") {
+            dt_route_descrition.setText(texts.getMessage());
+        }
+
+    }
+
+    @Subscribe
+    public void getRoteName(Events_Route_Name.Events_RoutNameFragmentMessage texts) {
+        if (texts.getMessage() != "") {
+            dt_name.setText(texts.getMessage());
+        }
+
+    }
+
+    @Subscribe
+    public void getRoteLocation(Events_Route_Loction.Events_RoutLocationFragmentMessage location) {
+        if (location.getMessage().getCity() != "") {
+            ls_loction.setVisibility(View.VISIBLE);
+            txt_city.setText("Thailand, Japan");
+            txt_counrty.setText("Bangkok(TH), Chiang(TH),Hokkaido(JP),Tokyo(JP)");
+        }
+
+    }
+
+    @Subscribe
+    public void getRoteTravel(Events_Route_Travel.Events_TravelFragmentMessage texts) {
+        if (texts.getMessage() != "") {
+            et_travel_method.setText(texts.getMessage());
+        }
+
+    }
+
+    @Subscribe
+    public void getRoteActivity(Events_Route_Activity.Events_ActivityFragmentMessage texts) {
+        if (texts.getMessage() != "") {
+            dt_activity.setText(texts.getMessage());
+        }
+
+    }
+
+    @Subscribe
+    public void getRoteSuggestiob(Events_Route_Suggestion.Events_RoutSuggestionFragmentMessage texts) {
+        if (texts.getMessage() != "") {
+            ed_suggesstion.setText(texts.getMessage());
+        }
+
+    }
+
+    @Subscribe
+    public void getRotePeriod(Events_Route_Period.Events_RoutPeriodFragmentMessage texts) {
+        if (texts.getMessage() != "") {
+            dt_period.setText(texts.getMessage());
+        }
+
     }
 
 

@@ -2,6 +2,7 @@ package com.twentyfour.chavel.activity.MainTab;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,8 +19,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.otto.Subscribe;
+import com.twentyfour.chavel.BusProvider.BusProvider;
+import com.twentyfour.chavel.Event.Events;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.LoginRegister.ProfileFragment;
 import com.twentyfour.chavel.activity.SelectOverViewPinsActivity;
@@ -79,10 +84,14 @@ public class RouteFragment extends Fragment {
         return new RouteFragment();
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        BusProvider.getBus().register(this);
+        setRetainInstance(true);
+        // key = getArguments().getString(EXTRA_KEY);
 
     }
 
@@ -257,8 +266,22 @@ public class RouteFragment extends Fragment {
     }
 
 
+    @Subscribe
+    public void getMessage(Events.ActivityFragmentMessage activityFragmentMessage) {
 
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        BusProvider.getBus().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        BusProvider.getBus().unregister(this);
+    }
 
 
 
