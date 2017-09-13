@@ -163,7 +163,7 @@ public class NewRouteFragment extends Fragment {
         dt_details = (TextView) view.findViewById(R.id.dt_details);
 
         ArrayList<View> views = new ArrayList<>();
-
+        ls_loction.setVisibility(View.GONE);
 
         views.add(dt_details);
         views.add(dt_name);

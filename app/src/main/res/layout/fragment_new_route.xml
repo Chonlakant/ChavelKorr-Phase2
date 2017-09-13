@@ -378,7 +378,8 @@
                         <EditText
                             android:id="@+id/dt_period"
                             android:layout_width="match_parent"
-                            android:layout_height="25dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp" />
 
