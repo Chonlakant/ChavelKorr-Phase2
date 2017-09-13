@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,7 +29,14 @@ import android.widget.Toast;
 import com.squareup.otto.Subscribe;
 import com.twentyfour.chavel.BusProvider.BusProvider;
 import com.twentyfour.chavel.Event.Events;
+import com.twentyfour.chavel.Event.Events_Desc;
+import com.twentyfour.chavel.Event.Events_Route_Activity;
+import com.twentyfour.chavel.Event.Events_Route_Details;
+import com.twentyfour.chavel.Event.Events_Route_Loction;
+import com.twentyfour.chavel.Event.Events_Route_Name;
 import com.twentyfour.chavel.Event.Events_Route_Period;
+import com.twentyfour.chavel.Event.Events_Route_Suggestion;
+import com.twentyfour.chavel.Event.Events_Route_Travel;
 import com.twentyfour.chavel.Event.Events_State_Menu;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.LoginRegister.ProfileFragment;
@@ -63,6 +71,21 @@ public class RouteFragment extends Fragment {
     LinearLayout ls_save_lin;
     LinearLayout ls_locaion_map;
     LinearLayout ls_feed;
+
+    EditText dt_period;
+    EditText ed_suggesstion;
+    EditText et_travel_method;
+    EditText dt_location;
+    EditText dt_activity;
+    EditText dt_route_descrition;
+    EditText dt_name;
+    TextView dt_details;
+    LinearLayout ls_budget, ls_cover;
+    TextView txt_rout_name;
+    TextView txt_loction;
+    private LinearLayout ls_loction;
+    private TextView txt_counrty;
+    private TextView txt_city;
 
 
     Button ls_save;
@@ -115,6 +138,22 @@ public class RouteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_route, container, false);
 
+        txt_counrty = (TextView) rootView.findViewById(R.id.txt_counrty);
+        txt_city = (TextView) rootView.findViewById(R.id.txt_city);
+
+        txt_rout_name = (TextView) rootView.findViewById(R.id.txt_rout_name);
+        txt_loction = (TextView) rootView.findViewById(R.id.txt_loction);
+        dt_period = (EditText) rootView.findViewById(R.id.dt_period);
+        ed_suggesstion = (EditText) rootView.findViewById(R.id.ed_suggesstion);
+        ls_budget = (LinearLayout) rootView.findViewById(R.id.ls_budget);
+        et_travel_method = (EditText) rootView.findViewById(R.id.et_travel_method);
+        dt_activity = (EditText) rootView.findViewById(R.id.dt_activity);
+        dt_location = (EditText) rootView.findViewById(R.id.dt_location);
+        ls_loction = (LinearLayout) rootView.findViewById(R.id.ls_loction);
+        dt_route_descrition = (EditText) rootView.findViewById(R.id.dt_route_descrition);
+        dt_name = (EditText) rootView.findViewById(R.id.dt_name);
+        dt_details = (TextView) rootView.findViewById(R.id.dt_details);
+
         ls_1 = (LinearLayout) rootView.findViewById(R.id.ls_1);
         ls_2 = (LinearLayout) rootView.findViewById(R.id.ls_2);
 
@@ -141,12 +180,8 @@ public class RouteFragment extends Fragment {
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
 
         toolbar.inflateMenu(R.menu.menu_main);
-       // toolbar.inflateMenu(R.menu.menu_over_map);
-
-
-
-
-
+        // toolbar.inflateMenu(R.menu.menu_over_map);
+        ls_loction.setVisibility(View.GONE);
 
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
         toolbar.setNavigationIcon(R.drawable.ic_back);
@@ -316,13 +351,11 @@ public class RouteFragment extends Fragment {
     }
 
     @Subscribe
-    public void getRoteState(Events_State_Menu.Events_StateMenuFragmentMessage texts) {
-        if (texts.getMessage() != "") {
-            key2 = texts.getMessage();
-
-            Log.e("key2",key2);
-        }
-
+    public void getRoteState(Events_Route_Details.Events_RoutDetails texts) {
+        Log.e("getRouteName", texts.getMessage().getRouteName());
+//        Events_Route_Details.Events_RoutDetails fragmentActivityMessageEvent = new Events_Route_Details.Events_RoutDetails(texts);
+//        BusProvider.getBus().post(fragmentActivityMessageEvent);
     }
+
 
 }

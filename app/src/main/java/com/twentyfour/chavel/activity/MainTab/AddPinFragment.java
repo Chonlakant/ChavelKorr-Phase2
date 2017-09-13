@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -39,7 +40,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.otto.Subscribe;
+import com.twentyfour.chavel.BusProvider.BusProvider;
+import com.twentyfour.chavel.Event.Events_Route_Details;
+import com.twentyfour.chavel.Event.Events_Route_Name;
 import com.twentyfour.chavel.R;
+import com.twentyfour.chavel.model.DetailsRoute;
 import com.twentyfour.chavel.model.GetMapData;
 import com.twentyfour.chavel.uilt.CustomSupportMapFragment;
 import com.twentyfour.chavel.uilt.MapMarker;
@@ -68,6 +74,8 @@ public class AddPinFragment extends Fragment implements
         ActivityCompat.OnRequestPermissionsResultCallback,
         CustomSupportMapFragment.OnMapFragmentReadyListener, LocationListener {
 
+    public static final String KEY_MESSAGE = "message";
+
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
@@ -93,11 +101,30 @@ public class AddPinFragment extends Fragment implements
     ArrayList<GetMapData> listMap = new ArrayList<>();
     EditText txtPinnameEdit;
 
+   DetailsRoute detailsRoute;
 
-    public static AddPinFragment newInstance() {
-        return new AddPinFragment();
+
+    public static RouteFragment newInstance(String message) {
+        RouteFragment fragment = new RouteFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(KEY_MESSAGE, message);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       // BusProvider.getBus().register(this);
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+
+        }
+
+
+    }
 
     public interface OnNewLocationFoundListener {
         public void OnNewLocationFound(Location location);
@@ -107,6 +134,7 @@ public class AddPinFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.add_pin_activity, container, false);
         setHasOptionsMenu(true);
+
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         img_next = (LinearLayout) rootView.findViewById(R.id.img_next);
         txtPinnameEdit = (EditText) rootView.findViewById(R.id.txtPinnameEdit);
@@ -267,12 +295,6 @@ public class AddPinFragment extends Fragment implements
         }
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-    }
-
 
     private LocationListener mLocationListener = new LocationListener() {
         @Override
@@ -419,6 +441,29 @@ public class AddPinFragment extends Fragment implements
 
     }
 
+    @Subscribe
+    public void getRoteStatesss(Events_Route_Name.Events_RoutNameFragmentMessage texts) {
+        Toast.makeText(getActivity(),"dddd",Toast.LENGTH_SHORT).show();
+        Log.e("getRouteName", texts.getMessage());
+    }
+
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        BusProvider.getBus().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        BusProvider.getBus().unregister(this);
+    }
+
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_fragment_add_pin, menu);
@@ -434,6 +479,7 @@ public class AddPinFragment extends Fragment implements
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 
 

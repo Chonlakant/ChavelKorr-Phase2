@@ -216,7 +216,7 @@
                             android:layout_marginRight="10dp"
                             android:hint="Put route details"
                             android:textSize="12dp" />
-                        sattboot1@gmail.com
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -312,6 +312,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/ls_loction"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
