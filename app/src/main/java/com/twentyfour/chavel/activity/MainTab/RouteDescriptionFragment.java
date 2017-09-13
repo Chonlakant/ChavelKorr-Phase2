@@ -32,8 +32,6 @@ public class RouteDescriptionFragment extends Fragment {
         super.onCreate(savedInstanceState);
         BusProvider.getBus().register(this);
         setRetainInstance(true);
-
-
     }
 
 

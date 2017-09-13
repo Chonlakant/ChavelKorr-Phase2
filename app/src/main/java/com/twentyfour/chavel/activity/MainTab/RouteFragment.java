@@ -14,6 +14,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,6 +28,8 @@ import android.widget.Toast;
 import com.squareup.otto.Subscribe;
 import com.twentyfour.chavel.BusProvider.BusProvider;
 import com.twentyfour.chavel.Event.Events;
+import com.twentyfour.chavel.Event.Events_Route_Period;
+import com.twentyfour.chavel.Event.Events_State_Menu;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.LoginRegister.ProfileFragment;
 import com.twentyfour.chavel.activity.SelectOverViewPinsActivity;
@@ -48,6 +53,7 @@ import retrofit2.Response;
 public class RouteFragment extends Fragment {
 
     private ExpandableLayout expandableLayout0;
+    public static final String KEY_MESSAGE = "message";
 
     Toolbar toolbar;
     Button btn_locaion_map;
@@ -57,11 +63,9 @@ public class RouteFragment extends Fragment {
     LinearLayout ls_save_lin;
     LinearLayout ls_locaion_map;
     LinearLayout ls_feed;
-    LinearLayout ls_view_pager;
+
 
     Button ls_save;
-
-    RecyclerView ryc;
 
 
     ImageView img_click;
@@ -78,12 +82,19 @@ public class RouteFragment extends Fragment {
     LinearLayout ls_2;
     View view_1;
     View view_2;
+    View view_border1;
+    View view_border2;
 
+    String key1;
+    String key2;
 
-    public static RouteFragment newInstance() {
-        return new RouteFragment();
+    public static RouteFragment newInstance(String message) {
+        RouteFragment fragment = new RouteFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(KEY_MESSAGE, message);
+        fragment.setArguments(bundle);
+        return fragment;
     }
-
 
 
     @Override
@@ -91,7 +102,12 @@ public class RouteFragment extends Fragment {
         super.onCreate(savedInstanceState);
         BusProvider.getBus().register(this);
         setRetainInstance(true);
-        // key = getArguments().getString(EXTRA_KEY);
+
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            key1 = bundle.getString(KEY_MESSAGE);
+        }
 
     }
 
@@ -99,16 +115,16 @@ public class RouteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_route, container, false);
 
-
         ls_1 = (LinearLayout) rootView.findViewById(R.id.ls_1);
         ls_2 = (LinearLayout) rootView.findViewById(R.id.ls_2);
 
         view_1 = (View) rootView.findViewById(R.id.view_1);
         view_2 = (View) rootView.findViewById(R.id.view_2);
 
+        view_border1 = (View) rootView.findViewById(R.id.view_border1);
+        view_border2 = (View) rootView.findViewById(R.id.view_border2);
+
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-
-
 
 
         ls_feed = (LinearLayout) rootView.findViewById(R.id.ls_feed);
@@ -123,6 +139,15 @@ public class RouteFragment extends Fragment {
         toolbar.setTitle("Route");
 
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
+
+        toolbar.inflateMenu(R.menu.menu_main);
+       // toolbar.inflateMenu(R.menu.menu_over_map);
+
+
+
+
+
+
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -134,17 +159,6 @@ public class RouteFragment extends Fragment {
 
         img_click = (ImageView) rootView.findViewById(R.id.img_click);
         expandableLayout0 = (ExpandableLayout) rootView.findViewById(R.id.expandable_layout_0);
-
-
-//        toolbar.setTitle("Route");
-//        getActionBar()setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
 
 
         btn_locaion_map.setOnClickListener(new View.OnClickListener() {
@@ -220,6 +234,8 @@ public class RouteFragment extends Fragment {
             }
         });
 
+        view_border1.setVisibility(View.VISIBLE);
+        view_border2.setVisibility(View.GONE);
         view_1.setVisibility(View.GONE);
         view_2.setVisibility(View.VISIBLE);
         PinsFragment twoFragment = new PinsFragment();
@@ -232,7 +248,7 @@ public class RouteFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent i =new Intent(getActivity(),SelectOverViewPinsActivity.class);
+                Intent i = new Intent(getActivity(), SelectOverViewPinsActivity.class);
                 startActivity(i);
 
 //                OverviewFragment twoFragment = new OverviewFragment();
@@ -241,16 +257,19 @@ public class RouteFragment extends Fragment {
 //                transaction.commit();
                 view_1.setVisibility(View.VISIBLE);
                 view_2.setVisibility(View.GONE);
-
-
+                view_border2.setVisibility(View.VISIBLE);
+                view_border1.setVisibility(View.GONE);
 
             }
         });
+
 
         ls_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                view_border1.setVisibility(View.VISIBLE);
+                view_border2.setVisibility(View.GONE);
                 view_1.setVisibility(View.GONE);
                 view_2.setVisibility(View.VISIBLE);
                 PinsFragment twoFragment = new PinsFragment();
@@ -271,11 +290,6 @@ public class RouteFragment extends Fragment {
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        BusProvider.getBus().register(this);
-    }
 
     @Override
     public void onStop() {
@@ -284,22 +298,31 @@ public class RouteFragment extends Fragment {
     }
 
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        //TODO Add your menu entries here
+        inflater.inflate(R.menu.menu_main, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_add_location:
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//
-//        return true;
-//    }
-//
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
+    @Subscribe
+    public void getRoteState(Events_State_Menu.Events_StateMenuFragmentMessage texts) {
+        if (texts.getMessage() != "") {
+            key2 = texts.getMessage();
+
+            Log.e("key2",key2);
+        }
+
+    }
 
 }

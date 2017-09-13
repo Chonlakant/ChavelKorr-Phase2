@@ -121,21 +121,23 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
+
                     <LinearLayout
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        android:gravity="right">
+
 
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:layout_marginRight="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center">
 
                         <ImageView
                             android:id="@+id/take_photo"
@@ -143,27 +145,25 @@
                             android:layout_height="90dp"
                             android:layout_gravity="center"
                             android:src="@drawable/cc" />
-
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_weight="1"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_marginRight="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="right">
 
                         <ImageView
                             android:id="@+id/ls_next_2"
-                            android:layout_width="120dp"
+                            android:layout_width="110dp"
                             android:layout_height="40dp"
                             android:layout_gravity="center"
+                            android:layout_marginRight="3dp"
                             android:src="@drawable/next_icon" />
 
+
                     </LinearLayout>
-
-
 
 
                 </LinearLayout>
@@ -257,18 +257,18 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textSize="12dp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="5dp"
-                                android:text="Country(2)" />
+                                android:text="Country(2)"
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:id="@+id/txt_counrty"
-                                android:textSize="10dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
-                                android:text="Thailand, Japan" />
+                                android:text="Thailand, Japan"
+                                android:textSize="10dp" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -279,21 +279,21 @@
                                 android:background="#919191" />
 
                             <TextView
-                                android:textSize="12dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="5dp"
-                                android:text="City/State/Province(4)" />
+                                android:text="City/State/Province(4)"
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:id="@+id/txt_city"
-                                android:textSize="10dp"
-                                android:layout_marginTop="3dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
-                                android:text="Bangkok(TH), Chiang(TH),Hokkaido(JP),Tokyo(JP)" />
+                                android:layout_marginTop="3dp"
+                                android:text="Bangkok(TH), Chiang(TH),Hokkaido(JP),Tokyo(JP)"
+                                android:textSize="10dp" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -344,11 +344,11 @@
 
                             <EditText
                                 android:layout_width="50dp"
-                                android:textSize="12dp"
                                 android:layout_height="match_parent"
-                                android:textColor="#a7a7aa"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginRight="10dp" />
+                                android:layout_marginRight="10dp"
+                                android:textColor="#a7a7aa"
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -362,9 +362,9 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
+                                android:gravity="bottom"
                                 android:textColor="#a7a7aa"
-                                android:textSize="12dp"
-                                android:gravity="bottom" />
+                                android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -386,10 +386,10 @@
                             android:id="@+id/dt_period"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:textColor="#a7a7aa"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp" />
+                            android:layout_marginRight="10dp"
+                            android:textColor="#a7a7aa"
+                            android:textSize="12dp" />
 
 
                         <TextView

@@ -2,6 +2,7 @@ package com.twentyfour.chavel.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.twentyfour.chavel.BusProvider.BusProvider;
+import com.twentyfour.chavel.Event.Events_Desc;
+import com.twentyfour.chavel.Event.Events_State_Menu;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.AddPinFragment;
 import com.twentyfour.chavel.activity.MainTab.EditPinFragment;
@@ -45,10 +49,13 @@ public class PinsFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        BusProvider.getBus().register(this);
+        setRetainInstance(true);
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -99,6 +106,9 @@ public class PinsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                Events_State_Menu.Events_StateMenuFragmentMessage fragmentActivityMessageEvent = new Events_State_Menu.Events_StateMenuFragmentMessage("orver_map");
+                BusProvider.getBus().post(fragmentActivityMessageEvent);
+
                 GetMapFragment addPinActivity = new GetMapFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container8, addPinActivity);
@@ -123,4 +133,18 @@ public class PinsFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        BusProvider.getBus().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        BusProvider.getBus().unregister(this);
+    }
+
+
 }

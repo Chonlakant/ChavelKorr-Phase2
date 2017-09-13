@@ -11,6 +11,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -72,6 +74,8 @@ public class AddPinFragment extends Fragment implements
     ImageView btn_expand_toggle;
     private ExpandableLayout expandableLayout0;
     private ExpandableLayout expandableLayout1;
+
+    private static final String EXTRA_KEY = "extra_key";
 
 
     LinearLayout img_next;
@@ -156,11 +160,12 @@ public class AddPinFragment extends Fragment implements
                 if (TextUtils.isEmpty(txtPinnameEdit.getText().toString())) {
                     Toast.makeText(getActivity(), "Pin Name", Toast.LENGTH_SHORT).show();
                 } else {
-                    RouteFragment routeFragment = new RouteFragment();
+                    RouteFragment routeFragment =  RouteFragment.newInstance("Add_pin");
                     android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.add(R.id.content, routeFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
+
                    
 
                 }

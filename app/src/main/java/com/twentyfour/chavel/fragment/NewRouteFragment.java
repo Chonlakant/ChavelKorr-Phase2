@@ -383,18 +383,15 @@ public class NewRouteFragment extends Fragment {
 
                 if (TextUtils.isEmpty(dt_name.getText().toString())) {
                     Toast.makeText(getActivity(), "Route name", Toast.LENGTH_SHORT).show();
-                }
-                if (bitmap == null) {
-                    Toast.makeText(getActivity(), "Take Photo", Toast.LENGTH_SHORT).show();
-                } else {
-
-
+                }else{
                     AddPinFragment addPinActivity = new AddPinFragment();
                     android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.content, addPinActivity);
                     transaction.addToBackStack(null);
                     transaction.commit();
                 }
+
+
 
             }
         });
