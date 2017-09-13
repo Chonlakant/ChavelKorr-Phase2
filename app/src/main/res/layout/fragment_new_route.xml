@@ -203,6 +203,7 @@
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:hint="Put route details"
+                            android:textColor="#a7a7aa"
                             android:textSize="12dp" />
 
                         <TextView
@@ -218,6 +219,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
+                            android:textColor="#a7a7aa"
                             android:textSize="12dp" />
 
                         <TextView
@@ -317,6 +319,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
+                            android:textColor="#a7a7aa"
                             android:textSize="12dp" />
 
                         <TextView
@@ -341,7 +344,9 @@
 
                             <EditText
                                 android:layout_width="50dp"
+                                android:textSize="12dp"
                                 android:layout_height="match_parent"
+                                android:textColor="#a7a7aa"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp" />
 
@@ -357,6 +362,8 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
+                                android:textColor="#a7a7aa"
+                                android:textSize="12dp"
                                 android:gravity="bottom" />
 
                             <TextView
@@ -380,6 +387,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="12dp"
+                            android:textColor="#a7a7aa"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp" />
 
@@ -398,6 +406,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
+                            android:textColor="#a7a7aa"
                             android:textSize="12dp" />
 
                         <LinearLayout
