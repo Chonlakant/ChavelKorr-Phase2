@@ -98,21 +98,21 @@ public class LocationAddActivity extends Fragment {
         ls_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogContry.dismiss();
+                dialogCityState.dismiss();
             }
         });
 
         ls_ok_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogCityState.dismiss();
+                dialogContry.dismiss();
             }
         });
 
         ls_cancel_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogCityState.dismiss();
+                dialogContry.dismiss();
             }
         });
 
