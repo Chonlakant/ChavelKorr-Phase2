@@ -127,7 +127,7 @@ public class NewRouteFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     @Override
@@ -246,7 +246,7 @@ public class NewRouteFragment extends Fragment {
 
                     Events_Route_Name.Events_RoutNameFragmentMessage fragmentActivityMessageEvent =
                             new Events_Route_Name.Events_RoutNameFragmentMessage("ggggggggg");
-                    BusProvider.getBus().post(fragmentActivityMessageEvent);
+                    BusProvider.getInstance().post(fragmentActivityMessageEvent);
 
 
                     AddPinFragment addPinActivity = new AddPinFragment();
@@ -418,7 +418,7 @@ public class NewRouteFragment extends Fragment {
                 } else {
 
                     Events_Route_Details.Events_RoutDetails fragmentActivityMessageEvent = new Events_Route_Details.Events_RoutDetails(detailsRoute);
-                    BusProvider.getBus().post(fragmentActivityMessageEvent);
+                    BusProvider.getInstance().post(fragmentActivityMessageEvent);
 
                     AddPinFragment addPinActivity = new AddPinFragment();
                     android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -547,7 +547,7 @@ public class NewRouteFragment extends Fragment {
                         public void run() {
 
                             Events.ActivityFragmentMessage fragmentActivityMessageEvent = new Events.ActivityFragmentMessage("123456");
-                            BusProvider.getBus().post(fragmentActivityMessageEvent);
+                            BusProvider.getInstance().post(fragmentActivityMessageEvent);
 
 
                             AddPinFragment addPinActivity = new AddPinFragment();
@@ -632,7 +632,7 @@ public class NewRouteFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        BusProvider.getBus().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
 

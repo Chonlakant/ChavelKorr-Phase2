@@ -31,7 +31,7 @@ public class SelectActivityFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
         setRetainInstance(true);
 
     }
@@ -55,7 +55,7 @@ public class SelectActivityFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Events_Route_Activity.Events_ActivityFragmentMessage fragmentActivityMessageEvent = new Events_Route_Activity.Events_ActivityFragmentMessage(dt_activity_name.getText().toString());
-                BusProvider.getBus().post(fragmentActivityMessageEvent);
+                BusProvider.getInstance().post(fragmentActivityMessageEvent);
                 getActivity().onBackPressed();
             }
         });
@@ -66,13 +66,13 @@ public class SelectActivityFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        BusProvider.getBus().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
 

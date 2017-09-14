@@ -453,13 +453,13 @@ public class AddPinFragment extends Fragment implements
     @Override
     public void onStart() {
         super.onStart();
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        BusProvider.getBus().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
 

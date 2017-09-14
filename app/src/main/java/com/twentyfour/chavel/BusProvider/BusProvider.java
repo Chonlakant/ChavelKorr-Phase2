@@ -7,11 +7,10 @@ package com.twentyfour.chavel.BusProvider;
 import com.squareup.otto.Bus;
 
 public class BusProvider {
-    private static Bus sBus;
-    public static Bus getBus() {
-        if (sBus == null)
-            sBus = new Bus();
-        return sBus;
+    private static Bus BUS = new Bus();
+
+    public static Bus getInstance() {
+        return BUS;
     }
 
 }

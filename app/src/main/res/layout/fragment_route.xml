@@ -343,7 +343,7 @@
                                         <View
                                             android:id="@+id/view_1"
                                             android:layout_width="match_parent"
-                                            android:layout_height="2dp"
+                                            android:layout_height="3dp"
                                             android:layout_marginTop="5dp"
 
                                             android:background="#ff10a9e3" />
@@ -351,7 +351,7 @@
                                         <View
                                             android:id="@+id/view_border1"
                                             android:layout_width="match_parent"
-                                            android:layout_height="2dp"
+                                            android:layout_height="3dp"
                                             android:layout_marginTop="5dp"
                                             android:background="#a7a7aa" />
 
@@ -381,7 +381,7 @@
                                         <View
                                             android:id="@+id/view_2"
                                             android:layout_width="match_parent"
-                                            android:layout_height="2dp"
+                                            android:layout_height="3dp"
                                             android:layout_marginTop="5dp"
                                             android:background="#ff10a9e3"
                                             android:visibility="gone" />
@@ -389,7 +389,7 @@
                                         <View
                                             android:id="@+id/view_border2"
                                             android:layout_width="match_parent"
-                                            android:layout_height="2dp"
+                                            android:layout_height="3dp"
                                             android:layout_marginTop="5dp"
                                             android:layout_marginRight="5dp"
                                             android:background="#a7a7aa" />

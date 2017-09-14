@@ -36,7 +36,7 @@ public class RouteNameFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
         setRetainInstance(true);
 
 
@@ -58,7 +58,7 @@ public class RouteNameFragment extends Fragment {
             public void onClick(View v) {
                 Events_Route_Name.Events_RoutNameFragmentMessage fragmentActivityMessageEvent =
                         new Events_Route_Name.Events_RoutNameFragmentMessage(dt_route_name.getText().toString());
-                BusProvider.getBus().post(fragmentActivityMessageEvent);
+                BusProvider.getInstance().post(fragmentActivityMessageEvent);
                 getActivity().onBackPressed();
 
             }
@@ -71,13 +71,13 @@ public class RouteNameFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        BusProvider.getBus().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
 
