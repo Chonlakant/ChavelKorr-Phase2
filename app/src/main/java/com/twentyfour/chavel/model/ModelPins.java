@@ -1,5 +1,10 @@
 package com.twentyfour.chavel.model;
 
+import org.parceler.Parcel;
+
+/**
+ * Created by Bas on 8/1/2017 AD.
+ */
 
 
 public class ModelPins {
