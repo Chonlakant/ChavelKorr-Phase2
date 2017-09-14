@@ -7,25 +7,27 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.service.BaseActivity;
+import com.twentyfour.chavel.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class CreateUserIdActivity extends BaseActivity {
+public class  CreateUserIdActivity extends BaseActivity {
 
+    @Bind(R.id.ls_next)
     LinearLayout ls_next;
+
+    @Bind(R.id.ed_create_id)
     EditText ed_create_id;
 
     @Bind(R.id.toolbar)
@@ -39,10 +41,9 @@ public class CreateUserIdActivity extends BaseActivity {
 
         if(toolbar != null) {
 
-            toolbar.setTitle("Create User ID");
+            toolbar.setTitle("");
             toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
             toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-            toolbar.setNavigationIcon(R.drawable.ic_back);
 
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -56,9 +57,8 @@ public class CreateUserIdActivity extends BaseActivity {
 
         }
 
-        ls_next = (LinearLayout) findViewById(R.id.ls_next);
-
-        ed_create_id = (EditText) findViewById(R.id.ed_create_id);
+        //ls_next = (LinearLayout) findViewById();
+       // ed_create_id = (EditText) findViewById(R.id.ed_create_id);
 
         Drawable drawable = ed_create_id.getBackground(); // get current EditText drawable
         drawable.setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP); // change the drawable color
@@ -72,7 +72,7 @@ public class CreateUserIdActivity extends BaseActivity {
         ls_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), RegisterByPhoneAndEmailActivity.class);
+                Intent i = new Intent(getApplicationContext(), SetPasswordActivity.class);
                 startActivity(i);
             }
         });
@@ -111,4 +111,8 @@ public class CreateUserIdActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
 }

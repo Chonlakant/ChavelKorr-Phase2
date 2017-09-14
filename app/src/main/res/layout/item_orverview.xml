@@ -30,7 +30,7 @@
                     android:layout_height="20dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/location_pins_icon" />
+                   />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -77,14 +77,14 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="2dp"
-                android:background="@drawable/ic_write" />
+                 />
 
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/delete_icon" />
+     />
         </LinearLayout>
 
         <LinearLayout

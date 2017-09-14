@@ -177,6 +177,16 @@
                                     android:layout_marginTop="10dp"
                                     android:orientation="horizontal">
 
+<<<<<<< HEAD
+=======
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp"
+                                        android:src="@drawable/ic_share" />
+
+>>>>>>> korrio/master
                                     <TextView
                                         android:id="@+id/text_name"
                                         android:layout_width="wrap_content"
@@ -280,6 +290,16 @@
                                         android:layout_width="20dp"
                                         android:layout_height="20dp"
                                         android:layout_gravity="center"
+<<<<<<< HEAD
+=======
+                                        android:layout_marginLeft="10dp"
+                                         />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+>>>>>>> korrio/master
                                         android:layout_marginLeft="5dp"
                                         android:src="@drawable/ic_down" />
 

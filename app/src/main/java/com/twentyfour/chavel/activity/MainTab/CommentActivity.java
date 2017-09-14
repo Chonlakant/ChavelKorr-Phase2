@@ -28,6 +28,7 @@ public class CommentActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
 
+<<<<<<< HEAD
         toolbar.setTitle("Mr.Chavel");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
@@ -40,6 +41,8 @@ public class CommentActivity extends AppCompatActivity {
             }
         });
 
+=======
+>>>>>>> korrio/master
     }
 
 

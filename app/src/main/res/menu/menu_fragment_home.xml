@@ -4,10 +4,10 @@
     tools:context=".ActivityMain">
 
     <item
-        android:id="@+id/action_add_friend"
+        android:id="@+id/action_search"
         android:orderInCategory="100"
-        android:title="Add Friend"
-        android:icon="@drawable/search_icon_tap"
+        android:title="Search"
+        android:icon="@mipmap/ic_tab_search"
         app:showAsAction="always" />
 
 
@@ -15,7 +15,7 @@
         android:id="@+id/action_more"
         android:orderInCategory="100"
     android:title="Menu "
-        android:icon="@drawable/ic_more"
+        android:icon="@mipmap/ic_more"
         app:showAsAction="always" />
 
 </menu>

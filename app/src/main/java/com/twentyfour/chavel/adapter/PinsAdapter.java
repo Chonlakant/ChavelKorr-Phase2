@@ -46,8 +46,11 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
         public TextView txt_title_pins;
         public ImageView image;
         public RelativeLayout rl_image;
+<<<<<<< HEAD
         public ImageView img_edit_pin;
         public ImageView img_delete_pin;
+=======
+>>>>>>> korrio/master
 
         public ViewHolder(View v) {
             super(v);
@@ -58,12 +61,16 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
             rl_image = (RelativeLayout) v.findViewById(R.id.rl_image);
             txt_pins.setOnClickListener(this);
             rl_image.setOnClickListener(this);
+<<<<<<< HEAD
             img_edit_pin.setOnClickListener(this);
             img_delete_pin.setOnClickListener(this);
+=======
+>>>>>>> korrio/master
         }
 
         @Override
         public void onClick(View v) {
+<<<<<<< HEAD
 
             switch (v.getId()) {
                 case R.id.img_edit_pin:
@@ -79,6 +86,23 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
                     break;
 
 
+=======
+
+            switch (v.getId()) {
+                case R.id.txt_pins:
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(v, getPosition());
+                    }
+                    break;
+
+                case R.id.rl_image:
+                    if (mOnItemClickImageListener != null) {
+                        mOnItemClickImageListener.onItemClickImage(v, getPosition());
+                    }
+                    break;
+
+
+>>>>>>> korrio/master
 
             }
 
@@ -100,12 +124,12 @@ public class PinsAdapter extends RecyclerView.Adapter<PinsAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         final ModelPins c = list.get(position);
         holder.txt_pins.setText(c.getPins());
         holder.txt_title_pins.setText(c.getTitlePins());
-
     }
+
 
     @Override
     public int getItemCount() {

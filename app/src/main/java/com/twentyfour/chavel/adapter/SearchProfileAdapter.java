@@ -64,16 +64,22 @@ public class SearchProfileAdapter extends RecyclerView.Adapter<SearchProfileAdap
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         final Search c = list.get(position);
 
 
         Glide.with(ctx)
                 .load(c.getImageUrl())
                 .into(holder.img_cover);
+<<<<<<< HEAD
 
 
+=======
+        ;
+>>>>>>> korrio/master
     }
+
+
 
     @Override
     public int getItemCount() {

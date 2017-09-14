@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimaryBg">#ff10a9e3</color>
-    <color name="colorPrimary">#10a9e3</color>
-    <color name="colorPrimaryDark">#10a9e3</color>
-    <color name="colorAccent">#10a9e3</color>
+    <color name="colorPrimaryBg">#ff0FA9E0</color>
+    <color name="colorPrimary">#0FA9E0</color>
+    <color name="colorPrimaryDark">#0FA9E0</color>
+    <color name="colorAccent">#0FA9E0</color>
     <color name="colorAccentLight">#10a9e3</color>
     <color name="colorUnSelect">#848889</color>
 
     <color name="textColorTitle">#666666</color>
-    <color name="whitePrimary">#ffffffff</color>
-    <color name="black">#00000000</color>
+
+
+    <color name="whitePrimary">#ffffff</color>
+    <color name="blackPrimary">#000000</color>
+    <color name="transparent">#ffffffff</color>
+    <color name="black_transparent">#00000000</color>
+    <color name="black_25_transparent">#44000000</color>
 
     <color name="tab_border">#a7a7aa</color>
     <color name="tab_background">#f6f6f7</color>
+
+
 
     <color name="tabMedium">#2B2B2B</color>
     <color name="tabDark">#000000</color>
     <color name="tabTransparent">#10ffffff</color>
 
+    <color name="grey_dark">#262626</color>
     <color name="grey_hard">#96989A</color>
     <color name="grey_medium">#BDBFC1</color>
     <color name="grey_soft">#F5F5F5</color>
-
     <color name="grey_bg">#E6E6E6</color>
     <color name="grey_text">#222D31</color>
-    <color name="tab_indicator_color">#10a9e3</color>
+    <color name="tab_indicator_color">#0FA9E0</color>
     <color name="me_chat_bg">#FFE0B2</color>
 
     <color name="darkOverlay">#80000000</color>
@@ -33,7 +40,27 @@
     <color name="darkOverlaySoft1">#f2f2f2</color>
     <color name="whiteOverlay">#40FFFFFF</color>
 
+    <color name="facebook">#395997</color>
+
+    <color name="style_color_primary">#2d5d82</color>
+    <color name="style_color_primary_dark">#21425d</color>
+    <color name="style_color_accent">#0FA9E0</color>
+
+    <color name="fab_color_pressed">#007787</color>
+    <color name="fab_color_shadow">#44000000</color>
+
+    <color name="btn_default_light_normal">#00000000</color>
+    <color name="btn_default_light_pressed">#40ffffff</color>
+    <color name="btn_send_normal">#02c754</color>
+    <color name="btn_send_pressed">#006633</color>
+    <color name="btn_default_shadow">#99000000</color>
+    <color name="btn_context_menu_normal">#ffffff</color>
+    <color name="btn_context_menu_pressed">#40000000</color>
+    <color name="btn_context_menu_text_red">#ffff0000</color>
+
     <color name="text_like_counter">#2b5a83</color>
+
+    <color name="bg_comments">#ffffff</color>
 
 
 </resources>

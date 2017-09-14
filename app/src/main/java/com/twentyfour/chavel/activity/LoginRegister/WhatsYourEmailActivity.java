@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.service.BaseActivity;
+import com.twentyfour.chavel.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,7 +35,7 @@ public class WhatsYourEmailActivity extends BaseActivity {
         setContentView(R.layout.activity_whats_email);
 
         ButterKnife.bind(this);
-        toolbar.setTitle("WhatsYourEmail");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));

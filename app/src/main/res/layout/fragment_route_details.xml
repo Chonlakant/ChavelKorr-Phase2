@@ -28,7 +28,71 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
+<<<<<<< HEAD
                     android:text="p80" />
+=======
+                    android:text="np40" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="#fafafa"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/ic_finish_pin"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ls_locaion_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_locaion_map"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/ic_pin"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ls_save_lin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/ls_save"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/ic_pin_save"
+                        android:gravity="center" />
+
+                </LinearLayout>
+>>>>>>> korrio/master
 
             </LinearLayout>
 
@@ -39,6 +103,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+<<<<<<< HEAD
                     android:id="@+id/fragment_container3"
                     android:visibility="gone"
                     android:layout_width="match_parent"
@@ -71,10 +136,50 @@
 
                         </LinearLayout>
 
+=======
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:gravity="left"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="5dp"
+                    android:layout_margin="0dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:orientation="vertical">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/photo"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/profile_photo" />
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:gravity="top"
+                        android:layout_gravity="top"
+                        android:orientation="vertical">
+>>>>>>> korrio/master
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+<<<<<<< HEAD
                             android:layout_marginLeft="2dp"
                             android:orientation="vertical">
 
@@ -154,10 +259,88 @@
 
 
                                     </LinearLayout>
+=======
+                            android:layout_marginTop="0dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/header_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ชมชายหาดกระบี่"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="#646464"
+                                android:textStyle="bold" />
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="top|right"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:id="@+id/img_sh"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp"
+                                        android:src="@drawable/ic_share" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center"
+                                        android:text="24" />
+
+                                    <ImageView
+                                        android:id="@+id/img_like"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp"
+                                        android:src="@drawable/ic_like" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center"
+                                        android:text="24" />
+
+                                    <ImageView
+                                        android:id="@+id/img_comments"
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="10dp"
+                                         />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginLeft="5dp"
+                                        android:gravity="center"
+                                        android:text="24" />
+>>>>>>> korrio/master
 
 
                                 </LinearLayout>
 
+<<<<<<< HEAD
                             </LinearLayout>
 
                             <TextView
@@ -188,6 +371,90 @@
             </LinearLayout>
 
 
+=======
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/text_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="RID TH:1234"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="#999999"
+                            android:textSize="13dp"
+                            android:textStyle="bold" />
+
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Route Name*" />
+
+                <EditText
+                    android:id="@+id/dt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:hint="Put route name"
+                    android:textColor="#a7a7aa"
+                    android:textSize="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/dt_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:gravity="bottom"
+                        android:text="Route Details*" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="1"
+                        android:background="#919191" />
+
+                    <ImageView
+                        android:id="@+id/btn_expand_toggle"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/ic_down" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_layout_0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:el_duration="1000"
+                app:el_expanded="true">
+>>>>>>> korrio/master
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -217,6 +484,7 @@
                             android:hint="Put route details"
                             android:textSize="12dp" />
 
+<<<<<<< HEAD
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -271,6 +539,8 @@
 
                         </LinearLayout>
 
+=======
+>>>>>>> korrio/master
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -287,13 +557,17 @@
                             android:textSize="12dp" />
 
                         <TextView
+<<<<<<< HEAD
                             android:id="@+id/txt_loction"
+=======
+>>>>>>> korrio/master
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:text="Location" />
 
+<<<<<<< HEAD
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -362,13 +636,27 @@
                                 android:background="#919191" />
                         </LinearLayout>
 
+=======
+                        <EditText
+                            android:id="@+id/dt_location"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:hint="City / Province / State"
+                            android:textColor="#a7a7aa"
+                            android:textSize="12dp" />
+>>>>>>> korrio/master
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
+<<<<<<< HEAD
                             android:layout_marginTop="5dp"
+=======
+>>>>>>> korrio/master
                             android:text="Teavel Method" />
 
                         <EditText
@@ -474,23 +762,34 @@
                                 android:textSize="20dp" />
 
                             <ImageView
+<<<<<<< HEAD
                                 android:id="@+id/camera_cover"
                                 android:layout_width="40dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="bottom"
                                 android:src="@drawable/photo_icon" />
+=======
+                                android:layout_width="40dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="bottom"
+                                 />
+>>>>>>> korrio/master
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+<<<<<<< HEAD
                             android:layout_marginBottom="10dp"
+=======
+>>>>>>> korrio/master
                             android:layout_marginTop="5dp"
                             android:orientation="horizontal">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
+<<<<<<< HEAD
                                 android:layout_height="120dp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_weight="1"
@@ -506,6 +805,31 @@
                                     android:layout_alignParentStart="true"
                                     android:layout_alignParentTop="true" />
 
+=======
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:background="#64646464">
+
+
+                                    <ImageView
+                                        android:id="@+id/imageView"
+                                        android:layout_width="100dp"
+                                        android:layout_height="20dp"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_marginLeft="13dp"
+                                        android:layout_marginStart="13dp"
+                                        android:layout_marginTop="10dp"
+                                        android:src="@drawable/cover_photo_icon" />
+                                </RelativeLayout>
+>>>>>>> korrio/master
 
                             </LinearLayout>
 
@@ -523,8 +847,16 @@
 
                     </LinearLayout>
                 </ScrollView>
+<<<<<<< HEAD
 
         </LinearLayout>
     </FrameLayout>
 
 </LinearLayout>
+=======
+            </net.cachapa.expandablelayout.ExpandableLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>
+>>>>>>> korrio/master

@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
+<<<<<<< HEAD
 import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
 import com.twentyfour.chavel.activity.MainTab.LocationFragment;
 import com.twentyfour.chavel.activity.MainTab.PeriodTimeFragment;
@@ -26,6 +27,19 @@ import com.twentyfour.chavel.activity.MainTab.RouteNameFragment;
 import com.twentyfour.chavel.activity.MainTab.SelectActivityFragment;
 import com.twentyfour.chavel.activity.MainTab.SelectTravelMethodFragment;
 import com.twentyfour.chavel.activity.MainTab.SuggestionFragment;
+=======
+import com.twentyfour.chavel.activity.MainTab.RouteHistoryActivity;
+//import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
+//import com.twentyfour.chavel.activity.MainTab.LocationFragment;
+//import com.twentyfour.chavel.activity.MainTab.PeriodTimeFragment;
+//import com.twentyfour.chavel.activity.MainTab.RouteDescriptionFragment;
+//import com.twentyfour.chavel.activity.MainTab.RouteFragment;
+//import com.twentyfour.chavel.activity.MainTab.RouteHistoryActivity;
+//import com.twentyfour.chavel.activity.MainTab.RouteNameFragment;
+//import com.twentyfour.chavel.activity.MainTab.SelectActivityFragment;
+//import com.twentyfour.chavel.activity.MainTab.SelectTravelMethodFragment;
+//import com.twentyfour.chavel.activity.MainTab.SuggestionFragment;
+>>>>>>> korrio/master
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -36,7 +50,10 @@ public class RouteDetailsFragment extends Fragment {
 
     private ExpandableLayout expandableLayout0;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> korrio/master
     ImageView btn_expand_toggle;
     EditText dt_period;
     EditText ed_suggesstion;
@@ -48,6 +65,7 @@ public class RouteDetailsFragment extends Fragment {
     TextView dt_details;
     LinearLayout ls_budget;
 
+<<<<<<< HEAD
     public static RouteDetailsFragment newInstance() {
         RouteDetailsFragment fragment = new RouteDetailsFragment();
 
@@ -55,18 +73,26 @@ public class RouteDetailsFragment extends Fragment {
     }
 
 
+=======
+>>>>>>> korrio/master
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
+<<<<<<< HEAD
         View view = inflater.inflate(R.layout.fragment_details_route, null);
 
 
         expandableLayout0 = (ExpandableLayout) view.findViewById(R.id.expandable_layout_0);
 
 
+=======
+        View view = inflater.inflate(R.layout.fragment_route_details, null);
+
+        expandableLayout0 = (ExpandableLayout) view.findViewById(R.id.expandable_layout_0);
+>>>>>>> korrio/master
         btn_expand_toggle = (ImageView) view.findViewById(R.id.btn_expand_toggle);
         dt_period = (EditText) view.findViewById(R.id.dt_period);
         ed_suggesstion = (EditText) view.findViewById(R.id.ed_suggesstion);
@@ -97,6 +123,7 @@ public class RouteDetailsFragment extends Fragment {
         dt_period.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
 
 
                 PeriodTimeFragment periodTimeFragment = new PeriodTimeFragment();
@@ -104,6 +131,15 @@ public class RouteDetailsFragment extends Fragment {
                 transaction.replace(R.id.content, periodTimeFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+=======
+//
+//
+//                PeriodTimeFragment periodTimeFragment = new PeriodTimeFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.content, periodTimeFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+>>>>>>> korrio/master
 
             }
         });
@@ -113,11 +149,19 @@ public class RouteDetailsFragment extends Fragment {
             public void onClick(View v) {
 
 
+<<<<<<< HEAD
                 SuggestionFragment suggestionFragment = new SuggestionFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content, suggestionFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+=======
+//                SuggestionFragment suggestionFragment = new SuggestionFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.content, suggestionFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+>>>>>>> korrio/master
             }
         });
 
@@ -126,11 +170,19 @@ public class RouteDetailsFragment extends Fragment {
             public void onClick(View v) {
 
 
+<<<<<<< HEAD
                 BudgetFragment budgetFragment = new BudgetFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content, budgetFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+=======
+//                BudgetFragment budgetFragment = new BudgetFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.content, budgetFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+>>>>>>> korrio/master
 
             }
         });
@@ -139,12 +191,21 @@ public class RouteDetailsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+<<<<<<< HEAD
 
                 SelectTravelMethodFragment selectTravelMethodFragment = new SelectTravelMethodFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content, selectTravelMethodFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+=======
+//
+//                SelectTravelMethodFragment selectTravelMethodFragment = new SelectTravelMethodFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.content, selectTravelMethodFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+>>>>>>> korrio/master
 
             }
         });
@@ -154,11 +215,19 @@ public class RouteDetailsFragment extends Fragment {
             public void onClick(View v) {
 
 
+<<<<<<< HEAD
                 LocationFragment locationFragment = new LocationFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content, locationFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+=======
+//                LocationFragment locationFragment = new LocationFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.content, locationFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+>>>>>>> korrio/master
 
             }
         });
@@ -168,11 +237,19 @@ public class RouteDetailsFragment extends Fragment {
             public void onClick(View v) {
 
 
+<<<<<<< HEAD
                 SelectActivityFragment routeDescriptionFragment = new SelectActivityFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content, routeDescriptionFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+=======
+//                SelectActivityFragment routeDescriptionFragment = new SelectActivityFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.content, routeDescriptionFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+>>>>>>> korrio/master
 
             }
         });
@@ -181,11 +258,19 @@ public class RouteDetailsFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+<<<<<<< HEAD
                 RouteDescriptionFragment routeDescriptionFragment = new RouteDescriptionFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content, routeDescriptionFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+=======
+//                RouteDescriptionFragment routeDescriptionFragment = new RouteDescriptionFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.content, routeDescriptionFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+>>>>>>> korrio/master
 
             }
         });
@@ -195,12 +280,21 @@ public class RouteDetailsFragment extends Fragment {
             public void onClick(View v) {
 
 
+<<<<<<< HEAD
 
                 RouteNameFragment routeNameFragment = new RouteNameFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content, routeNameFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+=======
+//
+//                RouteNameFragment routeNameFragment = new RouteNameFragment();
+//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.content, routeNameFragment);
+//                transaction.addToBackStack(null);
+//                transaction.commit();
+>>>>>>> korrio/master
 
 
             }
@@ -235,7 +329,11 @@ public class RouteDetailsFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+<<<<<<< HEAD
         inflater.inflate(R.menu.menu_fragment_add_pin, menu);
+=======
+        inflater.inflate(R.menu.menu_fragment_add_route, menu);
+>>>>>>> korrio/master
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -249,4 +347,8 @@ public class RouteDetailsFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> korrio/master

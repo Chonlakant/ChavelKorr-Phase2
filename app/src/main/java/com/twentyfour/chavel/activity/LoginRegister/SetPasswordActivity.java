@@ -6,18 +6,18 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.service.BaseActivity;
+import com.twentyfour.chavel.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,12 +39,18 @@ public class SetPasswordActivity extends BaseActivity {
         setContentView(R.layout.activity_set_password);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Set Password");
+        toolbar.setTitle("");
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-        toolbar.setNavigationIcon(R.drawable.ic_back);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
         btn_next = (Button) findViewById(R.id.btn_next);
@@ -60,6 +66,8 @@ public class SetPasswordActivity extends BaseActivity {
         } else {
             ed_pass.setBackgroundDrawable(drawable);
         }
+
+
 
         ed_pass.addTextChangedListener(new TextWatcher() {
 

@@ -13,8 +13,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.twentyfour.chavel.R;
+<<<<<<< HEAD
 import com.twentyfour.chavel.activity.SelectOverViewPinsActivity;
 import com.twentyfour.chavel.adapter.OrverViewPinAdapter;
+=======
+import com.twentyfour.chavel.adapter.OverViewPinAdapter;
+>>>>>>> korrio/master
 import com.twentyfour.chavel.model.Search;
 
 import java.util.ArrayList;
@@ -29,7 +33,7 @@ public class OverViewPinsActivity extends AppCompatActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
-    OrverViewPinAdapter searchAdapter;
+    OverViewPinAdapter searchAdapter;
     RecyclerView recyclerView;
 
     LinearLayout ls_view;
@@ -48,7 +52,6 @@ public class OverViewPinsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
-        toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +72,7 @@ public class OverViewPinsActivity extends AppCompatActivity {
             modelPins.setImageUrl("http://2.bp.blogspot.com/-xRdb6iiVKec/TviHLTZT4qI/AAAAAAAAJ2g/Cn8FJsLEczQ/s1600/wallpapers-cafe.blogspot.com%2B%25252823%252529.jpg");
             list.add(modelPins);
 
-            searchAdapter = new OrverViewPinAdapter(getApplicationContext(), list);
+            searchAdapter = new OverViewPinAdapter(getApplicationContext(), list);
             recyclerView.setAdapter(searchAdapter);
             searchAdapter.setOnItemClickListener(new OrverViewPinAdapter.OnItemClickListener() {
                 @Override

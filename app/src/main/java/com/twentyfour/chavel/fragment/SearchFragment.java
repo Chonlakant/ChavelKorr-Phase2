@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.twentyfour.chavel.MainActivity;
 import com.twentyfour.chavel.R;
 import com.twentyfour.chavel.activity.MainTab.AdvanceSearchFragment;
 import com.twentyfour.chavel.activity.MainTab.SearchFragmentAdvance;
@@ -36,7 +37,12 @@ public class SearchFragment extends AppCompatActivity {
     ArrayList<Search> listProfile = new ArrayList<>();
     ArrayList<Search> listRoute = new ArrayList<>();
 
+<<<<<<< HEAD
     Toolbar toolbar;
+=======
+    private RecyclerView.LayoutManager mLayoutManager;
+
+>>>>>>> korrio/master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +57,17 @@ public class SearchFragment extends AppCompatActivity {
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
 
 
+<<<<<<< HEAD
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView_profile = (RecyclerView) findViewById(R.id.recyclerView_profile);
 
+=======
+        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false
+        );
+        recyclerView_profile.setHasFixedSize(true);
+        recyclerView_profile.setItemAnimator(new DefaultItemAnimator());
+        recyclerView_profile.setLayoutManager(mLayoutManager);
+>>>>>>> korrio/master
 
         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false
         );

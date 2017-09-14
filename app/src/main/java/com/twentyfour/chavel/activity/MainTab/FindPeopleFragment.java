@@ -35,8 +35,11 @@ public class FindPeopleFragment extends Fragment {
         //setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+<<<<<<< HEAD:app/src/main/java/com/twentyfour/chavel/activity/MainTab/FindPeopleFragment.java
         toolbar.setNavigationIcon(R.drawable.ic_back);
         //setDisplayHomeAsUpEnabled(true);
+=======
+>>>>>>> korrio/master:app/src/main/java/com/twentyfour/chavel/activity/MainTab/SelectTravelMethodActivity.java
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

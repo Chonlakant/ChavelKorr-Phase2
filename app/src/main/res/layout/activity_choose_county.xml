@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.twentyfour.chavel.LandingActivity">
+    tools:context="com.twentyfour.chavel.activity.LoginRegister.LandingActivity">
     <include layout="@layout/toolbar"/>
 
     <LinearLayout
@@ -40,7 +40,7 @@
                 android:layout_height="27dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/ic_find" />
+                android:src="@mipmap/ic_tab_search" />
 
             <TextView
                 android:layout_width="wrap_content"

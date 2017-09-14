@@ -61,7 +61,7 @@ public class SearchRouteAdapter extends RecyclerView.Adapter<SearchRouteAdapter.
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         final Search c = list.get(position);
 
         Glide.with(ctx)
@@ -70,7 +70,6 @@ public class SearchRouteAdapter extends RecyclerView.Adapter<SearchRouteAdapter.
               //  .centerCrop()
                // .error(R.drawable.profile_photo)
                 .into(holder.img_cover);
-
     }
 
     @Override

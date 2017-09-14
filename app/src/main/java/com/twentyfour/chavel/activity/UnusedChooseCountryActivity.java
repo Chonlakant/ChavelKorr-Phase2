@@ -24,7 +24,7 @@ public class UnusedChooseCountryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose_county);
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Country or Code");
+        toolbar.setTitle("Country code");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

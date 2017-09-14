@@ -40,6 +40,7 @@ public class PinsFragment extends Fragment {
         // Required empty public constructor
     }
 
+<<<<<<< HEAD
     public static PinsFragment newInstance() {
         PinsFragment fragment = new PinsFragment();
 //        Bundle bundle = new Bundle();
@@ -56,6 +57,13 @@ public class PinsFragment extends Fragment {
     }
 
 
+=======
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+>>>>>>> korrio/master
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -82,9 +90,15 @@ public class PinsFragment extends Fragment {
             @Override
             public void onItemClick(View viewj, int position) {
 
+<<<<<<< HEAD
                 EditPinFragment pinDetailsFragment = new EditPinFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.content_2, pinDetailsFragment);
+=======
+                EditPinFragment editPinActivity = new EditPinFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container9, editPinActivity);
+>>>>>>> korrio/master
                 transaction.addToBackStack(null);
                 transaction.commit();
 
@@ -93,6 +107,7 @@ public class PinsFragment extends Fragment {
             }
         });
 
+<<<<<<< HEAD
         pinsAdapter.setOnItemClickImageListener(new PinsAdapter.OnItemClickImageListener() {
             @Override
             public void onItemClickImage(View viewj, int position) {
@@ -128,11 +143,23 @@ public class PinsFragment extends Fragment {
                 transaction.addToBackStack(null);
                 transaction.commit();
 
+=======
+
+        pinsAdapter.setOnItemClickImageListener(new PinsAdapter.OnItemClickImageListener() {
+            @Override
+            public void onItemClickImage(View viewj, int position) {
+                PinDetailsFragment pinDetailsFragment = new PinDetailsFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container9, pinDetailsFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+>>>>>>> korrio/master
             }
         });
 
         return view;
     }
+<<<<<<< HEAD
 
     @Override
     public void onStart() {
@@ -148,3 +175,6 @@ public class PinsFragment extends Fragment {
 
 
 }
+=======
+}
+>>>>>>> korrio/master

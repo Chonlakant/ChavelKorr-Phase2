@@ -5,6 +5,7 @@
     android:background="#ffffff"
     android:orientation="vertical">
     <include layout="@layout/toolbar" />
+<<<<<<< HEAD
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
@@ -14,109 +15,128 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sggestion" />
+=======
+
+
+>>>>>>> korrio/master
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <RadioButton
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="All year" />
+                android:layout_weight="1"
+                android:text="Suggestions"
+                android:textColor="@color/blackPrimary" />
+
+
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/txt_put_suggestion"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="0dp"
-                android:gravity="center"
+                android:layout_weight="1"
+                android:gravity="left|center"
                 android:singleLine="true"
-                android:text="Put suggestion for traveling"
-                android:textColor="#000000" />
+                android:text="Put suggestion for traveling" />
 
-            <EditText
-                android:id="@+id/edit2"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="10dp"
-                android:focusableInTouchMode="true"
-                android:inputType="text"
-                android:textSize="14sp" />
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center"
+                android:src="@mipmap/ic_edit"
+                android:layout_marginRight="5dp"/>
 
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center"
+                android:src="@mipmap/ic_plus" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <RadioButton
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Should go between 15 Jan 15 March" />
 
-            <EditText
-                android:id="@+id/edit"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="10dp"
-                android:focusableInTouchMode="true"
-                android:inputType="text"
-                android:textSize="14sp" />
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center"
+                android:src="@mipmap/ic_edit"
+                android:layout_marginRight="5dp"/>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center"
+                android:src="@mipmap/ic_plus" />
 
         </LinearLayout>
-
-        <TextView
-            android:layout_marginLeft="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="PLease bring your glove" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <RadioButton
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Or you buy a cheap one at Notiface Siam" />
+                android:layout_weight="1"
+                android:text="Please bring your glove (Or you buy a cheap one at Siam)" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center"
+                android:src="@mipmap/ic_edit"
+                android:layout_marginRight="5dp"/>
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="right|center_horizontal|center"
+                android:src="@mipmap/ic_plus" />
 
         </LinearLayout>
 
-
         <TextView
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:text="Put suggestion for you traveling route" />
 
     </LinearLayout>

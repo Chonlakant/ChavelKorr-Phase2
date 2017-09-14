@@ -46,6 +46,7 @@ import com.twentyfour.chavel.Event.Events_Route_Period;
 import com.twentyfour.chavel.Event.Events_Route_Suggestion;
 import com.twentyfour.chavel.Event.Events_Route_Travel;
 import com.twentyfour.chavel.R;
+<<<<<<< HEAD
 import com.twentyfour.chavel.activity.MainTab.AddPinFragment;
 import com.twentyfour.chavel.activity.MainTab.BudgetFragment;
 import com.twentyfour.chavel.activity.MainTab.CrossProvinceActivity;
@@ -61,6 +62,17 @@ import com.twentyfour.chavel.activity.MainTab.RouteHistoryActivity;
 import com.twentyfour.chavel.activity.MainTab.SuggestionFragment;
 import com.twentyfour.chavel.activity.MainTab.SelectTravelMethodFragment;
 import com.twentyfour.chavel.model.DetailsRoute;
+=======
+import com.twentyfour.chavel.activity.MainTab.SelectActivityActivity;
+import com.twentyfour.chavel.activity.MainTab.BudgetActivity;
+import com.twentyfour.chavel.activity.MainTab.LocationActivity;
+import com.twentyfour.chavel.activity.MainTab.PeriodTimeActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteDescriptionActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteHistoryActivity;
+import com.twentyfour.chavel.activity.MainTab.RouteNameActivity;
+import com.twentyfour.chavel.activity.MainTab.SuggestionActivity;
+import com.twentyfour.chavel.activity.MainTab.SelectTravelMethodActivity;
+>>>>>>> korrio/master
 
 import net.cachapa.expandablelayout.ExpandableLayout;
 
@@ -225,6 +237,7 @@ public class NewRouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+<<<<<<< HEAD
                 if (TextUtils.isEmpty(dt_name.getText().toString())) {
                     Toast.makeText(getActivity(), "Route name", Toast.LENGTH_SHORT).show();
                 } else {
@@ -256,6 +269,10 @@ public class NewRouteFragment extends Fragment {
                     transaction.commit();
 
                 }
+=======
+//                Intent i = new Intent(getActivity(), RouteActivity.class);
+//                startActivity(i);
+>>>>>>> korrio/master
 
             }
         });
@@ -384,6 +401,7 @@ public class NewRouteFragment extends Fragment {
             }
         });
 
+<<<<<<< HEAD
         camera_cover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -436,6 +454,9 @@ public class NewRouteFragment extends Fragment {
 
 
 
+=======
+        expandableLayout0.collapse();
+>>>>>>> korrio/master
 
 
         return view;
@@ -611,7 +632,7 @@ public class NewRouteFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_fragment_add_pin, menu);
+        inflater.inflate(R.menu.menu_fragment_add_route, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 

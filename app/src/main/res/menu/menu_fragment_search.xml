@@ -7,7 +7,7 @@
         android:id="@+id/action_search"
         android:orderInCategory="100"
         android:title="Search Friend"
-        android:icon="@drawable/ic_search"
+        android:icon="@mipmap/ic_tab_search"
         app:showAsAction="always" />
 
 </menu>

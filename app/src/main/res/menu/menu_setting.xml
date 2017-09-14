@@ -1,13 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
       xmlns:app="http://schemas.android.com/apk/res-auto"
-      tools:context=".LandingActivity">
+      tools:context=".activity.LoginRegister.LandingActivity">
 
       <item
           android:id="@+id/action_more"
           android:orderInCategory="100"
           android:title="Menu "
-          android:icon="@drawable/ic_more"
+          android:icon="@mipmap/ic_more"
           app:showAsAction="always" />
 
 

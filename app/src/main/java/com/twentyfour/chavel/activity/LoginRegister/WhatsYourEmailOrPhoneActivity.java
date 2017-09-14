@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,9 +11,10 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.twentyfour.chavel.R;
-import com.twentyfour.chavel.service.BaseActivity;
+import com.twentyfour.chavel.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,14 +30,16 @@ public class WhatsYourEmailOrPhoneActivity extends BaseActivity {
     @Bind(R.id.ed_name)
     EditText ed_name;
 
+    @Bind(R.id.back_text)
+    TextView back_text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whats_address);
-
         ButterKnife.bind(this);
 
-        toolbar.setTitle("Whats Email");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
@@ -50,14 +52,20 @@ public class WhatsYourEmailOrPhoneActivity extends BaseActivity {
             }
         });
 
+        back_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
 
         ls_next = (LinearLayout) findViewById(R.id.ls_next);
-
 
         ls_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),VertificationSendEnterEmailActivity.class);
+                Intent intent = new Intent(getApplicationContext(),VerifySendEnterEmailActivity.class);
                 startActivity(intent);
             }
         });

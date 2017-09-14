@@ -5,7 +5,10 @@
     android:background="@drawable/bg_linear"
     android:orientation="vertical">
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> korrio/master
     <LinearLayout
         android:layout_width="270dp"
         android:paddingBottom="10dp"
@@ -147,6 +150,7 @@
                     android:layout_marginLeft="10dp"
                     android:text="Share to others" />
 
+<<<<<<< HEAD
 
             </LinearLayout>
 
@@ -154,6 +158,12 @@
         </LinearLayout>
 
 
+=======
+            </LinearLayout>
+
+        </LinearLayout>
+
+>>>>>>> korrio/master
     </LinearLayout>
 
 </LinearLayout>

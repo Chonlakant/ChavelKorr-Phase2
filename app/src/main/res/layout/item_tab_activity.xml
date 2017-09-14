@@ -78,7 +78,7 @@
 
     <View
         android:layout_marginTop="10dp"
-        android:background="#464646"
+        android:background="@color/grey_soft"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"/>
 

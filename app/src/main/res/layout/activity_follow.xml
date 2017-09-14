@@ -5,13 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.twentyfour.chavel.LandingActivity">
+    tools:context="com.twentyfour.chavel.activity.LoginRegister.LandingActivity">
 
+<<<<<<< HEAD
     <include layout="@layout/toolbar" />
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#464646" />
+=======
+    <include layout="@layout/toolbar_custom" />
+>>>>>>> korrio/master
 
     <LinearLayout
         android:gravity="right"
@@ -40,8 +44,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_marginLeft="20dp"
                 android:src="@drawable/profile" />
 
@@ -97,8 +101,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_marginLeft="20dp"
                 android:src="@drawable/profile" />
 
@@ -156,8 +160,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_marginLeft="20dp"
                 android:src="@drawable/profile" />
 
@@ -214,8 +218,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_marginLeft="20dp"
                 android:src="@drawable/profile" />
 
@@ -264,27 +268,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ls_next"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/bg_selected"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Next"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-
-        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

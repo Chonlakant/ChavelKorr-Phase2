@@ -23,8 +23,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/photo"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
@@ -69,7 +69,6 @@
                     android:textColor="#646464"
                     android:textStyle="bold" />
 
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -87,11 +86,16 @@
 
                         <ImageView
                             android:id="@+id/img_sh"
+<<<<<<< HEAD
                             android:layout_width="25dp"
                             android:layout_height="25dp"
+=======
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+>>>>>>> korrio/master
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
-                            android:src="@drawable/share_icon" />
+                            android:src="@drawable/ic_share" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -103,8 +107,13 @@
 
                         <ImageView
                             android:id="@+id/img_like"
+<<<<<<< HEAD
                             android:layout_width="25dp"
                             android:layout_height="25dp"
+=======
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+>>>>>>> korrio/master
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
                             android:src="@drawable/ic_like" />
@@ -119,11 +128,16 @@
 
                         <ImageView
                             android:id="@+id/img_comments"
+<<<<<<< HEAD
                             android:layout_width="25dp"
                             android:layout_height="25dp"
+=======
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+>>>>>>> korrio/master
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
-                            android:src="@drawable/msg_icon" />
+                            android:src="@drawable/ic_comment" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -132,7 +146,6 @@
                             android:layout_marginLeft="5dp"
                             android:gravity="center"
                             android:text="24" />
-
 
                     </LinearLayout>
 
@@ -148,8 +161,7 @@
                 android:text="RID TH:1234"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                 android:textColor="#999999"
-                android:textSize="13dp"
-                android:textStyle="bold" />
+                android:textSize="13dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.twentyfour.chavel.LandingActivity">
+    tools:context="com.twentyfour.chavel.activity.LoginRegister.LandingActivity">
     <include layout="@layout/toolbar"/>
     <View
         android:layout_width="match_parent"
@@ -51,7 +51,8 @@
             android:layout_marginRight="20dp"
             android:text="Or sign up with phone"
             android:textColor="@color/colorPrimary"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:id="@+id/back_text"/>
 
 
         <LinearLayout

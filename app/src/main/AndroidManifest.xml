@@ -22,51 +22,69 @@
     <application
         android:name=".AppController"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_rec"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+<<<<<<< HEAD
         <activity android:name=".fragment.NewRouteTapFragment">
+=======
+        <activity android:name=".activity.LoginRegister.LandingActivity">
+
+>>>>>>> korrio/master
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+<<<<<<< HEAD
 
         <activity android:name=".MainTabActivity"></activity>
+=======
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".SettingSystemActivity" />
+>>>>>>> korrio/master
 
         <!-- Login Register Zone -->
-        <activity android:name=".activity.LoginRegister.RegisterActivity" />
-        <activity android:name=".activity.LoginRegister.LoginActivity" />
-        <activity android:name=".activity.LoginRegister.SignInNextActivity" />
-        <activity android:name=".activity.LoginRegister.SetPasswordActivity" />
-        <activity android:name=".activity.LoginRegister.CreateUserIdActivity" />
+        <!-- np 95.1 -->
+        <activity android:name=".activity.LoginRegister.RegisterActivity"
+            android:theme="@style/BaseThemeBack"></activity>
+        <!-- np 97.1 -->
+        <activity android:name=".activity.LoginRegister.LoginActivity"
+            android:theme="@style/BaseThemeBack"
+            ></activity>
+        <activity android:name=".activity.LoginRegister.RegisterSmsOrCallActivity" />
         <activity android:name=".activity.LoginRegister.RegisterByPhoneAndEmailActivity" />
-
-        <activity android:name=".activity.LoginRegister.VertificationSendActivity" />
-        <activity android:name=".activity.LoginRegister.VertificationSendEnterActivity" />
-        <activity android:name=".activity.LoginRegister.WhatsYourEmailActivity" />
+        <activity android:name=".activity.LoginRegister.CreateUserIdActivity" />
+        <activity android:name=".activity.LoginRegister.SetPasswordActivity" />
+        <activity android:name=".activity.LoginRegister.VerifySendActivity" />
+        <activity android:name=".activity.LoginRegister.VerifySendEnterActivity" />
+        <activity android:name=".activity.LoginRegister.VerifySendEnterEmailActivity" />
+        <activity android:name=".activity.LoginRegister.VerifySendEnterEmailAgainActivity" />
+        <activity android:name=".activity.LoginRegister.WhatsYourEmailActivity"></activity>
+        <activity
+            android:name=".activity.LoginRegister.WhatsBirthDayActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".activity.LoginRegister.SettingsAddPhotoActivity"></activity>
+        <activity android:name=".activity.LoginRegister.WhatsYourEmailOrPhoneActivity" />
         <activity android:name=".activity.LoginRegister.FindFacebookFriendsActivity" />
         <activity android:name=".activity.LoginRegister.FindContactFacebookFriendsActivity" />
         <activity android:name=".activity.LoginRegister.FindContactFriendsActivity" />
-        <activity
-            android:name=".activity.LoginRegister.WhatsBirthDayActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.SettingsAddPhotoActivity" />
-        <activity android:name=".activity.LoginRegister.WhatsYourEmailOrPhoneActivity" />
-        <activity android:name=".activity.LoginRegister.VertificationSendEnterEmailActivity" />
-        <activity android:name=".activity.LoginRegister.VertificationSendEnterEmailAgainActivity" />
         <activity android:name=".activity.LoginRegister.FollowUserActivity" />
-
+        <activity android:name=".activity.MainTab.SuggestionActivity"></activity>
         <activity android:name=".activity.UnusedChooseCountryActivity" />
 
         <!-- Main Tab Zone -->
 
+<<<<<<< HEAD
         <activity android:name=".activity.SettingSystemActivity" />
 
         <activity android:name=".activity.MainTab.CrossProvinceActivity" />
@@ -93,6 +111,32 @@
         <activity android:name=".activity.MainTab.RouteActivity"/>
         <activity android:name=".activity.MainTab.AddPinActivity"/>
 
+=======
+        <activity android:name=".activity.MainTab.AddPinActivity" />
+        <activity android:name=".activity.MainTab.PeriodTimeActivity" />
+        <activity android:name=".activity.MainTab.BudgetActivity" />
+        <activity android:name=".activity.MainTab.CrossProvinceActivity" />
+        <activity android:name=".activity.MainTab.SelectActivityActivity" />
+        <activity android:name=".activity.MainTab.LocationActivity" />
+        <activity android:name=".activity.MainTab.LocationAddActivity" />
+        <activity android:name=".activity.MainTab.SelectTravelMethodActivity" />
+        <activity android:name=".activity.MainTab.RouteNameActivity" />
+        <activity android:name=".activity.MainTab.RouteDescriptionActivity" />
+        <activity android:name=".activity.MainTab.AdvanceSearchActivity" />
+        <activity android:name=".activity.MainTab.SearchMultiTypeActivity" />
+        <activity android:name=".activity.LoginRegister.FindPeopleActivity" />
+        <activity android:name=".activity.MainTab.EditProfileActivity" />
+        <activity android:name=".activity.MainTab.RouteHistoryActivity" />
+        <activity android:name=".activity.MainTab.OverViewPinsActivity" />
+        <activity android:name=".activity.MainTab.ProfileActivity" />
+        <activity android:name=".activity.MainTab.CommentActivity" />
+        <activity
+            android:name=".BaseActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.UserProfileActivity" />
+        <activity android:name=".activity.HolderActivity"
+            ></activity>
+>>>>>>> korrio/master
     </application>
 
 </manifest>

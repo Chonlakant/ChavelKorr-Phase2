@@ -61,7 +61,7 @@ public class OverviewFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_orverview, null);
+        View view = inflater.inflate(R.layout.fragment_overview, null);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.ryc);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         mRecyclerView.setHasFixedSize(true);

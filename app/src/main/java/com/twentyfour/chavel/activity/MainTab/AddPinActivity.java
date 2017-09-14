@@ -82,6 +82,7 @@ public class AddPinActivity extends FragmentActivity implements OnMapReadyCallba
         //  setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
+<<<<<<< HEAD
         toolbar.setNavigationIcon(R.drawable.ic_back);
 //        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -129,6 +130,9 @@ public class AddPinActivity extends FragmentActivity implements OnMapReadyCallba
         });
 
         btnEditPinImage.setOnClickListener(new View.OnClickListener() {
+=======
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+>>>>>>> korrio/master
             @Override
             public void onClick(View v) {
                 showAlertDialogOne();
