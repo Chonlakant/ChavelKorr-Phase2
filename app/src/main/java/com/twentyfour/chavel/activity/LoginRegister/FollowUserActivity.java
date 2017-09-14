@@ -34,11 +34,9 @@ public class FollowUserActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-<<<<<<< HEAD
+git
         toolbar.setTitle("24 Likes");
-=======
 
->>>>>>> korrio/master
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
         toolbar.setBackgroundColor(getResources().getColor(R.color.whitePrimary));
