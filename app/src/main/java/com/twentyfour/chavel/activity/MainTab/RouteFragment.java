@@ -1,7 +1,9 @@
 package com.twentyfour.chavel.activity.MainTab;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -45,6 +47,7 @@ import com.twentyfour.chavel.adapter.ExpandableListAdapter;
 import com.twentyfour.chavel.api.Apis;
 import com.twentyfour.chavel.fragment.GetMapFragment;
 import com.twentyfour.chavel.fragment.OverviewFragment;
+import com.twentyfour.chavel.fragment.OverviewFragmentEmty;
 import com.twentyfour.chavel.fragment.PinsFragment;
 import com.twentyfour.chavel.model.HomeFeed;
 import com.twentyfour.chavel.service.ServiceApi;
@@ -135,9 +138,14 @@ public class RouteFragment extends Fragment {
 
     }
 
+    Dialog dialogLoading;
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_route, container, false);
+
+        dialogLoading = new Dialog(getActivity(), R.style.FullHeightDialog);
+        dialogLoading.setContentView(R.layout.dialog_loading_f);
 
         txt_counrty = (TextView) rootView.findViewById(R.id.txt_counrty);
         txt_city = (TextView) rootView.findViewById(R.id.txt_city);
@@ -214,6 +222,11 @@ public class RouteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                AddPinFragment addPinActivity = new AddPinFragment();
+                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.content_2, addPinActivity);
+                transaction.addToBackStack(null);
+                transaction.commit();
 
             }
         });
@@ -232,15 +245,17 @@ public class RouteFragment extends Fragment {
         ls_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i =new Intent(getActivity(),AddPinFragment.class);
-//                startActivity(i);
 
-//                AddPinFragment addPinActivity = new AddPinFragment();
-//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.fragment_container8, addPinActivity);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-                Toast.makeText(getActivity(), "Save", Toast.LENGTH_SHORT).show();
+                dialogLoading.show();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        dialogLoading.dismiss();
+
+                    }
+                }, 1000);
             }
         });
 
@@ -267,17 +282,19 @@ public class RouteFragment extends Fragment {
         ls_save_lin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i =new Intent(getActivity(),AddPinFragment.class);
-//                startActivity(i);
+
+                dialogLoading.show();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        dialogLoading.dismiss();
+
+                    }
+                }, 1000);
 
                 Toast.makeText(getActivity(), "Save", Toast.LENGTH_SHORT).show();
-
-
-//                AddPinFragment addPinActivity = new AddPinFragment();
-//                android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.fragment_container8, addPinActivity);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
 
 
             }
@@ -300,10 +317,11 @@ public class RouteFragment extends Fragment {
                 Intent i = new Intent(getActivity(), OverViewPinsActivity.class);
                 startActivity(i);
 
-//                OverviewFragment twoFragment = new OverviewFragment();
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.layout_fragment_container, twoFragment);
-//                transaction.commit();
+                OverviewFragmentEmty twoFragment = new OverviewFragmentEmty();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.layout_fragment_container, twoFragment);
+                transaction.commit();
+
                 view_1.setVisibility(View.VISIBLE);
                 view_2.setVisibility(View.GONE);
                 view_border2.setVisibility(View.VISIBLE);
@@ -357,8 +375,6 @@ public class RouteFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_location:
-
-
 
 
                 return true;
