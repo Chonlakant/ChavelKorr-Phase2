@@ -313,6 +313,7 @@ public class RouteFragment extends Fragment {
         });
 
 
+        //
         ls_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
