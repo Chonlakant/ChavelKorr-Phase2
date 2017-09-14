@@ -357,6 +357,8 @@ public class NewRouteFragment extends Fragment {
         });
 
 
+
+
         dt_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -71,13 +71,19 @@ public class OverViewPinsActivity extends AppCompatActivity {
 
             searchAdapter = new OrverViewPinAdapter(getApplicationContext(), list);
             recyclerView.setAdapter(searchAdapter);
+            searchAdapter.setOnItemClickListener(new OrverViewPinAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    Intent i = new Intent(getApplication(), SelectOverViewPinsActivity.class);
+                    startActivity(i);
+                }
+            });
         }
 
         ls_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplication(), SelectOverViewPinsActivity.class);
-                startActivity(i);
+
             }
         });
 

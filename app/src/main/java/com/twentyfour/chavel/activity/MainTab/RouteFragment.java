@@ -283,7 +283,7 @@ public class RouteFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getActivity(), SelectOverViewPinsActivity.class);
+                Intent i = new Intent(getActivity(), OverViewPinsActivity.class);
                 startActivity(i);
 
 //                OverviewFragment twoFragment = new OverviewFragment();
@@ -325,12 +325,13 @@ public class RouteFragment extends Fragment {
 
     }
 
-
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onDestroy() {
+        super.onDestroy();
         BusProvider.getBus().unregister(this);
     }
+
+
 
 
     @Override

@@ -5,8 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.twentyfour.chavel.R;
@@ -33,14 +35,14 @@ public class SelelctOrverViewPinAdapter extends RecyclerView.Adapter<SelelctOrve
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public LinearLayout ls_view;
-        public ImageView img_cover;
+        public RelativeLayout ls_view;
+        public CheckBox img_cover;
 
 
         public ViewHolder(View v) {
             super(v);
-            ls_view = (LinearLayout) v.findViewById(R.id.ls_view);
-            img_cover = (ImageView) v.findViewById(R.id.img_cover);
+            ls_view = (RelativeLayout) v.findViewById(R.id.ls_view);
+            img_cover = (CheckBox) v.findViewById(R.id.img_cover);
         }
 
     }
@@ -54,7 +56,7 @@ public class SelelctOrverViewPinAdapter extends RecyclerView.Adapter<SelelctOrve
     @Override
     public SelelctOrverViewPinAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_search, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_select_over_view, parent, false);
 
 
         ViewHolder vh = new ViewHolder(v);
@@ -66,10 +68,9 @@ public class SelelctOrverViewPinAdapter extends RecyclerView.Adapter<SelelctOrve
         final Search c = list.get(position);
 
 
-        Glide.with(ctx)
-                .load(c.getImageUrl())
-                .into(holder.img_cover);
-        ;
+//        Glide.with(ctx)
+//                .load(c.getImageUrl())
+//                .into(holder.img_cover);
 
     }
 
