@@ -82,7 +82,7 @@ public class LocationAddActivity extends Fragment {
 
                 Events_Route_Loction.Events_RoutLocationFragmentMessage fragmentActivityMessageEvent
                         = new Events_Route_Loction.Events_RoutLocationFragmentMessage(location);
-                BusProvider.getBus().post(fragmentActivityMessageEvent);
+                BusProvider.getInstance().post(fragmentActivityMessageEvent);
                 getActivity().onBackPressed();
             }
         });

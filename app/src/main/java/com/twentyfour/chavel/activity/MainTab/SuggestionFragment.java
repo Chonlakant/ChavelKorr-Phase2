@@ -35,7 +35,7 @@ public class SuggestionFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
         setRetainInstance(true);
 
     }
@@ -62,7 +62,7 @@ public class SuggestionFragment extends Fragment {
             public void onClick(View v) {
                 Suggestion = txt_put_suggestion.getText() + edit2.getText().toString();
                 Events_Route_Suggestion.Events_RoutSuggestionFragmentMessage fragmentActivityMessageEvent = new Events_Route_Suggestion.Events_RoutSuggestionFragmentMessage(Suggestion);
-                BusProvider.getBus().post(fragmentActivityMessageEvent);
+                BusProvider.getInstance().post(fragmentActivityMessageEvent);
                 getActivity().onBackPressed();
             }
         });
@@ -72,13 +72,13 @@ public class SuggestionFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        BusProvider.getBus().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
 }

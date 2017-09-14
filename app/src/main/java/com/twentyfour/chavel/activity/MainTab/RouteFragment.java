@@ -43,6 +43,7 @@ import com.twentyfour.chavel.activity.LoginRegister.ProfileFragment;
 import com.twentyfour.chavel.activity.SelectOverViewPinsActivity;
 import com.twentyfour.chavel.adapter.ExpandableListAdapter;
 import com.twentyfour.chavel.api.Apis;
+import com.twentyfour.chavel.fragment.GetMapFragment;
 import com.twentyfour.chavel.fragment.OverviewFragment;
 import com.twentyfour.chavel.fragment.PinsFragment;
 import com.twentyfour.chavel.model.HomeFeed;
@@ -123,7 +124,7 @@ public class RouteFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
         setRetainInstance(true);
 
 
@@ -180,6 +181,19 @@ public class RouteFragment extends Fragment {
         toolbar.setTitleTextColor(getResources().getColor(R.color.textColorTitle));
 
         toolbar.inflateMenu(R.menu.menu_main);
+        toolbar.setOnMenuItemClickListener(
+                new Toolbar.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        GetMapFragment addPinActivity = new GetMapFragment();
+                        android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container8, addPinActivity);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+
+                        return true;
+                    }
+                });
         // toolbar.inflateMenu(R.menu.menu_over_map);
         ls_loction.setVisibility(View.GONE);
 
@@ -328,10 +342,8 @@ public class RouteFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        BusProvider.getBus().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
-
-
 
 
     @Override
@@ -345,6 +357,9 @@ public class RouteFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_location:
+
+
+
 
                 return true;
         }

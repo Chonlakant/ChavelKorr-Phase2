@@ -51,7 +51,7 @@ public class PinsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
         setRetainInstance(true);
     }
 
@@ -107,7 +107,7 @@ public class PinsFragment extends Fragment {
             public void onClick(View v) {
 
                 Events_State_Menu.Events_StateMenuFragmentMessage fragmentActivityMessageEvent = new Events_State_Menu.Events_StateMenuFragmentMessage("orver_map");
-                BusProvider.getBus().post(fragmentActivityMessageEvent);
+                BusProvider.getInstance().post(fragmentActivityMessageEvent);
 
                 GetMapFragment addPinActivity = new GetMapFragment();
                 android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -137,13 +137,13 @@ public class PinsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        BusProvider.getBus().register(this);
+        BusProvider.getInstance().register(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        BusProvider.getBus().unregister(this);
+        BusProvider.getInstance().unregister(this);
     }
 
 
