@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.twentyfour.chavel.BusProvider.BusProvider;
 import com.twentyfour.chavel.Event.Events_Desc;
@@ -37,6 +39,11 @@ public class LocationAddActivity extends Fragment {
     Dialog dialogContry;
     Dialog dialogCityState;
 
+    LinearLayout ls_ok;
+    LinearLayout ls_cancel;
+    LinearLayout ls_cancel_1;
+    LinearLayout ls_ok_1;
+
     Location location;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,14 +51,24 @@ public class LocationAddActivity extends Fragment {
         ButterKnife.bind(getActivity());
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
 
+
         et_country = (EditText) rootView.findViewById(R.id.et_country);
         et_state = (EditText) rootView.findViewById(R.id.et_state);
 
         dialogContry = new Dialog(getActivity(), R.style.FullHeightDialog);
-        dialogContry.setContentView(R.layout.dialog_cross_province);
+        dialogContry.setContentView(R.layout.dialog_selelct_location);
+
+        ls_ok_1 = (LinearLayout) dialogContry.findViewById(R.id.ls_ok_1);
+        ls_cancel_1 = (LinearLayout) dialogContry.findViewById(R.id.ls_ok_1);
+
+
 
         dialogCityState = new Dialog(getActivity(), R.style.FullHeightDialog);
-        dialogCityState.setContentView(R.layout.dialog_choose_country);
+        dialogCityState.setContentView(R.layout.dialog_selelct_city_state);
+
+        ls_ok = (LinearLayout) dialogCityState.findViewById(R.id.ls_ok);
+        ls_cancel = (LinearLayout) dialogCityState.findViewById(R.id.ls_cancel);
+
 
         location = new Location();
 
@@ -70,6 +87,34 @@ public class LocationAddActivity extends Fragment {
             }
         });
 
+
+        ls_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("ddd","dddd");
+                dialogContry.dismiss();
+            }
+        });
+        ls_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogContry.dismiss();
+            }
+        });
+
+        ls_ok_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCityState.dismiss();
+            }
+        });
+
+        ls_cancel_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogCityState.dismiss();
+            }
+        });
 
         et_country.setOnClickListener(new View.OnClickListener() {
             @Override

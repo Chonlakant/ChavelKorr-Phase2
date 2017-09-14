@@ -235,6 +235,7 @@
             android:layout_height="35dp">
 
             <LinearLayout
+                android:id="@+id/ls_cancel_1"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -255,6 +256,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/grey_soft" />
             <LinearLayout
+                android:id="@+id/ls_ok_1"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_width="match_parent"

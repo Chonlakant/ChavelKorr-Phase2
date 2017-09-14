@@ -36,13 +36,13 @@ public class SelelctOrverViewPinAdapter extends RecyclerView.Adapter<SelelctOrve
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public RelativeLayout ls_view;
-        public CheckBox img_cover;
+        public CheckBox check;
 
 
         public ViewHolder(View v) {
             super(v);
             ls_view = (RelativeLayout) v.findViewById(R.id.ls_view);
-            img_cover = (CheckBox) v.findViewById(R.id.img_cover);
+            check = (CheckBox) v.findViewById(R.id.check);
         }
 
     }
