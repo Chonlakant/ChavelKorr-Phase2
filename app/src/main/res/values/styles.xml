@@ -73,19 +73,14 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-<<<<<<< HEAD
+
     <style name="CustomTabLayoutStyle" parent="Base.Widget.Design.TabLayout">
         <item name="tabSelectedTextColor">@color/colorPrimaryBg</item>
         <item name="tabIndicatorColor">@color/colorPrimaryBg</item>
-        <item name="tabTextAppearance">@style/CustomTabTexStyle</item>
+        <!--<item name="tabTextAppearance">@style/CustomTabTexStyle</item>-->
     </style>
 
-    <style name="CustomTabTexStyle" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorPrimaryBg</item>
-        <item name="textAllCaps">false</item>
-        ...
-=======
+
     <style name="RippleStyleWhite">
         <item name="mrl_rippleOverlay">true</item>
         <item name="mrl_rippleColor">#80FFFFFF</item>

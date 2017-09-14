@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Chavel</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBdNRS-_L_jV5RgeSSigUHUHA-cgST2YH0</string>
-<<<<<<< HEAD
+
     <string name="title_activity_base">BaseActivity</string>
     <string name="permission_required_toast">Permission Required</string>
     <string name="permission_rationale_location">Why we need your location...</string>
     <string name="location_permission_denied">Location permission denied</string>
-=======
+
 
     <string name="about_text">We are Chavel v0.5.2</string>
 
