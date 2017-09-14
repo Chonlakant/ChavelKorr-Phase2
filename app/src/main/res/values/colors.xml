@@ -12,10 +12,7 @@
 
 
     <color name="whitePrimary">#ffffff</color>
-    <color name="blackPrimary">#000000</color>
-    <color name="transparent">#ffffffff</color>
-    <color name="black_transparent">#00000000</color>
-    <color name="black_25_transparent">#44000000</color>
+
 
     <color name="tab_border">#a7a7aa</color>
     <color name="tab_background">#f6f6f7</color>
@@ -61,6 +58,17 @@
     <color name="text_like_counter">#2b5a83</color>
 
     <color name="bg_comments">#ffffff</color>
+
+
+
+
+    <color name="blackPrimary">#000000</color>
+    <color name="transparent">#ffffffff</color>
+    <color name="black_transparent">#00000000</color>
+    <color name="black_25_transparent">#44000000</color>
+
+
+
 
 
 </resources>

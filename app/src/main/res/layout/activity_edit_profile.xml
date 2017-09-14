@@ -4,7 +4,6 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
-<<<<<<< HEAD
     <include layout="@layout/toolbar" />
     <View
         android:layout_width="match_parent"
@@ -25,11 +24,6 @@
     </LinearLayout>
 
     <LinearLayout
-=======
-    <include layout="@layout/toolbar_custom" />
-
-    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> korrio/master
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white">

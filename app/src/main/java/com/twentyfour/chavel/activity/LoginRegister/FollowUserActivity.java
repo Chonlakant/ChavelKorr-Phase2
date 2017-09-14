@@ -34,7 +34,7 @@ public class FollowUserActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-git
+
         toolbar.setTitle("24 Likes");
 
         setSupportActionBar(toolbar);
